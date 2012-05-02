@@ -10,6 +10,9 @@
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
+# Ignore Mac Finder metadata
+.DS_Store
+
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
