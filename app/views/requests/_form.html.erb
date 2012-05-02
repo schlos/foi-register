@@ -49,6 +49,19 @@
     <%= f.hidden_field :lgcs_term_id %>
   </div>
   
+  <div class="field">
+    <%= f.label :medium, "Request medium" %>
+    <%= f.select :medium, [
+      [ "Web", "web" ],
+      [ "Email", "email" ],
+      [ "Phone", "phone" ],
+      [ "Fax", "fax" ],
+      [ "Post", "post" ],
+      [ "Other", "other" ],
+    ] %>
+    <%= f.hidden_field :lgcs_term_id %>
+  </div>
+  
   <%# The body of the request %>
   <div class="field">
     <%= f.label :body %>

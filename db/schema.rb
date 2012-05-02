@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120501162433) do
+ActiveRecord::Schema.define(:version => 20120502131008) do
 
   create_table "attachments", :force => true do |t|
     t.datetime "created_at",               :null => false
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20120501162433) do
     t.integer  "lgcs_term_id"
     t.boolean  "is_published",              :default => false, :null => false
     t.boolean  "is_requestor_name_visible", :default => false, :null => false
+    t.string   "medium",                    :default => "web", :null => false
   end
 
   add_index "requests", ["due_date"], :name => "index_requests_on_due_date"

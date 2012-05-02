@@ -14,6 +14,7 @@
 #  lgcs_term_id              :integer
 #  is_published              :boolean         default(FALSE), not null
 #  is_requestor_name_visible :boolean         default(FALSE), not null
+#  medium                    :string(255)     default("web"), not null
 #
 
 class Request < ActiveRecord::Base
@@ -27,6 +28,10 @@ class Request < ActiveRecord::Base
   accepts_nested_attributes_for :requestor
   accepts_nested_attributes_for :responses
   accepts_nested_attributes_for :attachments
+  
+  validates :medium, :presence => true, :inclusion => {
+    :in => [ "web", "email", "phone", "fax", "post", "other" ]
+  }
 
   def state
     self.states.last || State.new
