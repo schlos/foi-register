@@ -3,6 +3,16 @@ class ApplicationController < ActionController::Base
   before_filter :require_login
   before_filter :require_login_based_on_url
   before_filter :set_is_admin_path
+  
+  layout :suitable_layout
+  
+  def suitable_layout
+    if is_admin_view?
+      return "admin"
+    else
+      return "brighton-and-hove"
+    end
+  end
 
   helper_method :is_admin?
   def is_admin?
