@@ -2,6 +2,10 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.1'
 
+# Point to Rack master to avoid the bug in
+#   http://stackoverflow.com/questions/9054604/rails-3-2-1-cannot-parse-cookie-header-undefined-method-size-for-nilnilcla
+gem 'rack', :git => 'git://github.com/rack/rack.git'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
