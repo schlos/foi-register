@@ -1,4 +1,3 @@
-
 <h2>FOI requests to Brighton and Hove Council</h2>
 
 
@@ -10,11 +9,15 @@
 
 <% @requests.each do |request| %>
   <tr>
-    <td><%= request.date_received_or_created.to_s(:short) %></td>   
+    <td><%= request.date_received_or_created.to_s(:short) %></td>
     <td><%= link_to request.title, request %> <span rel="tooltip" title="<%= request.state.description %>" class="state label"><%= request.state.title %></td>
   </tr>
 <% end %>
 </table>
 <div class="pagination pagination-centered">
   <%= will_paginate(@requests, :renderer => PaginationListLinkRenderer) %>
+</div>
+
+<div id="make-a-request">
+  <%= link_to "Make a request", new_request_path %>
 </div>

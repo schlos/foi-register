@@ -5,6 +5,11 @@
 #new_request fieldset { width: 604px; margin-bottom: 12px; }
 #state-description { display: inline-block; width: 400px; margin-left: 24px; vertical-align: top; }
 #request_body { width: 640px; }
+.foi-public #request_body { width: 540px; }
 #request_lgcs_term { width: 640px; }
 #lgcs_term { margin: 12px; font-weight: bold; }
 #lgcs_term span { background: yellow; padding: 2px; }
+
+.foi-public #request_due_date_1i,
+.foi-public #request_due_date_2i,
+.foi-public #request_due_date_3i { width: 100px; }

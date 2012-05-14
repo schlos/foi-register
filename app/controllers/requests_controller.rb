@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  skip_before_filter :require_login, :only => [:index, :show]
+  skip_before_filter :require_login, :only => [:index, :show, :new, :create]
 
   # GET /requests
   # GET /requests.json
@@ -14,13 +14,8 @@ class RequestsController < ApplicationController
     end
     @badge = "all"
     
-    if self.is_admin_view?
-      template = "index"
-    else
-      template = "public_index"
-    end
     respond_to do |format|
-      format.html { render :action => template }
+      format.html { render :action => self.is_admin_view? ? "index" : "public_index" }
       format.json { render :json => @requests }
     end
 
@@ -56,7 +51,7 @@ class RequestsController < ApplicationController
     @states = State.all()
     @request.requestor = Requestor.new
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render :action => self.is_admin_view? ? "new" : "public_new" }
       format.json { render :json => @request }
     end
   end
@@ -72,6 +67,15 @@ class RequestsController < ApplicationController
   def create
     request = params[:request]
     requestor = request.delete :requestor_attributes
+    
+    if !self.is_admin_view?
+        request[:status] = "new"
+        request[:medium] = "web"
+        request[:due_date] = Date.today + 28.days
+        request[:lgcs_term_id] = nil
+        request[:is_published] = false
+    end
+    
     @request = Request.new(request)
     
     if requestor[:id].nil?
