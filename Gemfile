@@ -13,6 +13,7 @@ gem 'rack', :git => 'git://github.com/rack/rack.git'
 
 
 gem 'sqlite3'
+gem 'pg'
 
 gem 'json'
 
