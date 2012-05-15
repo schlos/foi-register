@@ -1,6 +1,7 @@
 <h2>FOI requests to Brighton and Hove Council</h2>
 
 
+<% if @requests.empty? %>
 <table class="menuTable">
   <tr class="menuTableHeader">
     <th>Date received</th>
@@ -17,6 +18,7 @@
 <div class="pagination pagination-centered">
   <%= will_paginate(@requests, :renderer => PaginationListLinkRenderer) %>
 </div>
+<% end %>
 
 <div id="make-a-request">
   <%= link_to "Make a request", new_request_path %>
