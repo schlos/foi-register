@@ -69,7 +69,7 @@ class RequestsController < ApplicationController
     requestor = request.delete :requestor_attributes
     
     if !self.is_admin_view?
-        request[:status] = "new"
+        request[:state] = State.find_by_tag "new"
         request[:medium] = "web"
         request[:due_date] = Date.today + 28.days
         request[:lgcs_term_id] = nil
