@@ -1,7 +1,7 @@
 require "net/http"
 require "rexml/document"
 
-states = [
+def states ; [
     # tag, name, description
     ["new", "New", "A new request that has not even been acknowledged"],
     ["acknowledged", "Acknowledged", "A new request that has been acknowledged, but not had a substantive response or rejection"],
@@ -37,7 +37,7 @@ states = [
     ["done_exempt_s42", "Exempt §42 (legal privilege)", "Exempt: Legal Professional Privilege"],
     ["done_exempt_s43", "Exempt §43 (commercial interests)", "Exempt: Commercial Interests"],
     ["done_exempt_s44", "Exempt §44 (prohibitions)", "Exempt: Prohibitions On Disclosure"],
-]
+] end
 def insert_states
     for tag, title, description in states
       State.create(:tag => tag, :title => title, :description => description)
@@ -97,7 +97,7 @@ namespace :bootstrap do
   end
   
   desc "Add the states if they have not yet been added"
-  task :add_default_states do
+  task :add_default_states => :environment do
       ActiveRecord::Base.transaction do
           if State.count == 0
               insert_states
@@ -107,7 +107,7 @@ namespace :bootstrap do
   end
   
   desc "Add the LGCS terms if they have not yet been added"
-  task :add_lgcs_terms do
+  task :add_lgcs_terms => :environment do
       ActiveRecord::Base.transaction do
           if LgcsTerm.count == 0
               insert_lgcs_terms
