@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_staff_member
-    @current_staff_member ||= StaffMember.find(session[:staff_member_id]) if session[:staff_member_id]
+    @current_staff_member ||= StaffMember.find_by_id(session[:staff_member_id]) if session[:staff_member_id]
   end
 
   private
