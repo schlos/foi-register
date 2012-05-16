@@ -6,22 +6,22 @@
 
 
 <% if !@requests.empty? %>
-<table class="menuTable">
-  <tr class="menuTableHeader">
-    <th>Date received</th>
-    <th>Title</th>
-  </tr>
+  <table class="menuTable">
+    <tr class="menuTableHeader">
+      <th>Date received</th>
+      <th>Title</th>
+    </tr>
 
-<% @requests.each do |request| %>
-  <tr>
-    <td><%= request.date_received_or_created.to_s(:short) %></td>
-    <td><%= link_to request.title, request %> <span rel="tooltip" title="<%= request.state.description %>" class="state label"><%= request.state.title %></td>
-  </tr>
-<% end %>
-</table>
-<div class="pagination pagination-centered">
-  <%= will_paginate(@requests, :renderer => PaginationListLinkRenderer) %>
-</div>
+  <% @requests.each do |request| %>
+    <tr>
+      <td><%= request.date_received_or_created.to_s(:short) %></td>
+      <td><%= link_to request.title, request %> <span rel="tooltip" title="<%= request.state.description %>" class="state label"><%= request.state.title %></td>
+    </tr>
+  <% end %>
+  </table>
+  <div class="pagination pagination-centered">
+    <%= will_paginate(@requests, :renderer => PaginationListLinkRenderer) %>
+  </div>
 <% end %>
 
 <div id="make-a-request">
