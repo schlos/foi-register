@@ -86,7 +86,13 @@ class RequestsController < ApplicationController
 
     respond_to do |format|
       if @request.save
-        format.html { redirect_to @request, :notice => 'Request was successfully created.' }
+        format.html do
+            if self.is_admin_view?
+                redirect_to @request, :notice => 'Request was successfully created.'
+            else
+                redirect_to requests_url, :notice => "Your request has been received. A response will be sent to <#{@request.requestor.email}>."
+            end
+        end
         format.json { render :json => @request, :status => :created, :location => @request }
       else
         format.html { render :action => "new" }
