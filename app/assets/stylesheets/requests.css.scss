@@ -13,3 +13,7 @@
 .foi-public #request_due_date_1i,
 .foi-public #request_due_date_2i,
 .foi-public #request_due_date_3i { width: 100px; }
+
+#charts { position: relative; width: 800px; }
+#charts #chart_by_month { position: absolute; width: 300px; left: 0; top: 0; }
+#charts #chart_by_state { position: absolute; width: 300px; left: 400px; top: 0; }

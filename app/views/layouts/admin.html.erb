@@ -25,6 +25,7 @@
   <% end %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= yield(:head) -%>
 </head>
 <body>
   <% if is_admin_view? %>
@@ -35,6 +36,7 @@
           <ul class="nav">
             <li><%= link_to "Manage requests", "/admin/requests/" %></li>
             <li><%= link_to "Manage users", "/admin/requestors/" %></li>
+            <li><%= link_to "Statistics", "/admin/requests/stats" %></li>
           </ul>
         
           <%#

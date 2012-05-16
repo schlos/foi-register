@@ -44,6 +44,18 @@ class RequestsController < ApplicationController
     end
   end
   
+  # GET /requests/stats
+  def stats
+    @stats = {
+        :by_month => Request.count_by_month,
+        :by_state => Request.count_by_state,
+    }
+    respond_to do |format|
+      format.html { render }
+      format.json { render :json => @stats }
+    end
+  end
+  
   # GET /requests/new
   # GET /requests/new.json
   def new
