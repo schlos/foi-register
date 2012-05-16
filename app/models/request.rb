@@ -4,7 +4,6 @@
 #
 #  id                        :integer         not null, primary key
 #  title                     :string(255)
-#  status                    :string(255)
 #  requestor_id              :integer
 #  created_at                :datetime        not null
 #  updated_at                :datetime        not null
