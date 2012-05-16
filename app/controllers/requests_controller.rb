@@ -15,7 +15,7 @@ class RequestsController < ApplicationController
     @badge = "all"
     
     respond_to do |format|
-      format.html { render :action => self.is_admin_view? ? "index" : "public_index" }
+      format.html { render :action => self.is_admin_view? ? "admin_index" : "public_index" }
       format.json { render :json => @requests }
     end
 
@@ -51,7 +51,7 @@ class RequestsController < ApplicationController
     @states = State.all()
     @request.requestor = Requestor.new
     respond_to do |format|
-      format.html { render :action => self.is_admin_view? ? "new" : "public_new" }
+      format.html { render :action => self.is_admin_view? ? "admin_new" : "public_new" }
       format.json { render :json => @request }
     end
   end
