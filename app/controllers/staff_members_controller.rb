@@ -32,7 +32,7 @@ class StaffMembersController < ApplicationController
 
     respond_to do |format|
       if @staff_member.update_attributes(params[:staff_member])
-        format.html { redirect_to "/staff_members", :notice => "Staff member <#{@staff_member}> was successfully updated." }
+        format.html { redirect_to "/admin/staff_members", :notice => "Staff member <#{@staff_member}> was successfully updated." }
         format.json { head :no_content }
       else
         format.html { render :action => "edit" }
