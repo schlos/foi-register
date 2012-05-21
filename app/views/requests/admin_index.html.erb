@@ -13,10 +13,10 @@
 
    <ul id="navlist" class="nav nav-pills">
     <li id="badge-all" <% if @badge == "all" %>class="active"<% end %>>
-      <a href="/requests/"><span class='badge badge-warning'><%= Request.count %></span> Show all requests</a>
+      <a href="/admin/requests/"><span class='badge badge-warning'><%= Request.count %></span> Show all requests</a>
     </li>
     <li id="badge-overdue" <% if @badge == "overdue" %>class="active"<% end %>>
-      <a href="/requests/overdue"><span class='badge badge-important'><%= Request.overdue.count %></span> Show overdue requests</a>
+      <a href="/admin/requests/overdue"><span class='badge badge-important'><%= Request.overdue.count %></span> Show overdue requests</a>
     </li>
    </ul>
 

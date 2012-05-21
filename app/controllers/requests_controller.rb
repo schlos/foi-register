@@ -39,7 +39,7 @@ class RequestsController < ApplicationController
     @badge = "overdue"
     
     respond_to do |format|
-      format.html { render :action => "index" }
+      format.html { render :action => "admin_index" }
       format.json { render :json => @requests }
     end
   end
