@@ -24,6 +24,12 @@ GIT
   specs:
     rack (1.4.1)
 
+GIT
+  remote: git://github.com/robinhouston/acts_as_xapian_gem.git
+  revision: 6719e90319c203ec5d1b2804a19396ac8aad36c8
+  specs:
+    acts_as_xapian (0.2.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -146,11 +152,13 @@ GEM
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
     will_paginate (3.0.3)
+    xapian-full-alaveteli (1.2.9.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_xapian (~> 0.2.3)!
   annotate!
   bcrypt-ruby
   carrierwave!
@@ -168,4 +176,5 @@ DEPENDENCIES
   therubyracer
   uglifier (>= 1.0.3)
   will_paginate (~> 3.0)
+  xapian-full-alaveteli (~> 1.2.9.4)
   yaml_db!

@@ -63,3 +63,7 @@ gem 'yaml_db', :git => 'git://github.com/lostapathy/yaml_db.git'
 
 # Helps us store attachments nicely
 gem 'carrierwave', :git => 'git://github.com/jnicklas/carrierwave.git'
+
+# Full-text search
+gem 'xapian-full-alaveteli', '~> 1.2.9.4'
+gem 'acts_as_xapian', '~> 0.2.3', :git => 'git://github.com/robinhouston/acts_as_xapian_gem.git'

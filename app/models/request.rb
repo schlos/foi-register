@@ -31,6 +31,16 @@ class Request < ActiveRecord::Base
   validates :medium, :presence => true, :inclusion => {
     :in => [ "web", "email", "phone", "fax", "post", "other" ]
   }
+  
+  acts_as_xapian({
+    :texts => [ :title, :body ],
+    :values => [
+        [ :created_at, 0, "created_at", :date ]
+    ],
+    :terms => [
+        [ :medium, 'M', "medium" ],
+        [ :lgcs_term_name, 'T', "lgcs_term" ]
+    ]})
 
   def state
     self.states.last || State.new
@@ -53,6 +63,10 @@ class Request < ActiveRecord::Base
   
   def date_received_or_created
     date_received || created_at.to_date
+  end
+  
+  def lgcs_term_name
+      lgcs_term.name
   end
   
   class << self

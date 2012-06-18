@@ -16,6 +16,15 @@ class Response < ActiveRecord::Base
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :request
 
+  acts_as_xapian({
+    :texts => [ :private_part, :public_part ],
+    :values => [
+        [ :created_at, 0, "created_at", :date ]
+    ],
+    :terms => [
+        [ :request_id, 'R', "request_id" ]
+    ]})
+
   def request_attributes=(attributes)
     # process an attributes hash passed from nested form field
     request = Request.find(attributes[:id])
