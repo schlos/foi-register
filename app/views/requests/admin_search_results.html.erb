@@ -1,0 +1,52 @@
+<% if flash[:notice] %>
+    <div id="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<div class="row-fluid">
+ <div class="span12">
+  <h1>Search results for “<%= h(@query) %>”</h1>
+ </div>
+</div>
+
+ <div class="row-fluid">
+  <div class="span12">
+    <% if !@requests.empty? %>
+      <table class="table-striped table-condensed table-bordered">
+        <tr>
+          <th>Date received</th>
+          <th>Requestor</th>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Days until due</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+
+      <% @requests.each do |request| %>
+        <tr>
+          <td><%= request.date_received_or_created.to_s(:short) %></td>
+          <td><%= request.requestor %></td>
+          <td><%= link_to request.title, request %></td>
+          <td><span rel="tooltip" title="<%= request.state.description %>" class="state label"><%= request.state.title %></td>
+          <td>
+            <span class='badge <% if !request.days_until_due.nil? %><% if request.days_until_due < 5 %>badge-warning<% elsif request.days_until_due < 2 %>badge-important<% else %>badge-info<% end %><% end %>'> <% if !request.days_until_due.nil? %><%= request.days_until_due %><% else %>n/a<% end %></span>
+          </td>
+
+          <td><%= link_to 'Respond', new_response_request_path(request) %></td>
+          <td><%= link_to '<i class="icon-pencil"></i>'.html_safe, edit_request_path(request) %></td>
+          <td><%= link_to '<i class="icon-trash"></i>'.html_safe, request, :confirm => 'Are you sure?', :method => :delete %></td>
+        </tr>
+      <% end %>
+      </table>
+      <div class="pagination pagination-centered">
+        <%= will_paginate(@requests, :renderer => PaginationListLinkRenderer) %>
+      </div>
+    <% else %>
+      <p>No results</p>
+    <% end %>
+  </div>
+ </div>
+</div>
+
