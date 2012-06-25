@@ -38,7 +38,7 @@ class Request < ActiveRecord::Base
         [ :created_at, 0, "created_at", :date ]
     ],
     :terms => [
-        [ :medium, 'M', "medium" ],
+        [ :medium, 'B', "medium" ], # 'M' is reserved for use as the model
         [ :lgcs_term_name, 'T', "lgcs_term" ]
     ]})
 
