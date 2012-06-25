@@ -1,3 +1,5 @@
+require 'will_paginate/array' # Extend Array with the paginate method, used in "search"
+
 class RequestsController < ApplicationController
   skip_before_filter :require_login, :only => [:index, :show, :new, :create]
 
@@ -58,11 +60,25 @@ class RequestsController < ApplicationController
   
   # GET /requests/search
   def search
+    @query = params[:q]
+    options = {}
+    options[:offset] = params[:offset].to_i if params.has_key?(:offset)
+    options[:limit] = params[:limit].to_i if params.has_key?(:limit)
+    options[:sort_by_prefix] = params[:sort_by_prefix].to_i if params.has_key?(:sort_by_prefix)
+    
     s = ActsAsXapian::Search.new([
       Request, Response # Attachment?
-    ], params[:q])
+    ], @query, options)
     
-    render :text => s.results.inspect
+    @requests = s.results.map do |r|
+      m = r[:model]
+      m.instance_of?(Response) ? m.request : m
+    end.uniq.paginate
+    
+    respond_to do |format|
+      format.html { render :action => self.is_admin_view? ? "admin_search_results" : "public_search_results" }
+      format.json { render :json => @requests }
+    end
   end
   
   # GET /requests/new

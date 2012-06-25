@@ -53,13 +53,11 @@
         </div>
       </div>
     </div>
-  <% end %>
-  <% if is_admin_view? %>
-   <div class="container">
-    <%= yield %>
-   </div>
+    <div class="container">
+      <%= yield %>
+    </div>
   <% else %>
-   <%= yield %>
+    <%= yield %>
   <% end %>
 </body>
 </html>
