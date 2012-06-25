@@ -49,6 +49,16 @@ class ApplicationController < ActionController::Base
       redirect_to MySociety::Config::get("ADMIN_PREFIX", "/admin") + "/sessions/new"
     end
   end
+  
+  def url_for(options = {})
+    url = super(options)
+    if url =~ %r(^/admin/)
+      return MySociety::Config::get("ADMIN_PREFIX", "/admin") + url["/admin".length..-1]
+    else
+      return url
+    end
+  end
 
   helper_method :current_staff_member
+  helper_method :url_for
 end
