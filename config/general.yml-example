@@ -1,3 +1,4 @@
 ORG_NAME: 'Brighton & Hove'
 ADMIN_PREFIX: '/admin'
 ADMIN_PASSWORD: 'xxxxxxxx'
+ASSET_HOST: null

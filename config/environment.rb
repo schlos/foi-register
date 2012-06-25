@@ -12,3 +12,10 @@ if ENV["RAILS_ENV"] == "test"
 else
     MySociety::Config.set_file(File.join(Rails.root, 'config', 'general'), true)
 end
+
+asset_host = MySociety::Config::get("ASSET_HOST", "")
+if !(asset_host.nil? || asset_host.empty?)
+    FoiRegister::Application.configure do
+        config.action_controller.asset_host = asset_host
+    end
+end
