@@ -56,6 +56,15 @@ class RequestsController < ApplicationController
     end
   end
   
+  # GET /requests/search
+  def search
+    s = ActsAsXapian::Search.new([
+      Request, Response # Attachment?
+    ], params[:q])
+    
+    render :text => s.results.inspect
+  end
+  
   # GET /requests/new
   # GET /requests/new.json
   def new
