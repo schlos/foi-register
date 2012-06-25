@@ -66,7 +66,7 @@ class Request < ActiveRecord::Base
   end
   
   def lgcs_term_name
-      lgcs_term.name
+      lgcs_term.nil? ? nil : lgcs_term.name
   end
   
   class << self
