@@ -9,7 +9,7 @@ class StaffMembersController < ApplicationController
   def create
     @staff_member = StaffMember.new(params[:staff_member])
     if @staff_member.save
-      redirect_to "/admin/staff_members", :notice => "Created new staff member <#{@staff_member.email}>"
+      redirect_to MySociety::Config::get("ADMIN_PREFIX", "/admin") + "/staff_members", :notice => "Created new staff member <#{@staff_member.email}>"
     else
       render "new"
     end
@@ -32,7 +32,7 @@ class StaffMembersController < ApplicationController
 
     respond_to do |format|
       if @staff_member.update_attributes(params[:staff_member])
-        format.html { redirect_to "/admin/staff_members", :notice => "Staff member <#{@staff_member}> was successfully updated." }
+        format.html { redirect_to MySociety::Config::get("ADMIN_PREFIX", "/admin") + "/staff_members", :notice => "Staff member <#{@staff_member}> was successfully updated." }
         format.json { head :no_content }
       else
         format.html { render :action => "edit" }

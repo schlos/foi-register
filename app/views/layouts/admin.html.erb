@@ -34,9 +34,9 @@
         <div class="container">
           <a class="brand">Foi Manager</a>
           <ul class="nav">
-            <li><%= link_to "Manage requests", "/admin/requests/" %></li>
-            <li><%= link_to "Manage users", "/admin/requestors/" %></li>
-            <li><%= link_to "Statistics", "/admin/requests/stats" %></li>
+            <li><%= link_to "Manage requests", MySociety::Config::get("ADMIN_PREFIX", "/admin") + "/requests/" %></li>
+            <li><%= link_to "Manage users", MySociety::Config::get("ADMIN_PREFIX", "/admin") + "/requestors/" %></li>
+            <li><%= link_to "Statistics", MySociety::Config::get("ADMIN_PREFIX", "/admin") + "/requests/stats" %></li>
           </ul>
         
           <%#
