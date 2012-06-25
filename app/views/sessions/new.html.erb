@@ -3,7 +3,7 @@
 <% if flash[:notice] %>
     <div id="notice"><%= flash[:notice] %></div>
 <% end %>
-<%= form_tag sessions_path do %>
+<%= form_tag (MySociety::Config::get("ADMIN_PREFIX", "/admin") + "/sessions") do %>
   <div class="field">
     <%= label_tag :email %>
     <%= text_field_tag :email, params[:email] %>
