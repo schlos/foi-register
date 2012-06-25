@@ -15,6 +15,8 @@
 /config/database.yml.deployed
 /config/httpd.conf
 /config/httpd.conf.deployed
+/config/general.yml
+/config/general.yml.deployed
 
 # Ignore Mac Finder metadata
 .DS_Store
