@@ -1,4 +1,4 @@
-class CreateActsAsXapian < ActiveRecord::Migration
+class CreateActsAsXapianJobs < ActiveRecord::Migration
   def self.up
     create_table :acts_as_xapian_jobs do |t|
       t.column :model, :string, :null => false
