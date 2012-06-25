@@ -3,7 +3,7 @@
 <% end %>
 
 <div class="page-header span9 offset3">
-  <% if @staff_members.empty? %>
+  <% if @staff_members.nil? || @staff_members.empty? %>
     <h1>No staff yet</h1>
   <% else %>
     <h1>Listing staff</h1>
