@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   # for public-facing pages using skip_before_filter.
   def require_login
     if current_staff_member.nil?
-      redirect_to "/sessions/new"
+      redirect_to MySociety::Config::get("ADMIN_PREFIX", "/admin") + "/sessions/new"
     end
   end
   
@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
   # only for pages that start with /admin/.
   def require_login_based_on_url
     if !params[:is_admin].nil? && current_staff_member.nil?
-      redirect_to "/sessions/new"
+      redirect_to MySociety::Config::get("ADMIN_PREFIX", "/admin") + "/sessions/new"
     end
   end
 

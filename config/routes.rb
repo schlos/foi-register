@@ -27,12 +27,11 @@ FoiRegister::Application.routes.draw do
   
   scope "/admin" do
     resources :staff_members
-  end
-  
-  resources :sessions do
-    collection do
-      get "logout"
-    end
+      resources :sessions do
+        collection do
+          get "logout"
+        end
+      end
   end
   
   # The priority is based upon order of creation:
