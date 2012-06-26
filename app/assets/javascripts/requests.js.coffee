@@ -40,3 +40,16 @@ $ ->
     state_description.text(state_select.find("option[value=" + state_select.val() + "]").attr("title"))
 
   $('span.state').tooltip()
+
+  # Type-ahead search when creating a new request
+  tar = $("#typeahead_response")
+  if tar.length > 0
+    $("#request_title").keypress($.debounce( 300, () ->
+      $.get("/requests/search_typeahead?q=" + encodeURIComponent(this.value), (result) ->
+        tar.html ""
+        if result
+          $.each result, (i, e) ->
+            tar.append($("<a/>").attr("href", "/requests/" + e.id).text(e.title), "<br>")
+      )
+    ))
+
