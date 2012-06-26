@@ -75,6 +75,8 @@ class RequestsController < ApplicationController
       m.instance_of?(Response) ? m.request : m
     end.uniq.paginate
     
+    @requests = @requests.select(&:is_published) if !self.is_admin_view?
+    
     respond_to do |format|
       format.html { render :action => self.is_admin_view? ? "admin_search_results" : "public_search_results" }
       format.json { render :json => @requests }
@@ -86,7 +88,7 @@ class RequestsController < ApplicationController
     if query_words.last.nil? || query_words.last.strip.length < 3
         @requests = nil
     else
-      @requests = ActsAsXapian::Search.new([
+      query = ActsAsXapian::Search.new([
           Request, Response # Attachment?
         ], params[:q].strip + '*', {
           :limit => 10,
@@ -94,7 +96,11 @@ class RequestsController < ApplicationController
           :sort_by_ascending => true,
           :additional_flags => Xapian::QueryParser::FLAG_WILDCARD,
           :default_op => Xapian::Query::OP_OR,
-        }).results.map do |r|
+        })
+      logger.info "Parsed typeahead query: " + query.description
+      
+      @requests = @requests.select(&:is_published) if !self.is_admin_view?
+      @requests = query.results.map do |r|
           m = r[:model]
           m.instance_of?(Response) ? m.request : m
         end.uniq.paginate
