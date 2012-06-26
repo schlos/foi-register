@@ -102,11 +102,11 @@ class RequestsController < ApplicationController
         })
       logger.info "Parsed typeahead query: " + query.description
       
-      @requests = @requests.select(&:is_published) if !self.is_admin_view?
       @requests = query.results.map do |r|
           m = r[:model]
           m.instance_of?(Response) ? m.request : m
         end.uniq
+      @requests = @requests.select(&:is_published) if !self.is_admin_view?
     end
     
     render :json => @requests
