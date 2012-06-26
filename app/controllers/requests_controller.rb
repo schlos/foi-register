@@ -73,12 +73,15 @@ class RequestsController < ApplicationController
     @requests = s.results.map do |r|
       m = r[:model]
       m.instance_of?(Response) ? m.request : m
-    end.uniq.paginate
+    end.uniq
     
     @requests = @requests.select(&:is_published) if !self.is_admin_view?
     
     respond_to do |format|
-      format.html { render :action => self.is_admin_view? ? "admin_search_results" : "public_search_results" }
+      format.html do
+        @requests = @requests.paginate
+        render :action => self.is_admin_view? ? "admin_search_results" : "public_search_results"
+      end
       format.json { render :json => @requests }
     end
   end
@@ -103,7 +106,7 @@ class RequestsController < ApplicationController
       @requests = query.results.map do |r|
           m = r[:model]
           m.instance_of?(Response) ? m.request : m
-        end.uniq.paginate
+        end.uniq
     end
     
     render :json => @requests
