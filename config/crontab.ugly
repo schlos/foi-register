@@ -1,0 +1,5 @@
+PATH=/usr/local/bin:/usr/bin:/bin
+MAILTO=cron-!!(*= $site *)!!@mysociety.org
+
+# Every 5 minutes
+*/5 * * * * !!(*= $user *)!! run-with-lockfile -n /data/vhost/!!(*= $vhost *)!!/change-xapian-database.lock "/var/lib/gems/1.8/bin/rake xapian:update_index" >> /data/vhost/!!(*= $vhost *)!!/logs/update-xapian-index.log || echo "stalled?"
