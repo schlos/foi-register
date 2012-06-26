@@ -26,9 +26,9 @@ GIT
 
 GIT
   remote: git://github.com/robinhouston/acts_as_xapian_gem.git
-  revision: 6719e90319c203ec5d1b2804a19396ac8aad36c8
+  revision: 32a95af9529ad05f3558e8460f35b03da080b1b6
   specs:
-    acts_as_xapian (0.2.3)
+    acts_as_xapian (0.2.4)
 
 GEM
   remote: https://rubygems.org/
@@ -158,7 +158,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts_as_xapian (~> 0.2.3)!
+  acts_as_xapian (~> 0.2.4)!
   annotate!
   bcrypt-ruby
   carrierwave!
