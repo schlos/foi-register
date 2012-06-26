@@ -25,8 +25,9 @@
       <%= link_to 'New Request', new_request_path, :class => "btn" %>
      </div>
     </div>
-    <table class="table-striped table-condensed table-bordered">
+    <table class="table-striped table-condensed table-bordered" id="admin-request-list">
       <tr>
+        <th>ID</th>
         <th>Date received</th>
         <th>Requestor</th>
         <th>Title</th>
@@ -40,6 +41,7 @@
 
     <% @requests.each do |request| %>
       <tr>
+        <td class="request-id">FOI:<%= request.id %>/<%= request.date_received_or_created.year %></td>
         <td><%= request.date_received_or_created.to_s(:short) %></td>
         <td><%= request.requestor %></td>
         <td><%= link_to request.title, request %></td>

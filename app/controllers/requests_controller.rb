@@ -61,6 +61,12 @@ class RequestsController < ApplicationController
   # GET /requests/search
   def search
     @query = params[:q]
+    if @query =~ %r(^FOI:(\d+)(/\d+)?$)
+      @request = Request.find($1.to_i)
+      redirect_to @request
+      return
+    end
+    
     options = {}
     options[:offset] = params[:offset].to_i if params.has_key?(:offset)
     options[:limit] = params[:limit].to_i if params.has_key?(:limit)

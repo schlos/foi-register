@@ -24,6 +24,10 @@
 	#request_due_date_3i { width: 100px; }
 }
 
+#admin-request-list {
+	.request-id { font-weight: bold; }
+}
+
 #charts {
 	position: relative;
 	width: 800px;
