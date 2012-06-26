@@ -2,18 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#new_request fieldset { width: 604px; margin-bottom: 12px; }
+#new_request {
+	fieldset { width: 604px; margin-bottom: 12px; }
+	#request_title { width: 604px; }
+	#request_body { width: 604px; }
+}
+
 #state-description { display: inline-block; width: 400px; margin-left: 24px; vertical-align: top; }
-#request_body { width: 640px; }
-.foi-public #request_body { width: 540px; }
 #request_lgcs_term { width: 640px; }
-#lgcs_term { margin: 12px; font-weight: bold; }
-#lgcs_term span { background: yellow; padding: 2px; }
+#lgcs_term {
+	margin: 12px;
+	font-weight: bold;
+	span { background: yellow; padding: 2px; }
+}
 
-.foi-public #request_due_date_1i,
-.foi-public #request_due_date_2i,
-.foi-public #request_due_date_3i { width: 100px; }
+.foi-public {
+	#request_body { width: 540px; }
+	#request_due_date_1i,
+	#request_due_date_2i,
+	#request_due_date_3i { width: 100px; }
+}
 
-#charts { position: relative; width: 800px; }
-#charts #chart_by_month { position: absolute; width: 300px; left: 0; top: 0; }
-#charts #chart_by_state { position: absolute; width: 300px; left: 400px; top: 0; }
+#charts {
+	position: relative;
+	width: 800px;
+	#chart_by_month { position: absolute; width: 300px; top: 0; left: 0; }
+	#chart_by_state { position: absolute; width: 300px; top: 0; left: 400px; }
+}
