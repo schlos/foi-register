@@ -81,6 +81,28 @@ class RequestsController < ApplicationController
     end
   end
   
+  def search_typeahead
+    query_words = params[:q].split(/ +(?![-+]+)/)
+    if query_words.last.nil? || query_words.last.strip.length < 3
+        @requests = nil
+    else
+      @requests = ActsAsXapian::Search.new([
+          Request, Response # Attachment?
+        ], params[:q].strip + '*', {
+          :limit => 10,
+          :sort_by_prefix => nil,
+          :sort_by_ascending => true,
+          :additional_flags => Xapian::QueryParser::FLAG_WILDCARD,
+          :default_op => Xapian::Query::OP_OR,
+        }).results.map do |r|
+          m = r[:model]
+          m.instance_of?(Response) ? m.request : m
+        end.uniq.paginate
+    end
+    
+    render :json => @requests
+  end
+  
   # GET /requests/new
   # GET /requests/new.json
   def new

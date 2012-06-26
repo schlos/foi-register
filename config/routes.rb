@@ -17,6 +17,7 @@ FoiRegister::Application.routes.draw do
         get 'overdue'
         get 'stats'
         get 'search'
+        get 'search_typeahead'
       end
       member do
         get 'new_response'
