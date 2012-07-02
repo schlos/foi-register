@@ -1,7 +1,7 @@
 require 'will_paginate/array' # Extend Array with the paginate method, used in "search"
 
 class RequestsController < ApplicationController
-  skip_before_filter :require_login, :only => [:index, :show, :new, :create]
+  skip_before_filter :require_login, :only => [:index, :show, :new, :create, :search, :search_typeahead]
 
   # GET /requests
   # GET /requests.json
