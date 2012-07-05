@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120521174231) do
+ActiveRecord::Schema.define(:version => 20120704173539) do
 
   create_table "acts_as_xapian_jobs", :force => true do |t|
     t.string  "model",    :null => false
@@ -19,6 +19,12 @@ ActiveRecord::Schema.define(:version => 20120521174231) do
   end
 
   add_index "acts_as_xapian_jobs", ["model", "model_id"], :name => "index_acts_as_xapian_jobs_on_model_and_model_id", :unique => true
+
+  create_table "alaveteli_feeds", :force => true do |t|
+    t.integer  "last_event_id", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "attachments", :force => true do |t|
     t.datetime "created_at",               :null => false
