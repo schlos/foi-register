@@ -33,7 +33,7 @@ class Request < ActiveRecord::Base
   }
   
   acts_as_xapian({
-    :texts => [ :title, :body ],
+    :texts => [ :title, :body, :requestor_name, :requestor_email ],
     :values => [
         [ :created_at, 0, "created_at", :date ]
     ],
@@ -98,6 +98,14 @@ class Request < ActiveRecord::Base
             )
         )")
     end
+  end
+  
+  def requestor_name
+      requestor.name
+  end
+
+  def requestor_email
+      requestor.email
   end
   
 end
