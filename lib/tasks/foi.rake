@@ -20,7 +20,10 @@ namespace :foi do
             events = ActiveSupport::JSON.decode(response.body)
             
             events.reverse_each do |event|
-                xxxx insert event ...
+                event_type = event[:event_type]
+                if event_type == "sent"
+                    # Process the event
+                end
             end
             AlaveteliFeed.last_event_id = events[0][:event_id]
         end
