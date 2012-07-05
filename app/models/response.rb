@@ -31,4 +31,10 @@ class Response < ActiveRecord::Base
     request.state = State.find(attributes[:state_attributes][:id])
   end
 
+  def send_to_alaveteli
+      AlaveteliApi.send_response(self)
+  end
+  after_create :send_to_alaveteli
+  handle_asynchronously :send_to_alaveteli 
+
 end

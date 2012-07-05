@@ -67,3 +67,9 @@ gem 'carrierwave', :git => 'git://github.com/jnicklas/carrierwave.git'
 # Full-text search
 gem 'xapian-full-alaveteli', '~> 1.2.9.4'
 gem 'acts_as_xapian', '~> 0.2.5', :git => 'git://github.com/robinhouston/acts_as_xapian_gem.git'
+
+# Queue for updating Alaveteli
+gem 'delayed_job_active_record'
+
+# For calling Alaveteli API
+gem 'httpclient'
