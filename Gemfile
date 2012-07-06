@@ -11,12 +11,6 @@ gem 'rack', :git => 'git://github.com/rack/rack.git'
 #
 # This should be removed when the bug is fixed.
 
-
-gem 'sqlite3'
-gem 'pg'
-
-gem 'json'
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -29,48 +23,68 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
-gem 'spork-testunit'
+group :development do
+  gem 'sqlite3'
+  gem 'spork-testunit'
+  gem 'ruby-debug'
+end
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+group :test do
+  gem 'sqlite3'
+  gem 'spork-testunit'
+  gem 'ruby-debug'
+end
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
+group :production do
+  gem 'pg'
+end
 
-# Use unicorn as the web server
-# gem 'unicorn'
+group :default do
+  gem 'json'
 
-# Deploy with Capistrano
-# gem 'capistrano'
+  gem 'jquery-rails'
 
-# To use debugger
-gem 'ruby-debug'
+  # To use ActiveModel has_secure_password
+  # gem 'bcrypt-ruby', '~> 3.0.0'
 
-# For installing Bootstrap
-gem 'therubyracer'
-gem 'less-rails'
-gem 'less-rails-bootstrap'
+  # To use Jbuilder templates for JSON
+  # gem 'jbuilder'
 
-# For annotating models
-gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
-gem 'bcrypt-ruby'
+  # Use unicorn as the web server
+  # gem 'unicorn'
 
-# For pagination
-gem 'will_paginate', '~> 3.0'
+  # Deploy with Capistrano
+  # gem 'capistrano'
 
-# So we can dump and load plenty of sample data
-gem 'yaml_db', :git => 'git://github.com/lostapathy/yaml_db.git'
+  # To use debugger
 
-# Helps us store attachments nicely
-gem 'carrierwave', :git => 'git://github.com/jnicklas/carrierwave.git'
+  # For installing Bootstrap
+  gem 'therubyracer'
+  gem 'less-rails'
+  gem 'less-rails-bootstrap'
 
-# Full-text search
-gem 'xapian-full-alaveteli', '~> 1.2.9.4'
-gem 'acts_as_xapian', '~> 0.2.5', :git => 'git://github.com/robinhouston/acts_as_xapian_gem.git'
+  # For annotating models
+  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+  gem 'bcrypt-ruby'
 
-# Queue for updating Alaveteli
-gem 'delayed_job_active_record'
+  gem 'single_test', :path => '/home/seb/Code/single_test'
 
-# For calling Alaveteli API
-gem 'httpclient'
+  # For pagination
+  gem 'will_paginate', '~> 3.0'
+
+  # So we can dump and load plenty of sample data
+  gem 'yaml_db', :git => 'git://github.com/lostapathy/yaml_db.git'
+
+  # Helps us store attachments nicely
+  gem 'carrierwave', :git => 'git://github.com/jnicklas/carrierwave.git'
+
+  # Full-text search
+  gem 'xapian-full-alaveteli', '~> 1.2.9.4'
+  gem 'acts_as_xapian', '~> 0.2.5', :git => 'git://github.com/robinhouston/acts_as_xapian_gem.git'
+
+  # Queue for updating Alaveteli
+  gem 'delayed_job_active_record'
+
+  # For calling Alaveteli API
+  gem 'httpclient'
+end
