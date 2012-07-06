@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120704173539) do
+ActiveRecord::Schema.define(:version => 20120705115442) do
 
   create_table "acts_as_xapian_jobs", :force => true do |t|
     t.string  "model",    :null => false
@@ -36,6 +36,22 @@ ActiveRecord::Schema.define(:version => 20120704173539) do
     t.string   "request_or_response_type"
     t.string   "filename"
   end
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "lgcs_terms", :force => true do |t|
     t.string  "name",            :null => false
@@ -73,9 +89,11 @@ ActiveRecord::Schema.define(:version => 20120704173539) do
     t.boolean  "is_published",              :default => false, :null => false
     t.boolean  "is_requestor_name_visible", :default => false, :null => false
     t.string   "medium",                    :default => "web", :null => false
+    t.integer  "remote_id"
   end
 
   add_index "requests", ["due_date"], :name => "index_requests_on_due_date"
+  add_index "requests", ["remote_id"], :name => "index_requests_on_remote_id"
   add_index "requests", ["requestor_id"], :name => "index_requests_on_requestor_id"
 
   create_table "responses", :force => true do |t|

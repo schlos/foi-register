@@ -107,5 +107,13 @@ class Request < ActiveRecord::Base
   def requestor_email
       requestor.email
   end
+
+  def send_to_alaveteli
+      remote_id = AlaveteliApi.send_request(self)
+      self.remote_id = remote_id
+      self.save
+  end
+  after_create :send_to_alaveteli
+  handle_asynchronously :send_to_alaveteli
   
 end

@@ -1,0 +1,1 @@
+require 'alaveteli_api'
