@@ -14,6 +14,7 @@
 #  is_published              :boolean         default(FALSE), not null
 #  is_requestor_name_visible :boolean         default(FALSE), not null
 #  medium                    :string(255)     default("web"), not null
+#  remote_id                 :integer
 #
 
 class Request < ActiveRecord::Base
@@ -22,11 +23,9 @@ class Request < ActiveRecord::Base
   validates_presence_of :title
   has_many :request_states
   has_many :responses
-  has_many :attachments, :as => :request_or_response
   has_many :states, :through => :request_states, :order => :created_at
   accepts_nested_attributes_for :requestor
   accepts_nested_attributes_for :responses
-  accepts_nested_attributes_for :attachments
   
   validates :medium, :presence => true, :inclusion => {
     :in => [ "web", "email", "phone", "fax", "post", "other" ]
