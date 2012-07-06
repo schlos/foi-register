@@ -37,22 +37,6 @@ class AttachmentsController < ApplicationController
     @attachment = Attachment.find(params[:id])
   end
 
-  # POST /attachments
-  # POST /attachments.json
-  def create
-    @attachment = Attachment.new
-    @attachment.file = params[:attachment][:file]
-    respond_to do |format|
-      if @attachment.save
-        format.html { redirect_to @attachment, :notice => 'Attachment was successfully created.' }
-        format.json { render :json => @attachment, :status => :created, :location => @attachment }
-      else
-        format.html { render :action => "new" }
-        format.json { render :json => @attachment.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
   # PUT /attachments/1
   # PUT /attachments/1.json
   def update

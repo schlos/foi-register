@@ -17,14 +17,6 @@ class AttachmentsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create attachment" do
-    assert_difference('Attachment.count') do
-      post :create, :attachment => {:file => fixture_file_upload('files/example_attachment.txt', 'text/plain')}
-    end
-
-    assert_redirected_to attachment_path(assigns(:attachment))
-  end
-
   test "should show attachment" do
     get :show, :id => @attachment
     assert_response :success
