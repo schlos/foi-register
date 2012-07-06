@@ -21,23 +21,23 @@ class ResponsesControllerTest < ActionController::TestCase
   end
 
   test "should show response" do
-    get :show, :id => @response_1
+    get :show, :request_id => @response_1.request.id, :id => @response_1
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => @response_1
+    get :edit, :request_id => @response_1.request.id, :id => @response_1
     assert_response :success
   end
 
   test "should update response" do
-    put :update, :id => @response_1, :response => @response_1.attributes
+    put :update, :request_id => @response_1.request.id, :id => @response_1, :response => @response_1.attributes
     assert_redirected_to request_path(assigns(:response).request)
   end
 
   test "should destroy response" do
     assert_difference('Response.count', -1) do
-      delete :destroy, :id => @response_1
+      delete :destroy, :request_id => @response_1.request.id, :id => @response_1
     end
 
     assert_redirected_to request_responses_path(@response_1.request)
