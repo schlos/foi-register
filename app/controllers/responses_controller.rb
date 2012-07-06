@@ -24,17 +24,6 @@ class ResponsesController < ApplicationController
     end
   end
 
-  # GET /responses/new
-  # GET /responses/new.json
-  def new
-    @response = Response.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @response }
-    end
-  end
-
   # GET /responses/1/edit
   def edit
     @response = Response.find(params[:id])
@@ -90,7 +79,7 @@ class ResponsesController < ApplicationController
     @response.destroy
 
     respond_to do |format|
-      format.html { redirect_to responses_url }
+      format.html { redirect_to request_responses_url(@response.request) }
       format.json { head :no_content }
     end
   end

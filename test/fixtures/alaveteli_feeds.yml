@@ -1,7 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  last_event_id: 1
-
-two:
+the_only_one:
+  id: 1
   last_event_id: 1

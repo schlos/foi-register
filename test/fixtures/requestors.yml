@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  email: MyString
-  phone: MyString
-  address: MyText
-  notes: MyText
+robin:
+  name: Robin Houston
+  email: robin@mysociety.org
+  notes: |
+    phone: 01234 456 789
+    address: 23 Botherington Palace Road, Entringham, Spocks'
 
-two:
-  name: MyString
-  email: MyString
-  phone: MyString
-  address: MyText
-  notes: MyText
+seb:
+  name: Seb Bacon
+  email: seb@mysociety.org
+  notes: |
+    phone: 01243 465 798
+    address: The Old Mill, Little Spacklington, Truckinghamshire WX8 9PQ

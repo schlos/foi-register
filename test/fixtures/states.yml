@@ -1,11 +1,146 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  tag: MyString
-  title: MyString
-  description: MyString
+new:
+  tag: new
+  title: 'New'
+  description: 'A new request that has not even been acknowledged'
 
-two:
-  tag: MyString
-  title: MyString
-  description: MyString
+acknowledged:
+  tag: acknowledged
+  title: 'Acknowledged'
+  description: 'A new request that has been acknowledged, but not had a substantive response or rejection'
+
+done_rejected_vexatious:
+  tag: done_rejected_vexatious
+  title: 'Rejected as vexatious'
+  description: 'The request has been rejected as vexatious. In this case there is no legal obligation to respond to the requestor at all.'
+
+done_not_held:
+  tag: done_not_held
+  title: 'Not held'
+  description: 'The information is not held'
+
+done_supplied_all:
+  tag: done_supplied_all
+  title: 'All information supplied'
+  description: 'All the requested information has been supplied'
+
+done_supplied_some:
+  tag: done_supplied_some
+  title: 'Some information supplied'
+  description: 'Some of the requested information has been supplied'
+
+done_exempt_s21:
+  tag: done_exempt_s21
+  title: 'Exempt §21 (other means)'
+  description: 'Exempt: Information Accessible By Other Means'
+
+done_exempt_s22:
+  tag: done_exempt_s22
+  title: 'Exempt §22 (future publication)'
+  description: 'Exempt: Information Intended For Future Publication'
+
+done_exempt_s23:
+  tag: done_exempt_s23
+  title: 'Exempt §23 (security matters)'
+  description: 'Exempt: Information Supplied by, or Related to, Bodies Dealing with Security Matters'
+
+done_exempt_s24:
+  tag: done_exempt_s24
+  title: 'Exempt §24 (national security)'
+  description: 'Exempt: National Security'
+
+done_exempt_s26:
+  tag: done_exempt_s26
+  title: 'Exempt §26 (defence)'
+  description: 'Exempt: Defence'
+
+done_exempt_s27:
+  tag: done_exempt_s27
+  title: 'Exempt §27 (international relations)'
+  description: 'Exempt: International Relations'
+
+done_exempt_s28:
+  tag: done_exempt_s28
+  title: 'Exempt §28 (UK relations)'
+  description: 'Exempt: Relations Within The United Kingdom'
+
+done_exempt_s29:
+  tag: done_exempt_s29
+  title: 'Exempt §29 (economy)'
+  description: 'Exempt: The Economy'
+
+done_exempt_s30:
+  tag: done_exempt_s30
+  title: 'Exempt §30 (investigations)'
+  description: 'Exempt: Investigations And Proceedings Conducted By Public Authorities'
+
+done_exempt_s31:
+  tag: done_exempt_s31
+  title: 'Exempt §31 (law enforcement)'
+  description: 'Exempt: Law Enforcement'
+
+done_exempt_s32:
+  tag: done_exempt_s32
+  title: 'Exempt §32 (court records)'
+  description: 'Exempt: Court Records'
+
+done_exempt_s33:
+  tag: done_exempt_s33
+  title: 'Exempt §33 (audit functions)'
+  description: 'Exempt: Audit Functions'
+
+done_exempt_s34:
+  tag: done_exempt_s34
+  title: 'Exempt §34 (parliamentary privilege)'
+  description: 'Exempt: Parliamentary Privilege'
+
+done_exempt_s35:
+  tag: done_exempt_s35
+  title: 'Exempt §35 (policy formulation)'
+  description: 'Exempt: Formulation Of Government Policy'
+
+done_exempt_s36:
+  tag: done_exempt_s36
+  title: 'Exempt §36 (prejudice to effective conduct)'
+  description: 'Exempt: Prejudice to Effective Conduct of Public Affairs'
+
+done_exempt_s37:
+  tag: done_exempt_s37
+  title: 'Exempt §37 (crown)'
+  description: 'Exempt: Communications With Her Majesty, With Other Members Of The Royal Household, And The Conferring By The Crown Of Any Honour Or Dignity'
+
+done_exempt_s38:
+  tag: done_exempt_s38
+  title: 'Exempt §38 (health and safety)'
+  description: 'Exempt: Health And Safety'
+
+done_exempt_s39:
+  tag: done_exempt_s39
+  title: 'Exempt §39 (environmental information)'
+  description: 'Exempt: Environmental Information'
+
+done_exempt_s40:
+  tag: done_exempt_s40
+  title: 'Exempt §40 (personal information)'
+  description: 'Exempt: Personal Information'
+
+done_exempt_s41:
+  tag: done_exempt_s41
+  title: 'Exempt §41 (in confidence)'
+  description: 'Exempt: Information Provided In Confidence'
+
+done_exempt_s42:
+  tag: done_exempt_s42
+  title: 'Exempt §42 (legal privilege)'
+  description: 'Exempt: Legal Professional Privilege'
+
+done_exempt_s43:
+  tag: done_exempt_s43
+  title: 'Exempt §43 (commercial interests)'
+  description: 'Exempt: Commercial Interests'
+
+done_exempt_s44:
+  tag: done_exempt_s44
+  title: 'Exempt §44 (prohibitions)'
+  description: 'Exempt: Prohibitions On Disclosure'

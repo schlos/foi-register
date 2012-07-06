@@ -2,48 +2,44 @@ require 'test_helper'
 
 class ResponsesControllerTest < ActionController::TestCase
   setup do
-    @response = responses(:one)
+    @response_1 = responses(:response_1)
+    session[:staff_member_id] = staff_members(:phil).id
   end
 
   test "should get index" do
-    get :index
+    get :index, :request_id => requests(:all_your_info).id
     assert_response :success
     assert_not_nil assigns(:responses)
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
   test "should create response" do
     assert_difference('Response.count') do
-      post :create, :response => @response.attributes
+      post :create, :response => @response_1.attributes, :request_id => @response_1.request_id
     end
 
-    assert_redirected_to response_path(assigns(:response))
+    assert_redirected_to request_response_path(@response_1.request, assigns(:response))
   end
 
   test "should show response" do
-    get :show, :id => @response
+    get :show, :id => @response_1
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => @response
+    get :edit, :id => @response_1
     assert_response :success
   end
 
   test "should update response" do
-    put :update, :id => @response, :response => @response.attributes
-    assert_redirected_to response_path(assigns(:response))
+    put :update, :id => @response_1, :response => @response_1.attributes
+    assert_redirected_to request_path(assigns(:response).request)
   end
 
   test "should destroy response" do
     assert_difference('Response.count', -1) do
-      delete :destroy, :id => @response
+      delete :destroy, :id => @response_1
     end
 
-    assert_redirected_to responses_path
+    assert_redirected_to request_responses_path(@response_1.request)
   end
 end

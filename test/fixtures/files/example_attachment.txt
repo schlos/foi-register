@@ -1,0 +1,18 @@
+The rails framework has a function fixture_file_upload (Rails 2 Rails 3), which will search your fixtures directory for the file specified and will make it available as a test file for the controller in functional testing. To use it:
+
+1) Put your file to be uploaded in the test in your fixtures/files subdirectory for testing.
+
+2) In your unit test you can get your testing file by calling fixture_file_upload('path','mime-type').
+
+e.g.:
+
+bulk_json = fixture_file_upload('files/bulk_bookmark.json','application/json')
+
+3) call the post method to hit the controller action you want, passing the object returned by fixture_file_upload as the parameter for the upload.
+
+e.g.:
+
+post :bookmark, :bulkfile => bulk_json
+
+This will run through the simulated post process using a Tempfile copy of the file in your fixtures directory and then return to your unit test so you can start examining the results of the post.
+

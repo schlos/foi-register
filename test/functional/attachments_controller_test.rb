@@ -3,6 +3,7 @@ require 'test_helper'
 class AttachmentsControllerTest < ActionController::TestCase
   setup do
     @attachment = attachments(:one)
+    session[:staff_member_id] = staff_members(:phil).id
   end
 
   test "should get index" do
@@ -18,7 +19,7 @@ class AttachmentsControllerTest < ActionController::TestCase
 
   test "should create attachment" do
     assert_difference('Attachment.count') do
-      post :create, :attachment => @attachment.attributes
+      post :create, :attachment => {:file => fixture_file_upload('files/example_attachment.txt', 'text/plain')}
     end
 
     assert_redirected_to attachment_path(assigns(:attachment))

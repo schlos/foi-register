@@ -4,8 +4,12 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+one:
+  file: 'attachment-1.txt'
+  content_type: 'text/plain'
+  size: 2345
+
+two:
+  file: 'attachment-2.pdf'
+  content_type: 'application/pdf'
+  size: 234567

@@ -1,9 +1,6 @@
 # Load the rails application
 require File.expand_path('../application', __FILE__)
 
-# Initialize the rails application
-FoiRegister::Application.initialize!
-
 # Load the configuration file
 $:.push(File.join(File.dirname(__FILE__), '../commonlib/rblib'))
 load "config.rb"
@@ -19,3 +16,6 @@ if !(asset_host.nil? || asset_host.empty?)
         config.action_controller.asset_host = asset_host
     end
 end
+
+# Initialize the rails application
+FoiRegister::Application.initialize!
