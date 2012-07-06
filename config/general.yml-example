@@ -8,3 +8,6 @@ ALAVETELI_API_KEY: 'xxxx'
 
 # The base of the API endpoint to use for pushing new requests to
 ALAVETELI_API_ENDPOINT: 'http://localhost:3001/api/v2'
+
+PULL_FROM_ALAVETELI: false
+ALAVETELI_INITIAL_LAST_EVENT_ID: null

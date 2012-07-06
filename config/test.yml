@@ -6,8 +6,12 @@ ASSET_HOST: null
 ALAVETELI_FEED_URL: 'http://www.whatdotheyknow.com/api/v2/body/nn/request_events.json'
 ALAVETELI_API_KEY: 'xxxx'
 
+<<<<<<< HEAD
 # The base of the API endpoint to use for pushing new requests to.
 # You can leave this blank to skip integration tests relating to
 # pushing requests.  If you have a value here, you must start an
 # Alaveteli server at this location for the tests to pass.
 ALAVETELI_API_ENDPOINT: 
+
+PULL_FROM_ALAVETELI: false
+ALAVETELI_INITIAL_LAST_EVENT_ID: null

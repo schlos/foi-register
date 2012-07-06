@@ -12,7 +12,11 @@ class AlaveteliFeed < ActiveRecord::Base
     class << self
         def last_event_id
             instance = get_instance
-            return instance.nil? ? nil : instance.last_event_id
+            if instance.nil?
+                return MySociety::Config.get("ALAVETELI_INITIAL_LAST_EVENT_ID")
+            else
+                return instance.last_event_id
+            end
         end
         
         def last_event_id=(new_last_event_id)

@@ -5,6 +5,11 @@ require "net/http"
 namespace :foi do
     desc "Fetch the Alaveteli feed"
     task :fetch => :environment do
+        if !MySociety::Config.get("PULL_FROM_ALAVETELI")
+            puts "Not pulling from Alaveteli, because PULL_FROM_ALAVETELI is false"
+            next
+        end
+        
         feed_url = MySociety::Config.get("ALAVETELI_FEED_URL")
         feed_key = MySociety::Config.get("ALAVETELI_API_KEY")
         

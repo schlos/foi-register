@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120705115442) do
+ActiveRecord::Schema.define(:version => 20120706110558) do
 
   create_table "acts_as_xapian_jobs", :force => true do |t|
     t.string  "model",    :null => false
@@ -27,14 +27,13 @@ ActiveRecord::Schema.define(:version => 20120705115442) do
   end
 
   create_table "attachments", :force => true do |t|
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
-    t.string   "file",                     :null => false
-    t.text     "content_type",             :null => false
-    t.integer  "size",                     :null => false
-    t.integer  "request_or_response_id"
-    t.string   "request_or_response_type"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "file",         :null => false
+    t.text     "content_type", :null => false
+    t.integer  "size",         :null => false
     t.string   "filename"
+    t.integer  "response_id",  :null => false
   end
 
   create_table "delayed_jobs", :force => true do |t|
