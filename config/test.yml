@@ -5,3 +5,6 @@ ASSET_HOST: null
 
 ALAVETELI_FEED_URL: 'http://www.whatdotheyknow.com/api/v2/body/nn/request_events.json'
 ALAVETELI_API_KEY: 'xxxx'
+
+PULL_FROM_ALAVETELI: false
+ALAVETELI_INITIAL_LAST_EVENT_ID: null
