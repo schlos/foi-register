@@ -5,7 +5,7 @@
    <% elsif r.is_requestor_name_visible %>
     From: <%= r.requestor.name %><br>
    <% end %>
-   To: Brighton and Hove<br>
+   To: <%= h(MySociety::Config.get("ORG_NAME")) %><br>
    Sent: <%= r.date_received_or_created.to_s(:short) %><br>
    Subject: <%= r.title %>
   </div>
@@ -18,5 +18,4 @@
     <%= link_to ('<i class="icon-download"></i> ' + attachment.filename).html_safe, attachment.file.url %> (<%= number_to_human_size(attachment.size, :precision => 2) %>)<br>
    <% end %>
   <% end %>
-
 </div>
