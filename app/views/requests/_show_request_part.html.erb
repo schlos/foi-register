@@ -13,9 +13,4 @@
   <div class="correspondence-body">
    <%= r.body %>
   </div>
-  <% for attachment in @request.attachments %>
-   <% if attachment.file? %>
-    <%= link_to ('<i class="icon-download"></i> ' + attachment.filename).html_safe, attachment.file.url %> (<%= number_to_human_size(attachment.size, :precision => 2) %>)<br>
-   <% end %>
-  <% end %>
 </div>
