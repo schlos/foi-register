@@ -24,7 +24,7 @@ class ResponsesControllerTest < ActionController::TestCase
     config = MySociety::Config.load_default()
     host = config['TEST_ALAVETELI_API_HOST']
     if host.nil?
-      $stderr.puts "WARNING: skipping Alaveteli integration test.  Set `TEST_ALAVETELI_API_ENDPOINT` to run"
+      $stderr.puts "WARNING: skipping Alaveteli integration test.  Set `TEST_ALAVETELI_API_HOST` to run"
     else
       endpoint = "#{host}/api/v2"
       config['ALAVETELI_API_ENDPOINT'] = endpoint
