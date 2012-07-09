@@ -41,13 +41,12 @@ class AlaveteliApi
                 :body => response.public_part,
                 :sent_at => response.created_at,
                 :attachments => attachments,
-            }
+            }.to_json
             key = MySociety::Config::get("ALAVETELI_API_KEY")
-
-            response = client.post("#{api_endpoint}/request#{response.request.remote_id}.json", {:k => key, :request_json => data}).body
+            response = client.post("#{api_endpoint}/request/#{response.request.remote_id}.json", {:k => key, :correspondence_json => data}).body
             json = ActiveSupport::JSON.decode(response)
             if json['errors'].nil?
-                Rails.logger.info("Created new response id #{response.id}")
+                Rails.logger.info("Created new response id #{response.object_id}")
             else
                 raise AlaveteliApiError, json['errors']
             end

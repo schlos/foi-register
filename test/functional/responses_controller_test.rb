@@ -20,6 +20,27 @@ class ResponsesControllerTest < ActionController::TestCase
     assert_redirected_to request_response_path(@response_1.request, assigns(:response))
   end
 
+  test "should publish a response to Alaveteli endpoint" do
+    config = MySociety::Config.load_default()
+    endpoint = config['TEST_ALAVETELI_API_ENDPOINT']
+    if endpoint.nil?
+      $stderr.puts "WARNING: skipping Alaveteli integration test.  Set `TEST_ALAVETELI_API_ENDPOINT` to run"
+    else
+      config['ALAVETELI_API_ENDPOINT'] = endpoint
+      config['ALAVETELI_API_KEY'] = '3'
+
+      # first we need to create a new request, so we have a remote_id to respond to...
+      @response_1.request.send_to_alaveteli
+
+      response_attributes = @response_1.attributes
+      post :create, :response => @response_1.attributes, :request_id => @response_1.request.id
+      result = open("http://localhost:3001/request/#{@response_1.request.remote_id}").read
+      assert result =~ /#{@response_1.public_part}/, "#{result} did not contain #{@response_1.public_part}"
+      assert_redirected_to request_response_path(@response_1.request, assigns(:response))
+    end
+  end
+
+
   test "should show response" do
     get :show, :request_id => @response_1.request.id, :id => @response_1
     assert_response :success
