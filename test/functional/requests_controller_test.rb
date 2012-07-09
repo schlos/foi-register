@@ -44,7 +44,6 @@ class RequestsControllerTest < ActionController::TestCase
       assert_difference('Request.count') do
         post :create, :request => request_attributes
       end
-      puts "http://localhost:3001/request/#{title}"
       result = open("http://localhost:3001/request/#{title}").read
       assert result =~ /#{title}/, "#{result} did not contain #{title}"
       assert result =~ /#{@request_all_your_info.body}/, "#{result} did not contain #{@request_all_your_info.body}"
