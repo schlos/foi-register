@@ -12,7 +12,7 @@ ALAVETELI_API_ENDPOINT:
 # To perform an integration tests relating to pushing requests, start
 # an Alaveteli server at this location for the tests to pass.  Leave
 # this value blank to skip such tests.
-TEST_ALAVETELI_API_ENDPOINT: http://localhost:3001/api/v2
+TEST_ALAVETELI_API_HOST: http://localhost:3001
 
 PULL_FROM_ALAVETELI: false
 ALAVETELI_INITIAL_LAST_EVENT_ID: null
