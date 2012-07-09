@@ -48,6 +48,7 @@ class RequestsControllerTest < ActionController::TestCase
       assert result =~ /#{title}/, "#{result} did not contain #{title}"
       assert result =~ /#{@request_all_your_info.body}/, "#{result} did not contain #{@request_all_your_info.body}"
       assert_redirected_to requests_path
+      config['ALAVETELI_API_ENDPOINT'] = nil
     end
   end
 

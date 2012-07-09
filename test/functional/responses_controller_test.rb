@@ -37,6 +37,7 @@ class ResponsesControllerTest < ActionController::TestCase
       result = open("http://localhost:3001/request/#{@response_1.request.remote_id}").read
       assert result =~ /#{@response_1.public_part}/, "#{result} did not contain #{@response_1.public_part}"
       assert_redirected_to request_response_path(@response_1.request, assigns(:response))
+      config['ALAVETELI_API_ENDPOINT'] = nil
     end
   end
 
