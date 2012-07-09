@@ -38,19 +38,23 @@ class RequestsControllerTest < ActionController::TestCase
       endpoint = "#{host}/api/v2"
       config['ALAVETELI_API_ENDPOINT'] = endpoint
       config['ALAVETELI_API_KEY'] = '3'
-    
-      request_attributes = @request_all_your_info.attributes
-      title = "request_#{Time.now.to_i}"
-      request_attributes["title"] = title
-      request_attributes[:requestor_attributes] = {:id => request_attributes.delete("requestor_id")}
-      assert_difference('Request.count') do
-        post :create, :request => request_attributes
+      begin
+        request_attributes = @request_all_your_info.attributes
+        title = "request_#{Time.now.to_i}"
+        request_attributes["title"] = title
+        request_attributes[:requestor_attributes] = {:id => request_attributes.delete("requestor_id")}
+        assert_difference('Request.count') do
+          post :create, :request => request_attributes
+        end
+        result = open("#{host}/request/#{title}").read
+        assert result =~ /#{title}/, "#{result} did not contain #{title}"
+        assert result =~ /#{@request_all_your_info.body}/, "#{result} did not contain #{@request_all_your_info.body}"
+        assert_redirected_to requests_path
+      rescue Errno::ECONNREFUSED => e
+        raise "TEST_ALAVETELI_API_HOST set in test.yml but no Alaveteli server running"
+      ensure
+        config['ALAVETELI_API_ENDPOINT'] = nil
       end
-      result = open("#{host}/request/#{title}").read
-      assert result =~ /#{title}/, "#{result} did not contain #{title}"
-      assert result =~ /#{@request_all_your_info.body}/, "#{result} did not contain #{@request_all_your_info.body}"
-      assert_redirected_to requests_path
-      config['ALAVETELI_API_ENDPOINT'] = nil
     end
   end
 
