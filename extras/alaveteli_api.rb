@@ -13,7 +13,7 @@ class AlaveteliApi
                 :body => request.body,
                 :external_user_name => request.requestor_name,
                 :external_url => "/XXXworkthisoutlater"
-            }
+            }.to_json
             key = MySociety::Config::get("ALAVETELI_API_KEY")
             response = client.post("#{api_endpoint}/request.json", {:k => key, :request_json => data}).body
             json = ActiveSupport::JSON.decode(response)
@@ -38,13 +38,13 @@ class AlaveteliApi
             end
             data = {
                 :direction => 'response', # or request
-                :body => response.body,
+                :body => response.public_part,
                 :sent_at => response.created_at,
                 :attachments => attachments,
             }
             key = MySociety::Config::get("ALAVETELI_API_KEY")
 
-            response = client.post("#{api_endpoint}/request#{response.request.remote_id}.json", {:k => key, :request_json => data}).read
+            response = client.post("#{api_endpoint}/request#{response.request.remote_id}.json", {:k => key, :request_json => data}).body
             json = ActiveSupport::JSON.decode(response)
             if json['errors'].nil?
                 Rails.logger.info("Created new response id #{response.id}")

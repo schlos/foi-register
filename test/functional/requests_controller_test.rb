@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'open-uri'
 
 class RequestsControllerTest < ActionController::TestCase
   setup do
@@ -25,6 +26,30 @@ class RequestsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to requests_path
+  end
+
+  test "should publish a request to Alaveteli endpoint" do
+    config = MySociety::Config.load_default()
+    endpoint = config['TEST_ALAVETELI_API_ENDPOINT']
+    if endpoint.nil?
+      $stderr.puts "WARNING: skipping Alaveteli integration test.  Set `TEST_ALAVETELI_API_ENDPOINT` to run"
+    else
+      config['ALAVETELI_API_ENDPOINT'] = endpoint
+      config['ALAVETELI_API_KEY'] = '3'
+    
+      request_attributes = @request_all_your_info.attributes
+      title = "request_#{Time.now.to_i}"
+      request_attributes["title"] = title
+      request_attributes[:requestor_attributes] = {:id => request_attributes.delete("requestor_id")}
+      assert_difference('Request.count') do
+        post :create, :request => request_attributes
+      end
+      puts "http://localhost:3001/request/#{title}"
+      result = open("http://localhost:3001/request/#{title}").read
+      assert result =~ /#{title}/, "#{result} did not contain #{title}"
+      assert result =~ /#{@request_all_your_info.body}/, "#{result} did not contain #{@request_all_your_info.body}"
+      assert_redirected_to requests_path
+    end
   end
 
   test "should show request" do
