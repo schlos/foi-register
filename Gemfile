@@ -86,5 +86,5 @@ group :default do
   gem 'delayed_job_active_record'
 
   # For calling Alaveteli API
-  gem 'httpclient'
+  gem 'multipart-post'
 end

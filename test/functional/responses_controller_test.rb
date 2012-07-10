@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'uri'
 
 class ResponsesControllerTest < ActionController::TestCase
   setup do
@@ -35,9 +36,20 @@ class ResponsesControllerTest < ActionController::TestCase
         @response_1.request.send_to_alaveteli
 
         response_attributes = @response_1.attributes
-        post :create, :response => @response_1.attributes, :request_id => @response_1.request.id
+        params = @response_1.attributes
+        params['attachments_attributes'] = {}
+
+        @response_1.attachments.each_with_index do |attachment, n|
+          params['attachments_attributes'][n] = {'file' => fixture_file_upload("files/#{attachment['file']}", attachment['content_type'])}
+        end
+        post :create, :response => params, :request_id => @response_1.request.id
         result = open("#{host}/request/#{@response_1.request.remote_id}").read
         assert result =~ /#{@response_1.public_part}/, "#{result} did not contain #{@response_1.public_part}"
+        # The following tests have the condition hard coded because
+        # the filenames are munged in the Alaveteli display area using
+        # code that would otherwise need refactoring
+        assert result =~ /attachment%201.txt/
+        assert result =~ /attachment%202.pdf/
         assert_redirected_to request_response_path(@response_1.request, assigns(:response))
       rescue Errno::ECONNREFUSED => e
         raise "TEST_ALAVETELI_API_HOST set in test.yml but no Alaveteli server running"
@@ -46,6 +58,8 @@ class ResponsesControllerTest < ActionController::TestCase
       end
     end
   end
+
+
 
 
   test "should show response" do
