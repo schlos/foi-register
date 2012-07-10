@@ -67,7 +67,7 @@ group :default do
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
   gem 'bcrypt-ruby'
 
-  gem 'single_test', :path => '/home/seb/Code/single_test'
+  gem 'single_test', :git => 'git://github.com/sebbacon/single_test.git'
 
   # For pagination
   gem 'will_paginate', '~> 3.0'

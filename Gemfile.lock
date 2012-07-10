@@ -31,8 +31,9 @@ GIT
   specs:
     acts_as_xapian (0.2.5)
 
-PATH
-  remote: /home/seb/Code/single_test
+GIT
+  remote: git://github.com/sebbacon/single_test.git
+  revision: ec527adf26bc5d892a0bbde5c956987e0428da10
   specs:
     single_test (0.5.2)
       rake (> 0.9)
