@@ -87,4 +87,5 @@ group :default do
 
   # For calling Alaveteli API
   gem 'multipart-post'
+  gem 'daemons'
 end
