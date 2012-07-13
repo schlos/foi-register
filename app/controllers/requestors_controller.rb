@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class RequestorsController < ApplicationController
   # GET /requestors
   # GET /requestors.json

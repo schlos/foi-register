@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class AjaxController < ApplicationController
   def requestors
     if params[:term]

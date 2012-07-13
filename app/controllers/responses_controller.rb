@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class ResponsesController < ApplicationController
   skip_before_filter :require_login, :only => [:index, :show]
 

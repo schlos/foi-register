@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'will_paginate/array' # Extend Array with the paginate method, used in "search"
 
 class RequestsController < ApplicationController

@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class RedirectionController < ApplicationController
   skip_before_filter :require_login
   

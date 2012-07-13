@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class StaffMembersController < ApplicationController
   http_basic_authenticate_with :name => "admin", :password => MySociety::Config::get("ADMIN_PASSWORD")
   skip_before_filter :require_login # because we protect with Basic HTTP Auth instead

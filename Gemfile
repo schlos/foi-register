@@ -26,13 +26,17 @@ end
 group :development do
   gem 'sqlite3'
   gem 'spork-testunit'
-  gem 'ruby-debug'
+  
+  gem 'debugger', :require => 'ruby-debug', :platforms => :mri_19, :git => "https://github.com/cldwalker/debugger"
+  gem 'ruby-debug', :platforms => :mri_18
 end
 
 group :test do
   gem 'sqlite3'
   gem 'spork-testunit'
-  gem 'ruby-debug'
+  
+  gem 'debugger', :require => 'ruby-debug', :platforms => :mri_19, :git => "https://github.com/cldwalker/debugger"
+  gem 'ruby-debug', :platforms => :mri_18
 end
 
 group :production do
