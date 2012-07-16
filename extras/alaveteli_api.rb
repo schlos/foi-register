@@ -13,7 +13,7 @@ class AlaveteliApi
             data = {:title => request.title, 
                 :body => request.body,
                 :external_user_name => request.requestor_name,
-                :external_url => "/XXXworkthisoutlater"
+                :external_url => "/XXXworkthisoutlater" # TODO
             }.to_json
             key = MySociety::Config::get("ALAVETELI_API_KEY")
             url = URI.parse("#{api_endpoint}/request.json")
