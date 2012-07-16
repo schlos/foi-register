@@ -44,12 +44,14 @@ class AlaveteliApi
             }
             key = MySociety::Config::get("ALAVETELI_API_KEY")
             url = URI.parse("#{api_endpoint}/request/#{response.request.remote_id}.json")
-            post_data = {:k => key,
-                         :correspondence_json => correspondence_data.to_json}
-            response.attachments.collect do |attachment|
-                post_data[attachment.filename] = UploadIO.new(open(attachment.file.file.file),
-                                                              attachment.content_type,
-                                                              attachment.filename)
+            post_data = [[:k, key],
+                         [:correspondence_json, correspondence_data.to_json]]
+            response.attachments.each do |attachment|
+                post_data.push(["attachments[]", UploadIO.new(
+                    open(attachment.file.file.file),
+                    attachment.content_type,
+                    attachment.filename
+                )])
             end
             req = Net::HTTP::Post::Multipart.new(url.path, post_data)
             response = Net::HTTP.start(url.host, url.port) do |http|
