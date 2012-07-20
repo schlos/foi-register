@@ -1,0 +1,7 @@
+rs_all_your_info:
+  request: all_your_info
+  state: new
+
+rs_badgers:
+  request: badgers
+  state: new

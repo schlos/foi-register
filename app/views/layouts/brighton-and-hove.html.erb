@@ -1,13 +1,12 @@
-
-	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-	<html lang="en-GB">
-		
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-GB">
 <head>
 <title><%= @title %> &ndash; Brighton &amp; Hove City Council</title>
+<%= stylesheet_link_tag    "application", :media => "all" %>
 	<!-- Brighton &amp; Hove City Council - corporate website -->
 	<!-- Version 5, December 2010 -->
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta name="keywords" content="fraud">
+	<meta name="keywords" content="foi">
 	<meta name="p2b" content="Your council|FOI|">
 	<meta name="robots" content="NOODP">
 	<meta name="description" content="Delivering 24 hour council services to residents, visitors and businesses in Brighton &amp; Hove">
@@ -19,7 +18,7 @@
 
 	<link rel="stylesheet" href="http://www.brighton-hove.gov.uk/web/sites/bhcc/css/pageElementStyle11.css" type="text/css">
 	<link rel="stylesheet" href="http://www.brighton-hove.gov.uk/web/sites/bhcc/css/print11.css" type="text/css" media="print">
-	<link rel="stylesheet" href="http://www.brighton-hove.gov.uk/web/sites/bhcc/css/s211.css" type="text/css">	
+	<link rel="stylesheet" href="http://www.brighton-hove.gov.uk/web/sites/bhcc/css/s211.css" type="text/css">
 
 	<!--[if lte IE 6]><link rel="stylesheet" href="http://www.brighton-hove.gov.uk/web/sites/bhcc/css/ie611.css" type="text/css" /><![endif]-->
 	<!--[if IE 7]><link rel="stylesheet" href="http://www.brighton-hove.gov.uk/web/sites/bhcc/css/ie711.css" type="text/css" /><![endif]-->
@@ -35,10 +34,15 @@
     setTimeout('document.location = "' + link.href + '"', 100);
   }
 </script>
+	<%= stylesheet_link_tag    "application", :media => "all" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
+	<%= yield(:head) -%>
+	<script type="text/javascript" src="/assets/ba-throttle-debounce.js"></script>
 </head>
 
 
-	<body>
+	<body class="foi-public">
 	<div class="mainContent">	
 		
 <h1>Freedom of Information</h1>
@@ -344,8 +348,8 @@
 </div>
 		
 			<div class="emailContact">
-					<a href="http://www.brighton-hove.gov.uk/index.cfm?request=b1000072&amp;recipient=anti-fraud@brighton-hove.gov.uk&amp;reference=174129"><img class="emailIcon" src="http://www.brighton-hove.gov.uk/web/sites/bhcc/images/bwenvelo.gif" width="20" height="18" alt="send an email"></a>&nbsp;<a href="http://www.brighton-hove.gov.uk/index.cfm?request=b1000072&amp;recipient=anti-fraud@brighton-hove.gov.uk&amp;reference=174129">Send an email</a>
-			</div>		
+					<a href="http://www.brighton-hove.gov.uk/index.cfm?request=b1000072&amp;recipient=foi@brighton-hove.gov.uk&amp;reference=174129"><img class="emailIcon" src="http://www.brighton-hove.gov.uk/web/sites/bhcc/images/bwenvelo.gif" width="20" height="18" alt="send an email"></a>&nbsp;<a href="http://www.brighton-hove.gov.uk/index.cfm?request=b1000072&amp;recipient=foi@brighton-hove.gov.uk&amp;reference=174129">Send an email</a>
+			</div>
 		
 	<p><a href="http://www.brighton-hove.gov.uk/index.cfm?request=b1148192&amp;showTranslator=true">Translate this website</a></p>
 	 
@@ -355,17 +359,22 @@
 	<div id="centreColumn">
 		<div class="contentRow">
 			
-			<h2 class="breadcrumb"><span>You are here: </span><a href="index.cfm">Home</a><span> | </span><a href="http://www.brighton-hove.gov.uk/index.cfm?request=a2">Your council</a> <span> | </span> Anti-fraud</h2>
+			<h2 class="breadcrumb"><span>You are here: </span><a href="index.cfm">Home</a><span> | </span><a href="http://www.brighton-hove.gov.uk/index.cfm?request=a2">Your council</a> <span> | </span> Freedom of Information</h2>
 			<a name="pageContent"></a>
 			
-				<a name="title1"></a>
+			<a name="title1"></a>
 			
-	<h2 class="title">Freedom of Information</h2>
-		<%= yield %>
+			<form class="navbar-search pull-right" method="get" action="/requests/search">
+				<input type="text" class="search-query span2" placeholder="Search" name="q">
+				<input type="submit" name="submit" value="Search">
+			</form>
+			<div style="clear:left">
+				<%= yield %>
+			</div>
 		</div>
-	</div> 	
-	<div style="clear:both"></div>	
-		<br>		
+	</div>
+	<div style="clear:both"></div>
+	<br>
 
 
 <div class="socialBkMarks white">

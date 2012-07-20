@@ -10,11 +10,14 @@ FoiRegister::Application.routes.draw do
   get "redirection/front"
 
   root :to => 'redirection#front'
-  scope "(:is_admin)", :constraints => {:is_admin => /(admin)?/} do 
+  scope "(:is_admin)", :constraints => {:is_admin => /(admin)?/} do
     resources :requests do
       resources :responses
       collection do
         get 'overdue'
+        get 'stats'
+        get 'search'
+        get 'search_typeahead'
       end
       member do
         get 'new_response'
@@ -26,11 +29,10 @@ FoiRegister::Application.routes.draw do
   
   scope "/admin" do
     resources :staff_members
-  end
-  
-  resources :sessions do
-    collection do
-      get "logout"
+    resources :sessions do
+      collection do
+        get "logout"
+      end
     end
   end
   

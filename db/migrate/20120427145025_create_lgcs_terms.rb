@@ -7,7 +7,7 @@ class CreateLgcsTerms < ActiveRecord::Migration
     
     if ActiveRecord::Base.connection.adapter_name == "PostgreSQL"
       # SQLite3 doesn’t support adding a foreign key constraint to an existing table
-      execute "alter table lgcs_terms add constraint lgcs_terms_broader_term_fk broader_term_id references lgcs_terms(id)"
+      execute "alter table lgcs_terms add constraint lgcs_terms_broader_term_fk foreign key (broader_term_id) references lgcs_terms(id)"
     end
   end
   

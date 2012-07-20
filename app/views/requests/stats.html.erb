@@ -1,0 +1,37 @@
+<% content_for :head do %>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawCharts);
+      function drawCharts() {
+          // By month
+          new google.visualization.BarChart(document.getElementById('chart_by_month'))
+              .draw(google.visualization.arrayToDataTable([
+                  ['Month', 'Requests'],
+                  <%= @stats[:by_month].map do |month, count|
+                      "['#{month}', #{count}]"
+                  end.join(", ") %>
+          ]), {
+              title: 'Requests over time',
+              legend: {position: "none"}
+          });
+          
+          // By state
+          new google.visualization.PieChart(document.getElementById('chart_by_state'))
+              .draw(google.visualization.arrayToDataTable([
+                  ['State', 'Requests'],
+                  <%= @stats[:by_state].map do |state, count|
+                      "['#{state}', #{count}]"
+                  end.join(", ") %>
+          ]), {
+              title: 'Request states'
+          });
+      }
+    </script>
+<% end %>
+
+<h1>FOI Statistics</h1>
+<div id="charts">
+  <div id="chart_by_month"></div>
+  <div id="chart_by_state"></div>
+</div>

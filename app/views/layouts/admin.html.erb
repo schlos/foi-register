@@ -25,6 +25,7 @@
   <% end %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= yield(:head) -%>
 </head>
 <body>
   <% if is_admin_view? %>
@@ -33,15 +34,14 @@
         <div class="container">
           <a class="brand">Foi Manager</a>
           <ul class="nav">
-            <li><%= link_to "Manage requests", "/admin/requests/" %></li>
-            <li><%= link_to "Manage users", "/admin/requestors/" %></li>
+            <li><%= link_to "Manage requests", MySociety::Config::get("ADMIN_PREFIX", "/admin") + "/requests/" %></li>
+            <li><%= link_to "Manage users", MySociety::Config::get("ADMIN_PREFIX", "/admin") + "/requestors/" %></li>
+            <li><%= link_to "Statistics", MySociety::Config::get("ADMIN_PREFIX", "/admin") + "/requests/stats" %></li>
           </ul>
         
-          <%#
-          <form class="navbar-search pull-left" action="">
-            <input type="text" class="search-query span2" placeholder="Search">
+          <form class="navbar-search pull-left" method="get" action="<%= MySociety::Config::get("ADMIN_PREFIX", "/admin") %>/requests/search">
+            <input type="text" class="search-query span2" placeholder="Search" name="q">
           </form>
-          %>
         
           <ul class="nav pull-right">
             <% if controller.current_staff_member.nil? %>
@@ -53,13 +53,11 @@
         </div>
       </div>
     </div>
-  <% end %>
-  <% if is_admin_view? %>
-   <div class="container">
-    <%= yield %>
-   </div>
+    <div class="container">
+      <%= yield %>
+    </div>
   <% else %>
-   <%= yield %>
+    <%= yield %>
   <% end %>
 </body>
 </html>

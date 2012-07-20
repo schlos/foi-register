@@ -1,6 +1,9 @@
 <h1>Log in</h1>
 
-<%= form_tag sessions_path do %>
+<% if flash[:notice] %>
+    <div id="notice"><%= flash[:notice] %></div>
+<% end %>
+<%= form_tag (MySociety::Config::get("ADMIN_PREFIX", "/admin") + "/sessions") do %>
   <div class="field">
     <%= label_tag :email %>
     <%= text_field_tag :email, params[:email] %>

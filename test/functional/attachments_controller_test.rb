@@ -3,6 +3,7 @@ require 'test_helper'
 class AttachmentsControllerTest < ActionController::TestCase
   setup do
     @attachment = attachments(:one)
+    session[:staff_member_id] = staff_members(:phil).id
   end
 
   test "should get index" do
@@ -14,14 +15,6 @@ class AttachmentsControllerTest < ActionController::TestCase
   test "should get new" do
     get :new
     assert_response :success
-  end
-
-  test "should create attachment" do
-    assert_difference('Attachment.count') do
-      post :create, :attachment => @attachment.attributes
-    end
-
-    assert_redirected_to attachment_path(assigns(:attachment))
   end
 
   test "should show attachment" do

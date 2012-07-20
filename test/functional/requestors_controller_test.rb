@@ -2,7 +2,8 @@ require 'test_helper'
 
 class RequestorsControllerTest < ActionController::TestCase
   setup do
-    @requestor = requestors(:one)
+    @requestor = requestors(:robin)
+    session[:staff_member_id] = staff_members(:phil).id
   end
 
   test "should get index" do

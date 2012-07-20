@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class StatesController < ApplicationController
   # GET /states
   # GET /states.json

@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class SessionsController < ApplicationController
   skip_before_filter :require_login
   
@@ -8,9 +10,9 @@ class SessionsController < ApplicationController
     staff_member = StaffMember.find_by_email(params[:email])
     if staff_member && staff_member.authenticate(params[:password])
       session[:staff_member_id] = staff_member.id
-      redirect_to "/admin/requests", :notice => "Logged in"
+      redirect_to MySociety::Config::get("ADMIN_PREFIX", "/admin") + "/requests", :notice => "Logged in"
     else
-      flash.now.alert = "Invalid email or password"
+      flash[:notice] = "Invalid email or password"
       render "new"
     end
   end

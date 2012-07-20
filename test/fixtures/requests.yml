@@ -1,11 +1,18 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  title: MyString
-  status: MyString
-  requestor: 
+all_your_info:
+  due_date: <%= (Time.now + 5.days).to_s(:db) %>
+  title: All your information
+  requestor: robin
+  body: Please send me all your information
+  is_published: true
 
-two:
-  title: MyString
-  status: MyString
-  requestor: 
+badgers:
+  due_date: <%= (Time.now + 10.days).to_s(:db) %>
+  title: Badgers
+  requestor: seb
+  body: |
+    Please send copies of all correspondence pertaining to badgers.
+    
+    Yours truthfully,
+    Seb

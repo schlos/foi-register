@@ -10,18 +10,47 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120502131008) do
+ActiveRecord::Schema.define(:version => 20120706110558) do
+
+  create_table "acts_as_xapian_jobs", :force => true do |t|
+    t.string  "model",    :null => false
+    t.integer "model_id", :null => false
+    t.string  "action",   :null => false
+  end
+
+  add_index "acts_as_xapian_jobs", ["model", "model_id"], :name => "index_acts_as_xapian_jobs_on_model_and_model_id", :unique => true
+
+  create_table "alaveteli_feeds", :force => true do |t|
+    t.integer  "last_event_id", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "attachments", :force => true do |t|
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
-    t.string   "file",                     :null => false
-    t.text     "content_type",             :null => false
-    t.integer  "size",                     :null => false
-    t.integer  "request_or_response_id"
-    t.string   "request_or_response_type"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "file",         :null => false
+    t.text     "content_type", :null => false
+    t.integer  "size",         :null => false
     t.string   "filename"
+    t.integer  "response_id",  :null => false
   end
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "lgcs_terms", :force => true do |t|
     t.string  "name",            :null => false
@@ -49,7 +78,6 @@ ActiveRecord::Schema.define(:version => 20120502131008) do
 
   create_table "requests", :force => true do |t|
     t.string   "title"
-    t.string   "status"
     t.integer  "requestor_id"
     t.datetime "created_at",                                   :null => false
     t.datetime "updated_at",                                   :null => false
@@ -60,9 +88,11 @@ ActiveRecord::Schema.define(:version => 20120502131008) do
     t.boolean  "is_published",              :default => false, :null => false
     t.boolean  "is_requestor_name_visible", :default => false, :null => false
     t.string   "medium",                    :default => "web", :null => false
+    t.integer  "remote_id"
   end
 
   add_index "requests", ["due_date"], :name => "index_requests_on_due_date"
+  add_index "requests", ["remote_id"], :name => "index_requests_on_remote_id"
   add_index "requests", ["requestor_id"], :name => "index_requests_on_requestor_id"
 
   create_table "responses", :force => true do |t|

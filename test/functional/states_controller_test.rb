@@ -2,7 +2,8 @@ require 'test_helper'
 
 class StatesControllerTest < ActionController::TestCase
   setup do
-    @state = states(:one)
+    @state = states(:new)
+    session[:staff_member_id] = staff_members(:phil).id
   end
 
   test "should get index" do

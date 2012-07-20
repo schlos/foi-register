@@ -13,10 +13,10 @@
 
    <ul id="navlist" class="nav nav-pills">
     <li id="badge-all" <% if @badge == "all" %>class="active"<% end %>>
-      <a href="/requests/"><span class='badge badge-warning'><%= Request.count %></span> Show all requests</a>
+      <a href="<%= MySociety::Config::get("ADMIN_PREFIX", "/admin") %>/requests/"><span class='badge badge-warning'><%= Request.count %></span> Show all requests</a>
     </li>
     <li id="badge-overdue" <% if @badge == "overdue" %>class="active"<% end %>>
-      <a href="/requests/overdue"><span class='badge badge-important'><%= Request.overdue.count %></span> Show overdue requests</a>
+      <a href="<%= MySociety::Config::get("ADMIN_PREFIX", "/admin") %>/requests/overdue"><span class='badge badge-important'><%= Request.overdue.count %></span> Show overdue requests</a>
     </li>
    </ul>
 
@@ -25,8 +25,9 @@
       <%= link_to 'New Request', new_request_path, :class => "btn" %>
      </div>
     </div>
-    <table class="table-striped table-condensed table-bordered">
+    <table class="table-striped table-condensed table-bordered" id="admin-request-list">
       <tr>
+        <th>ID</th>
         <th>Date received</th>
         <th>Requestor</th>
         <th>Title</th>
@@ -40,7 +41,8 @@
 
     <% @requests.each do |request| %>
       <tr>
-        <td><%= request.date_received_or_created.to_s(:short) %></td>   
+        <td class="request-id">FOI:<%= request.id %>/<%= request.date_received_or_created.year %></td>
+        <td><%= request.date_received_or_created.to_s(:short) %></td>
         <td><%= request.requestor %></td>
         <td><%= link_to request.title, request %></td>
         <td><span rel="tooltip" title="<%= request.state.description %>" class="state label"><%= request.state.title %></td>
