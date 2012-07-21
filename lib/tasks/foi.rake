@@ -20,7 +20,7 @@ namespace :foi do
         ActiveRecord::Base.transaction do
             last_event_id = AlaveteliFeed.last_event_id
             if !last_event_id.nil?
-                url += '&since_event_id=' + last_event_id
+                url += '&since_event_id=' + last_event_id.to_s
             end
             
             response = Net::HTTP.get_response( URI.parse(url) )
@@ -32,7 +32,7 @@ namespace :foi do
                     # Process the event
                 end
             end
-            AlaveteliFeed.last_event_id = events[0][:event_id]
+            AlaveteliFeed.last_event_id = events[0]["event_id"] if !events.empty?
         end
     end
 end
