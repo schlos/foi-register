@@ -2,8 +2,8 @@
 #
 # Table name: lgcs_terms
 #
-#  id              :integer         not null, primary key
-#  name            :string(255)     not null
+#  id              :integer          not null, primary key
+#  name            :string(255)      not null
 #  broader_term_id :integer
 #  notes           :text
 #

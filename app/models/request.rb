@@ -2,18 +2,18 @@
 #
 # Table name: requests
 #
-#  id                        :integer         not null, primary key
+#  id                        :integer          not null, primary key
 #  title                     :string(255)
 #  requestor_id              :integer
-#  created_at                :datetime        not null
-#  updated_at                :datetime        not null
+#  created_at                :datetime         not null
+#  updated_at                :datetime         not null
 #  body                      :text
 #  date_received             :date
-#  due_date                  :date            not null
+#  due_date                  :date             not null
 #  lgcs_term_id              :integer
-#  is_published              :boolean         default(FALSE), not null
-#  is_requestor_name_visible :boolean         default(FALSE), not null
-#  medium                    :string(255)     default("web"), not null
+#  is_published              :boolean          default(FALSE), not null
+#  is_requestor_name_visible :boolean          default(FALSE), not null
+#  medium                    :string(255)      default("web"), not null
 #  remote_id                 :integer
 #
 
@@ -28,7 +28,7 @@ class Request < ActiveRecord::Base
   accepts_nested_attributes_for :responses
   
   validates :medium, :presence => true, :inclusion => {
-    :in => [ "web", "email", "phone", "fax", "post", "other" ]
+    :in => [ "web", "email", "phone", "fax", "post", "alaveteli", "other" ]
   }
   
   acts_as_xapian({
