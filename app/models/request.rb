@@ -108,9 +108,10 @@ class Request < ActiveRecord::Base
   end
 
   def send_to_alaveteli
-      remote_id = AlaveteliApi.send_request(self)
-      self.remote_id = remote_id
-      self.save
+      if medium != "alaveteli"
+          remote_id = AlaveteliApi.send_request(self)
+          save!
+      end
   end
   after_create :send_to_alaveteli
   handle_asynchronously :send_to_alaveteli
