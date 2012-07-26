@@ -113,7 +113,9 @@ class Request < ActiveRecord::Base
           save!
       end
   end
-  after_create :send_to_alaveteli
-  handle_asynchronously :send_to_alaveteli
   
+  if MySociety::Config.get("PUSH_TO_ALAVETELI")
+    after_create :send_to_alaveteli
+    handle_asynchronously :send_to_alaveteli
+  end
 end

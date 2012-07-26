@@ -3,11 +3,17 @@ ADMIN_PREFIX: '/admin'
 ADMIN_PASSWORD: 'xxxxxxxx'
 ASSET_HOST: null
 
-ALAVETELI_FEED_URL: 'http://www.whatdotheyknow.com/api/v2/body/nn/request_events.json'
+# Alaveteli integration
+
+# Used for both push and pull
 ALAVETELI_API_KEY: 'xxxx'
 
-# The base of the API endpoint to use for pushing new requests to
+# Pull
+PULL_FROM_ALAVETELI: false
+ALAVETELI_FEED_URL: 'http://www.whatdotheyknow.com/api/v2/body/nn/request_events.json'
+ALAVETELI_INITIAL_LAST_EVENT_ID: null
+
+# Push
+PUSH_TO_ALAVETELI: false
 ALAVETELI_API_ENDPOINT: 'http://localhost:3001/api/v2'
 
-PULL_FROM_ALAVETELI: false
-ALAVETELI_INITIAL_LAST_EVENT_ID: null
