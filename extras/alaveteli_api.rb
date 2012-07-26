@@ -10,10 +10,10 @@ class AlaveteliApi
     def self.send_request(request)
         api_endpoint = MySociety::Config::get("ALAVETELI_API_ENDPOINT")
         if !api_endpoint.nil?
-            data = {:title => request.title, 
+            data = {:title => request.title,
                 :body => request.body,
                 :external_user_name => request.requestor_name,
-                :external_url => "/XXXworkthisoutlater" # TODO
+                :external_url => url_for(request, :only_path => false)
             }.to_json
             key = MySociety::Config::get("ALAVETELI_API_KEY")
             url = URI.parse("#{api_endpoint}/request.json")
