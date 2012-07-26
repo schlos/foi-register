@@ -15,6 +15,12 @@ class Requestor < ActiveRecord::Base
   has_many :requests
   
   def to_s
-    "%s <%s>" % [name, email]
+    if !external_url.nil?
+      %(<a href="#{external_url}">).html_safe + name + "</a>".html_safe
+    elsif !email.nil?
+      "%s <%s>" % [name, email]
+    else
+      name
+    end
   end
 end
