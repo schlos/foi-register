@@ -62,7 +62,7 @@ group :default do
   gem 'less-rails-bootstrap'
 
   # For annotating models
-  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+  gem "annotate", "~> 2.5.0"
   gem 'bcrypt-ruby'
 
   gem 'single_test', :git => 'git://github.com/sebbacon/single_test.git'

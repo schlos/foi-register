@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/ctran/annotate_models.git
-  revision: bef0c494956e516540b7a9e72fa03be6576031dd
-  specs:
-    annotate (2.5.0.pre1)
-      rake
-
-GIT
   remote: git://github.com/jnicklas/carrierwave.git
   revision: e5cca01cc8d057fcd381bbe1024e82bdc388b306
   specs:
@@ -77,6 +70,8 @@ GEM
     activesupport (3.2.1)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    annotate (2.5.0)
+      rake
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.0.0)
@@ -189,7 +184,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_xapian (~> 0.2.5)!
-  annotate!
+  annotate (~> 2.5.0)
   bcrypt-ruby
   carrierwave!
   coffee-rails (~> 3.2.1)
