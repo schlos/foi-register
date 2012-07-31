@@ -11,6 +11,10 @@
   </div>
 <% end %>
 
+<% if @request.external_url %>
+  <%= link_to("See request on WhatDoTheyKnow.com", @request.external_url) %>
+<% end %>
+
 <%= render :partial => "requests/show_request_part", :locals => {:r => @request} %>
 
 <% for response in @request.responses %>
