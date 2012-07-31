@@ -5,8 +5,8 @@
 #  request_id :integer
 #  state_id   :integer
 #  note       :text
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 class RequestState < ActiveRecord::Base

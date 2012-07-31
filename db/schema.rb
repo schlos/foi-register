@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120724153622) do
+ActiveRecord::Schema.define(:version => 20120731122419) do
 
   create_table "acts_as_xapian_jobs", :force => true do |t|
     t.string  "model",    :null => false
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20120724153622) do
     t.boolean  "is_requestor_name_visible", :default => false, :null => false
     t.string   "medium",                    :default => "web", :null => false
     t.integer  "remote_id"
+    t.string   "remote_url"
   end
 
   add_index "requests", ["due_date"], :name => "index_requests_on_due_date"

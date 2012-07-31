@@ -27,7 +27,7 @@ class AlaveteliApi
             json = ActiveSupport::JSON.decode(response.body)
             if json['errors'].nil?
                 Rails.logger.info("Created new request at #{json['url']}")
-                return json['id']
+                return json['id'], json['url']
             else
                 raise AlaveteliApiError, json['errors']
             end

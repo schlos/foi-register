@@ -15,6 +15,7 @@
 #  is_requestor_name_visible :boolean          default(FALSE), not null
 #  medium                    :string(255)      default("web"), not null
 #  remote_id                 :integer
+#  remote_url                :string(255)
 #
 
 class Request < ActiveRecord::Base
@@ -109,7 +110,7 @@ class Request < ActiveRecord::Base
 
   def send_to_alaveteli
       if medium != "alaveteli"
-          remote_id = AlaveteliApi.send_request(self)
+          remote_id, remote_url = AlaveteliApi.send_request(self)
           save!
       end
   end

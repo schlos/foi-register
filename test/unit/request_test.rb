@@ -15,6 +15,7 @@
 #  is_requestor_name_visible :boolean          default(FALSE), not null
 #  medium                    :string(255)      default("web"), not null
 #  remote_id                 :integer
+#  remote_url                :string(255)
 #
 
 require 'test_helper'
