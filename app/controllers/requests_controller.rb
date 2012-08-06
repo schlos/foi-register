@@ -9,10 +9,10 @@ class RequestsController < ApplicationController
   # GET /requests.json
   def index
     if is_admin_view?
-      @requests = Request.paginate(:page => params[:page], :per_page => 5) \
+      @requests = Request.paginate(:page => params[:page], :per_page => 100) \
         .order('coalesce(date_received, created_at) DESC')
     else
-      @requests = Request.paginate(:page => params[:page], :per_page => 5) \
+      @requests = Request.paginate(:page => params[:page], :per_page => 20) \
         .where(['is_published = ?', true]) \
         .order('coalesce(date_received, created_at) DESC')
     end
