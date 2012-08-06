@@ -15,7 +15,7 @@
   <% @requests.each do |request| %>
     <tr>
       <td><%= request.date_received_or_created.to_s(:short) %></td>
-      <td><%= link_to request.title, request %> <span rel="tooltip" title="<%= request.state.description %>" class="state label"><%= request.state.title %></td>
+      <td><%= link_to request.title, request %> <span rel="tooltip" title="<%= request.state_description %>" class="state label"><%= request.state_title %></td>
     </tr>
   <% end %>
   </table>

@@ -39,7 +39,7 @@
     <div class="field">
       <%= s.label :state %>
       <%= s.select(:id, State.all.collect { |s| [s.title, s.id, {:title => s.description}] }) %>
-      <div id="state-description"><%= @request.state.description %></div>
+      <div id="state-description"><%= @request.state_description %></div>
     </div>
   <% end %>
   
@@ -66,15 +66,6 @@
     <%= f.label :body %>
     <%= f.text_area :body, :cols => 80 %>
   </div>
-
-    <% for i in 1..3 %>
-      <%= f.fields_for(:attachments, Attachment.new) do |s| %>
-       <div class="field">
-         <%= s.label "Upload attachment %d:" % [i] %>
-         <%= s.file_field :file %>
-       </div>
-       <% end %>
-     <% end %>
 
   <%# Flags %>
   <div>

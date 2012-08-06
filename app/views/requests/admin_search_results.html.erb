@@ -29,7 +29,7 @@
           <td><%= request.date_received_or_created.to_s(:short) %></td>
           <td><%= request.requestor %></td>
           <td><%= link_to request.title, request %></td>
-          <td><span rel="tooltip" title="<%= request.state.description %>" class="state label"><%= request.state.title %></td>
+          <td><span rel="tooltip" title="<%= request.state_description %>" class="state label"><%= request.state_title %></td>
           <td>
             <span class='badge <% if !request.days_until_due.nil? %><% if request.days_until_due < 5 %>badge-warning<% elsif request.days_until_due < 2 %>badge-important<% else %>badge-info<% end %><% end %>'> <% if !request.days_until_due.nil? %><%= request.days_until_due %><% else %>n/a<% end %></span>
           </td>

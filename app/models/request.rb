@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # == Schema Information
 #
 # Table name: requests
@@ -16,21 +17,68 @@
 #  medium                    :string(255)      default("web"), not null
 #  remote_id                 :integer
 #  remote_url                :string(255)
+#  state                     :string(255)      default("new"), not null
+#  nondisclosure_reason      :string(255)
 #
 
 class Request < ActiveRecord::Base
+  REQUEST_STATES = {
+      # tag => name, description
+      "new" => ["New", "A new request that has not even been acknowledged"],
+      # "acknowledged" => ["Acknowledged", "A new request that has been acknowledged, but not had a substantive response or rejection"],
+      "assessing" => ["Assessing", "The request has been sent through to the relevant service area"],
+      "disclosed" => ["Disclosed", "The request has been sent through to the relevant service area"],
+      "partially_disclosed" => ["Partially Disclosed", "Some of the requested information has been disclosed"],
+      "not_disclosed" => ["Not Disclosed", "All the requested information has been disclosed"],
+  }
+
+  NONDISCLOSURE_REASONS = {
+      "rejected_vexatious" => ["Rejected as vexatious", "The request has been rejected as vexatious. In this case there is no legal obligation to respond to the requestor at all."],
+      "rejected_time_limit" => ["Rejected (more than 2.5 days)", "It would take more than 2.5 days to collect this information"],
+    
+      # The request is complete, and the requestor has been told:
+      "not_held" => ["Not held", "The information is not held"],
+      "supplied_all" => ["All information supplied", "All the requested information has been supplied"],
+      "supplied_some" => ["Some information supplied", "Some of the requested information has been supplied"],
+    
+      # Exemptions guidance is at http://www.justice.gov.uk/information-access-rights/foi-guidance-for-practitioners/exemptions-guidance
+      "exempt_s21" => ["Exempt §21 (other means)", "Exempt: Information Accessible By Other Means"],
+      "exempt_s22" => ["Exempt §22 (future publication)", "Exempt: Information Intended For Future Publication"],
+      "exempt_s23" => ["Exempt §23 (security matters)", "Exempt: Information Supplied by, or Related to, Bodies Dealing with Security Matters"],
+      "exempt_s24" => ["Exempt §24 (national security)", "Exempt: National Security"],
+      "exempt_s26" => ["Exempt §26 (defence)", "Exempt: Defence"],
+      "exempt_s27" => ["Exempt §27 (international relations)", "Exempt: International Relations"],
+      "exempt_s28" => ["Exempt §28 (UK relations)", "Exempt: Relations Within The United Kingdom"],
+      "exempt_s29" => ["Exempt §29 (economy)", "Exempt: The Economy"],
+      "exempt_s30" => ["Exempt §30 (investigations)", "Exempt: Investigations And Proceedings Conducted By Public Authorities"],
+      "exempt_s31" => ["Exempt §31 (law enforcement)", "Exempt: Law Enforcement"],
+      "exempt_s32" => ["Exempt §32 (court records)", "Exempt: Court Records"],
+      "exempt_s33" => ["Exempt §33 (audit functions)", "Exempt: Audit Functions"],
+      "exempt_s34" => ["Exempt §34 (parliamentary privilege)", "Exempt: Parliamentary Privilege"],
+      "exempt_s35" => ["Exempt §35 (policy formulation)", "Exempt: Formulation Of Government Policy"],
+      "exempt_s36" => ["Exempt §36 (prejudice to effective conduct)", "Exempt: Prejudice to Effective Conduct of Public Affairs"],
+      "exempt_s37" => ["Exempt §37 (crown)", "Exempt: Communications With Her Majesty, With Other Members Of The Royal Household, And The Conferring By The Crown Of Any Honour Or Dignity"],
+      "exempt_s38" => ["Exempt §38 (health and safety)", "Exempt: Health And Safety"],
+      "exempt_s39" => ["Exempt §39 (environmental information)", "Exempt: Environmental Information"],
+      "exempt_s40" => ["Exempt §40 (personal information)", "Exempt: Personal Information"],
+      "exempt_s41" => ["Exempt §41 (in confidence)", "Exempt: Information Provided In Confidence"],
+      "exempt_s42" => ["Exempt §42 (legal privilege)", "Exempt: Legal Professional Privilege"],
+      "exempt_s43" => ["Exempt §43 (commercial interests)", "Exempt: Commercial Interests"],
+      "exempt_s44" => ["Exempt §44 (prohibitions)", "Exempt: Prohibitions On Disclosure"],
+  }
+  
   belongs_to :requestor
   belongs_to :lgcs_term
   validates_presence_of :title
-  has_many :request_states
   has_many :responses
-  has_many :states, :through => :request_states, :order => :created_at
   accepts_nested_attributes_for :requestor
   accepts_nested_attributes_for :responses
   
   validates :medium, :presence => true, :inclusion => {
     :in => [ "web", "email", "phone", "fax", "post", "alaveteli", "other" ]
   }
+  validates :state, :inclusion => { :in => REQUEST_STATES.keys }
+  validates :nondisclosure_reason, :inclusion => { :in => NONDISCLOSURE_REASONS.keys }
   
   acts_as_xapian({
     :texts => [ :title, :body, :requestor_name, :requestor_email ],
@@ -41,20 +89,15 @@ class Request < ActiveRecord::Base
         [ :medium, 'B', "medium" ], # 'M' is reserved for use as the model
         [ :lgcs_term_name, 'T', "lgcs_term" ]
     ]})
-
-  def state
-    self.states.last || State.new
-  end
-
-  def state=(state)
-    self.states << state
-  end
  
-  def state_attributes=(attributes)
-    # process an attributes hash passed from nested form field
-    self.state = State.find(attributes[:id])
+  def state_title
+    REQUEST_STATES[state][0]
   end
-
+  
+  def state_description
+    REQUEST_STATES[state][1]
+  end
+  
   def days_until_due
     if !self.due_date.nil?
       (self.due_date - Date.today).to_i

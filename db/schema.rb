@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120731122419) do
+ActiveRecord::Schema.define(:version => 20120806181931) do
 
   create_table "acts_as_xapian_jobs", :force => true do |t|
     t.string  "model",    :null => false
@@ -59,16 +59,6 @@ ActiveRecord::Schema.define(:version => 20120731122419) do
     t.text    "notes"
   end
 
-  create_table "request_states", :id => false, :force => true do |t|
-    t.integer  "request_id"
-    t.integer  "state_id"
-    t.text     "note"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "request_states", ["request_id", "state_id"], :name => "index_request_states_on_request_id_and_state_id"
-
   create_table "requestors", :force => true do |t|
     t.string   "name"
     t.string   "email"
@@ -92,6 +82,8 @@ ActiveRecord::Schema.define(:version => 20120731122419) do
     t.string   "medium",                    :default => "web", :null => false
     t.integer  "remote_id"
     t.string   "remote_url"
+    t.string   "state",                     :default => "new", :null => false
+    t.string   "nondisclosure_reason"
   end
 
   add_index "requests", ["due_date"], :name => "index_requests_on_due_date"
@@ -111,14 +103,6 @@ ActiveRecord::Schema.define(:version => 20120731122419) do
     t.string   "password_digest"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
-  end
-
-  create_table "states", :force => true do |t|
-    t.string   "tag"
-    t.string   "title"
-    t.string   "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
   end
 
 end

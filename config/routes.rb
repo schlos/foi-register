@@ -5,8 +5,6 @@ FoiRegister::Application.routes.draw do
   get "ajax/requestors"
   get "ajax/lgcs_terms"
 
-  resources :states
-
   get "redirection/front"
 
   root :to => 'redirection#front'
