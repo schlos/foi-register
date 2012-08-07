@@ -7,3 +7,14 @@
  *= require_self
 */
 #requestor_notes { width: 640px; }
+
+.correspondence-body, .private {
+ margin-top: 15px;
+}
+
+.public-response textarea, .private-response textarea {
+ width: 100%;
+}
+
+.page-header { width: 100%; }
+table { clear: left; }
