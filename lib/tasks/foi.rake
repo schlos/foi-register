@@ -26,7 +26,6 @@ namespace :foi do
             
             response = Net::HTTP.get_response( URI.parse(url) )
             events = ActiveSupport::JSON.decode(response.body)
-            state_new = State.find_by_tag("new")
             
             events.reverse_each do |event|
                 event_type = event["event_type"]
@@ -48,7 +47,7 @@ namespace :foi do
                     date_received = Time.iso8601(event["created_at"])
                     request = Request.new(
                         :medium => "alaveteli",
-                        :state => state_new,
+                        :state => "new",
                         :remote_id => event["request_id"].to_i,
                         :requestor => requestor,
                         :title => event["title"],

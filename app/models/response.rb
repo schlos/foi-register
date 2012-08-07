@@ -25,12 +25,6 @@ class Response < ActiveRecord::Base
         [ :request_id, 'R', "request_id" ]
     ]})
 
-  def request_attributes=(attributes)
-    # process an attributes hash passed from nested form field
-    request = Request.find(attributes[:id])
-    request.state = State.find(attributes[:state_attributes][:id])
-  end
-
   def send_to_alaveteli
       AlaveteliApi.send_response(self)
   end
