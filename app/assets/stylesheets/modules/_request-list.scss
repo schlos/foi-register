@@ -5,6 +5,7 @@
     
     ol{
         @extend .reset-list;
+        clear: both;
     }
     
     .request-list-meta{

@@ -2,51 +2,51 @@
     <div id="notice"><%= flash[:notice] %></div>
 <% end %>
 
-        <div class="request-list-meta">
-            <p class="total-requests">
-                There have been <strong><%= Request.count %></strong> requests
-            </p>
-            <p class="requests-breakdown">
-                <strong class="requests-inprogress"><%= Request.count_by_state(:in_progress) %></strong> are in progress<br>
-                <strong class="requests-successful"><%= Request.count_by_state(:disclosed) %></strong> were successful<br>
-                <strong class="requests-unsuccessful"><%= Request.count_by_state(:not_disclosed) %></strong> were unsuccessful
-            </p>
-            <p>
-                <label for="request-filter">showing</label>:
-                <select name="request-filter" id="request-filter">
-                    <option value="all_requests">All Requests</option>
-                    <option value="inprogress_requests">Requests In-progress</option>
-                    <option value="successful_requests">Successful Requests</option>
-                    <option value="unsuccessful_requests">Un-successful Requests</option>
-                </select>
-            </p>
-        </div>
-        
-        
-        <ol>
-          <% @requests.each do |request| %>
-            <li class="request">
-                <h3><%= link_to request.title, request %></h3>
-                <p class="requested">Request made
-                  <% if request.is_requestor_name_visible %>
-                    by <%= request.requestor.name %>
-                  <% end %>
-                  on <time datetime="<%= request.date_received_or_created.strftime('%Y-%m-%d %H:%M') %>"><%= request.date_received_or_created.to_s(:short) %></time></p>
-                <% if request.date_responded %>
-                  <p class="updates">Last update by Brighton and Hove City Council on <%= request.date_responded.to_s(:short) %>.</p>
-                <% end %>
-                <% case request.state %>
-                  <% when "new", "assessing" %>
-                    <p class="status inprogress">In progress</p>
-                  <% when "disclosed", "partially_disclosed" %>
-                    <p class="status successful">Successful</p>
-                  <% when "not_disclosed" %>
-                    <p class="status unsuccessful">Not successful</p>
-                <% end %>
-            </li>
+<div class="request-list-meta">
+    <p class="total-requests">
+        There have been <strong><%= Request.count %></strong> requests
+    </p>
+    <p class="requests-breakdown">
+        <strong class="requests-inprogress"><%= Request.count_by_state(:in_progress) %></strong> are in progress<br>
+        <strong class="requests-successful"><%= Request.count_by_state(:disclosed) %></strong> were successful<br>
+        <strong class="requests-unsuccessful"><%= Request.count_by_state(:not_disclosed) %></strong> were unsuccessful
+    </p>
+    <%#p>
+        <label for="request-filter">showing</label>:
+        <select name="request-filter" id="request-filter">
+            <option value="all_requests">All Requests</option>
+            <option value="inprogress_requests">Requests In-progress</option>
+            <option value="successful_requests">Successful Requests</option>
+            <option value="unsuccessful_requests">Un-successful Requests</option>
+        </select>
+    </p%>
+</div>
+
+
+<ol>
+  <% @requests.each do |request| %>
+    <li class="request">
+        <h3><%= link_to request.title, request %></h3>
+        <p class="requested">Request made
+          <% if request.is_requestor_name_visible %>
+            by <%= request.requestor.name %>
           <% end %>
-        </ol>
-        
-        <div class="pagination pagination-centered">
-          <%= will_paginate(@requests, :renderer => PaginationListLinkRenderer) %>
-        </div>
+          on <time datetime="<%= request.date_received_or_created.strftime('%Y-%m-%d %H:%M') %>"><%= request.date_received_or_created.to_s(:short) %></time></p>
+        <% if request.date_responded %>
+          <p class="updates">Last update by Brighton and Hove City Council on <%= request.date_responded.to_s(:short) %>.</p>
+        <% end %>
+        <% case request.state %>
+          <% when "new", "assessing" %>
+            <p class="status inprogress">In progress</p>
+          <% when "disclosed", "partially_disclosed" %>
+            <p class="status successful">Successful</p>
+          <% when "not_disclosed" %>
+            <p class="status unsuccessful">Not successful</p>
+        <% end %>
+    </li>
+  <% end %>
+</ol>
+
+<div class="pagination pagination-centered">
+  <%= will_paginate(@requests, :renderer => PaginationListLinkRenderer) %>
+</div>
