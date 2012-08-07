@@ -1,32 +1,24 @@
- <div class="response well">
-  <div class="correspondence-header">
-   From: Brighton and Hove<br>
-   <% if is_admin_view? %>
-    To: <%= r.request.requestor %><br>
-   <% elsif r.request.is_requestor_name_visible %>
-    To: <%= r.request.requestor.name %><br>
-   <% end %>
-   Sent: <%= r.created_at.to_s(:short) %>
-  </div>
-  <hr>
-  <div class="correspondence-body">
-   <% if is_admin_view? %>
-    <span class="label">Public part:</span><br>
-   <% end %>
-    <%= simple_format r.public_part %><br>
-    <% for attachment in r.attachments %>
-     <% if attachment.file? %>
-      <%= link_to ('<i class="icon-download"></i> ' + attachment.filename).html_safe, attachment.file.url %> (<%= number_to_human_size(attachment.size, :precision => 2) %>)<br>
-     <% end %>
-    <% end %>
-  </div>
-  <% if is_admin_view? %>
-  <blockquote>
-   <div class="alert alert-error private">
-    <span class="label">Private notes (requestor cannot see):</span><br>
-    <em><%= simple_format r.private_part %></em>
-   </div>
-  </blockquote>
-  <%= link_to "Edit", url_for(:action => :edit, :request_id => r.request.id, :id => r.id, :controller => :responses) %>
+<p class="meta">
+  <em>From:</em> <strong>Brighton &amp; Hove City Council</strong>
+  <em>Date:</em> <strong><%= r.date_received_or_created.strftime("%d/%m/%Y") %></strong>
+</p>
+
+<%= simple_format r.public_part %><br>
+<% for attachment in r.attachments %>
+  <% if attachment.file? %>
+    <%= link_to ('<i class="icon-download"></i> ' + attachment.filename).html_safe, attachment.file.url %> (<%= number_to_human_size(attachment.size, :precision => 2) %>)<br>
   <% end %>
- </div>
+<% end %>
+
+
+
+<% if is_admin_view? %>
+  <blockquote>
+    <div class="alert alert-error private">
+      <span class="label">Private part of response:</span><br>
+      <em><%= simple_format r.private_part %></em>
+    </div>
+  </blockquote>
+  
+  <%= link_to "Edit", url_for(:action => :edit, :request_id => r.request.id, :id => r.id, :controller => :responses) %>
+<% end %>
