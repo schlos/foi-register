@@ -13,9 +13,17 @@
         padding-bottom: 2em;
         clear: left;
     }
+
+    fieldset{
+        width: 420px;
+        border: none;
+        margin: 0;
+        padding: 0;
+    }
     
     label{
         display: block;
+        margin-top: 8px;
     }
     
     input, textarea{
@@ -23,6 +31,10 @@
         padding: $gutter/2;
         border: 1px solid #bababa;
         clear: left;
+    }
+    
+    input[type="checkbox"]{
+        width: 24px;
     }
     
     textarea{
