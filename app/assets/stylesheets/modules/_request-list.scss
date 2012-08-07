@@ -1,0 +1,43 @@
+.request-list{
+    @extend .grid-8-of-12;
+    padding-top: 0;
+    padding-left: 2.5em;
+    
+    ol{
+        @extend .reset-list;
+    }
+    
+    .request-list-meta{
+        
+        .total-requests{
+            font-size: 1.5em;
+            margin: 0.5em 0;
+            float: left;
+            
+            strong{
+                color: $color-blue;
+            }
+        }
+        
+        p{
+            clear: left;
+            margin: 0;
+        }
+        
+        .requests-breakdown{
+            
+            float: right;
+            clear: none;
+            margin-top: 0.75em;
+            
+            .requests-inprogress{ color: $color-blue; }
+            .requests-successful{ color: $color-purple; }
+            .requests-unsuccessful{ color: $color-pink; }
+            
+        }
+    }
+    ol{
+        margin-top: 3em;
+    }
+    
+}

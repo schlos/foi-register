@@ -1,4 +1,40 @@
 <p id="notice"><%= notice %></p>
+<div class="request-view request" role="main">
+    <h3><%= @request.title %></h3>
+    <p class="requested">Request made by <a href="#TODO">James Plant</a> on <time datetime="2012-07-31 19:00">31 July 2012</time></p>
+    <p class="updates">Last update by Brighton and Hove City Council on 23 July 2012.</p>
+    <% case @request.state %>
+      <% when "new", "assessing" %>
+        <p class="status inprogress">In progress</p>
+      <% when "disclosed", "partially_disclosed" %>
+        <p class="status successful">Successful</p>
+      <% when "not_disclosed" %>
+        <p class="status unsuccessful">Not successful</p>
+    <% end %>
+    
+    <ol class="correspondence-list">
+        <li class="original-request">
+            <p class="meta"><em>From:</em> <strong>Freesia</strong>   <em>Date:</em> <strong>23/07/2012</strong></p>
+            <p>Dear Brighton and Hove City Council,</p>
+            <p>This is my request under The Freedom of Information Act 2000.</p>
+            <p>Please provide the following information for each of the last 6 years:</p>
+            <p>1) Were any council owned properties sold, transferred, or otherwise disposed of to Councillor Steve Harmer-Strange?</p>
+            <p>2) Supply dates and details of any such properties so transferred etc.</p>
+            <p>3) Were any assets in the ownership of Brighton and Hove City Council sold, transferred, or otherwise disposed of to Councillor Steve Harmer-Strange?</p>
+            <p>4) Please supply details of any assets shown under (3) above.</p>
+            <p>Yours faithfully,<br> Freesia</p>
+        </li>
+        
+        <li class="council-response">
+            <p class="meta"><em>From:</em> <strong>Brighton &amp; Hove City Council</strong>   <em>Date:</em> <strong>23/07/2012</strong></p>
+            <p>Regarding your request for information  under the Freedom of Information Act 2000:  Ref:  foi/655/12</p>
+            <p>Dear Freesia,</p>
+            <p>Madna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            
+        </li>
+
 <div class="page-header">
   <h2><%= @request.title %></h2>
   <span rel="tooltip" title="<%= @request.state_description %>" class="state label"><%= @request.state_title %></span>
@@ -11,8 +47,8 @@
   </div>
 <% end %>
 
-<% if @request.external_url %>
-  <%= link_to("See request on WhatDoTheyKnow.com", @request.external_url) %>
+<% if @request.remote_url %>
+  <%= link_to("See request on WhatDoTheyKnow.com", @request.remote_url) %>
 <% end %>
 
 <%= render :partial => "requests/show_request_part", :locals => {:r => @request} %>

@@ -1,0 +1,48 @@
+@mixin background-image-at2x($img, $img_at2x, $w:auto, $h:auto){
+    // Helper to use larger images on retina devices
+    // http://www.webmonkey.com/2012/06/make-sure-your-site-looks-good-on-the-new-retina-macbook-pro/
+    background-image: image-url($img);
+    
+    @media only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2)
+    {
+        background-image: image-url($img_at2x);
+        background-size: $w $h;
+    }
+}
+
+.reset-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-indent:0;
+}
+
+
+/**
+ * Micro ClearFix : http://nicolasgallagher.com/micro-clearfix-hack/
+ * -----------------------------------------------------------------
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    contenteditable attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that are clearfixed.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
+}

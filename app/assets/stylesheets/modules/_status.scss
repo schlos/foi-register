@@ -1,0 +1,18 @@
+.status{
+    
+    // Default Styles for an unknown or not set status
+    color: #6c6c6c;
+    
+    &.successful{
+        color: green;
+    }
+    
+    &.unsuccessful{
+        color: red;
+    }
+    
+    &.inprogress{
+        color: #ff9a00;
+    }
+    
+}

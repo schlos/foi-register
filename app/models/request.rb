@@ -70,7 +70,7 @@ class Request < ActiveRecord::Base
   belongs_to :requestor
   belongs_to :lgcs_term
   validates_presence_of :title
-  has_many :responses
+  has_many :responses, :order => 'created_at'
   accepts_nested_attributes_for :requestor
   accepts_nested_attributes_for :responses
   
@@ -108,6 +108,14 @@ class Request < ActiveRecord::Base
     date_received || created_at.to_date
   end
   
+  def date_responded
+    if responses.empty?
+      nil
+    else
+      responses[-1].created_at.to_date
+    end
+  end
+  
   def lgcs_term_name
       lgcs_term.nil? ? nil : lgcs_term.name
   end
@@ -128,18 +136,18 @@ class Request < ActiveRecord::Base
         end
     end
     
-    def count_by_state
-        Request.count(:group => "(
-            select states.title
-            from request_states
-            join states on request_states.state_id = states.id
-            where request_id = requests.id
-            and not exists (
-                select * from request_states newer_state
-                where newer_state.request_id = requests.id
-                and newer_state.created_at > request_states.created_at
-            )
-        )")
+    def count_by_state(t)
+      @counts = self.count(:group => "state") if @counts.nil?
+      case t
+      when :in_progress
+        @counts.fetch("new", 0) + @counts.fetch("assessing", 0)
+      when :disclosed
+        @counts.fetch("disclosed", 0) + @counts.fetch("partially_disclosed", 0)
+      when :not_disclosed
+        @counts.fetch("not_disclosed", 0)
+      else
+        raise "Unknown state type #{t}"
+      end
     end
   end
   

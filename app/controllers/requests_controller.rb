@@ -124,7 +124,6 @@ class RequestsController < ApplicationController
   # GET /requests/new.json
   def new
     @request = Request.new
-    @states = State.all()
     @request.requestor = Requestor.new
     respond_to do |format|
       format.html { render :action => self.is_admin_view? ? "admin_new" : "public_new" }
@@ -145,7 +144,7 @@ class RequestsController < ApplicationController
     requestor = request.delete :requestor_attributes
     
     if !self.is_admin_view?
-        request[:state] = State.find_by_tag "new"
+        request[:state] = "new"
         request[:medium] = "web"
         request[:due_date] = Date.today + 28.days
         request[:lgcs_term_id] = nil

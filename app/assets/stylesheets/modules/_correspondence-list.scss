@@ -1,0 +1,30 @@
+.correspondence-list{
+    @extend .reset-list;
+    margin-top: $gutter*2;
+    
+    li{
+        margin-bottom: $gutter;
+        padding: $gutter;
+        
+        background-color: #f6f6f6;
+        
+        border: 1px solid #ccc;
+        border-radius: $gutter/2;
+        
+        p{
+            margin-bottom: 1.5em;
+            &.meta{
+                text-align: right;
+                margin-bottom: 3em;
+                opacity: 0.6;
+            }
+        }
+        
+        &.council-response{
+            @include background-image-at2x("council-response-dome.png", "council-response-dome@2x.png", 65px, 34px);
+            background-position: $gutter $gutter;
+            background-repeat: no-repeat;
+            background-color: #F0D9FB;
+        }
+    }
+}

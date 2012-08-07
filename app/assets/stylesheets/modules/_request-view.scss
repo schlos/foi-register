@@ -1,0 +1,9 @@
+.request-view{
+    
+    @extend .grid-8-of-12;
+     padding-left: 2.5em;
+    
+    &.request{
+        margin-top: 0;
+    }
+}

@@ -1,0 +1,32 @@
+@mixin border-radius($radius:$gutter/2){
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+    
+  // stops the bg color from leaking outside the border: http://css3please.com/
+  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+}
+
+
+@mixin box_columns(column-count, $column-gap) {
+  -webkit-column-count: 2;  -webkit-column-gap: 15px; /* Safari 3, Chrome*/
+     -moz-column-count: 2;     -moz-column-gap: 15px; /* Firefox 3.5+ */
+          column-count: 2;          column-gap: 15px; /* Opera 11+*/
+}
+
+@mixin linear-gradient($from, $from-color, $to, $to-color){
+    background-color: $from-color;
+    background-image: -webkit-gradient(linear, left $from, left $to, from($from-color), to($to-color)); /* Safari 4+, Chrome */
+    background-image: -webkit-linear-gradient($from, $from-color, $to-color); /* Chrome 10+, Safari 5.1+, iOS 5+ */
+    background-image:    -moz-linear-gradient($from, $from-color, $to-color); /* Firefox 3.6-15 */
+    background-image:      -o-linear-gradient($from, $from-color, $to-color); /* Opera 11.10+ */
+    background-image:         linear-gradient(to $to, $from-color, $to-color); /* Firefox 16+ */
+}
+
+@mixin transition($property, $timing, $easing){
+     -webkit-transition: $property $timing $easing;  /* Safari 3.2+, Chrome */
+        -moz-transition: $property $timing $easing;  /* Firefox 4-15 */
+          -o-transition: $property $timing $easing;  /* Opera 10.5–12.00 */
+             transition: $property $timing $easing;  /* Firefox 16+, Opera 12.50+ */
+}

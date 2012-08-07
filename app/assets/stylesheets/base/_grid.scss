@@ -1,0 +1,40 @@
+$max_page_width: 60em;
+$column_count: 12;
+$gutter: 1.25em;
+
+.grid-full{
+    width: 100%;
+    clear:both;
+    float:left;
+}
+
+.grid-container{
+    margin: 0 auto;
+    clear:both;
+    width: 100%;
+    max-width:100%;
+    padding: ($gutter/2) 0;
+    
+    @media( min-width: 60em ){
+        width: $max_page_width;
+    }
+}
+
+.grid{
+    display:block;
+    padding: $gutter/2;
+    margin: 0;
+    float:left;
+    max-width:100%;
+}
+
+$i: $column_count;
+@while $i > 0 {
+    .grid-#{$i}-of-#{$column_count}{
+        @extend .grid;
+        width: ($max_page_width / $column_count) * $i;
+        
+    }
+    $i: $i - 1;
+}
+

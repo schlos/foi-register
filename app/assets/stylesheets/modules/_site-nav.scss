@@ -1,0 +1,99 @@
+.site-nav{
+    
+    @extend .grid-4-of-12;
+    padding-top: $gutter*1.5;
+    ul{
+        @extend .reset-list;
+        li{
+            display: inline;
+            
+            a{
+                display: block;
+                padding: $gutter;
+                padding-bottom: $gutter*1.5;
+                margin-bottom: $gutter/2;
+                
+                background-color: $color-blue;
+                background-position: right bottom;
+                background-repeat: no-repeat;
+                @include background-image-at2x("nav-blue-slim.png", "nav-blue-slim@2x.png", 100%, auto);
+                
+                -webkit-transition: all 0.3s ease-out;
+                
+                &:hover{
+                    background-color: darken($color-blue, 5%);
+                }
+                &:active{
+                    @include background-image-at2x("nav-active-slim.png", "nav-active-slim@2x.png", 100%, auto);
+                    background-color: #F15A24;
+                    -webkit-transition: none;
+                }
+                
+                
+                color: #ccc;
+                color: rgba(255,255,255,0.8);
+                text-decoration: none;
+                
+                
+                strong{
+                    color: #fff;
+                    display: block;
+                    font-size: 1.5em;
+                }
+                
+                
+                &.nav-new{
+                    @include background-image-at2x("nav-purple-slim.png", "nav-purple-slim@2x.png", 100%, auto);
+                    background-color: $color-purple;
+                    &:hover{
+                        background-color: darken($color-purple, 5%);
+                    }
+                    &:active{
+                        @include background-image-at2x("nav-active-slim.png", "nav-active-slim@2x.png", 100%, auto);
+                        background-color: #F15A24;
+                        -webkit-transition: none;
+                    }
+                }
+                
+                
+                &.nav-help{
+                    @include background-image-at2x("nav-pink-slim.png", "nav-pink-slim@2x.png", 100%, auto);
+                    background-color: $color-pink;
+                    &:hover{
+                        background-color: darken($color-pink, 5%);
+                    }
+                    &:active{
+                        @include background-image-at2x("nav-active-slim.png", "nav-active-slim@2x.png", 100%, auto);
+                        background-color: #F15A24;
+                        -webkit-transition: none;
+                    }
+                }
+                
+                
+            }
+        }
+    }
+    
+    #about-foi{
+        
+        h2{
+            color: $color-blue;
+        }
+        
+        p{
+            line-height: 1.5;
+            font-size: 0.875em;
+            color: #5c5c5c;
+        }
+        
+        a{
+            color: $color-pink;
+            &:hover{
+                color: darken($color-pink, 10%);
+            }
+        }
+    }
+    
+}
+
+body.lt-ie9 .site-nav a{ color: #ccc; }

@@ -1,0 +1,64 @@
+.header{
+    @extend .grid-container;
+    padding: $gutter/2;
+    padding-bottom: 0;
+    
+    a{
+        text-decoration: none;
+        display: block;
+        
+        @include background-image-at2x("header.png", "header@2x.png", 100%, auto);
+        background-position: left bottom;
+        background-repeat: no-repeat;
+        
+        padding-bottom: 0;
+        border-bottom: 1px solid #bbb;
+        
+        h1{
+            font-size: 0.75em;
+            color: #003C76;
+            
+            @include background-image-at2x("h1_bg.png", "h1_bg@2x.png", 100%, auto);
+            background-position: left bottom;
+            background-repeat: no-repeat;
+            
+            padding: $gutter;
+            padding-left: $gutter*3;
+            padding-top: $gutter*2.5;
+            
+            margin: 0;
+            margin-top: 3em;
+            margin-left: 10.833em;
+            margin-bottom: 0;
+            
+            strong{
+                font-size: 2.5em;
+                color: #0090EB;
+                display: block;
+            }
+        }
+    }
+}
+
+.headertest.original{
+    display: block;
+    width:300px;
+    height: 150px;
+    text-decoration: none;
+    display: block;
+    
+    background-image: url("header.png");
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    
+    padding-bottom: 0;
+    border-bottom: 1px solid #bbb;
+}
+.headertest.at2x{
+    @extend .headertest.original;
+    @include background-image-at2x("header.png", "header@2x.png", auto, 100%);
+}
+.headertest.svg{
+    @extend .headertest.original;
+    background-image: url("header.svg");
+}
