@@ -38,13 +38,13 @@
               <%= s.text_field :name, :size => 60 %>
             </p>
             <p>
-              <%= s.label :email, "Your email address" %>
-              <%= s.text_field :email, :size => 60 %>
-            </p>
-            <p>
               <%= f.label :is_requestor_name_visible, :class => "checkbox" do
                 f.check_box(:is_requestor_name_visible) + "Publish my name"
               end %>
+            </p>
+            <p>
+              <%= s.label :email, "Your email address" %>
+              <%= s.text_field :email, :size => 60 %>
             </p>
           <% end %>
         </fieldset>
