@@ -4,6 +4,14 @@ class StaffMembersController < ApplicationController
   http_basic_authenticate_with :name => "admin", :password => MySociety::Config::get("ADMIN_PASSWORD")
   skip_before_filter :require_login # because we protect with Basic HTTP Auth instead
   
+  def is_admin?
+    true
+  end
+  
+  def suitable_layout
+    "admin"
+  end
+  
   def new
     @staff_member = StaffMember.new
   end
