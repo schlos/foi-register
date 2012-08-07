@@ -38,7 +38,7 @@
   <%= f.fields_for(:state, :include_id => false) do |s| %>
     <div class="field">
       <%= s.label :state %>
-      <%= s.select(:id, Request.REQUEST_STATES.collect { |s| [s[1], s[0], {:title => s.description}] }) %>
+      <%= s.select(:id, Request::REQUEST_STATES.collect { |s| [s[1], s[0], {:title => s.description}] }) %>
       <div id="state-description"><%= @request.state_description %></div>
     </div>
   <% end %>
