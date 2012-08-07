@@ -5,24 +5,7 @@
 <head>
   <title>FoiRegister</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <% if !is_admin_view? %>
-    <%= stylesheet_link_tag   "http://www.brighton-hove.gov.uk/web/sites/bhcc/css/main11.css", :media => "all" %>
-    <style>
-      a {
-        color: #0000EE;
-        text-decoration: underline;
-      }
-      a:visited {
-        color: #551A8B;
-      }
-      a:active {
-        color: #EE0000;
-      }
-      hr {
-        border-color: #DFEEFF;
-      }
-    </style>
-  <% end %>
+  <%= stylesheet_link_tag    "admin", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= yield(:head) -%>

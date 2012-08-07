@@ -6,6 +6,12 @@
  *= require scaffolds
  *= require_self
 */
+
+body { width: 950px; }
+
+.navbar-search .search-query { height: 25px; }
+
+
 #requestor_notes { width: 640px; }
 
 .correspondence-body, .private {
