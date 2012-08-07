@@ -9,7 +9,7 @@
 }
 
 
-@mixin box_columns(column-count, $column-gap) {
+@mixin box_columns($column-count, $column-gap) {
   -webkit-column-count: 2;  -webkit-column-gap: 15px; /* Safari 3, Chrome*/
      -moz-column-count: 2;     -moz-column-gap: 15px; /* Firefox 3.5+ */
           column-count: 2;          column-gap: 15px; /* Opera 11+*/

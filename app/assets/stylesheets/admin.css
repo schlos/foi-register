@@ -1,0 +1,9 @@
+/*
+ * CSS manifest for the back-end app.
+ *
+ *= require jquery-ui
+ *= require bootstrap
+ *= require scaffolds
+ *= require_self
+*/
+#requestor_notes { width: 640px; }
