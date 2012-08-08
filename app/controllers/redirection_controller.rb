@@ -7,4 +7,8 @@ class RedirectionController < ApplicationController
   def front
     redirect_to :controller => 'requests', :action => 'index', :status => :moved_permanently
   end
+
+  def admin
+    redirect_to :controller => 'requests', :action => 'index', :status => :moved_permanently, :is_admin => "admin"
+  end
 end

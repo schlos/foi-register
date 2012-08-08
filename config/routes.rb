@@ -5,8 +5,6 @@ FoiRegister::Application.routes.draw do
   get "ajax/requestors"
   get "ajax/lgcs_terms"
 
-  get "redirection/front"
-
   root :to => 'redirection#front'
   scope "(:is_admin)", :constraints => {:is_admin => /(admin)?/} do
     resources :requests do
@@ -25,6 +23,7 @@ FoiRegister::Application.routes.draw do
     resources :requestors
   end
   
+  get "/admin" => 'redirection#admin'
   scope "/admin" do
     resources :staff_members
     resources :sessions do
