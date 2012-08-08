@@ -46,11 +46,14 @@ FoiRegister::Application.configure do
       raise ArgumentError if args.empty? || args.size > 2
       source, request = args
       
-      if request.nil? || request.params[:is_admin].nil?
-         "#{request.protocol}#{request.host_with_port}"
+      if request.nil?
+        is_admin = (ENV["SCRIPT_URI"] =~ %r(/admin/))
       else
-        admin_prefix
+        is_admin = !request.params[:is_admin].nil?
       end
+
+      is_admin ? admin_prefix : nil
+
     end
   end
   
