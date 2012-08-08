@@ -32,7 +32,7 @@
         <th>Requestor</th>
         <th>Title</th>
         <th>Status</th>
-        <th>Days until due</th>
+        <th>Due</th>
         <th></th>
         <th></th>
         <th></th>
@@ -47,6 +47,7 @@
         <td><span rel="tooltip" title="<%= request.state_description %>" class="state label"><%= request.state_title %></td>
         <td>
           <span class='badge <% if !request.days_until_due.nil? %><% if request.days_until_due < 5 %>badge-warning<% elsif request.days_until_due < 2 %>badge-important<% else %>badge-info<% end %><% end %>'> <% if !request.days_until_due.nil? %><%= request.days_until_due %><% else %>n/a<% end %></span>
+          <%= request.due_date.strftime("%d/%m/%Y") %>
         </td>
 
         <td><%= link_to 'Respond', new_response_request_path(request) %></td>
