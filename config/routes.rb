@@ -24,7 +24,7 @@ FoiRegister::Application.routes.draw do
   end
   
   get "/admin" => 'redirection#admin'
-  scope "/admin" do
+  scope "(:is_admin)", :constraints => {:is_admin => /(admin)/} do
     resources :staff_members
     resources :sessions do
       collection do
