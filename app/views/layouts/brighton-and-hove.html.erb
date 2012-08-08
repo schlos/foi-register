@@ -63,7 +63,11 @@
         
     </footer>
     
-    <script src="http://www.brighton-hove.gov.uk/web/sites/bhcc/jscript/gatag.js" type="text/javascript"></script>
+    <script>
+    if ("http:" == document.location.protocol) {
+      document.write(unescape('%3Cscript src="http://www.brighton-hove.gov.uk/web/sites/bhcc/jscript/gatag.js" type="text/javascript"%3E%3C/script%3E'));
+    }
+    </script>
     <script type="text/javascript">
     var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
     document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
