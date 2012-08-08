@@ -11,6 +11,7 @@ body { width: 950px; margin-left: 20px; }
 
 .navbar-search .search-query { height: 25px; }
 
+.request-view { font-size: 18px; }
 
 #requestor_notes { width: 640px; }
 
