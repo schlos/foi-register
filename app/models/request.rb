@@ -97,6 +97,14 @@ class Request < ActiveRecord::Base
   def state_description
     REQUEST_STATES[state][1]
   end
+
+  def nondisclosure_reason_title
+    nondisclosure_reason.nil? ? nil : NONDISCLOSURE_REASONS[nondisclosure_reason][0]
+  end
+  
+  def nondisclosure_reason_description
+    nondisclosure_reason.nil? ? nil : NONDISCLOSURE_REASONS[nondisclosure_reason][1]
+  end
   
   def days_until_due
     if !self.due_date.nil?

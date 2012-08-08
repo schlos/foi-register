@@ -34,10 +34,24 @@ $ ->
   .bind "blur", (event) ->
     lgcs_term.val("") if !lgcs_term_id.val()
   
-  state_select = $ '#request_state_attributes_id'
+  state_select = $ '#request_state'
   state_description = $ '#state-description'
+  nondisclosure_reason = $ '#nondisclosure_reason-field'
+  nondisclosure_reason_select = $ '#request_nondisclosure_reason'
+  nondisclosure_reason_description = $ '#nondisclosure_reason-description'
   state_select.bind "change", (ev) ->
-    state_description.text(state_select.find("option[value=" + state_select.val() + "]").attr("title"))
+    new_state = state_select.val()
+    state_description.text(state_select.find("option[value=" + new_state + "]").attr("title"))
+    if new_state == "not_disclosed"
+      nondisclosure_reason.show()
+    else
+      nondisclosure_reason.hide()
+  nondisclosure_reason_select.bind "change", (ev) ->
+    nondisclosure_reason_description.text(
+      nondisclosure_reason_select.find(
+        "option[value=" + nondisclosure_reason_select.val() + "]"
+      ).attr("title")
+    )
 
   $('span.state').tooltip()
 
