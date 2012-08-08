@@ -23,19 +23,11 @@ FoiRegister::Application.configure do
   # Take admin assets from the admin host
   admin_prefix = MySociety::Config::get("ADMIN_PREFIX", "/admin")
   if admin_prefix =~ %r(^https?://)
-    admin_url = URI(admin_prefix)
     config.action_controller.asset_host = Proc.new do |source, request|
-      if params[:is_admin].nil?
+      if request.params[:is_admin].nil?
         "#{request.protocol}#{request.host_with_port}"
       else
-        admin_url.scheme + "://" + admin_url.host
-      end
-    end
-    config.action_controller.asset_path = Proc.new do |asset_path|
-      if params[:is_admin].nil?
-        asset_path
-      else
-        File.join(admin_url.path, asset_path)
+        admin_prefix
       end
     end
   end
