@@ -19,6 +19,6 @@ class SessionsController < ApplicationController
   
   def logout
     session[:staff_member_id] = nil
-    redirect_to "/requests", :notice => "Logged out"
+    redirect_to requests_url, :notice => "Logged out"
   end
 end
