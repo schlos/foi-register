@@ -9,6 +9,6 @@ class RedirectionController < ApplicationController
   end
 
   def admin
-    redirect_to :controller => 'requests', :action => 'index', :status => :moved_permanently, :is_admin => "admin"
+    redirect_to requests_path(:is_admin => "admin"), :status => :moved_permanently
   end
 end
