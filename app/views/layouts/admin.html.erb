@@ -28,9 +28,9 @@
         
           <ul class="nav pull-right">
             <% if controller.current_staff_member.nil? %>
-              <li><%= link_to "Log in", "/sessions/new" %></li>
+              <li><%= link_to "Log in", MySociety::Config::get("ADMIN_PREFIX", "/admin") + "/sessions/new" %></li>
             <% else %>
-              <li><%= link_to "Log out", "/sessions/logout" %></li>
+              <li><%= link_to "Log out", MySociety::Config::get("ADMIN_PREFIX", "/admin") + "/sessions/logout" %></li>
             <% end %>
           </ul>
         </div>
