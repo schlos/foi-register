@@ -78,7 +78,6 @@ class Request < ActiveRecord::Base
     :in => [ "web", "email", "phone", "fax", "post", "alaveteli", "other" ]
   }
   validates :state, :inclusion => { :in => REQUEST_STATES.keys }
-  validates :nondisclosure_reason, :inclusion => { :in => NONDISCLOSURE_REASONS.keys }
   
   acts_as_xapian({
     :texts => [ :title, :body, :requestor_name, :requestor_email ],
@@ -96,6 +95,21 @@ class Request < ActiveRecord::Base
   
   def state_description
     REQUEST_STATES[state][1]
+  end
+  
+  def state=(value)
+    state = value
+    if state != 'not_disclosed'
+      nondisclosure_reason = nil
+    end
+  end
+  
+  def nondisclosure_reason=(value)
+    if NONDISCLOSURE_REASONS.has_key? value
+      nondisclosure_reason = value
+    else
+      nondisclosure_reason = nil
+    end
   end
 
   def nondisclosure_reason_title
