@@ -20,6 +20,15 @@ FoiRegister::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  admin_prefix = MySociety::Config::get("ADMIN_PREFIX", "/admin")
+  if admin_prefix =~ %r(^https?://)
+    admin_url = URI(admin_prefix)
+    config.action_controller.asset_host = admin_url.scheme + "://" + admin_url.host
+    config.action_controller.asset_path = proc do |asset_path|
+      File.join(admin_url.path, asset_path)
+    end
+  end
+
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
 
