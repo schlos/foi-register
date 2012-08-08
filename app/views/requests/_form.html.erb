@@ -37,7 +37,7 @@
 
   <div class="field">
     <%= f.label :state %>
-    <%= f.select(:state, Request::REQUEST_STATES.collect do |tag, (name, description)|
+    <%= f.select(:state, Request::STATES.collect do |tag, (name, description)|
         [name, tag, {:title => description}]
       end) %>
     <div id="state-description"><%= @request.state_description %></div>

@@ -22,7 +22,7 @@
 #
 
 class Request < ActiveRecord::Base
-  REQUEST_STATES = {
+  STATES = {
       # tag => name, description
       "new" => ["New", "A new request that has not even been acknowledged"],
       # "acknowledged" => ["Acknowledged", "A new request that has been acknowledged, but not had a substantive response or rejection"],
@@ -77,7 +77,7 @@ class Request < ActiveRecord::Base
   validates :medium, :presence => true, :inclusion => {
     :in => [ "web", "email", "phone", "fax", "post", "alaveteli", "other" ]
   }
-  validates :state, :inclusion => { :in => REQUEST_STATES.keys }
+  validates :state, :inclusion => { :in => STATES.keys }
   
   acts_as_xapian({
     :texts => [ :title, :body, :requestor_name, :requestor_email ],
@@ -90,11 +90,11 @@ class Request < ActiveRecord::Base
     ]})
  
   def state_title
-    REQUEST_STATES[state][0]
+    STATES[state][0]
   end
   
   def state_description
-    REQUEST_STATES[state][1]
+    STATES[state][1]
   end
   
   def state=(value)

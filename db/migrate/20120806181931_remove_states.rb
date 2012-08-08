@@ -38,7 +38,7 @@ class RemoveStates < ActiveRecord::Migration
     end
     add_index :request_states, [:request_id, :state_id]
     
-    Request::REQUEST_STATES.each_pair do |tag, (title, description)|
+    Request::STATES.each_pair do |tag, (title, description)|
       next if tag == "not_disclosed"
       State.create(:tag => tag, :title => title, :description => description)
     end
