@@ -38,9 +38,16 @@ FoiRegister::Application.configure do
   # Take admin assets from the admin host
   admin_prefix = MySociety::Config::get("ADMIN_PREFIX", "/admin")
   if admin_prefix =~ %r(^https?://)
-    config.action_controller.asset_host = Proc.new do |source, request|
-      if request.params[:is_admin].nil?
-        "#{request.protocol}#{request.host_with_port}"
+    config.action_controller.asset_host = Proc.new do |*args|
+      # Args are source, request - but sometimes no request is available
+      # and we are called with one argument. Since we want to work with
+      # Ruby 1.8 we cannot use a default value for the parameter here,
+      # so we decode the args ourselves.
+      raise ArgumentError if args.empty? || args.size > 2
+      source, request = args
+      
+      if request.nil? || request.params[:is_admin].nil?
+         "#{request.protocol}#{request.host_with_port}"
       else
         admin_prefix
       end
