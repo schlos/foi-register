@@ -42,15 +42,15 @@
     </ol>
 
     <% if is_admin_view? %>
-    Reply:
-    <%= form_for([@request, Response.new]) do |f| %>
-      <%= render :partial => "responses/reply_fields", :locals => {:response => f} %>
-      <div class="actions">
-        <%= f.submit %>
-      </div>
+      Reply:
+      <%= form_for([@request, Response.new]) do |f| %>
+        <%= render :partial => "responses/reply_fields", :locals => {:response => f} %>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+      <% end %>
     <% end %>
 </div>
 
-<%= link_to 'Edit', edit_request_path(@request) %> |
-<% end %>
+<%= link_to 'Edit', edit_request_path(@request) %>
 <%#= link_to 'Back', requests_path %>
