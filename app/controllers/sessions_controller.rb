@@ -2,6 +2,7 @@
 
 class SessionsController < ApplicationController
   skip_before_filter :require_login
+  skip_before_filter :require_login_based_on_url
   
   def new
   end
