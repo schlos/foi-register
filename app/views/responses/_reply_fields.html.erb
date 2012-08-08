@@ -38,13 +38,13 @@
   </div>
   <div>
   <%= response.fields_for(:request, @request) do |s| %>
-   <%= s.fields_for(:state, :include_id => false) do |t| %>
     <div class="field">
-      <%= t.label :state %>
-      <%= t.select(:id, Request::REQUEST_STATES.collect {|t| [t[1], t[0]]}) %>
+      <%= s.label :state %>
+      <%= s.select(:state, Request::REQUEST_STATES.collect do |tag, (name, description)|
+        [name, tag, {:title => description}]
+      end) %>
     </div>
    <% end %>
-  <% end %>
   </div>
  </div>
 </div>
