@@ -82,7 +82,7 @@
   <%# Flags %>
   <div>
     <%= f.label :is_published, :class => "checkbox" do
-      f.check_box(:is_published) + "Published"
+      f.check_box(:is_published, :checked => @request.is_published.nil? || @request.is_published) + "Published"
     end %>
   </div>
   <div>

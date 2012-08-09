@@ -12,7 +12,7 @@
 #  date_received             :date
 #  due_date                  :date             not null
 #  lgcs_term_id              :integer
-#  is_published              :boolean          default(FALSE), not null
+#  is_published              :boolean          default(TRUE), not null
 #  is_requestor_name_visible :boolean          default(FALSE), not null
 #  medium                    :string(255)      default("web"), not null
 #  remote_id                 :integer

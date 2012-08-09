@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120809134909) do
+ActiveRecord::Schema.define(:version => 20120809140215) do
 
   create_table "acts_as_xapian_jobs", :force => true do |t|
     t.string  "model",    :null => false
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(:version => 20120809134909) do
     t.date     "date_received"
     t.date     "due_date",                                     :null => false
     t.integer  "lgcs_term_id"
-    t.boolean  "is_published",              :default => false, :null => false
+    t.boolean  "is_published",              :default => true,  :null => false
     t.boolean  "is_requestor_name_visible", :default => false, :null => false
     t.string   "medium",                    :default => "web", :null => false
     t.integer  "remote_id"
