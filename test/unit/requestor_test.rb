@@ -3,7 +3,7 @@
 # Table name: requestors
 #
 #  id           :integer          not null, primary key
-#  name         :string(255)
+#  name         :string(255)      not null
 #  email        :string(255)
 #  notes        :text
 #  created_at   :datetime         not null
