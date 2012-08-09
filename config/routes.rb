@@ -21,6 +21,12 @@ FoiRegister::Application.routes.draw do
   end
   
   get "/admin" => 'redirection#admin'
+
+  # Useful in development.
+  # In production presumably /admin/assets is configured specially
+  # in your web server config.
+  match "/admin/assets/*path.:ext" => redirect("/assets/%{path}.%{ext}")
+
   scope "(:is_admin)", :constraints => {:is_admin => /(admin)/} do
     get "ajax/requestors"
     get "ajax/lgcs_terms"
