@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120806181931) do
+ActiveRecord::Schema.define(:version => 20120809134909) do
 
   create_table "acts_as_xapian_jobs", :force => true do |t|
     t.string  "model",    :null => false
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(:version => 20120806181931) do
   end
 
   create_table "requestors", :force => true do |t|
-    t.string   "name"
+    t.string   "name",         :null => false
     t.string   "email"
     t.text     "notes"
     t.datetime "created_at",   :null => false
