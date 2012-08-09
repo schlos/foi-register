@@ -1,3 +1,5 @@
+DOMAIN: 'localhost:3000'
+
 ORG_NAME: 'Brighton & Hove'
 ADMIN_PREFIX: '/admin'
 ADMIN_PASSWORD: 'xxxxxxxx'
