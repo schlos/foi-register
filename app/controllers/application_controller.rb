@@ -44,8 +44,7 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  # This filter should never be skipped, and requires login
-  # only for pages that start with /admin/.
+  # This filter requires login only for pages that start with /admin/.
   def require_login_based_on_url
     if !params[:is_admin].nil? && current_staff_member.nil?
       redirect_to MySociety::Config::get("ADMIN_PREFIX", "/admin") + "/sessions/new"
