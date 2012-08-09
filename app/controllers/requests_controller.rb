@@ -148,15 +148,15 @@ class RequestsController < ApplicationController
         request[:medium] = "web"
         request[:due_date] = Date.today + 28.days
         request[:lgcs_term_id] = nil
-        request[:is_published] = false
+        request[:is_published] = true
     end
     
     @request = Request.new(request)
     
-    if requestor[:id].nil?
+    if requestor[:id].nil? || requestor[:id].empty?
       @request.requestor = Requestor.new(requestor)
     else
-      @request.requestor = Requestor.find(requestor[:id])
+      @request.requestor = Requestor.find_by_id(requestor[:id])
     end
 
     respond_to do |format|

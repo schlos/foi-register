@@ -70,6 +70,8 @@ class Request < ActiveRecord::Base
   belongs_to :requestor
   belongs_to :lgcs_term
   validates_presence_of :title
+  validates_presence_of :requestor
+  validates_presence_of :body
   has_many :responses, :order => 'created_at'
   accepts_nested_attributes_for :requestor
   accepts_nested_attributes_for :responses
