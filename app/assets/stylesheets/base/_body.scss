@@ -2,6 +2,6 @@ body{
     @extend .grid-container;
     color: #333;
 }
-body.lt-ie9{
-    width: 64em;
+.lt-ie9 body{
+    width: 65em;
 }
