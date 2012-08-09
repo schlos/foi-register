@@ -13,7 +13,7 @@ class AlaveteliApi
             data = {:title => request.title,
                 :body => request.body,
                 :external_user_name => request.requestor_name,
-                :external_url => url_for(request, :only_path => false)
+                :external_url => Rails.application.routes.url_helpers.request_url(nil, request, :host => MySociety::Config.get("DOMAIN", "localhost:3000"))
             }.to_json
             key = MySociety::Config::get("ALAVETELI_API_KEY")
             url = URI.parse("#{api_endpoint}/request.json")
@@ -24,12 +24,20 @@ class AlaveteliApi
             response = Net::HTTP.start(url.host, url.port) do |http|
                 http.request(req)
             end
-            json = ActiveSupport::JSON.decode(response.body)
-            if json['errors'].nil?
-                Rails.logger.info("Created new request at #{json['url']}")
-                return json['id'], json['url']
+            case response
+            when Net::HTTPSuccess
+              json = ActiveSupport::JSON.decode(response.body)
+              if json['errors'].nil?
+                  Rails.logger.info("Created new request at #{json['url']}")
+                  return json['id'], json['url']
+              else
+                  raise AlaveteliApiError, json['errors']
+              end
+            when Net::HTTPUnauthorized
+              raise AlaveteliApiError, "Unauthorized: is the API key correct?"
             else
-                raise AlaveteliApiError, json['errors']
+              Rails.logger.error("Alaveteli API error: " + response.body)
+              raise AlaveteliApiError, "Error from Alaveteli API: see log for details"
             end
         end
     end
