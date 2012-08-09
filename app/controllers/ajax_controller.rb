@@ -7,7 +7,9 @@ class AjaxController < ApplicationController
     else
       requestors = Requestor.all
     end
-    list = requestors.map do |requestor|
+    list = requestors.select do |requestor|
+      requestor.external_url.nil?
+    end.map do |requestor|
       {
         :id => requestor.id, :label => requestor.to_s, :value => requestor.name,
         :name => requestor.name, :email => requestor.email
