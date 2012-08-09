@@ -61,6 +61,8 @@
         
         &:hover{
             background-color: darken($color-blue, 10%);
+            background-position: right bottom;
+            color: #fff;
         }
     }
     

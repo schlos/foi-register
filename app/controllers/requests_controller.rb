@@ -170,7 +170,7 @@ class RequestsController < ApplicationController
         end
         format.json { render :json => @request, :status => :created, :location => @request }
       else
-        format.html { render :action => "new" }
+        format.html { render :action => self.is_admin_view? ? "admin_new" : "public_new" }
         format.json { render :json => @request.errors, :status => :unprocessable_entity }
       end
     end
