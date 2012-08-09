@@ -11,11 +11,13 @@ $gutter: 1.25em;
 .grid-container{
     margin: 0 auto;
     clear:both;
-    width: 100%;
-    max-width:100%;
     padding: ($gutter/2) 0;
     
     width: $max_page_width;
+}
+
+.lt-ie9 .grid-container{
+    width: 100%;
 }
 
 .grid{
