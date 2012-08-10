@@ -39,12 +39,21 @@
       </tr>
 
     <% @requests.each do |request| %>
-      <tr>
+      <tr id="request-<%= request.id %>">
         <td class="request-id">FOI:<%= request.id %>/<%= request.date_received_or_created.year %></td>
         <td><%= request.date_received_or_created.to_s(:short) %></td>
         <td><%= request.requestor %></td>
         <td><%= link_to request.title, request_path(request) %></td>
-        <td><span rel="tooltip" title="<%= request.state_description %>" class="state label"><%= request.state_title %></td>
+        <td class="admin-request-state">
+          <span rel="tooltip" title="<%= request.state_description %>" class="state label"><%= request.state_title %></span>
+          <span class="state-editor" style="display:none">
+            <%= form_for(request) do |f|
+              f.select(:state, Request::STATES.collect do |tag, (name, description)|
+                [name, tag, {:title => description}]
+              end)
+            end %>
+          </span>
+        </td>
         <td>
           <span class='badge <% if !request.days_until_due.nil? %><% if request.days_until_due < 5 %>badge-warning<% elsif request.days_until_due < 2 %>badge-important<% else %>badge-info<% end %><% end %>'> <% if !request.days_until_due.nil? %><%= request.days_until_due %><% else %>n/a<% end %></span>
           <%= request.due_date.strftime("%d/%m/%Y") %>

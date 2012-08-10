@@ -72,3 +72,25 @@ $ ->
   # Datepicker for request due date
   $('#request_due_date').datepicker({"dateFormat": "dd/mm/yy"})
 
+  # In-place state editing for request state
+  $('#admin-request-list .admin-request-state').dblclick () ->
+    $this = $ this
+    $this.find(".label").hide()
+    $this.find(".state-editor").show()
+  .mouseup () ->
+    return false
+  $('#admin-request-list .admin-request-state .state-editor select').change () ->
+    $this = $ this
+    $td = $this.closest "td"
+    request_id = $this.closest("tr").attr("id").substring("request-".length)
+    $.post("<%= MySociety::Config::get("ADMIN_PREFIX", "/admin") %>/requests/" + request_id + "/update_state.json", {
+        "state": $this.val()
+      }, (d) ->
+        if d.ok
+          $td.find(".label").show().text(d.name).data("original-title", d.description)
+          $td.find(".state-editor").hide()
+        else
+          alert("Failed to change the state")
+          $td.find(".label").show()
+          $td.find(".state-editor").hide()
+    )

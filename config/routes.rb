@@ -31,6 +31,8 @@ FoiRegister::Application.routes.draw do
     get "ajax/requestors"
     get "ajax/lgcs_terms"
     
+    post "requests/:id/update_state.json", :controller => :requests, :action => :update_state
+    
     resources :staff_members
     resources :sessions do
       collection do

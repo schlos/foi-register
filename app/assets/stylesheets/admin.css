@@ -19,6 +19,11 @@ body { width: 950px; margin-left: 20px; }
  margin-top: 15px;
 }
 
+#admin-request-list .state-editor form,
+#admin-request-list .state-editor form select {
+  width: 65px;
+}
+
 .public-response textarea, .private-response textarea {
  width: 100%;
 }

@@ -188,6 +188,26 @@ class RequestsController < ApplicationController
       end
     end
   end
+  
+  # POST /admin/requests/1/update_state.json
+  def update_state
+    request = Request.find(params[:id])
+    state_tag = params[:state]
+    state = Request::STATES[state_tag]
+    
+    request.state = state_tag
+    if request.save!
+      render :json => {
+        "ok" => true,
+        "name" => state[0],
+        "description" => state[1]
+      }
+    else
+      render :json => {
+        "ok" => false
+      }
+    end
+  end
 
   # PUT /requests/1
   # PUT /requests/1.json
