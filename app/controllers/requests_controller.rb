@@ -171,7 +171,6 @@ class RequestsController < ApplicationController
           @request.errors.add("requestor.email", e[0])
           saved_ok = false
         end
-        saved_ok = false if @request.requestor.errors
       end
       if saved_ok
         format.html do
