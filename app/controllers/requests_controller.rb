@@ -211,7 +211,13 @@ class RequestsController < ApplicationController
     @request.destroy
 
     respond_to do |format|
-      format.html { redirect_to requests_url }
+      format.html {
+        if request.env['HTTP_REFERER'] =~ /[?&]page=(\d+)$/
+          redirect_to requests_url(:page => $1)
+        else
+          redirect_to requests_url
+        end
+      }
       format.json { head :no_content }
     end
   end
