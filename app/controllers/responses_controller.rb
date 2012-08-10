@@ -35,8 +35,13 @@ class ResponsesController < ApplicationController
   # POST /responses.json
   def create
     request = Request.find(params[:request_id])
-    @response = Response.new(params[:response])
+    response = params[:response]
+    request_attributes = response.delete(:request_attributes)
+    @response = Response.new(response)
     @response.request = request
+    
+    request.state = request_attributes[:state]
+    request.save
     
     respond_to do |format|
       if @response.save
