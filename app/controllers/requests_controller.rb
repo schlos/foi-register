@@ -155,12 +155,24 @@ class RequestsController < ApplicationController
     
     if requestor[:id].nil? || requestor[:id].empty?
       @request.requestor = Requestor.new(requestor)
+      requestor_is_new = true
     else
       @request.requestor = Requestor.find_by_id(requestor[:id])
+      requestor_is_new = false
     end
 
     respond_to do |format|
-      if @request.save
+      saved_ok = @request.save
+      if requestor_is_new && !self.is_admin_view? && @request.requestor.errors[:email].empty?
+        @request.requestor.errors.add_on_blank(:email)
+        e = @request.requestor.errors[:email]
+        if !e.empty?
+          @request.errors.add("requestor.email", e[0])
+          saved_ok = false
+        end
+        saved_ok = false if @request.requestor.errors
+      end
+      if saved_ok
         format.html do
             if self.is_admin_view?
                 redirect_to requests_url(:is_admin=>"admin"), :notice => 'Request was successfully created.'
