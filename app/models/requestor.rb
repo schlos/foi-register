@@ -15,6 +15,7 @@ class Requestor < ActiveRecord::Base
   has_many :requests
   validates_presence_of :name
   validate :email_address_format
+  default_scope :order => 'created_at DESC'
   
   def email_address_format
     errors.add(:email, "is invalid") if !email.nil? && !email.empty? && email !~ /\A\S+@\S+\Z/
