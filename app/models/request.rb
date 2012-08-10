@@ -185,7 +185,7 @@ class Request < ActiveRecord::Base
 
   def send_to_alaveteli
       if medium != "alaveteli"
-          remote_id, remote_url = AlaveteliApi.send_request(self)
+          self.remote_id, self.remote_url = AlaveteliApi.send_request(self)
           save!
       end
   end
