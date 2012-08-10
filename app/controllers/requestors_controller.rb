@@ -78,7 +78,13 @@ class RequestorsController < ApplicationController
     @requestor.destroy
 
     respond_to do |format|
-      format.html { redirect_to requestors_url }
+      format.html {
+        if request.env['HTTP_REFERER'] =~ /[?&]page=(\d+)$/
+          redirect_to requestors_url(:page => $1)
+        else
+          redirect_to requestors_url
+        end
+      }
       format.json { head :no_content }
     end
   end
