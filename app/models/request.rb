@@ -100,7 +100,7 @@ class Request < ActiveRecord::Base
   end
   
   def state=(value)
-    state = value
+    write_attribute(:state, value)
     if state != 'not_disclosed'
       nondisclosure_reason = nil
     end
@@ -108,9 +108,9 @@ class Request < ActiveRecord::Base
   
   def nondisclosure_reason=(value)
     if NONDISCLOSURE_REASONS.has_key? value
-      nondisclosure_reason = value
+      write_attribute(:nondisclosure_reason, value)
     else
-      nondisclosure_reason = nil
+      write_attribute(:nondisclosure_reason, nil)
     end
   end
 
