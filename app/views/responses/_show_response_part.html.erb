@@ -1,6 +1,6 @@
 <p class="meta">
   <em>From:</em> <strong>Brighton &amp; Hove City Council</strong>
-  <em>Date:</em> <strong><%= r.date_received_or_created.strftime("%d/%m/%Y") %></strong>
+  <em>Date:</em> <strong><%= r.created_at.strftime("%d/%m/%Y") %></strong>
 </p>
 
 <%= simple_format r.public_part %><br>
