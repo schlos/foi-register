@@ -40,7 +40,7 @@ class RequestsController < ApplicationController
   
   # GET /requests/overdue
   def overdue
-    @requests = Request.paginate(:page => params[:page], :per_page => 5).overdue
+    @requests = Request.paginate(:page => params[:page], :per_page => 100).overdue
     @badge = "overdue"
     
     respond_to do |format|
