@@ -160,9 +160,11 @@ class Request < ActiveRecord::Base
         end
     end
     
-    def count_by_state(t)
+    def count_by_state(t=nil)
       @counts = self.count(:group => "state") if @counts.nil?
       case t
+      when nil
+        @counts
       when :in_progress
         @counts.fetch("new", 0) + @counts.fetch("assessing", 0)
       when :disclosed
