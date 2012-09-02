@@ -16,9 +16,9 @@
   <tr>
     <td><%= requestor.name %></td>
     <td><%= requestor.email %></td>
-    <td><%= link_to 'Show', requestor_path(requestor) %></td>
+    <td><%= link_to 'Show', requestor_path(requestor, :is_admin => "admin") %></td>
     <td><%= link_to '<i class="icon-pencil"></i>'.html_safe, edit_requestor_path(requestor) %></td>
-    <td><%= link_to '<i class="icon-trash"></i>'.html_safe, requestor, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to '<i class="icon-trash"></i>'.html_safe, requestor_path(requestor, :is_admin => "admin"), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
  <% end %>
  </tbody>
