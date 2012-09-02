@@ -233,7 +233,7 @@ class RequestsController < ApplicationController
     respond_to do |format|
       format.html {
         if request.env['HTTP_REFERER'] =~ /[?&]page=(\d+)$/
-          redirect_to requests_path(:is_admin => "admin":page => $1)
+          redirect_to requests_path(:is_admin => "admin", :page => $1)
         else
           redirect_to requests_path(:is_admin => "admin")
         end
