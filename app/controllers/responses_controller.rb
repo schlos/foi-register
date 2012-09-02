@@ -45,7 +45,7 @@ class ResponsesController < ApplicationController
     
     respond_to do |format|
       if @response.save
-        format.html { redirect_to [request, @response], :notice => 'Response was successfully created.' }
+        format.html { redirect_to request_response_path(:is_admin => "admin", :request => request, :response => @response), :notice => 'Response was successfully created.' }
         format.json { render :json => @response, :status => :created, :location => @response }
       else
         format.html { render :action => "new" }
