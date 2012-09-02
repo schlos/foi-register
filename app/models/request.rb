@@ -4,11 +4,11 @@
 # Table name: requests
 #
 #  id                        :integer          not null, primary key
-#  title                     :string(255)
-#  requestor_id              :integer
+#  title                     :string(255)      not null
+#  requestor_id              :integer          not null
 #  created_at                :datetime         not null
 #  updated_at                :datetime         not null
-#  body                      :text
+#  body                      :text             not null
 #  date_received             :date
 #  due_date                  :date             not null
 #  lgcs_term_id              :integer
