@@ -80,9 +80,9 @@ class RequestorsController < ApplicationController
     respond_to do |format|
       format.html {
         if request.env['HTTP_REFERER'] =~ /[?&]page=(\d+)$/
-          redirect_to requestors_url(:is_admin => "admin", :page => $1)
+          redirect_to requestors_path(:is_admin => "admin", :page => $1)
         else
-          redirect_to requestors_url(:is_admin => "admin")
+          redirect_to requestors_path(:is_admin => "admin")
         end
       }
       format.json { head :no_content }
