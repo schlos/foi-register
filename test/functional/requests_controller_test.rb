@@ -21,7 +21,7 @@ class RequestsControllerTest < ActionController::TestCase
 
   test "should create request" do
     request_attributes = @request_all_your_info.attributes
-    request_attributes[:requestor_attributes] = {:id => request_attributes.delete(:requestor_id)}
+    request_attributes[:requestor_attributes] = {:id => request_attributes.delete("requestor_id")}
     assert_difference('Request.count') do
       post :create, :request => request_attributes
     end
