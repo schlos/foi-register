@@ -48,7 +48,8 @@ namespace :foi do
                     request = Request.new(
                         :medium => "alaveteli",
                         :state => "new",
-                        :remote_id => event["request_id"].to_i,
+                        :remote_url => event["request_url"],
+                        :remote_email => event["request_email"],
                         :requestor => requestor,
                         :title => event["title"],
                         :body => event["body"],

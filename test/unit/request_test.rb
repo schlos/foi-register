@@ -18,6 +18,7 @@
 #  remote_url                :string(255)
 #  state                     :string(255)      default("new"), not null
 #  nondisclosure_reason      :string(255)
+#  remote_email              :string(255)
 #
 
 require 'test_helper'

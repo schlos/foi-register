@@ -19,6 +19,7 @@
 #  remote_url                :string(255)
 #  state                     :string(255)      default("new"), not null
 #  nondisclosure_reason      :string(255)
+#  remote_email              :string(255)
 #
 
 class Request < ActiveRecord::Base
@@ -193,7 +194,7 @@ class Request < ActiveRecord::Base
   end
   
   if MySociety::Config.get("PUSH_TO_ALAVETELI")
-    after_create :send_to_alaveteli
+    after_commit :send_to_alaveteli
     handle_asynchronously :send_to_alaveteli
   end
 end
