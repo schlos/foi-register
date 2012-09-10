@@ -45,6 +45,6 @@ class RequestorsControllerTest < ActionController::TestCase
       delete :destroy, :id => @requestor
     end
 
-    assert_redirected_to requestors_path
+    assert_redirected_to requestors_path(:is_admin => "admin")
   end
 end
