@@ -123,6 +123,10 @@ class Request < ActiveRecord::Base
     nondisclosure_reason.nil? ? nil : NONDISCLOSURE_REASONS[nondisclosure_reason][1]
   end
   
+  def administrative_id
+    "FOI:#{request.id}/#{request.date_received_or_created.year}"
+  end
+  
   def days_until_due
     if !self.due_date.nil?
       (self.due_date - Date.today).to_i
