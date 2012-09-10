@@ -28,6 +28,11 @@ class Response < ActiveRecord::Base
   def send_to_alaveteli
       AlaveteliApi.send_response(self) if request.remote_id
   end
+  
+  def send_by_email
+    ResponseMailer.email_response(self).deliver
+  end
+  
   after_create :send_to_alaveteli
   handle_asynchronously :send_to_alaveteli 
 

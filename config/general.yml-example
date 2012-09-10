@@ -2,6 +2,7 @@ DOMAIN: 'localhost:3000'
 PAGE_TITLE_SUFFIX: ' – Brighton & Hove City Council'
 
 ORG_NAME: 'Brighton & Hove'
+ORG_EMAIL: 'foi@example.org'
 ADMIN_PREFIX: '/admin'
 ADMIN_PASSWORD: 'xxxxxxxx'
 ASSET_HOST: null

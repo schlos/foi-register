@@ -1,4 +1,5 @@
 ORG_NAME: 'Brighton & Hove'
+ORG_EMAIL: 'foi@example.org'
 PAGE_TITLE_SUFFIX: ' – Brighton & Hove City Council'
 
 ADMIN_PREFIX: '/admin'

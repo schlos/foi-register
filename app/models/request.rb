@@ -189,6 +189,14 @@ class Request < ActiveRecord::Base
   def requestor_email
       requestor.email
   end
+  
+  def email_for_response
+    if remote_email.nil?
+      requestor_email
+    else
+      remote_email
+    end
+  end
 
   def send_to_alaveteli
       if medium != "alaveteli"
