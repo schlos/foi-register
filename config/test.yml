@@ -1,4 +1,6 @@
 ORG_NAME: 'Brighton & Hove'
+PAGE_TITLE_SUFFIX: ' – Brighton & Hove City Council'
+
 ADMIN_PREFIX: '/admin'
 ADMIN_PASSWORD: 'xxxxxxxx'
 ASSET_HOST: null
@@ -12,7 +14,8 @@ ALAVETELI_API_ENDPOINT:
 # To perform an integration tests relating to pushing requests, start
 # an Alaveteli server at this location for the tests to pass.  Leave
 # this value blank to skip such tests.
-TEST_ALAVETELI_API_HOST: http://localhost:3001
+TEST_ALAVETELI_API_HOST: http://localhost:3003
 
 PULL_FROM_ALAVETELI: false
+PUSH_TO_ALAVETELI: true
 ALAVETELI_INITIAL_LAST_EVENT_ID: null
