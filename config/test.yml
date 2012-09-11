@@ -1,5 +1,6 @@
 ORG_NAME: 'Brighton & Hove'
 ORG_EMAIL: 'foi@example.org'
+ACKNOWLEDGEMENT_SUBJECT: 'Your request for information has been received'
 PAGE_TITLE_SUFFIX: ' – Brighton & Hove City Council'
 
 ADMIN_PREFIX: '/admin'
