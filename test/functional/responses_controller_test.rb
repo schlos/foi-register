@@ -20,6 +20,18 @@ class ResponsesControllerTest < ActionController::TestCase
 
     assert_redirected_to request_response_path(@response_1.request, assigns(:response))
   end
+  
+  test "should set the request state when creating a response" do
+    response_attributes = @response_1.attributes
+    response_attributes[:request_attributes] = {:state => "disclosed"}
+    assert_difference('Response.count') do
+      post :create, :response => response_attributes, :request_id => @response_1.request_id
+    end
+    
+    req = Request.find(requests(:all_your_info).id)
+    assert_equal(req.state, "disclosed")
+    assert_redirected_to request_response_path(@response_1.request, assigns(:response), :is_admin => "admin")
+  end
 
   test "should publish a response to Alaveteli endpoint" do
     config = MySociety::Config.load_default()
