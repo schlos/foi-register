@@ -14,11 +14,13 @@ class ResponsesControllerTest < ActionController::TestCase
   end
 
   test "should create response" do
+    response_attributes = @response_1.attributes
+    response_attributes[:request_attributes] = {:state => "disclosed"}
     assert_difference('Response.count') do
-      post :create, :response => @response_1.attributes, :request_id => @response_1.request_id
+      post :create, :response => response_attributes, :request_id => @response_1.request_id
     end
 
-    assert_redirected_to request_response_path(@response_1.request, assigns(:response))
+    assert_redirected_to request_response_path(@response_1.request, assigns(:response), :is_admin => "admin")
   end
   
   test "should set the request state when creating a response" do
@@ -48,13 +50,13 @@ class ResponsesControllerTest < ActionController::TestCase
         @response_1.request.send_to_alaveteli
 
         response_attributes = @response_1.attributes
-        params = @response_1.attributes
-        params['attachments_attributes'] = {}
+        response_attributes['attachments_attributes'] = {}
+        response_attributes[:request_attributes] = {:state => "disclosed"}
 
         @response_1.attachments.each_with_index do |attachment, n|
-          params['attachments_attributes'][n] = {'file' => fixture_file_upload("files/#{attachment['file']}", attachment['content_type'])}
+          response_attributes['attachments_attributes'][n] = {'file' => fixture_file_upload("files/#{attachment['file']}", attachment['content_type'])}
         end
-        post :create, :response => params, :request_id => @response_1.request.id
+        post :create, :response => response_attributes, :request_id => @response_1.request.id
         result = open("#{host}/request/#{@response_1.request.remote_id}").read
         assert result =~ /#{@response_1.public_part}/, "#{result} did not contain #{@response_1.public_part}"
         # The following tests have the condition hard coded because
@@ -62,7 +64,7 @@ class ResponsesControllerTest < ActionController::TestCase
         # code that would otherwise need refactoring
         assert result =~ /attachment%201.txt/
         assert result =~ /attachment%202.pdf/
-        assert_redirected_to request_response_path(@response_1.request, assigns(:response))
+        assert_redirected_to request_response_path(@response_1.request, assigns(:response), :is_admin => "admin")
       rescue Errno::ECONNREFUSED => e
         raise "TEST_ALAVETELI_API_HOST set in test.yml but no Alaveteli server running"
       ensure
