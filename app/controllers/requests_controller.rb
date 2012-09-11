@@ -162,16 +162,19 @@ class RequestsController < ApplicationController
       requestor_is_new = false
     end
 
-    respond_to do |format|
-      saved_ok = @request.save
-      if requestor_is_new && !self.is_admin_view? && @request.requestor.errors[:email].empty?
-        @request.requestor.errors.add_on_blank(:email)
-        e = @request.requestor.errors[:email]
-        if !e.empty?
-          @request.errors.add("requestor.email", e[0])
-          saved_ok = false
-        end
+    saved_ok = @request.save
+    if requestor_is_new && !self.is_admin_view? && @request.requestor.errors[:email].empty?
+      @request.requestor.errors.add_on_blank(:email)
+      e = @request.requestor.errors[:email]
+      if !e.empty?
+        @request.errors.add("requestor.email", e[0])
+        saved_ok = false
       end
+    end
+    
+    @request.send_to_alaveteli if saved_ok
+    
+    respond_to do |format|
       if saved_ok
         format.html do
             if self.is_admin_view?

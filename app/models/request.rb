@@ -199,14 +199,11 @@ class Request < ActiveRecord::Base
   end
 
   def send_to_alaveteli
-      if medium != "alaveteli"
+      if MySociety::Config.get("PUSH_TO_ALAVETELI") && medium != "alaveteli"
           self.remote_id, self.remote_url = AlaveteliApi.send_request(self)
           save!
       end
   end
+  handle_asynchronously :send_to_alaveteli
   
-  if MySociety::Config.get("PUSH_TO_ALAVETELI")
-    after_commit :send_to_alaveteli
-    handle_asynchronously :send_to_alaveteli
-  end
 end
