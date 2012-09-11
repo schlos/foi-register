@@ -46,7 +46,12 @@ class RequestsControllerTest < ActionController::TestCase
         assert_difference('Request.count') do
           post :create, :request => request_attributes
         end
-        result = open("#{host}/request/#{title}").read
+        begin
+          url = "#{host}/request/#{title}"
+          result = open(url).read
+        rescue OpenURI::HTTPError => e
+          flunk("Failed to fetch #{url}: #{e}")
+        end
         assert result =~ /#{title}/, "#{result} did not contain #{title}"
         assert result =~ /#{@request_all_your_info.body}/, "#{result} did not contain #{@request_all_your_info.body}"
         assert_redirected_to requests_path
