@@ -83,6 +83,6 @@ class RequestsControllerTest < ActionController::TestCase
       delete :destroy, :id => @request_all_your_info
     end
 
-    assert_redirected_to requests_path
+    assert_redirected_to requests_path(:is_admin => "admin")
   end
 end
