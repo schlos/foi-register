@@ -124,7 +124,7 @@ class Request < ActiveRecord::Base
   end
   
   def administrative_id
-    "FOI:#{request.id}/#{request.date_received_or_created.year}"
+    "FOI:#{self.id}/#{self.date_received_or_created.year}"
   end
   
   def days_until_due
