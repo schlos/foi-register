@@ -3,6 +3,9 @@ ORG_EMAIL: 'foi@example.org'
 ACKNOWLEDGEMENT_SUBJECT: 'Your request for information has been received'
 PAGE_TITLE_SUFFIX: ' – Brighton & Hove City Council'
 
+NOTIFICATIONS_TO: 'foi@example.org'
+NOTIFICATION_SUBJECT: 'An FOI request has been made through the website'
+
 ADMIN_PREFIX: '/admin'
 ADMIN_PASSWORD: 'xxxxxxxx'
 ASSET_HOST: null

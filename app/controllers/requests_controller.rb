@@ -174,6 +174,7 @@ class RequestsController < ApplicationController
     
     @request.send_to_alaveteli if saved_ok
     @request.send_acknowledgement
+    @request.send_notification if !self.is_admin_view?
     
     respond_to do |format|
       if saved_ok
