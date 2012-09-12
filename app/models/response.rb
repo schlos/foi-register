@@ -30,7 +30,7 @@ class Response < ActiveRecord::Base
   end
   
   def send_by_email
-    ResponseMailer.email_response(self).deliver
+    ResponseMailer.email_response(self).deliver if !request.email_for_response.nil?
   end
   
   after_create :send_to_alaveteli
