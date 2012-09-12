@@ -173,6 +173,7 @@ class RequestsController < ApplicationController
     end
     
     @request.send_to_alaveteli if saved_ok
+    @request.send_acknowledgement
     
     respond_to do |format|
       if saved_ok

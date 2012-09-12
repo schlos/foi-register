@@ -197,6 +197,10 @@ class Request < ActiveRecord::Base
       remote_email
     end
   end
+  
+  def send_acknowledgement
+    RequestMailer.acknowledgement(self).deliver if !self.email_for_response.nil?
+  end
 
   def send_to_alaveteli
       if MySociety::Config.get("PUSH_TO_ALAVETELI") && medium != "alaveteli"
