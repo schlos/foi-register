@@ -73,8 +73,24 @@ class ResponsesControllerTest < ActionController::TestCase
     end
   end
 
-
-
+  test "should send response by email" do
+    ActionMailer::Base.deliveries = []
+    response_attributes = @response_1.attributes
+    response_attributes[:request_attributes] = {:state => "disclosed"}
+    post :create, :response => response_attributes, :request_id => @response_1.request_id
+    
+    found_response = false
+    request = @response_1.request
+    expected_recipient = request.requestor.email
+    expected_subject = "Re: " + request.title
+    ActionMailer::Base.deliveries.each do |delivery|
+      if delivery.subject == expected_subject
+        found_response = true
+        assert_equal delivery.to, [expected_recipient]
+      end
+    end
+    assert found_response
+  end
 
   test "should show response" do
     get :show, :request_id => @response_1.request.id, :id => @response_1
