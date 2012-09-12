@@ -63,6 +63,42 @@ class RequestsControllerTest < ActionController::TestCase
     end
   end
 
+  test "should send acknowledgement of request" do
+    ActionMailer::Base.deliveries = []
+    request_attributes = @request_all_your_info.attributes
+    request_attributes[:requestor_attributes] = {:id => request_attributes.delete("requestor_id")}
+    post :create, :request => request_attributes
+    assert_redirected_to requests_path
+    
+    found_ack = false
+    ActionMailer::Base.deliveries.each do |delivery|
+      if delivery.subject == "Your request for information has been received"
+        found_ack = true
+        assert_equal delivery.to, [@request_all_your_info.requestor.email]
+      end
+    end
+    assert found_ack
+  end
+
+  test "should send notification of receipt of request" do
+    ActionMailer::Base.deliveries = []
+    request_attributes = @request_all_your_info.attributes
+    request_attributes[:requestor_attributes] = {:id => request_attributes.delete("requestor_id")}
+    post :create, :request => request_attributes
+    assert_redirected_to requests_path
+    
+    found_notification = false
+    expected_subject = MySociety::Config.get('NOTIFICATION_SUBJECT')
+    expected_recipient = MySociety::Config.get('NOTIFICATIONS_TO')
+    ActionMailer::Base.deliveries.each do |delivery|
+      if delivery.subject == expected_subject
+        found_notification = true
+        assert_equal delivery.to, [expected_recipient]
+      end
+    end
+    assert found_notification
+  end
+
   test "should show request" do
     get :show, :id => @request_all_your_info.id
     assert_response :success
