@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if [ -e config/httpd.conf ] && egrep -q '^\s*RackEnv\s*production' config/httpd.conf
+then
+    export RAILS_ENV=production
+else
+    export RAILS_ENV=development
+fi
+
 bundle install --deployment
 bundle exec rake db:migrate
 bundle exec rake bootstrap:add
