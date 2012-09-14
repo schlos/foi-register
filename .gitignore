@@ -26,6 +26,7 @@
 /log/*.log
 /tmp
 *~
+/public/assets
 /public/uploads
 /public/down.html
 
