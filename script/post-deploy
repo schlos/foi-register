@@ -1,5 +1,5 @@
 #!/bin/bash
 
-bundle install
+bundle install --deployment
 bundle exec rake db:migrate
 bundle exec rake bootstrap:add
