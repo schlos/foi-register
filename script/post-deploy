@@ -10,3 +10,8 @@ fi
 bundle install --deployment
 bundle exec rake db:migrate
 bundle exec rake bootstrap:add
+
+if [ "$RAILS_ENV" = production ]
+then
+    bundle exec rake assets:precompile
+fi
