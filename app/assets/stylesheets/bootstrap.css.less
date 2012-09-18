@@ -1,2 +1,15 @@
 @import "twitter/bootstrap";
 .pagination .gap { display: inline-block; float: left; line-height: 34px; padding: 0 14px; border-right: 1px solid #ddd; }
+
+/*
+ The images specified by the bootstrap stylesheet are resolved by the asset-path
+ helper to absolute paths that begin with /assets, which means they do not work
+ on the proxied admin site. We override these with relative paths here.
+*/
+[class^="icon-"],
+[class*=" icon-"] {
+    background-image: url(twitter/bootstrap/glyphicons-halflings.png);
+}
+.icon-white {
+  background-image: url(twitter/bootstrap/glyphicons-halflings-white.png);
+}
