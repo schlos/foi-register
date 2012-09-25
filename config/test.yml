@@ -24,3 +24,8 @@ TEST_ALAVETELI_API_HOST: http://localhost:3003
 PULL_FROM_ALAVETELI: false
 PUSH_TO_ALAVETELI: true
 ALAVETELI_INITIAL_LAST_EVENT_ID: null
+
+# Takedown notices will be sent to this address
+ALAVETELI_ADMIN_EMAIL: 'team@whatdotheyknow.com'
+# with this subject line
+ALAVETELI_TAKEDOWN_SUBJECT: 'Brighton & Hove City Council have hidden a request'

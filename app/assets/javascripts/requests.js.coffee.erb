@@ -83,7 +83,7 @@ $ ->
     $this = $ this
     $td = $this.closest "td"
     request_id = $this.closest("tr").attr("id").substring("request-".length)
-    $.post("<%= MySociety::Config::get("ADMIN_PREFIX", "/admin") %>/requests/" + request_id + "/update_state.json", {
+    $.post("<%= MySociety::Config::get('ADMIN_PREFIX', '/admin') %>/requests/" + request_id + "/update_state.json", {
         "state": $this.val()
       }, (d) ->
         if d.ok
@@ -94,3 +94,22 @@ $ ->
           $td.find(".label").show()
           $td.find(".state-editor").hide()
     )
+  
+  # Request is published
+  $r_u_s = $('#reason_for_unpublishing_section')
+  $r_u = $('#reason_for_unpublishing')
+  $r_i_p = $('#request_is_published')
+  if $r_u_s.length > 0
+    $r_i_p.change () ->
+      if !$r_i_p.is(":checked")
+        $r_u_s.show()
+        $r_u.select()
+      else
+        $r_u_s.hide()
+    
+    $("form.edit_request").submit (e) ->
+      if !$r_u.val()
+        $r_u_s.css("background-color", "red").animate({"background-color": "#ccc"}, 500);
+        $r_u.select()
+        return false
+      return true

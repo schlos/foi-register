@@ -80,12 +80,20 @@
   </div>
 
   <%# Flags %>
-  <div>
+  <div class="field">
     <%= f.label :is_published, :class => "checkbox" do
       f.check_box(:is_published, :checked => @request.is_published.nil? || @request.is_published) + "Published"
     end %>
   </div>
-  <div>
+  <% if @request.is_published? && !@request.remote_url.nil? %>
+    <div id="reason_for_unpublishing_section">
+      <%= label_tag :reason_for_unpublishing, "Reason for unpublishing" %>
+      <%= text_field_tag :reason_for_unpublishing %>
+      <p>This explanation will be sent to the administrators of WhatDoTheyKnow.com,
+        so they can decide whether to remove the request from there.</p>
+    </div>
+  <% end %>
+  <div class="field">
     <%= f.label :is_requestor_name_visible, :class => "checkbox" do
       f.check_box(:is_requestor_name_visible) + "Requestor name visible"
     end %>

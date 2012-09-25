@@ -30,3 +30,17 @@ body { width: 950px; margin-left: 20px; }
 
 .page-header { width: 100%; }
 table { clear: left; }
+
+.edit_request #reason_for_unpublishing_section {
+  display: none;
+  clear: both;
+  padding: 6px 12px;
+  background: #ccc;
+}
+.edit_request #reason_for_unpublishing_section p {
+  float: none;
+}
+
+.field {
+  clear: both;
+}

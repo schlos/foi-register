@@ -13,4 +13,13 @@ class RequestMailer < ActionMailer::Base
     @request = request
     mail(:to => @request.email_for_response)
   end
+  
+  def takedown_notification(request, explanation)
+    @remote_takedowns_to ||= MySociety::Config.get("ALAVETELI_ADMIN_EMAIL")
+    @remote_takedown_subject ||= MySociety::Config.get("ALAVETELI_TAKEDOWN_SUBJECT")
+    
+    @request = request
+    @explanation = explanation
+    mail(:to => @remote_takedowns_to, :subject => @remote_takedown_subject)
+  end
 end

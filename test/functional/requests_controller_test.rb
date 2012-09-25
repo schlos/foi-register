@@ -121,4 +121,40 @@ class RequestsControllerTest < ActionController::TestCase
 
     assert_redirected_to requests_path(:is_admin => "admin")
   end
+  
+  test "should require a reason when unpublishing" do
+    params = requests(:badgers).attributes
+    params["is_published"] = false
+
+    assert_raise(RuntimeError, "No reason_for_unpublishing given") do
+      put :update, :id => requests(:badgers), :request => params
+    end
+  end
+  
+  test "should not require a reason when not unpublishing" do
+    params = requests(:badgers).attributes
+    params["is_published"] = true
+
+    put :update, :id => requests(:badgers), :request => params
+  end
+  
+  test "should send a notification when unpublishing" do
+    params = requests(:badgers).attributes
+    params["is_published"] = false
+
+    ActionMailer::Base.deliveries = []
+    put :update, :id => requests(:badgers), :request => params, :reason_for_unpublishing => "Libellous"
+    
+    found_notification = false
+    expected_subject = MySociety::Config.get("ALAVETELI_TAKEDOWN_SUBJECT")
+    expected_recipient = MySociety::Config.get("ALAVETELI_ADMIN_EMAIL")
+    ActionMailer::Base.deliveries.each do |delivery|
+      if delivery.subject == expected_subject
+        found_notification = true
+        assert_equal delivery.to, [expected_recipient]
+        assert_match delivery.body, /Libellous/
+      end
+    end
+    assert found_notification
+  end
 end

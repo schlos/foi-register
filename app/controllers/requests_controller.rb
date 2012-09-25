@@ -216,10 +216,19 @@ class RequestsController < ApplicationController
   # PUT /requests/1
   # PUT /requests/1.json
   def update
-    @request = Request.find(params[:id])
+    @request = Request.find_by_id(params[:id])
+    is_published_remotely = !@request.remote_url.nil?
+    reason_for_unpublishing = params.delete(:reason_for_unpublishing)
 
     respond_to do |format|
       if @request.update_attributes(params[:request])
+        if is_published_remotely && !@request.is_published
+          if reason_for_unpublishing.nil? || reason_for_unpublishing.empty?
+            raise "No reason_for_unpublishing given"
+          end
+          RequestMailer.takedown_notification(@request, reason_for_unpublishing).deliver
+        end
+        
         format.html { redirect_to @request, :notice => 'Request was successfully updated.' }
         format.json { head :no_content }
       else

@@ -26,3 +26,7 @@ ALAVETELI_INITIAL_LAST_EVENT_ID: null
 PUSH_TO_ALAVETELI: false
 ALAVETELI_API_ENDPOINT: 'http://localhost:3001/api/v2'
 
+# Takedown notices will be sent to this address
+ALAVETELI_ADMIN_EMAIL: 'team@whatdotheyknow.com'
+# with this subject line
+ALAVETELI_TAKEDOWN_SUBJECT: 'Brighton & Hove City Council have hidden a request'
