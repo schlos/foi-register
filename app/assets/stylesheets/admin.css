@@ -7,7 +7,7 @@
  *= require_self
 */
 
-body { width: 950px; margin-left: 20px; }
+body { width: 950px; margin: auto; }
 
 .navbar-search .search-query { height: 25px; }
 
