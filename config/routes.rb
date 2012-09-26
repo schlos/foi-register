@@ -5,7 +5,11 @@ FoiRegister::Application.routes.draw do
   root :to => 'redirection#front'
   scope "(:is_admin)", :constraints => {:is_admin => /(admin)?/, :id => /\d+/} do
     resources :requests do
-      resources :responses
+      resources :responses do
+        member do
+          get 'letter', :constraints => {:format => "pdf"}
+        end
+      end
       collection do
         get 'overdue'
         get 'stats'

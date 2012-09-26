@@ -1,7 +1,9 @@
 # encoding: UTF-8
 
+require 'raw_template_handler'
+
 class ResponsesController < ApplicationController
-  skip_before_filter :require_login, :only => [:index, :show]
+  skip_before_filter :require_login, :only => [:index, :show, :letter]
 
   # GET /responses
   # GET /responses.json
@@ -89,6 +91,13 @@ class ResponsesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to request_responses_url(@response.request) }
       format.json { head :no_content }
+    end
+  end
+  
+  def letter
+    @response = Response.find(params[:id])
+    respond_to do |format|
+      format.pdf { @response }
     end
   end
 end

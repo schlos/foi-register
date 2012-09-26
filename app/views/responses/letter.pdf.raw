@@ -1,0 +1,9 @@
+require "prawn"
+
+pdf = Prawn::Document.new(:page_size => "A4", :page_layout => :portrait)
+
+pdf.text @response.public_part
+pdf.move_down 10
+pdf.text @response.private_part
+
+pdf.render
