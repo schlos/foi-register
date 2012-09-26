@@ -1,0 +1,34 @@
+/* 
+ * Brighton & Hove Specific Admin backend styles
+*/
+.navbar-inner{
+  background: url(../images/header.png) bottom left;
+  padding-top:70px;
+}
+.navbar-inner .brand{
+    visibility: hidden;
+}
+.navbar-inner .container .nav{
+  background: url(../images/h1_bg.png) bottom left no-repeat;
+  padding-left: 20px;
+  padding-right: 10px;
+  margin-bottom: -1px;
+}
+.navbar-inner .container .navbar-search .search-query {
+  background-color: #fff;
+  border-color: #e1dede;
+}
+.navbar-inner .container .navbar-search .search-query:focus {
+  background-color: #fff;
+}
+
+.navbar .nav > li > a{
+  color: #555;
+  text-shadow: none;
+}
+.navbar .nav > li > a:hover{
+  background-color: #14519c;
+}
+h1{
+  float: left;
+}
