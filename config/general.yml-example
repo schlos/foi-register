@@ -30,3 +30,9 @@ ALAVETELI_API_ENDPOINT: 'http://localhost:3001/api/v2'
 ALAVETELI_ADMIN_EMAIL: 'team@whatdotheyknow.com'
 # with this subject line
 ALAVETELI_TAKEDOWN_SUBJECT: 'Brighton & Hove City Council have hidden a request'
+
+# The API key for feed authentication
+# XXXX change this! You can generate a similar string randomly in Python as follows:
+#  >>> import base64, os
+#  >>> base64.urlsafe_b64encode(os.urandom(36))
+FEED_AUTH_TOKEN: 'Cruf0XD8ynn42YDmZ0_vzAWR5bhbuGlCcBUS7yJsMCMC1Auf'

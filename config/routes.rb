@@ -3,7 +3,7 @@ FoiRegister::Application.routes.draw do
   resources :attachments
 
   root :to => 'redirection#front'
-  scope "(:is_admin)", :constraints => {:is_admin => /(admin)?/} do
+  scope "(:is_admin)", :constraints => {:is_admin => /(admin)?/, :id => /\d+/} do
     resources :requests do
       resources :responses
       collection do
@@ -15,7 +15,6 @@ FoiRegister::Application.routes.draw do
       member do
         get 'new_response'
       end
-      resources :responses
     end
     resources :requestors
   end
@@ -27,11 +26,19 @@ FoiRegister::Application.routes.draw do
   # in your web server config.
   match "/admin/assets/*path.:ext" => redirect("/assets/%{path}.%{ext}")
 
+  # Admin-only routes
   scope "(:is_admin)", :constraints => {:is_admin => /(admin)/} do
     get "ajax/requestors"
     get "ajax/lgcs_terms"
     
-    post "requests/:id/update_state.json", :controller => :requests, :action => :update_state
+    resources :requests do
+      member do
+        post "update_state", :constraints => {:format => "json"}
+      end
+      collection do
+        get 'feed', :constraints => {:format => "atom"}
+      end
+    end
     
     resources :staff_members
     resources :sessions do

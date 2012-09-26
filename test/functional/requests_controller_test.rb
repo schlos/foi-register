@@ -157,4 +157,15 @@ class RequestsControllerTest < ActionController::TestCase
     end
     assert found_notification
   end
+  
+  test "should have an Atom feed of all requests" do
+    get :feed, :is_admin => "admin", :format => "atom", :k => MySociety::Config.get("FEED_AUTH_TOKEN")
+    assert_response :success
+    assert_equal "application/atom+xml; charset=utf-8", @response.headers['Content-Type']
+  end
+
+  test "should authenticate the Atom feed" do
+    get :feed, :is_admin => "admin", :format => "atom", :k => "this_is_not_the_correct_key"
+    assert_response :forbidden
+  end
 end

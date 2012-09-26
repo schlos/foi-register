@@ -3,7 +3,11 @@
 require 'will_paginate/array' # Extend Array with the paginate method, used in "search"
 
 class RequestsController < ApplicationController
-  skip_before_filter :require_login, :only => [:index, :show, :new, :create, :search, :search_typeahead]
+  skip_before_filter :require_login, :only => [
+    :index, :show, :new, :create, :search, :search_typeahead, :feed]
+  
+  # /admin/requests/feed.atom has its own authentication
+  skip_before_filter :require_login_based_on_url, :only => [:feed]
 
   # GET /requests
   # GET /requests.json
@@ -129,6 +133,20 @@ class RequestsController < ApplicationController
     respond_to do |format|
       format.html { render :action => self.is_admin_view? ? "admin_new" : "public_new" }
       format.json { render :json => @request }
+    end
+  end
+  
+  # GET /requests/feed
+  # GET /requests/feed.atom
+  def feed
+    if params[:k] != MySociety::Config.get("FEED_AUTH_TOKEN")
+      head :forbidden
+      return
+    end
+    
+    @requests = Request.all(:order => "created_at DESC")
+    respond_to do |format|
+      format.atom { render :layout => false } # feed.atom.builder
     end
   end
 

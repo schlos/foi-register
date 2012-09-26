@@ -29,3 +29,5 @@ ALAVETELI_INITIAL_LAST_EVENT_ID: null
 ALAVETELI_ADMIN_EMAIL: 'team@whatdotheyknow.com'
 # with this subject line
 ALAVETELI_TAKEDOWN_SUBJECT: 'Brighton & Hove City Council have hidden a request'
+
+FEED_AUTH_TOKEN: 'dummy_auth_token_for_testing_only'
