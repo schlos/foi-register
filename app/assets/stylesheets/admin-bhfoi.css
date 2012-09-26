@@ -2,14 +2,14 @@
  * Brighton & Hove Specific Admin backend styles
 */
 .navbar-inner{
-  background: url(../images/header.png) bottom left;
+  background: url(header.png) bottom left;
   padding-top:70px;
 }
 .navbar-inner .brand{
     visibility: hidden;
 }
 .navbar-inner .container .nav{
-  background: url(../images/h1_bg.png) bottom left no-repeat;
+  background: url(h1_bg.png) bottom left no-repeat;
   padding-left: 20px;
   padding-right: 10px;
   margin-bottom: -1px;

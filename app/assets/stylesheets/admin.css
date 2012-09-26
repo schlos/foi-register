@@ -4,6 +4,7 @@
  *= require jquery-ui
  *= require bootstrap
  *= require scaffolds
+ *= require admin-bhfoi
  *= require_self
 */
 
