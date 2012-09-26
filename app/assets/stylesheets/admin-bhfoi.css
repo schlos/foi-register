@@ -3,6 +3,7 @@
 */
 .navbar-inner{
   background: url(header.png) bottom left;
+  filter: none;
   padding-top:70px;
 }
 .navbar-inner .brand{
