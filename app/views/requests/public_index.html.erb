@@ -4,13 +4,31 @@
 
 <div class="request-list-meta">
     <p class="total-requests">
-        There have been <strong><%= Request.count %></strong> requests
+        <% if @total == 1 %>
+          There has been <strong><%= @total %></strong> request
+        <% else %>
+          There have been <strong><%= @total %></strong> requests
+        <% end %>
+        <% if @category %>
+          in<br><strong><%= @category.name %></strong>
+        <% end %>
     </p>
     <p class="requests-breakdown">
         <strong class="requests-inprogress"><%= Request.count_by_state(:in_progress) %></strong> are in progress<br>
         <strong class="requests-successful"><%= Request.count_by_state(:disclosed) %></strong> were successful<br>
         <strong class="requests-unsuccessful"><%= Request.count_by_state(:not_disclosed) %></strong> were unsuccessful
     </p>
+    <div class="category-chooser">
+      <strong>Browse by category</strong>
+      <form id="form-category-chooser">
+        <select name="category" id="form-category-chooser-category">
+          <option disabled selected>Choose a category…</option>
+          <% LgcsTerm.top_level_terms.each do |t| %>
+            <option value="<%= t.id %>"><%= t.name %></option>
+          <% end %>
+        </select>
+      </form>
+    </div>
     <%#p>
         <label for="request-filter">showing</label>:
         <select name="request-filter" id="request-filter">
@@ -47,6 +65,6 @@
   <% end %>
 </ol>
 
-<div class="pagination pagination-centered">
+<div class="pagination">
   <%= will_paginate(@requests, :renderer => PaginationListLinkRenderer) %>
 </div>

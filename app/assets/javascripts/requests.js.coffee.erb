@@ -113,3 +113,11 @@ $ ->
         $r_u.select()
         return false
       return true
+
+  # Category chooser
+  $("#form-category-chooser").submit () ->
+    return false
+  $("#form-category-chooser-category").change (e) ->
+    category_id = $("#form-category-chooser-category").val()
+    document.location.href = "/requests/category/" + category_id
+  

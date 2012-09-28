@@ -19,6 +19,7 @@
 #  state                     :string(255)      default("new"), not null
 #  nondisclosure_reason      :string(255)
 #  remote_email              :string(255)
+#  top_level_lgcs_term_id    :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
@@ -41,3 +42,4 @@ badgers:
     Seb
   is_published: YES
   remote_url: http://www.whatdotheyknow.com/request/badgers_xxx_not_really_xxx
+  lgcs_term: animal_control_985

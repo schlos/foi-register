@@ -15,18 +15,38 @@ class RequestsController < ApplicationController
     if is_admin_view?
       @requests = Request.paginate(:page => params[:page], :per_page => 100) \
         .order('coalesce(date_received, created_at) DESC')
+      @total = Request.count
     else
       @requests = Request.paginate(:page => params[:page], :per_page => 20) \
         .where(['is_published = ?', true]) \
         .order('coalesce(date_received, created_at) DESC')
+      @total = Request.where(['is_published = ?', true]).count
     end
     @badge = "all"
+    @category = nil
     
     respond_to do |format|
       format.html { render :action => self.is_admin_view? ? "admin_index" : "public_index" }
       format.json { render :json => @requests }
     end
-
+  end
+  
+  # GET /requests/category/:top_level_lgcs_term_id
+  def in_category
+    @category = LgcsTerm.find(params[:top_level_lgcs_term_id])
+    
+    @requests = Request.paginate(:page => params[:page], :per_page => 20) \
+      .where(['top_level_lgcs_term_id = ?', params[:top_level_lgcs_term_id]]) \
+      .where(['is_published = ?', true]) \
+      .order('coalesce(date_received, created_at) DESC')
+    @total = Request.where(['top_level_lgcs_term_id = ?', params[:top_level_lgcs_term_id]]) \
+      .where(['is_published = ?', true]) \
+      .count
+    
+    respond_to do |format|
+      format.html { render :action => "public_index" }
+      format.json { render :json => @requests }
+    end
   end
 
   # GET /requests/1

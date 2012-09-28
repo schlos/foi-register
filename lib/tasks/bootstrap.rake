@@ -36,6 +36,28 @@ def insert_lgcs_terms
     end
 end
 
+def create_lgcs_terms_yml
+  puts "Creating test/fixtures/lgcs_terms.yml..."
+  File.open("test/fixtures/lgcs_terms.yml", 'w') do |f|
+    tag_by_id = {}
+    
+    each_lgcs_item do |item|
+      tag = item[:name].downcase.gsub(/\W+/, '_') + "_" + item[:id].to_s
+      tag_by_id[item[:id]] = tag
+      
+      f.puts "#{tag}:"
+      f.puts "  name: '#{item[:name].gsub("'", "''")}'"
+      f.puts "  broader_term: #{tag_by_id[item[:broader_term_id]] || 'null'}"
+      if item[:notes].nil?
+        f.puts "  notes: null"
+      else
+        f.puts "  notes: '#{item[:notes].gsub("'", "''")}'"
+      end
+      f.puts
+    end
+  end
+end
+
 
 namespace :bootstrap do
   
@@ -61,4 +83,9 @@ namespace :bootstrap do
   
   desc "Add all terms, if not yet added"
   task :add => [:add_lgcs_terms]
+  
+  desc "Create test/fixtures/lgcs_terms.yml"
+  task :create_lgcs_terms_yml  => :environment do
+    create_lgcs_terms_yml
+  end
 end

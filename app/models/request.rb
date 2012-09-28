@@ -20,6 +20,7 @@
 #  state                     :string(255)      default("new"), not null
 #  nondisclosure_reason      :string(255)
 #  remote_email              :string(255)
+#  top_level_lgcs_term_id    :integer
 #
 
 class Request < ActiveRecord::Base
@@ -70,6 +71,7 @@ class Request < ActiveRecord::Base
   
   belongs_to :requestor
   belongs_to :lgcs_term
+  belongs_to :top_level_lgcs_term, :class_name => "LgcsTerm"
   validates_presence_of :title
   validates_presence_of :requestor
   validates_presence_of :body
@@ -213,5 +215,16 @@ class Request < ActiveRecord::Base
       end
   end
   handle_asynchronously :send_to_alaveteli
+  
+  def set_top_level_lgcs_term
+    if lgcs_term_id.nil?
+      self.top_level_lgcs_term_id = nil
+    else
+      t = lgcs_term
+      t = t.broader_term while !t.broader_term.nil?
+      self.top_level_lgcs_term_id = t.id
+    end
+  end
+  before_save :set_top_level_lgcs_term
   
 end

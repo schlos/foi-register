@@ -19,12 +19,26 @@
 #  state                     :string(255)      default("new"), not null
 #  nondisclosure_reason      :string(255)
 #  remote_email              :string(255)
+#  top_level_lgcs_term_id    :integer
 #
 
 require 'test_helper'
 
 class RequestTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "automatic assignment of top_level_lgcs_term" do
+    r = requests(:badgers)
+    
+    # Check that the values in the fixture are what we expect
+    assert_equal "Animal control", r.lgcs_term_name
+    assert_nil r.top_level_lgcs_term
+    
+    # Check that saving the term sets the top-level term correctly
+    r.save
+    assert_equal r.top_level_lgcs_term.name, "Consumer affairs"
+    
+    # Now test that unsetting the lgcs_term unsets the top-level term
+    r.lgcs_term = nil
+    r.save
+    assert_nil r.top_level_lgcs_term
+  end
 end

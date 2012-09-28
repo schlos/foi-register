@@ -1,0 +1,4110 @@
+adult_care_services_1:
+  name: 'Adult care services'
+  broader_term: null
+  notes: 'All matters relating to the help and support of adult individuals.'
+
+carers_2:
+  name: 'Carers'
+  broader_term: adult_care_services_1
+  notes: 'Information relating to carers.  Carer files would typically be organised by name and some form of identifier.'
+
+agency_provided_services_3:
+  name: 'Agency provided services'
+  broader_term: carers_2
+  notes: null
+
+assessment_4:
+  name: 'Assessment'
+  broader_term: carers_2
+  notes: null
+
+financial_support_5:
+  name: 'Financial support'
+  broader_term: carers_2
+  notes: null
+
+legal_6:
+  name: 'Legal'
+  broader_term: carers_2
+  notes: null
+
+licensing_7:
+  name: 'Licensing'
+  broader_term: carers_2
+  notes: null
+
+review_8:
+  name: 'Review'
+  broader_term: carers_2
+  notes: null
+
+residential_homes_9:
+  name: 'Residential homes'
+  broader_term: adult_care_services_1
+  notes: 'Information relating to residential homes.'
+
+operation_of_homes_10:
+  name: 'Operation of homes'
+  broader_term: residential_homes_9
+  notes: null
+
+registration_14:
+  name: 'Registration'
+  broader_term: residential_homes_9
+  notes: null
+
+social_issues_15:
+  name: 'Social issues'
+  broader_term: adult_care_services_1
+  notes: 'Information on general support for individuals with issues such as alcohol or drug abuse.'
+
+substance_misuse_16:
+  name: 'Substance misuse'
+  broader_term: social_issues_15
+  notes: 'Work to prevent and action to address drug misuse and related issues.'
+
+supporting_adults_17:
+  name: 'Supporting adults'
+  broader_term: adult_care_services_1
+  notes: 'Information relating to individual service users.'
+
+assessment_18:
+  name: 'Assessment'
+  broader_term: supporting_adults_17
+  notes: null
+
+catering_services_22:
+  name: 'Catering Services'
+  broader_term: supporting_adults_17
+  notes: 'Management of catering services within social care.'
+
+finance_and_commissioning_23:
+  name: 'Finance and commissioning'
+  broader_term: supporting_adults_17
+  notes: null
+
+grants_24:
+  name: 'Grants'
+  broader_term: supporting_adults_17
+  notes: null
+
+health_25:
+  name: 'Health'
+  broader_term: supporting_adults_17
+  notes: null
+
+legal_26:
+  name: 'Legal'
+  broader_term: supporting_adults_17
+  notes: null
+
+licensing_27:
+  name: 'Licensing'
+  broader_term: supporting_adults_17
+  notes: null
+
+looked_after_in_care_28:
+  name: 'Looked after in care'
+  broader_term: supporting_adults_17
+  notes: null
+
+mental_health_29:
+  name: 'Mental health'
+  broader_term: supporting_adults_17
+  notes: null
+
+occupational_therapy_30:
+  name: 'Occupational therapy'
+  broader_term: supporting_adults_17
+  notes: null
+
+referral_31:
+  name: 'Referral'
+  broader_term: supporting_adults_17
+  notes: null
+
+review_32:
+  name: 'Review'
+  broader_term: supporting_adults_17
+  notes: null
+
+supporting_disabilities_33:
+  name: 'Supporting disabilities'
+  broader_term: adult_care_services_1
+  notes: 'Information on general support for individuals with disabilities'
+
+deaf_34:
+  name: 'Deaf'
+  broader_term: supporting_disabilities_33
+  notes: 'Support for the deaf in communicating with those who can hear.'
+
+children_and_families_services_35:
+  name: 'Children and families services'
+  broader_term: null
+  notes: 'Child care, protection, fostering and family support.'
+
+adoption_and_fostering_36:
+  name: 'Adoption and fostering'
+  broader_term: children_and_families_services_35
+  notes: 'Adoption and fostering, information relating to the carer.'
+
+adoptive_parent_37:
+  name: 'Adoptive parent'
+  broader_term: adoption_and_fostering_36
+  notes: null
+
+assessment_38:
+  name: 'Assessment'
+  broader_term: adoption_and_fostering_36
+  notes: null
+
+financial_support_39:
+  name: 'Financial support'
+  broader_term: adoption_and_fostering_36
+  notes: null
+
+foster_carer_40:
+  name: 'Foster carer'
+  broader_term: adoption_and_fostering_36
+  notes: null
+
+legal_41:
+  name: 'Legal'
+  broader_term: adoption_and_fostering_36
+  notes: null
+
+licensing_42:
+  name: 'Licensing'
+  broader_term: adoption_and_fostering_36
+  notes: null
+
+review_43:
+  name: 'Review'
+  broader_term: adoption_and_fostering_36
+  notes: null
+
+child_protection_44:
+  name: 'Child protection'
+  broader_term: children_and_families_services_35
+  notes: 'Information on protecting children from harm.'
+
+case_assessment_45:
+  name: 'Case assessment'
+  broader_term: child_protection_44
+  notes: null
+
+registration_47:
+  name: 'Registration'
+  broader_term: child_protection_44
+  notes: null
+
+schedule_1_offenders_48:
+  name: 'Schedule 1 offenders'
+  broader_term: child_protection_44
+  notes: null
+
+children_looked_after_in_care_49:
+  name: 'Children looked after in care'
+  broader_term: children_and_families_services_35
+  notes: 'Information on children in care.'
+
+registration_50:
+  name: 'Registration'
+  broader_term: children_looked_after_in_care_49
+  notes: null
+
+communications_51:
+  name: 'Communications'
+  broader_term: children_and_families_services_35
+  notes: 'Communication on child services.'
+
+complaints_52:
+  name: 'Complaints'
+  broader_term: communications_51
+  notes: null
+
+programme_management_and_development_53:
+  name: 'Programme management and development'
+  broader_term: children_and_families_services_35
+  notes: 'Programme management and development of services for children and families'
+
+services_for_children_54:
+  name: 'Services for children'
+  broader_term: programme_management_and_development_53
+  notes: null
+
+supporting_children_55:
+  name: 'Supporting children'
+  broader_term: programme_management_and_development_53
+  notes: null
+
+supporting_young_persons_56:
+  name: 'Supporting young persons'
+  broader_term: programme_management_and_development_53
+  notes: null
+
+supporting_adults_57:
+  name: 'Supporting adults'
+  broader_term: programme_management_and_development_53
+  notes: null
+
+residential_homes_58:
+  name: 'Residential homes'
+  broader_term: children_and_families_services_35
+  notes: 'Information on residential homes for children.'
+
+operation_of_homes_59:
+  name: 'Operation of homes'
+  broader_term: residential_homes_58
+  notes: null
+
+registration_64:
+  name: 'Registration'
+  broader_term: residential_homes_58
+  notes: null
+
+social_issues_65:
+  name: 'Social issues'
+  broader_term: children_and_families_services_35
+  notes: 'Information on social issues.'
+
+substance_misuse_66:
+  name: 'Substance misuse'
+  broader_term: social_issues_65
+  notes: 'The use of drugs for non-medical purposes including drug abuse and addiction.'
+
+special_education_67:
+  name: 'Special education'
+  broader_term: children_and_families_services_35
+  notes: 'Information on special education services.'
+
+learning_support_68:
+  name: 'Learning support'
+  broader_term: special_education_67
+  notes: null
+
+supporting_children_69:
+  name: 'Supporting children'
+  broader_term: children_and_families_services_35
+  notes: 'Information on services provided for the benefit of individual children.'
+
+admission_appeals_70:
+  name: 'Admission appeals'
+  broader_term: supporting_children_69
+  notes: null
+
+adoption_process_71:
+  name: 'Adoption process'
+  broader_term: supporting_children_69
+  notes: null
+
+advice_72:
+  name: 'Advice'
+  broader_term: supporting_children_69
+  notes: null
+
+assessment_73:
+  name: 'Assessment'
+  broader_term: supporting_children_69
+  notes: null
+
+attendance_and_truancy_78:
+  name: 'Attendance and truancy'
+  broader_term: supporting_children_69
+  notes: null
+
+child_protection_79:
+  name: 'Child protection'
+  broader_term: supporting_children_69
+  notes: null
+
+children_s_rights_80:
+  name: 'Children’s rights'
+  broader_term: supporting_children_69
+  notes: null
+
+continuing_care_81:
+  name: 'Continuing care'
+  broader_term: supporting_children_69
+  notes: null
+
+educational_achievement_assessments_84:
+  name: 'Educational achievement assessments'
+  broader_term: supporting_children_69
+  notes: null
+
+educational_psychology_85:
+  name: 'Educational psychology'
+  broader_term: supporting_children_69
+  notes: null
+
+educational_welfare_86:
+  name: 'Educational welfare'
+  broader_term: supporting_children_69
+  notes: null
+
+finance_and_commissioning_87:
+  name: 'Finance and commissioning'
+  broader_term: supporting_children_69
+  notes: null
+
+financial_support_88:
+  name: 'Financial support'
+  broader_term: supporting_children_69
+  notes: null
+
+fostering_process_94:
+  name: 'Fostering Process'
+  broader_term: supporting_children_69
+  notes: null
+
+grants_95:
+  name: 'Grants'
+  broader_term: supporting_children_69
+  notes: null
+
+health_96:
+  name: 'Health'
+  broader_term: supporting_children_69
+  notes: null
+
+hospital_and_home_tuition_97:
+  name: 'Hospital and home tuition'
+  broader_term: supporting_children_69
+  notes: null
+
+legal_98:
+  name: 'Legal'
+  broader_term: supporting_children_69
+  notes: null
+
+licensing_99:
+  name: 'Licensing'
+  broader_term: supporting_children_69
+  notes: null
+
+looked_after_in_care_100:
+  name: 'Looked after in care'
+  broader_term: supporting_children_69
+  notes: null
+
+referral_101:
+  name: 'Referral'
+  broader_term: supporting_children_69
+  notes: null
+
+review_102:
+  name: 'Review'
+  broader_term: supporting_children_69
+  notes: null
+
+school_exclusions_103:
+  name: 'School exclusions'
+  broader_term: supporting_children_69
+  notes: null
+
+special_educational_needs_104:
+  name: 'Special educational needs'
+  broader_term: supporting_children_69
+  notes: null
+
+supporting_disabilities_105:
+  name: 'Supporting disabilities'
+  broader_term: children_and_families_services_35
+  notes: 'Information on general support for individuals with disabilities'
+
+deaf_106:
+  name: 'Deaf'
+  broader_term: supporting_disabilities_105
+  notes: 'Supporting communication for the deaf.'
+
+training_107:
+  name: 'Training'
+  broader_term: children_and_families_services_35
+  notes: 'Training provided to individuals working with children,'
+
+support_training_108:
+  name: 'Support training'
+  broader_term: training_107
+  notes: null
+
+youth_justice_109:
+  name: 'Youth justice'
+  broader_term: children_and_families_services_35
+  notes: 'Youth justice.'
+
+case_management_110:
+  name: 'Case management'
+  broader_term: youth_justice_109
+  notes: null
+
+youth_services_111:
+  name: 'Youth services'
+  broader_term: children_and_families_services_35
+  notes: 'Youth services.'
+
+youth_service_provision_112:
+  name: 'Youth service provision'
+  broader_term: youth_services_111
+  notes: null
+
+community_safety_and_emergencies_113:
+  name: 'Community safety and emergencies'
+  broader_term: null
+  notes: 'The management of fire and emergency services to Council and council property.'
+
+advice_114:
+  name: 'Advice'
+  broader_term: community_safety_and_emergencies_113
+  notes: 'Advice supplied to the public on community safety and emergencies.'
+
+contingency_planning_115:
+  name: 'Contingency planning'
+  broader_term: advice_114
+  notes: null
+
+fire_safety_planning_116:
+  name: 'Fire safety planning'
+  broader_term: advice_114
+  notes: 'Activities relating to the provision of Fire Safety services.'
+
+community_safety_117:
+  name: 'Community safety'
+  broader_term: community_safety_and_emergencies_113
+  notes: 'Activities to make the community safer.'
+
+cctv_surveillance_118:
+  name: 'CCTV surveillance'
+  broader_term: community_safety_117
+  notes: 'CCTV related information.'
+
+crime_reduction_119:
+  name: 'Crime reduction'
+  broader_term: community_safety_117
+  notes: 'Activities designed to reduce the impact and fear of crime.'
+
+emergency_planning_120:
+  name: 'Emergency planning'
+  broader_term: community_safety_and_emergencies_113
+  notes: 'Information on emergency planning.'
+
+emergency_agencies_121:
+  name: 'Emergency agencies'
+  broader_term: emergency_planning_120
+  notes: null
+
+emergency_call_outs_122:
+  name: 'Emergency call-outs'
+  broader_term: emergency_planning_120
+  notes: 'List of council contact numbers to use in the case of any emergency or major incidents.'
+
+emergency_calls_999_123:
+  name: 'Emergency calls - 999'
+  broader_term: emergency_planning_120
+  notes: 'Process around receipt and despatch of emergency vehicles.'
+
+emergency_plan_124:
+  name: 'Emergency plan'
+  broader_term: emergency_planning_120
+  notes: null
+
+emergency_warnings_126:
+  name: 'Emergency warnings'
+  broader_term: emergency_planning_120
+  notes: 'Weather, security, incident warnings etc. made to the public.'
+
+emergency_service_127:
+  name: 'Emergency service'
+  broader_term: community_safety_and_emergencies_113
+  notes: 'Information on activities related to the emergency services.'
+
+notifications_128:
+  name: 'Notifications'
+  broader_term: emergency_service_127
+  notes: null
+
+special_service_provision_129:
+  name: 'Special service provision'
+  broader_term: emergency_service_127
+  notes: 'Saving cats from trees, unlocking doors, car accidents etc.'
+
+enforcement_130:
+  name: 'Enforcement'
+  broader_term: community_safety_and_emergencies_113
+  notes: 'Enforcement of safety legislation.'
+
+fire_safety_legislation_131:
+  name: 'Fire safety legislation'
+  broader_term: enforcement_130
+  notes: null
+
+fire_prevention_133:
+  name: 'Fire prevention'
+  broader_term: community_safety_and_emergencies_113
+  notes: 'Activities to prevent fires occurring.'
+
+fire_certification_134:
+  name: 'Fire certification'
+  broader_term: fire_prevention_133
+  notes: null
+
+fire_hydrants_inspections_135:
+  name: 'Fire hydrants inspections'
+  broader_term: fire_prevention_133
+  notes: null
+
+fire_safety_136:
+  name: 'Fire safety'
+  broader_term: fire_prevention_133
+  notes: null
+
+fire_safety_inspections_137:
+  name: 'Fire safety inspections'
+  broader_term: fire_prevention_133
+  notes: null
+
+incident_monitoring_138:
+  name: 'Incident monitoring'
+  broader_term: fire_prevention_133
+  notes: null
+
+inspections_140:
+  name: 'Inspections'
+  broader_term: fire_prevention_133
+  notes: null
+
+investigations_141:
+  name: 'Investigations'
+  broader_term: fire_prevention_133
+  notes: 'Fire safety investigations records.'
+
+training_142:
+  name: 'Training'
+  broader_term: community_safety_and_emergencies_113
+  notes: 'Training on how to deal with major incidents.'
+
+training_exercises_143:
+  name: 'Training exercises'
+  broader_term: training_142
+  notes: null
+
+consumer_affairs_144:
+  name: 'Consumer affairs'
+  broader_term: null
+  notes: 'Documentation created out as part of the trading standards or environmental health function.  Cases may be organised by a simple unique numbering sequence such as the company registration number.'
+
+advice_145:
+  name: 'Advice'
+  broader_term: consumer_affairs_144
+  notes: null
+
+campaigns_146:
+  name: 'Campaigns'
+  broader_term: advice_145
+  notes: 'Information relating to campaigns within consumer affairs.'
+
+enforcement_147:
+  name: 'Enforcement'
+  broader_term: consumer_affairs_144
+  notes: 'Enforcement of trading standards.'
+
+prosecution_of_offences_148:
+  name: 'Prosecution of offences'
+  broader_term: enforcement_147
+  notes: null
+
+investigation_inspections_and_monitoring_152:
+  name: 'Investigation, inspections and monitoring'
+  broader_term: consumer_affairs_144
+  notes: null
+
+inspections_153:
+  name: 'Inspections'
+  broader_term: investigation_inspections_and_monitoring_152
+  notes: null
+
+investigations_155:
+  name: 'Investigations'
+  broader_term: investigation_inspections_and_monitoring_152
+  notes: null
+
+monitoring_157:
+  name: 'Monitoring'
+  broader_term: investigation_inspections_and_monitoring_152
+  notes: null
+
+registration_certification_and_licensing_174:
+  name: 'Registration, certification and licensing'
+  broader_term: consumer_affairs_144
+  notes: 'Consolidated listing of licensed activities requiring a register within the local authority.'
+
+entertainment_and_drinks_175:
+  name: 'Entertainment and drinks'
+  broader_term: registration_certification_and_licensing_174
+  notes: null
+
+food_premises_176:
+  name: 'Food premises'
+  broader_term: registration_certification_and_licensing_174
+  notes: null
+
+licence_premises_177:
+  name: 'Licence premises'
+  broader_term: registration_certification_and_licensing_174
+  notes: null
+
+licensing_178:
+  name: 'Licensing'
+  broader_term: registration_certification_and_licensing_174
+  notes: null
+
+sex_establishments_221:
+  name: 'Sex establishments'
+  broader_term: registration_certification_and_licensing_174
+  notes: null
+
+council_property_222:
+  name: 'Council property'
+  broader_term: null
+  notes: 'General documentation of council buildings.'
+
+maintenance_of_council_property_223:
+  name: 'Maintenance of council property'
+  broader_term: council_property_222
+  notes: 'Maintenance records - typically organised by property'
+
+maintenance_224:
+  name: 'Maintenance'
+  broader_term: maintenance_of_council_property_223
+  notes: null
+
+planned_maintenance_225:
+  name: 'Planned maintenance'
+  broader_term: maintenance_of_council_property_223
+  notes: null
+
+refurbishment_226:
+  name: 'Refurbishment'
+  broader_term: maintenance_of_council_property_223
+  notes: null
+
+responsive_maintenance_227:
+  name: 'Responsive maintenance'
+  broader_term: maintenance_of_council_property_223
+  notes: null
+
+property_acquisition_and_disposal_228:
+  name: 'Property acquisition and disposal'
+  broader_term: council_property_222
+  notes: 'Information on the acquisition and disposal of property.'
+
+acquisitions_229:
+  name: 'Acquisitions'
+  broader_term: property_acquisition_and_disposal_228
+  notes: null
+
+deeds_231:
+  name: 'Deeds'
+  broader_term: property_acquisition_and_disposal_228
+  notes: null
+
+disposal_232:
+  name: 'Disposal'
+  broader_term: property_acquisition_and_disposal_228
+  notes: null
+
+property_and_land_management_235:
+  name: 'Property and land management'
+  broader_term: council_property_222
+  notes: 'Management of Council land and property.'
+
+accessibility_236:
+  name: 'Accessibility'
+  broader_term: property_and_land_management_235
+  notes: null
+
+building_surveys_237:
+  name: 'Building surveys'
+  broader_term: property_and_land_management_235
+  notes: null
+
+certification_238:
+  name: 'Certification'
+  broader_term: property_and_land_management_235
+  notes: null
+
+distribution_and_allocation_of_properties_239:
+  name: 'Distribution and allocation of properties'
+  broader_term: property_and_land_management_235
+  notes: 'Documentation relating to the distribution of council property.'
+
+energy_management_240:
+  name: 'Energy management'
+  broader_term: property_and_land_management_235
+  notes: null
+
+equipment_disposal_242:
+  name: 'Equipment disposal'
+  broader_term: property_and_land_management_235
+  notes: 'Process involved in the disposal of council equipment.'
+
+facilities_management_243:
+  name: 'Facilities management'
+  broader_term: property_and_land_management_235
+  notes: 'Process involved in the management of council facilities.'
+
+farm_management_244:
+  name: 'Farm management'
+  broader_term: property_and_land_management_235
+  notes: 'Documentation concerned with farm management.'
+
+feasibility_245:
+  name: 'Feasibility'
+  broader_term: property_and_land_management_235
+  notes: null
+
+fleet_management_246:
+  name: 'Fleet management'
+  broader_term: property_and_land_management_235
+  notes: null
+
+health_and_safety_250:
+  name: 'Health and safety'
+  broader_term: property_and_land_management_235
+  notes: null
+
+internal_agreements_251:
+  name: 'Internal agreements'
+  broader_term: property_and_land_management_235
+  notes: null
+
+land_and_property_history_252:
+  name: 'Land and property history'
+  broader_term: property_and_land_management_235
+  notes: null
+
+leasing_253:
+  name: 'Leasing'
+  broader_term: property_and_land_management_235
+  notes: null
+
+management_255:
+  name: 'Management'
+  broader_term: property_and_land_management_235
+  notes: null
+
+maps_and_directions_257:
+  name: 'Maps and directions'
+  broader_term: property_and_land_management_235
+  notes: null
+
+property_services_258:
+  name: 'Property services'
+  broader_term: property_and_land_management_235
+  notes: null
+
+property_strategy_259:
+  name: 'Property strategy'
+  broader_term: property_and_land_management_235
+  notes: null
+
+replacement_programme_260:
+  name: 'Replacement programme'
+  broader_term: property_and_land_management_235
+  notes: 'Documentation associated with replacement programmes.'
+
+scheduling_261:
+  name: 'Scheduling'
+  broader_term: property_and_land_management_235
+  notes: null
+
+security_262:
+  name: 'Security'
+  broader_term: property_and_land_management_235
+  notes: null
+
+usage_statistics_263:
+  name: 'Usage statistics'
+  broader_term: property_and_land_management_235
+  notes: null
+
+valuations_264:
+  name: 'Valuations'
+  broader_term: property_and_land_management_235
+  notes: null
+
+property_use_and_development_265:
+  name: 'Property use and development'
+  broader_term: council_property_222
+  notes: 'Information on how the property was developed and how it is being used.'
+
+car_parking_266:
+  name: 'Car parking'
+  broader_term: property_use_and_development_265
+  notes: null
+
+design_and_construction_267:
+  name: 'Design and construction'
+  broader_term: property_use_and_development_265
+  notes: null
+
+traveller_sites_268:
+  name: 'Traveller sites'
+  broader_term: property_use_and_development_265
+  notes: null
+
+warehousing_and_storage_269:
+  name: 'Warehousing and storage'
+  broader_term: property_use_and_development_265
+  notes: 'Process documentation concerning warehouse storage.'
+
+crematoria_and_cemeteries_270:
+  name: 'Crematoria and cemeteries'
+  broader_term: null
+  notes: 'Information dealing with cemeteries, redundant churchyards and crematoria.'
+
+maintenance_of_burial_grounds_271:
+  name: 'Maintenance of burial grounds'
+  broader_term: crematoria_and_cemeteries_270
+  notes: 'Maintenance records for burial grounds.'
+
+planned_maintenance_272:
+  name: 'Planned Maintenance'
+  broader_term: maintenance_of_burial_grounds_271
+  notes: null
+
+redundant_churchyards_273:
+  name: 'Redundant Churchyards'
+  broader_term: maintenance_of_burial_grounds_271
+  notes: null
+
+responsive_maintenance_274:
+  name: 'Responsive Maintenance'
+  broader_term: maintenance_of_burial_grounds_271
+  notes: null
+
+burial_identity_and_location_275:
+  name: 'Burial identity and location'
+  broader_term: crematoria_and_cemeteries_270
+  notes: 'The location of burials and identity of who has been buried.'
+
+registration_276:
+  name: 'Registration'
+  broader_term: burial_identity_and_location_275
+  notes: null
+
+bookings_278:
+  name: 'Bookings'
+  broader_term: burial_identity_and_location_275
+  notes: null
+
+exhumations_279:
+  name: 'Exhumations'
+  broader_term: burial_identity_and_location_275
+  notes: null
+
+interment_service_280:
+  name: 'Interment Service'
+  broader_term: burial_identity_and_location_275
+  notes: null
+
+licensing_281:
+  name: 'Licensing'
+  broader_term: burial_identity_and_location_275
+  notes: null
+
+memorial_management_282:
+  name: 'Memorial management'
+  broader_term: burial_identity_and_location_275
+  notes: 'Records relating to the ordering of a memorial.'
+
+democracy_283:
+  name: 'Democracy'
+  broader_term: null
+  notes: 'Management of democratic activities including elections, assembly and committee meetings.'
+
+decision_making_284:
+  name: 'Decision making'
+  broader_term: democracy_283
+  notes: 'Information on decisions taken.'
+
+council_and_committee_meetings_285:
+  name: 'Council and committee meetings'
+  broader_term: decision_making_284
+  notes: null
+
+delegations_287:
+  name: 'Delegations'
+  broader_term: decision_making_284
+  notes: 'The process of delegating power to authorise an action and the seeking and granting permission to undertake a requested action.'
+
+independent_remuneration_panel_288:
+  name: 'Independent Remuneration Panel'
+  broader_term: decision_making_284
+  notes: 'Documentation relating to the Independent Remuneration Panel'
+
+meeting_cabinet_289:
+  name: 'Meeting - cabinet'
+  broader_term: decision_making_284
+  notes: null
+
+member_panels_290:
+  name: 'Member panels'
+  broader_term: decision_making_284
+  notes: null
+
+referenda_291:
+  name: 'Referenda'
+  broader_term: decision_making_284
+  notes: 'Management of democratic activities including elections, assembly and committee meetings.'
+
+scrutiny_panel_292:
+  name: 'Scrutiny Panel'
+  broader_term: decision_making_284
+  notes: null
+
+executive_293:
+  name: 'Executive'
+  broader_term: democracy_283
+  notes: 'Information on the Council executive.'
+
+statutory_appointments_294:
+  name: 'Statutory appointments'
+  broader_term: executive_293
+  notes: null
+
+governance_296:
+  name: 'Governance'
+  broader_term: democracy_283
+  notes: 'Information on how the Council is governed.'
+
+constitution_297:
+  name: 'Constitution'
+  broader_term: governance_296
+  notes: null
+
+honours_and_awards_298:
+  name: 'Honours and awards'
+  broader_term: democracy_283
+  notes: 'Honours and awards.'
+
+honours_submissions_299:
+  name: 'Honours submissions'
+  broader_term: honours_and_awards_298
+  notes: null
+
+lord_lieutenancy_300:
+  name: 'Lord lieutenancy'
+  broader_term: honours_and_awards_298
+  notes: 'Documentation relating to Lord Lieutenancy.'
+
+member_support_301:
+  name: 'Member support'
+  broader_term: democracy_283
+  notes: 'Support to council members.'
+
+gifts_and_hospitality_302:
+  name: 'Gifts and hospitality'
+  broader_term: member_support_301
+  notes: null
+
+register_of_interests_303:
+  name: 'Register of Interests'
+  broader_term: member_support_301
+  notes: null
+
+planning_304:
+  name: 'Planning'
+  broader_term: democracy_283
+  notes: 'Council plans.'
+
+cross_departmental_consideration_305:
+  name: 'Cross departmental consideration'
+  broader_term: planning_304
+  notes: null
+
+forward_plan_306:
+  name: 'Forward Plan'
+  broader_term: planning_304
+  notes: null
+
+strategic_plan_307:
+  name: 'Strategic Plan'
+  broader_term: planning_304
+  notes: null
+
+representation_309:
+  name: 'Representation'
+  broader_term: democracy_283
+  notes: 'Information on representation.'
+
+constituencies_310:
+  name: 'Constituencies'
+  broader_term: representation_309
+  notes: 'Ward names, numbers and boundaries.'
+
+elections_311:
+  name: 'Elections'
+  broader_term: representation_309
+  notes: null
+
+emparishment_317:
+  name: 'Emparishment'
+  broader_term: representation_309
+  notes: 'The process in creating a new civil parish council.'
+
+lists_of_councillors_318:
+  name: 'Lists of councillors'
+  broader_term: representation_309
+  notes: null
+
+lists_of_meetings_319:
+  name: 'Lists of meetings'
+  broader_term: representation_309
+  notes: 'List of meetings of Council and committees.'
+
+nominations_320:
+  name: 'Nominations'
+  broader_term: representation_309
+  notes: 'Listing of members and others representing the council on external bodies. Official delegation to represent councils'' interests. Includes membership of other bodies.'
+
+political_parties_papers_321:
+  name: 'Political parties’ papers'
+  broader_term: representation_309
+  notes: null
+
+economic_development_322:
+  name: 'Economic development'
+  broader_term: null
+  notes: 'Management of activities to promote and examine the local economy.'
+
+business_intelligence_323:
+  name: 'Business intelligence'
+  broader_term: economic_development_322
+  notes: 'Information relating to businesses in the local area'
+
+business_listing_324:
+  name: 'Business listing'
+  broader_term: business_intelligence_323
+  notes: null
+
+european_development_325:
+  name: 'European development'
+  broader_term: business_intelligence_323
+  notes: 'Information collected regarding European funding.'
+
+marketing_326:
+  name: 'Marketing'
+  broader_term: business_intelligence_323
+  notes: null
+
+promotion_327:
+  name: 'Promotion'
+  broader_term: economic_development_322
+  notes: 'Management of activities to promote and examine the local economy.'
+
+business_awards_328:
+  name: 'Business awards'
+  broader_term: promotion_327
+  notes: null
+
+business_development_329:
+  name: 'Business development'
+  broader_term: promotion_327
+  notes: null
+
+film_and_television_development_331:
+  name: 'Film and television development'
+  broader_term: promotion_327
+  notes: 'To promote area as a location and centre of excellence for the film and broadcasting industries.'
+
+international_relations_332:
+  name: 'International relations'
+  broader_term: promotion_327
+  notes: null
+
+voluntary_sector_development_333:
+  name: 'Voluntary sector development'
+  broader_term: promotion_327
+  notes: 'The information relating to the encouragement of the voluntary sector activity.'
+
+regeneration_334:
+  name: 'Regeneration'
+  broader_term: economic_development_322
+  notes: 'Regeneration of local communities and regions.'
+
+community_development_335:
+  name: 'Community development'
+  broader_term: regeneration_334
+  notes: 'Information relating to revitalising a specific area or community.'
+
+regional_development_336:
+  name: 'Regional development'
+  broader_term: regeneration_334
+  notes: 'Participation in regional activities.'
+
+rural_development_337:
+  name: 'Rural development'
+  broader_term: regeneration_334
+  notes: 'Information relating to reducing disadvantage and increasing access in rural areas.'
+
+strategy_338:
+  name: 'Strategy'
+  broader_term: regeneration_334
+  notes: 'Information relating to revitalising a specific area or community.'
+
+town_centre_management_339:
+  name: 'Town centre management'
+  broader_term: regeneration_334
+  notes: 'Information relating to the management of business community in the town centres.'
+
+sustainability_340:
+  name: 'Sustainability'
+  broader_term: economic_development_322
+  notes: 'Information about sustainability.'
+
+sustainable_development_341:
+  name: 'Sustainable development'
+  broader_term: sustainability_340
+  notes: 'Information and documentation looking at sustainable development.'
+
+tourism_342:
+  name: 'Tourism'
+  broader_term: economic_development_322
+  notes: 'Information relating to tourism.'
+
+tourism_development_343:
+  name: 'Tourism development'
+  broader_term: tourism_342
+  notes: 'The information relating to the development of tourism.'
+
+training_344:
+  name: 'Training'
+  broader_term: economic_development_322
+  notes: 'Information on training to support economic growth.'
+
+workforce_support_345:
+  name: 'Workforce support'
+  broader_term: training_344
+  notes: 'Information about activities to support continued employment in the area.'
+
+education_and_skills_346:
+  name: 'Education and skills'
+  broader_term: null
+  notes: 'Activities relating to the provision and support for education and learning.'
+
+access_and_inclusion_347:
+  name: 'Access and inclusion'
+  broader_term: education_and_skills_346
+  notes: 'Activities relating to educational access and inclusion.'
+
+project_management_348:
+  name: 'Project management'
+  broader_term: access_and_inclusion_347
+  notes: 'Educational access and inclusion related projects.'
+
+traveller_sites_349:
+  name: 'Traveller sites'
+  broader_term: access_and_inclusion_347
+  notes: null
+
+admissions_and_exclusions_350:
+  name: 'Admissions and exclusions'
+  broader_term: education_and_skills_346
+  notes: 'Information on school admissions and exclusions.'
+
+appeals_351:
+  name: 'Appeals'
+  broader_term: admissions_and_exclusions_350
+  notes: null
+
+parental_choice_352:
+  name: 'Parental choice'
+  broader_term: admissions_and_exclusions_350
+  notes: null
+
+advice_354:
+  name: 'Advice'
+  broader_term: education_and_skills_346
+  notes: 'Process in providing advice on education.'
+
+advisory_services_355:
+  name: 'Advisory services'
+  broader_term: advice_354
+  notes: 'Documentation on the different advisory services provided regarding education and skills.'
+
+arts_services_356:
+  name: 'Arts services'
+  broader_term: education_and_skills_346
+  notes: 'Information on education relating to the arts.'
+
+field_centres_357:
+  name: 'Field centres'
+  broader_term: arts_services_356
+  notes: null
+
+music_services_358:
+  name: 'Music services'
+  broader_term: arts_services_356
+  notes: null
+
+provision_in_schools_359:
+  name: 'Provision in schools'
+  broader_term: arts_services_356
+  notes: null
+
+performances_360:
+  name: 'Performances'
+  broader_term: arts_services_356
+  notes: null
+
+curriculum_development_361:
+  name: 'Curriculum development'
+  broader_term: education_and_skills_346
+  notes: 'Information about developing the curriculum.'
+
+international_projects_362:
+  name: 'International projects'
+  broader_term: curriculum_development_361
+  notes: 'Information on international projects.'
+
+national_curriculum_363:
+  name: 'National curriculum'
+  broader_term: curriculum_development_361
+  notes: null
+
+out_of_schools_projects_364:
+  name: 'Out of schools projects'
+  broader_term: curriculum_development_361
+  notes: null
+
+outdoor_education_365:
+  name: 'Outdoor education'
+  broader_term: curriculum_development_361
+  notes: 'Documentation on the countryside with regards to outdoor education.'
+
+schools_curricula_366:
+  name: 'Schools curricula'
+  broader_term: curriculum_development_361
+  notes: null
+
+education_welfare_367:
+  name: 'Education welfare'
+  broader_term: education_and_skills_346
+  notes: 'Information on education welfare.'
+
+attendance_and_truancy_368:
+  name: 'Attendance and Truancy'
+  broader_term: education_welfare_367
+  notes: 'Data collected by student services on behaviour and attendance.'
+
+student_welfare_service_369:
+  name: 'Student welfare service'
+  broader_term: education_welfare_367
+  notes: 'Documentation regarding student services and the support they provide.'
+
+employment_skills_370:
+  name: 'Employment skills'
+  broader_term: education_and_skills_346
+  notes: 'Information on providing job skills.'
+
+careers_advice_371:
+  name: 'Careers advice'
+  broader_term: employment_skills_370
+  notes: 'The provision of careers advice.'
+
+workplace_training_372:
+  name: 'Workplace training'
+  broader_term: employment_skills_370
+  notes: 'The process of developing the workforce skill.'
+
+life_long_learning_373:
+  name: 'Life long learning'
+  broader_term: education_and_skills_346
+  notes: 'Learning for all ages.'
+
+adult_and_community_services_374:
+  name: 'Adult and community services'
+  broader_term: life_long_learning_373
+  notes: 'Learning for all ages including non school, college or university settings.'
+
+basic_skills_development_375:
+  name: 'Basic skills development'
+  broader_term: life_long_learning_373
+  notes: null
+
+management_of_schools_377:
+  name: 'Management of schools'
+  broader_term: education_and_skills_346
+  notes: 'General information and data held about individual schools.   Case files are typically organised by school.'
+
+admissions_378:
+  name: 'Admissions'
+  broader_term: management_of_schools_377
+  notes: null
+
+emergency_contacts_379:
+  name: 'Emergency contacts'
+  broader_term: management_of_schools_377
+  notes: null
+
+general_information_380:
+  name: 'General information'
+  broader_term: management_of_schools_377
+  notes: null
+
+governing_bodies_381:
+  name: 'Governing bodies'
+  broader_term: management_of_schools_377
+  notes: null
+
+governor_contacts_383:
+  name: 'Governor contacts'
+  broader_term: management_of_schools_377
+  notes: null
+
+inspections_384:
+  name: 'Inspections'
+  broader_term: management_of_schools_377
+  notes: null
+
+performance_385:
+  name: 'Performance'
+  broader_term: management_of_schools_377
+  notes: null
+
+plans_and_policies_386:
+  name: 'Plans and policies'
+  broader_term: management_of_schools_377
+  notes: null
+
+teaching_387:
+  name: 'Teaching'
+  broader_term: education_and_skills_346
+  notes: 'Documentation relating to teaching staff and there development programs.'
+
+teacher_development_388:
+  name: 'Teacher development'
+  broader_term: teaching_387
+  notes: 'Activities relating to the provision and support for education and learning.'
+
+environmental_protection_389:
+  name: 'Environmental protection'
+  broader_term: null
+  notes: 'General information on environmental protection.'
+
+advice_390:
+  name: 'Advice'
+  broader_term: environmental_protection_389
+  notes: 'Documentation relating to advice given.'
+
+biodiversity_391:
+  name: 'Biodiversity'
+  broader_term: advice_390
+  notes: null
+
+campaigns_392:
+  name: 'Campaigns'
+  broader_term: advice_390
+  notes: null
+
+conservation_393:
+  name: 'Conservation'
+  broader_term: environmental_protection_389
+  notes: 'Information about conservation.'
+
+countryside_conservation_394:
+  name: 'Countryside conservation'
+  broader_term: conservation_393
+  notes: null
+
+forest_management_395:
+  name: 'Forest management'
+  broader_term: conservation_393
+  notes: null
+
+heritage_conservation_396:
+  name: 'Heritage conservation'
+  broader_term: conservation_393
+  notes: null
+
+nature_conservation_397:
+  name: 'Nature conservation'
+  broader_term: conservation_393
+  notes: null
+
+urban_conservation_398:
+  name: 'Urban conservation'
+  broader_term: conservation_393
+  notes: null
+
+woodland_management_399:
+  name: 'Woodland management'
+  broader_term: conservation_393
+  notes: null
+
+monitoring_400:
+  name: 'Monitoring'
+  broader_term: environmental_protection_389
+  notes: 'Information on monitoring the environment.'
+
+coastal_erosion_401:
+  name: 'Coastal erosion'
+  broader_term: monitoring_400
+  notes: null
+
+environmental_impact_assessment_402:
+  name: 'Environmental impact assessment'
+  broader_term: monitoring_400
+  notes: null
+
+environmentally_sensitive_areas_403:
+  name: 'Environmentally sensitive areas'
+  broader_term: monitoring_400
+  notes: null
+
+finance_404:
+  name: 'Finance'
+  broader_term: null
+  notes: 'The management of financial resources by the council.'
+
+accounts_and_audit_405:
+  name: 'Accounts and audit'
+  broader_term: finance_404
+  notes: 'Information related to accounting and auditing.'
+
+internal_auditing_406:
+  name: 'Internal auditing'
+  broader_term: accounts_and_audit_405
+  notes: 'Activities relating to internal or external auditing of the authority.'
+
+reporting_407:
+  name: 'Reporting'
+  broader_term: accounts_and_audit_405
+  notes: null
+
+asset_management_409:
+  name: 'Asset management'
+  broader_term: finance_404
+  notes: 'Management of financial assets.'
+
+maintaining_assets_410:
+  name: 'Maintaining assets'
+  broader_term: asset_management_409
+  notes: null
+
+financial_provisions_management_416:
+  name: 'Financial provisions management'
+  broader_term: finance_404
+  notes: 'Information on managing the finances of the authority.'
+
+borrowing_417:
+  name: 'Borrowing'
+  broader_term: financial_provisions_management_416
+  notes: null
+
+budget_419:
+  name: 'Budget'
+  broader_term: financial_provisions_management_416
+  notes: null
+
+credit_union_management_422:
+  name: 'Credit union management'
+  broader_term: financial_provisions_management_416
+  notes: 'Activities involved in credit union management.'
+
+debt_management_423:
+  name: 'Debt management'
+  broader_term: financial_provisions_management_416
+  notes: 'Activities involved in managing the debts owed to the council.'
+
+donations_424:
+  name: 'Donations'
+  broader_term: financial_provisions_management_416
+  notes: 'Activities involved in the administration of donations to the authority. For administration of grant funding, see Funding bids.'
+
+funding_bids_425:
+  name: 'Funding bids'
+  broader_term: financial_provisions_management_416
+  notes: 'Activities relating to applications by the authority for grant funding by external bodies. For applications to the authority for funding, see Funding applications.'
+
+strategy_and_planning_426:
+  name: 'Strategy and planning'
+  broader_term: financial_provisions_management_416
+  notes: 'Activities involved in the long term planning of the authority''s financial management. Includes the financial forecast. For annual budget planning, see Budget.'
+
+financial_transactions_management_427:
+  name: 'Financial transactions management'
+  broader_term: finance_404
+  notes: 'Information on financial transactions.'
+
+authorisation_428:
+  name: 'Authorisation'
+  broader_term: financial_transactions_management_427
+  notes: 'Activities involved in delegating authority for carrying out financial activities on behalf of the authority.'
+
+expenditure_429:
+  name: 'Expenditure'
+  broader_term: financial_transactions_management_427
+  notes: null
+
+fraud_431:
+  name: 'Fraud'
+  broader_term: financial_transactions_management_427
+  notes: 'Activities relating to the detection, prevention and prosecution of financial irregularity.'
+
+funding_applications_432:
+  name: 'Funding applications'
+  broader_term: financial_transactions_management_427
+  notes: 'Activities relating to the process of considering and administering applications to the authority for grant funding. For applications by the authority for grant funding, see Funding Bids.'
+
+income_433:
+  name: 'Income'
+  broader_term: financial_transactions_management_427
+  notes: 'Activities involved in the collection of money owed to the council. Includes rent payments.'
+
+internal_recharging_434:
+  name: 'Internal recharging'
+  broader_term: financial_transactions_management_427
+  notes: 'The mechanism for recharging costs within the council.'
+
+investments_435:
+  name: 'Investments'
+  broader_term: financial_transactions_management_427
+  notes: 'Activities relating to the investment of the authority''s funds.'
+
+national_insurance_numbers_436:
+  name: 'National insurance numbers'
+  broader_term: financial_transactions_management_427
+  notes: null
+
+reconciliation_437:
+  name: 'Reconciliation'
+  broader_term: financial_transactions_management_427
+  notes: null
+
+refunds_438:
+  name: 'Refunds'
+  broader_term: financial_transactions_management_427
+  notes: 'Documentation relating to refunds.'
+
+local_taxation_439:
+  name: 'Local taxation'
+  broader_term: finance_404
+  notes: 'Local taxation documentation.'
+
+benefits_and_subsidies_440:
+  name: 'Benefits and subsidies'
+  broader_term: local_taxation_439
+  notes: 'Activities involved in the administration of benefits payments.'
+
+property_valuation_441:
+  name: 'Property valuation'
+  broader_term: local_taxation_439
+  notes: null
+
+national_taxation_444:
+  name: 'National taxation'
+  broader_term: finance_404
+  notes: 'General documents relating to taxation and similar financial matters.'
+
+tax_payments_445:
+  name: 'Tax payments'
+  broader_term: national_taxation_444
+  notes: null
+
+payroll_and_pensions_447:
+  name: 'Payroll and pensions'
+  broader_term: finance_404
+  notes: 'Information on payroll and pensions.'
+
+pay_448:
+  name: 'Pay'
+  broader_term: payroll_and_pensions_447
+  notes: null
+
+pensions_450:
+  name: 'Pensions'
+  broader_term: payroll_and_pensions_447
+  notes: null
+
+health_and_safety_451:
+  name: 'Health and safety'
+  broader_term: null
+  notes: 'Management of measures to ensure a healthy and safe workplace.'
+
+community_safety_452:
+  name: 'Community safety'
+  broader_term: health_and_safety_451
+  notes: 'Documents relating to community safety issues'
+
+campaigns_453:
+  name: 'Campaigns'
+  broader_term: community_safety_452
+  notes: 'Campaigns to promote compliance to health and safety policies.'
+
+compliance_454:
+  name: 'Compliance'
+  broader_term: health_and_safety_451
+  notes: 'Information on compliance with health and safety legislation.'
+
+strategy_and_planning_455:
+  name: 'Strategy and planning'
+  broader_term: compliance_454
+  notes: null
+
+training_457:
+  name: 'Training'
+  broader_term: compliance_454
+  notes: 'Documentation relating to health and safety training.'
+
+emergency_planning_458:
+  name: 'Emergency planning'
+  broader_term: health_and_safety_451
+  notes: 'Emergency planning and related health and safety information.'
+
+monitoring_459:
+  name: 'Monitoring'
+  broader_term: health_and_safety_451
+  notes: 'Monitoring of health and safety at work.'
+
+accidents_and_incident_reporting_460:
+  name: 'Accidents and incident reporting'
+  broader_term: monitoring_459
+  notes: null
+
+asbestos_inspections_463:
+  name: 'Asbestos inspections'
+  broader_term: monitoring_459
+  notes: null
+
+equipment_464:
+  name: 'Equipment'
+  broader_term: monitoring_459
+  notes: null
+
+hazardous_substances_465:
+  name: 'Hazardous substances'
+  broader_term: monitoring_459
+  notes: null
+
+health_and_safety_inspections_466:
+  name: 'Health and safety inspections'
+  broader_term: monitoring_459
+  notes: 'Activities relating to internal or external inspections examining the authority''s health and safety provision.'
+
+radiation_467:
+  name: 'Radiation'
+  broader_term: monitoring_459
+  notes: null
+
+risk_management_468:
+  name: 'Risk management'
+  broader_term: health_and_safety_451
+  notes: 'Management of health and safety risks.'
+
+risk_assessments_469:
+  name: 'Risk assessments'
+  broader_term: risk_management_468
+  notes: null
+
+housing_470:
+  name: 'Housing'
+  broader_term: null
+  notes: 'The council''s statutory responsibility for housing.'
+
+enforcement_471:
+  name: 'Enforcement'
+  broader_term: housing_470
+  notes: 'The enforcement of housing standards within the local area.'
+
+assessment_housing_standards_472:
+  name: 'Assessment- housing standards'
+  broader_term: enforcement_471
+  notes: 'Assessment of housing standards.'
+
+estate_management_473:
+  name: 'Estate management'
+  broader_term: housing_470
+  notes: 'Documentation on the management of housing estates.'
+
+business_premises__474:
+  name: 'Business premises '
+  broader_term: estate_management_473
+  notes: 'Documentation relating to the inspection and monitoring of the environment of business premises.'
+
+car_parking_surveys_475:
+  name: 'Car parking surveys'
+  broader_term: estate_management_473
+  notes: 'Documentation relating to the inspection and monitoring of the environment of council estate car parking.'
+
+garage_application_476:
+  name: 'Garage application'
+  broader_term: estate_management_473
+  notes: 'Applications for garage space.'
+
+garage_rental_477:
+  name: 'Garage rental'
+  broader_term: estate_management_473
+  notes: null
+
+housing_inspections_478:
+  name: 'Housing inspections'
+  broader_term: estate_management_473
+  notes: 'Documentation relating to the inspection and monitoring of the environment of the council housing estate.'
+
+neighbour_disputes_479:
+  name: 'Neighbour disputes'
+  broader_term: estate_management_473
+  notes: 'Documentation relating to the resolution of neighbour disputes involving council tenants.'
+
+housing_provision_480:
+  name: 'Housing provision'
+  broader_term: housing_470
+  notes: 'Information relating to the provision of housing.'
+
+allocations_481:
+  name: 'Allocations'
+  broader_term: housing_provision_480
+  notes: 'Information relating to the process of allocating property (homes and garages) to applicants on the waiting list.'
+
+assessment_housing_needs_482:
+  name: 'Assessment - housing needs'
+  broader_term: housing_provision_480
+  notes: 'Assessment of whether applicant is eligible for services or judgement about what service we should provide.'
+
+homelessness_483:
+  name: 'Homelessness'
+  broader_term: housing_provision_480
+  notes: 'Process in providing short term and emergency accommodation for homeless people.'
+
+hostel_providers_484:
+  name: 'Hostel providers'
+  broader_term: housing_provision_480
+  notes: 'Documentation relating to hostel providers and youth hostels in general.'
+
+housing_applications_485:
+  name: 'Housing applications'
+  broader_term: housing_provision_480
+  notes: null
+
+housing_exchanges_488:
+  name: 'Housing exchanges'
+  broader_term: housing_provision_480
+  notes: null
+
+housing_stock_requirements_489:
+  name: 'Housing stock requirements'
+  broader_term: housing_provision_480
+  notes: null
+
+housing_stock_490:
+  name: 'Housing stock'
+  broader_term: housing_470
+  notes: 'Information relating to housing stock.  Property may be identified by address and by the UPRN.'
+
+demolition_491:
+  name: 'Demolition'
+  broader_term: housing_stock_490
+  notes: null
+
+emergency_maintenance_492:
+  name: 'Emergency maintenance'
+  broader_term: housing_stock_490
+  notes: null
+
+housing_grants_493:
+  name: 'Housing grants'
+  broader_term: housing_stock_490
+  notes: null
+
+leases_495:
+  name: 'Leases'
+  broader_term: housing_stock_490
+  notes: null
+
+planned_maintenance_496:
+  name: 'Planned maintenance'
+  broader_term: housing_stock_490
+  notes: null
+
+private_housing_grants_497:
+  name: 'Private housing grants'
+  broader_term: housing_stock_490
+  notes: null
+
+property_adaptations_498:
+  name: 'Property adaptations'
+  broader_term: housing_stock_490
+  notes: null
+
+repairs_and_renovation_499:
+  name: 'Repairs and renovation'
+  broader_term: housing_stock_490
+  notes: null
+
+risk_assessment_500:
+  name: 'Risk assessment'
+  broader_term: housing_stock_490
+  notes: null
+
+managing_tenancies_501:
+  name: 'Managing tenancies'
+  broader_term: housing_470
+  notes: null
+
+adaptations_502:
+  name: 'Adaptations'
+  broader_term: managing_tenancies_501
+  notes: null
+
+adaptations_grants_503:
+  name: 'Adaptations grants'
+  broader_term: managing_tenancies_501
+  notes: null
+
+agreements_504:
+  name: 'Agreements'
+  broader_term: managing_tenancies_501
+  notes: null
+
+assessment_housing_needs_506:
+  name: 'Assessment - housing needs'
+  broader_term: managing_tenancies_501
+  notes: null
+
+breaches_507:
+  name: 'Breaches'
+  broader_term: managing_tenancies_501
+  notes: null
+
+evictions_508:
+  name: 'Evictions'
+  broader_term: managing_tenancies_501
+  notes: null
+
+housing_repairs_509:
+  name: 'Housing repairs'
+  broader_term: managing_tenancies_501
+  notes: null
+
+rent_arrears_510:
+  name: 'Rent arrears'
+  broader_term: managing_tenancies_501
+  notes: null
+
+rent_setting_511:
+  name: 'Rent setting'
+  broader_term: managing_tenancies_501
+  notes: 'Documentation relating to rent setting of housing.'
+
+right_to_buy_512:
+  name: 'Right to buy'
+  broader_term: managing_tenancies_501
+  notes: null
+
+tenancies_513:
+  name: 'Tenancies'
+  broader_term: managing_tenancies_501
+  notes: null
+
+welfare_services_514:
+  name: 'Welfare services'
+  broader_term: managing_tenancies_501
+  notes: null
+
+human_resources_515:
+  name: 'Human resources'
+  broader_term: null
+  notes: 'Management of personnel.'
+
+administering_employees_516:
+  name: 'Administering employees'
+  broader_term: human_resources_515
+  notes: 'Employee files usually have several identifiers, name and date of birth, NI number etc.'
+
+counselling_517:
+  name: 'Counselling'
+  broader_term: administering_employees_516
+  notes: null
+
+absence_monitoring_518:
+  name: 'Absence monitoring'
+  broader_term: administering_employees_516
+  notes: null
+
+discipline_519:
+  name: 'Discipline'
+  broader_term: administering_employees_516
+  notes: null
+
+disclosure_of_interest_525:
+  name: 'Disclosure of interest'
+  broader_term: administering_employees_516
+  notes: 'Register of declared interests of employees in relation to anything being transacted or discussed by the authority.'
+
+employee_details_526:
+  name: 'Employee details'
+  broader_term: administering_employees_516
+  notes: null
+
+employment_conditions_527:
+  name: 'Employment conditions'
+  broader_term: administering_employees_516
+  notes: null
+
+grievances_528:
+  name: 'Grievances'
+  broader_term: administering_employees_516
+  notes: null
+
+individual_training_records_529:
+  name: 'Individual training records'
+  broader_term: administering_employees_516
+  notes: null
+
+induction_531:
+  name: 'Induction'
+  broader_term: administering_employees_516
+  notes: null
+
+job_evaluation_532:
+  name: 'Job evaluation'
+  broader_term: administering_employees_516
+  notes: 'Documentation relating to the approach to performance appraisals'
+
+leave_533:
+  name: 'Leave'
+  broader_term: administering_employees_516
+  notes: null
+
+medical_assessments_534:
+  name: 'Medical assessments'
+  broader_term: administering_employees_516
+  notes: null
+
+maternity_paternity_535:
+  name: 'Maternity/paternity'
+  broader_term: administering_employees_516
+  notes: null
+
+reporting_536:
+  name: 'Reporting'
+  broader_term: administering_employees_516
+  notes: 'Reports related to working hours and terms and conditions.'
+
+termination_537:
+  name: 'Termination'
+  broader_term: administering_employees_516
+  notes: null
+
+employee_relations_538:
+  name: 'Employee relations'
+  broader_term: human_resources_515
+  notes: 'Information on employee relations.'
+
+disciplinary_matters_reporting_539:
+  name: 'Disciplinary matters reporting'
+  broader_term: employee_relations_538
+  notes: 'Summary management information relating to disciplinary matters.'
+
+trade_union_liaison_540:
+  name: 'Trade union liaison'
+  broader_term: employee_relations_538
+  notes: null
+
+equal_opportunities_542:
+  name: 'Equal opportunities'
+  broader_term: human_resources_515
+  notes: 'Information on equal opportunities'
+
+equalities_and_diversity_543:
+  name: 'Equalities and diversity'
+  broader_term: equal_opportunities_542
+  notes: null
+
+monitoring_employees_545:
+  name: 'Monitoring employees'
+  broader_term: human_resources_515
+  notes: 'Information on monitoring employees.'
+
+performance_appraisal_546:
+  name: 'Performance appraisal'
+  broader_term: monitoring_employees_545
+  notes: null
+
+reporting_547:
+  name: 'Reporting'
+  broader_term: monitoring_employees_545
+  notes: null
+
+staff_directory_548:
+  name: 'Staff directory'
+  broader_term: monitoring_employees_545
+  notes: null
+
+occupational_health_549:
+  name: 'Occupational health'
+  broader_term: human_resources_515
+  notes: 'Occupational health records.'
+
+absence_reporting_550:
+  name: 'Absence reporting'
+  broader_term: occupational_health_549
+  notes: null
+
+occupational_health_551:
+  name: 'Occupational health'
+  broader_term: occupational_health_549
+  notes: null
+
+personal_risk_assessments_553:
+  name: 'Personal risk assessments'
+  broader_term: occupational_health_549
+  notes: null
+
+sickness_monitoring_554:
+  name: 'Sickness monitoring'
+  broader_term: occupational_health_549
+  notes: null
+
+major_injuries_555:
+  name: 'Major injuries'
+  broader_term: occupational_health_549
+  notes: null
+
+recruitment_556:
+  name: 'Recruitment'
+  broader_term: human_resources_515
+  notes: 'Recruitment of staff.'
+
+authorisation_557:
+  name: 'Authorisation'
+  broader_term: recruitment_556
+  notes: null
+
+job_descriptions_558:
+  name: 'Job descriptions'
+  broader_term: recruitment_556
+  notes: null
+
+recruitment_559:
+  name: 'Recruitment'
+  broader_term: recruitment_556
+  notes: null
+
+recruitment_process_562:
+  name: 'Recruitment process'
+  broader_term: recruitment_556
+  notes: 'Documentation relating to the recruitment process.'
+
+secondment_563:
+  name: 'Secondment'
+  broader_term: recruitment_556
+  notes: null
+
+volunteers_564:
+  name: 'Volunteers'
+  broader_term: recruitment_556
+  notes: null
+
+terms_and_conditions_of_employment_565:
+  name: 'Terms and conditions of employment'
+  broader_term: human_resources_515
+  notes: 'Terms and conditions for employees.'
+
+staff_benefits_566:
+  name: 'Staff benefits'
+  broader_term: terms_and_conditions_of_employment_565
+  notes: 'Documentation relating to staff benefits.'
+
+staff_facilities_567:
+  name: 'Staff facilities'
+  broader_term: terms_and_conditions_of_employment_565
+  notes: 'Documentation regarding facilities for staff including proposals for leisure facilities and eateries.'
+
+staff_recognition_568:
+  name: 'Staff recognition'
+  broader_term: terms_and_conditions_of_employment_565
+  notes: 'Staff recognition documentation.'
+
+terms_and_conditions_569:
+  name: 'Terms and conditions'
+  broader_term: terms_and_conditions_of_employment_565
+  notes: 'The general terms and conditions of employment with the council.'
+
+training_570:
+  name: 'Training'
+  broader_term: human_resources_515
+  notes: 'Training information.  Training courses are typically identified by name and date.'
+
+driver_training_571:
+  name: 'Driver training'
+  broader_term: training_570
+  notes: 'Driver training documentation.'
+
+reporting_572:
+  name: 'Reporting'
+  broader_term: training_570
+  notes: 'Performance management relating to training and development, including feedback statistics.'
+
+support_training_573:
+  name: 'Support training'
+  broader_term: training_570
+  notes: 'Training provided to support individuals or organisations working with or for clients.'
+
+training_courses_574:
+  name: 'Training courses'
+  broader_term: training_570
+  notes: null
+
+training_plan_578:
+  name: 'Training plan'
+  broader_term: training_570
+  notes: null
+
+workforce_planning_579:
+  name: 'Workforce planning'
+  broader_term: human_resources_515
+  notes: 'Information on workforce planning.'
+
+workforce_development_planning_580:
+  name: 'Workforce development planning'
+  broader_term: workforce_planning_579
+  notes: null
+
+information_and_communication_technology_582:
+  name: 'Information and communication technology'
+  broader_term: null
+  notes: 'Information and communication technology documentation.'
+
+infrastructure_583:
+  name: 'Infrastructure'
+  broader_term: information_and_communication_technology_582
+  notes: 'Information relating to the infrastructure.'
+
+disposal_584:
+  name: 'Disposal'
+  broader_term: infrastructure_583
+  notes: null
+
+fault_reporting_586:
+  name: 'Fault reporting'
+  broader_term: infrastructure_583
+  notes: 'Customer (public) reporting of faults relating to council services.'
+
+licensing_587:
+  name: 'Licensing'
+  broader_term: infrastructure_583
+  notes: 'Documentation in relation to software licensing.'
+
+help_desk_support_588:
+  name: 'Help Desk Support'
+  broader_term: infrastructure_583
+  notes: 'Help desk support information relating to specific systems or pieces of software.'
+
+information_security_589:
+  name: 'Information security'
+  broader_term: infrastructure_583
+  notes: 'Data security information and documentation.'
+
+network_maintenance_590:
+  name: 'Network maintenance'
+  broader_term: infrastructure_583
+  notes: 'Documentation relating to the maintenance and support of the network.'
+
+server_maintenance_591:
+  name: 'Server maintenance'
+  broader_term: infrastructure_583
+  notes: 'Documentation relating to system servers and their maintenance.'
+
+spatial_data_management_592:
+  name: 'Spatial data management'
+  broader_term: infrastructure_583
+  notes: 'Documentation relating to geographic information systems.'
+
+storage_593:
+  name: 'Storage'
+  broader_term: infrastructure_583
+  notes: 'Documentation relating to storage systems and servers.'
+
+strategy_594:
+  name: 'Strategy'
+  broader_term: infrastructure_583
+  notes: 'Documentation relating to an ICT Strategy.'
+
+web_development_595:
+  name: 'Web development'
+  broader_term: infrastructure_583
+  notes: 'Includes development of Internet, Intranet and Extranet.'
+
+system_support_596:
+  name: 'System support'
+  broader_term: information_and_communication_technology_582
+  notes: 'Documentation relating to a specific application.  System logs may be identified by application, hardware etc.'
+
+change_control_597:
+  name: 'Change Control'
+  broader_term: system_support_596
+  notes: null
+
+configuration_management_598:
+  name: 'Configuration management'
+  broader_term: system_support_596
+  notes: null
+
+data_management_599:
+  name: 'Data Management'
+  broader_term: system_support_596
+  notes: null
+
+design_and_construction_600:
+  name: 'Design and Construction'
+  broader_term: system_support_596
+  notes: null
+
+development_601:
+  name: 'Development'
+  broader_term: system_support_596
+  notes: null
+
+implementation_602:
+  name: 'Implementation'
+  broader_term: system_support_596
+  notes: null
+
+integration_and_interfaces_603:
+  name: 'Integration and interfaces'
+  broader_term: system_support_596
+  notes: null
+
+maintenance_604:
+  name: 'Maintenance'
+  broader_term: system_support_596
+  notes: null
+
+manuals_605:
+  name: 'Manuals'
+  broader_term: system_support_596
+  notes: null
+
+information_management_606:
+  name: 'Information management'
+  broader_term: null
+  notes: 'Documentation regarding access to information. Includes Freedom of Information Act, client access to records, Environmental Information Regulations, and Data Protection Act.'
+
+access_to_information_607:
+  name: 'Access to information'
+  broader_term: information_management_606
+  notes: 'Providing access to Council information.'
+
+data_protection_608:
+  name: 'Data protection'
+  broader_term: access_to_information_607
+  notes: null
+
+environmental_information_610:
+  name: 'Environmental information'
+  broader_term: access_to_information_607
+  notes: null
+
+freedom_of_information_614:
+  name: 'Freedom of information'
+  broader_term: access_to_information_607
+  notes: null
+
+archives_619:
+  name: 'Archives'
+  broader_term: information_management_606
+  notes: 'Information on permanent storage of items.'
+
+archives_management_620:
+  name: 'Archives management'
+  broader_term: archives_619
+  notes: null
+
+knowledge_management_621:
+  name: 'Knowledge management'
+  broader_term: information_management_606
+  notes: 'Information related to education and training.'
+
+information_asset_management_622:
+  name: 'Information asset management'
+  broader_term: knowledge_management_621
+  notes: null
+
+records_management_625:
+  name: 'Records management'
+  broader_term: information_management_606
+  notes: 'Information on managing the records of the authority.'
+
+compliance_626:
+  name: 'Compliance'
+  broader_term: records_management_625
+  notes: null
+
+forms_development_627:
+  name: 'Forms development'
+  broader_term: records_management_625
+  notes: null
+
+image_capture_629:
+  name: 'Image capture'
+  broader_term: records_management_625
+  notes: 'Audio visual library information.'
+
+retention_scheduling_630:
+  name: 'Retention scheduling'
+  broader_term: records_management_625
+  notes: null
+
+tracking_631:
+  name: 'Tracking'
+  broader_term: records_management_625
+  notes: null
+
+registration_632:
+  name: 'Registration'
+  broader_term: information_management_606
+  notes: 'Registers.'
+
+statutory_registers_633:
+  name: 'Statutory registers'
+  broader_term: registration_632
+  notes: null
+
+legal_services_634:
+  name: 'Legal services'
+  broader_term: null
+  notes: 'Management of legal activities on behalf of the council as a corporate body.'
+
+advice_635:
+  name: 'Advice'
+  broader_term: legal_services_634
+  notes: 'Information on advice provided.'
+
+provision_of_legal_advice_636:
+  name: 'Provision of legal advice'
+  broader_term: advice_635
+  notes: null
+
+bylaws_637:
+  name: 'Bylaws'
+  broader_term: legal_services_634
+  notes: 'Local bylaws.'
+
+enactment_638:
+  name: 'Enactment'
+  broader_term: bylaws_637
+  notes: null
+
+enforcement_639:
+  name: 'Enforcement'
+  broader_term: bylaws_637
+  notes: null
+
+land_registration_640:
+  name: 'Land registration'
+  broader_term: legal_services_634
+  notes: 'Land registration.'
+
+land_charges_641:
+  name: 'Land charges'
+  broader_term: land_registration_640
+  notes: null
+
+land_and_highways_643:
+  name: 'Land and highways'
+  broader_term: legal_services_634
+  notes: 'Information on land and highways.'
+
+acquisition_644:
+  name: 'Acquisition'
+  broader_term: land_and_highways_643
+  notes: null
+
+disposal_645:
+  name: 'Disposal'
+  broader_term: land_and_highways_643
+  notes: 'Disposal of land associated with the highway.'
+
+litigation_646:
+  name: 'Litigation'
+  broader_term: legal_services_634
+  notes: 'Process dealing with civil and criminal litigation, debt recovery, commercial litigation.'
+
+civil__647:
+  name: 'Civil '
+  broader_term: litigation_646
+  notes: null
+
+commercial__648:
+  name: 'Commercial '
+  broader_term: litigation_646
+  notes: null
+
+criminal_649:
+  name: 'Criminal'
+  broader_term: litigation_646
+  notes: null
+
+debt_recovery_650:
+  name: 'Debt recovery'
+  broader_term: litigation_646
+  notes: null
+
+precedent_cases_651:
+  name: 'Precedent cases'
+  broader_term: litigation_646
+  notes: 'Judgments relied on to fight current cases - setting standards to work within.'
+
+management_of_legal_activities_652:
+  name: 'Management of legal activities'
+  broader_term: legal_services_634
+  notes: 'Management of legal activities.'
+
+archive_deposits_653:
+  name: 'Archive deposits'
+  broader_term: management_of_legal_activities_652
+  notes: null
+
+agreements_654:
+  name: 'Agreements'
+  broader_term: management_of_legal_activities_652
+  notes: null
+
+conveyancing_655:
+  name: 'Conveyancing'
+  broader_term: management_of_legal_activities_652
+  notes: null
+
+copyright_658:
+  name: 'Copyright'
+  broader_term: management_of_legal_activities_652
+  notes: null
+
+drafting_659:
+  name: 'Drafting'
+  broader_term: management_of_legal_activities_652
+  notes: null
+
+trusts_660:
+  name: 'Trusts'
+  broader_term: management_of_legal_activities_652
+  notes: 'Documentation related to legal services and trusts.'
+
+planning_controls_661:
+  name: 'Planning controls'
+  broader_term: legal_services_634
+  notes: 'Information on planning controls.'
+
+certificate_of_lawful_use_or_development_662:
+  name: 'Certificate of Lawful Use or Development'
+  broader_term: planning_controls_661
+  notes: null
+
+section_106_agreements_664:
+  name: 'Section 106 agreements'
+  broader_term: planning_controls_661
+  notes: null
+
+leisure_and_culture_666:
+  name: 'Leisure and culture'
+  broader_term: null
+  notes: 'Leisure and cultural services provided or supported by the council for the community. Including the maintenance and management of parks, reserves and open spaces, and tourism.'
+
+allotments_667:
+  name: 'Allotments'
+  broader_term: leisure_and_culture_666
+  notes: 'Information relating to the provision of allotments.'
+
+allotments_668:
+  name: 'Allotments'
+  broader_term: allotments_667
+  notes: 'Information relating to the provision of allotments.'
+
+archives_669:
+  name: 'Archives'
+  broader_term: leisure_and_culture_666
+  notes: 'General archive information.'
+
+archive_development_670:
+  name: 'Archive development'
+  broader_term: archives_669
+  notes: 'Archive development records.'
+
+cataloguing_671:
+  name: 'Cataloguing'
+  broader_term: archives_669
+  notes: null
+
+deposits_672:
+  name: 'Deposits'
+  broader_term: archives_669
+  notes: 'Depositor records.'
+
+loans_673:
+  name: 'Loans'
+  broader_term: archives_669
+  notes: 'Documentation related to loans within the archive.'
+
+membership_674:
+  name: 'Membership'
+  broader_term: archives_669
+  notes: 'Documentation related to membership of the archive.'
+
+research__675:
+  name: 'Research '
+  broader_term: archives_669
+  notes: 'Information relating to research services.'
+
+arts_676:
+  name: 'Arts'
+  broader_term: leisure_and_culture_666
+  notes: 'Information on services related to the arts.'
+
+arts_development_677:
+  name: 'Arts development'
+  broader_term: arts_676
+  notes: 'Documentation related to art development'
+
+clubs_and_societies_678:
+  name: 'Clubs and societies'
+  broader_term: arts_676
+  notes: 'Documentation related to care within clubs and societies.'
+
+leisure_promotion_679:
+  name: 'Leisure promotion'
+  broader_term: leisure_and_culture_666
+  notes: 'Promotion of leisure activities and events.'
+
+countryside_events_680:
+  name: 'Countryside events'
+  broader_term: leisure_promotion_679
+  notes: null
+
+parks_and_gardens_events_681:
+  name: 'Parks and gardens events'
+  broader_term: leisure_promotion_679
+  notes: null
+
+play_scheme_682:
+  name: 'Play scheme'
+  broader_term: leisure_promotion_679
+  notes: 'Documentation relating to play schemes.'
+
+libraries_683:
+  name: 'Libraries'
+  broader_term: leisure_and_culture_666
+  notes: 'Documentation relating to the general existence of libraries.'
+
+book_ordering_684:
+  name: 'Book ordering'
+  broader_term: libraries_683
+  notes: 'Documentation relating to book ordering.'
+
+bookings_685:
+  name: 'Bookings'
+  broader_term: libraries_683
+  notes: null
+
+catalogue_687:
+  name: 'Catalogue'
+  broader_term: libraries_683
+  notes: null
+
+fines_688:
+  name: 'Fines'
+  broader_term: libraries_683
+  notes: 'Documentation relating to library fines including guidelines and procedures.'
+
+library_development_689:
+  name: 'Library development'
+  broader_term: libraries_683
+  notes: 'Documentation relating to library development.'
+
+loans_690:
+  name: 'Loans'
+  broader_term: libraries_683
+  notes: 'Documentation relating to library loans.'
+
+membership_691:
+  name: 'Membership'
+  broader_term: libraries_683
+  notes: 'Documentation relating to library membership.'
+
+museums_692:
+  name: 'Museums'
+  broader_term: leisure_and_culture_666
+  notes: null
+
+deposit_693:
+  name: 'Deposit'
+  broader_term: museums_692
+  notes: 'Documentation relating to a depositor within a museum.'
+
+loans_694:
+  name: 'Loans'
+  broader_term: museums_692
+  notes: 'Documentation regarding museum loans.'
+
+museum_catalogue_695:
+  name: 'Museum catalogue'
+  broader_term: museums_692
+  notes: 'Documentation regarding museum catalogue.'
+
+museum_development_696:
+  name: 'Museum development'
+  broader_term: museums_692
+  notes: 'Documentation regarding museum development.'
+
+sports_facilities_697:
+  name: 'Sports facilities'
+  broader_term: leisure_and_culture_666
+  notes: 'Documentation attached to general sport facilities.'
+
+bookings_698:
+  name: 'Bookings'
+  broader_term: sports_facilities_697
+  notes: null
+
+membership_701:
+  name: 'Membership'
+  broader_term: sports_facilities_697
+  notes: null
+
+sports_704:
+  name: 'Sports'
+  broader_term: leisure_and_culture_666
+  notes: 'Information related to sports and recreation services.'
+
+sports_development_705:
+  name: 'Sports development'
+  broader_term: sports_704
+  notes: 'Information related to sport development programmes.'
+
+clubs_and_societies_706:
+  name: 'Clubs and societies'
+  broader_term: sports_704
+  notes: 'Documentation associated with sports clubs.'
+
+tourism_707:
+  name: 'Tourism'
+  broader_term: leisure_and_culture_666
+  notes: 'Information for tourists.'
+
+tourist_accommodation_708:
+  name: 'Tourist accommodation'
+  broader_term: tourism_707
+  notes: null
+
+visitor_information_711:
+  name: 'Visitor information'
+  broader_term: tourism_707
+  notes: null
+
+management_713:
+  name: 'Management'
+  broader_term: null
+  notes: 'Management of corporate activities. Includes policies and procedures that apply to the Council as a whole.'
+
+ceremonial_714:
+  name: 'Ceremonial'
+  broader_term: management_713
+  notes: 'Ceremonial events.'
+
+civic_and_royal_events_715:
+  name: 'Civic and royal events'
+  broader_term: ceremonial_714
+  notes: null
+
+corporate_gifts_717:
+  name: 'Corporate gifts'
+  broader_term: ceremonial_714
+  notes: 'Documentation relating to the provision of corporate gifts.'
+
+communication_support_718:
+  name: 'Communication support'
+  broader_term: management_713
+  notes: 'Supporting communication with and around the Council.'
+
+interpreting_and_translation_719:
+  name: 'Interpreting and translation'
+  broader_term: communication_support_718
+  notes: null
+
+mail_processing_720:
+  name: 'Mail processing'
+  broader_term: communication_support_718
+  notes: 'Processes connected with handling mail and associated communications.'
+
+publication_721:
+  name: 'Publication'
+  broader_term: communication_support_718
+  notes: null
+
+publications_received_722:
+  name: 'Publications received'
+  broader_term: communication_support_718
+  notes: null
+
+staff_communications_723:
+  name: 'Staff communications'
+  broader_term: communication_support_718
+  notes: 'Staff communication documentation.'
+
+corporate_communication_724:
+  name: 'Corporate communication'
+  broader_term: management_713
+  notes: 'Communication with the public.'
+
+campaigns_725:
+  name: 'Campaigns'
+  broader_term: corporate_communication_724
+  notes: 'Documentation relating to the promotion of a business through publicity campaigns.'
+
+corporate_branding_726:
+  name: 'Corporate branding'
+  broader_term: corporate_communication_724
+  notes: 'Documentation relating to the process of creating and the use of a corporate image and relevant guidance within the authority.'
+
+corporate_publicity_727:
+  name: 'Corporate publicity'
+  broader_term: corporate_communication_724
+  notes: 'Documentation relating to corporate publicity.'
+
+graphic_design_728:
+  name: 'Graphic design'
+  broader_term: corporate_communication_724
+  notes: null
+
+marketing_729:
+  name: 'Marketing'
+  broader_term: corporate_communication_724
+  notes: null
+
+media_cuttings_730:
+  name: 'Media cuttings'
+  broader_term: corporate_communication_724
+  notes: null
+
+media_liaison_731:
+  name: 'Media liaison'
+  broader_term: corporate_communication_724
+  notes: null
+
+media_releases_732:
+  name: 'Media releases'
+  broader_term: corporate_communication_724
+  notes: 'Information released to the media.'
+
+public_relations_734:
+  name: 'Public relations'
+  broader_term: corporate_communication_724
+  notes: null
+
+enquiries_and_complaints_738:
+  name: 'Enquiries and complaints'
+  broader_term: management_713
+  notes: 'Enquiries and complaints to the Council.'
+
+appeals_739:
+  name: 'Appeals'
+  broader_term: enquiries_and_complaints_738
+  notes: 'Formal complaints received and response to the complaint. Includes the FOI, EIR and data protection complaints process.'
+
+complaints_740:
+  name: 'Complaints'
+  broader_term: enquiries_and_complaints_738
+  notes: null
+
+complaints_to_ombudsman_743:
+  name: 'Complaints to Ombudsman'
+  broader_term: enquiries_and_complaints_738
+  notes: null
+
+compliments_744:
+  name: 'Compliments'
+  broader_term: enquiries_and_complaints_738
+  notes: 'Compliments and comments and response received and response to them.'
+
+customer_profiling_745:
+  name: 'Customer profiling'
+  broader_term: enquiries_and_complaints_738
+  notes: null
+
+stage_1_complaints_746:
+  name: 'Stage 1 complaints'
+  broader_term: enquiries_and_complaints_738
+  notes: null
+
+stage_2_complaints_747:
+  name: 'Stage 2 complaints'
+  broader_term: enquiries_and_complaints_738
+  notes: null
+
+external_audits_748:
+  name: 'External audits'
+  broader_term: management_713
+  notes: 'The external activities (usually carried out by district audit) associated with officially checking financial, quality assurance and operational records to ensure they have been kept and maintained in accordance with agreed or legislated standards and correctly record the events, processes and business of the organisation in a specified period.'
+
+audits_749:
+  name: 'Audits'
+  broader_term: external_audits_748
+  notes: 'Documentation on audits.'
+
+preparing_business_750:
+  name: 'Preparing business'
+  broader_term: management_713
+  notes: 'Preparing business.'
+
+meetings_751:
+  name: 'Meetings'
+  broader_term: preparing_business_750
+  notes: 'Information regarding meetings.'
+
+officer_representation_752:
+  name: 'Officer representation'
+  broader_term: preparing_business_750
+  notes: 'Documentation relating to officer representation.'
+
+partnership_and_agency_working_753:
+  name: 'Partnership and agency working'
+  broader_term: preparing_business_750
+  notes: null
+
+project_management_755:
+  name: 'Project management'
+  broader_term: management_713
+  notes: 'Activities are often organised into projects.'
+
+closure_756:
+  name: 'Closure'
+  broader_term: project_management_755
+  notes: null
+
+governance_757:
+  name: 'Governance'
+  broader_term: project_management_755
+  notes: null
+
+initiation_and_delivery_759:
+  name: 'Initiation and delivery'
+  broader_term: project_management_755
+  notes: null
+
+start_up_760:
+  name: 'Start up'
+  broader_term: project_management_755
+  notes: null
+
+quality_and_performance_761:
+  name: 'Quality and performance'
+  broader_term: management_713
+  notes: 'Information on quality and performance.'
+
+assessments_762:
+  name: 'Assessments'
+  broader_term: quality_and_performance_761
+  notes: null
+
+best_value_reviews_763:
+  name: 'Best value reviews'
+  broader_term: quality_and_performance_761
+  notes: null
+
+inspections_764:
+  name: 'Inspections'
+  broader_term: quality_and_performance_761
+  notes: 'Documentation relating to the external inspections received by the authority in relation to corporate or service specific performance management.'
+
+process_mapping_765:
+  name: 'Process mapping'
+  broader_term: quality_and_performance_761
+  notes: null
+
+strategic_planning_766:
+  name: 'Strategic planning'
+  broader_term: management_713
+  notes: 'Information related to planning a business operation or service.'
+
+business_cases_767:
+  name: 'Business cases'
+  broader_term: strategic_planning_766
+  notes: 'Information related to identifying a need or requirement for a business or service process.'
+
+corporate_initiatives_768:
+  name: 'Corporate initiatives'
+  broader_term: strategic_planning_766
+  notes: null
+
+organisational_structure_769:
+  name: 'Organisational structure'
+  broader_term: strategic_planning_766
+  notes: 'Organisational structure of the school library service.'
+
+policies_and_procedures_770:
+  name: 'Policies and procedures'
+  broader_term: strategic_planning_766
+  notes: null
+
+public_consultation_771:
+  name: 'Public consultation'
+  broader_term: strategic_planning_766
+  notes: null
+
+service_level_agreements_773:
+  name: 'Service level agreements'
+  broader_term: strategic_planning_766
+  notes: 'Information relating to agreements made between separate internal units or teams on a contractual basis.'
+
+statutory_returns_774:
+  name: 'Statutory returns'
+  broader_term: management_713
+  notes: 'The process of preparing information to be passed on to central government as part of statutory requirements'
+
+reports_to_government_775:
+  name: 'Reports to government'
+  broader_term: statutory_returns_774
+  notes: null
+
+planning_and_building_control_776:
+  name: 'Planning and building control'
+  broader_term: null
+  notes: 'Planning information and documentation relating to town and country planning legislation.'
+
+building_control_777:
+  name: 'Building control'
+  broader_term: planning_and_building_control_776
+  notes: 'Documentation relating to the enforcing of building regulations.'
+
+application_processing_778:
+  name: 'Application processing'
+  broader_term: building_control_777
+  notes: null
+
+building_regulations_780:
+  name: 'Building regulations'
+  broader_term: building_control_777
+  notes: 'Documentation related to building standards and inspection.'
+
+registration_781:
+  name: 'Registration'
+  broader_term: building_control_777
+  notes: null
+
+unauthorised_works_782:
+  name: 'Unauthorised works'
+  broader_term: building_control_777
+  notes: 'Information relating to unauthorised works.'
+
+covenant_control_783:
+  name: 'Covenant control'
+  broader_term: planning_and_building_control_776
+  notes: 'Information relating to covenanted properties.'
+
+policies_784:
+  name: 'Policies'
+  broader_term: covenant_control_783
+  notes: 'Information relating to policies.'
+
+covenant_controls_785:
+  name: 'Covenant controls'
+  broader_term: covenant_control_783
+  notes: null
+
+development_control_786:
+  name: 'Development control'
+  broader_term: planning_and_building_control_776
+  notes: 'Information on planning applications, enforcing restrictions and maintaining public registers to enforce local strategy. '
+
+application_processing_787:
+  name: 'Application processing'
+  broader_term: development_control_786
+  notes: null
+
+conservation_areas_791:
+  name: 'Conservation areas'
+  broader_term: development_control_786
+  notes: null
+
+enforcement_792:
+  name: 'Enforcement'
+  broader_term: development_control_786
+  notes: null
+
+registration_793:
+  name: 'Registration'
+  broader_term: development_control_786
+  notes: null
+
+planning_obligations_794:
+  name: 'Planning obligations'
+  broader_term: development_control_786
+  notes: 'Documentation relating to planning obligations.'
+
+tree_795:
+  name: 'Tree'
+  broader_term: development_control_786
+  notes: null
+
+forward_planning_797:
+  name: 'Forward planning'
+  broader_term: planning_and_building_control_776
+  notes: 'Planning future development.'
+
+economic_regeneration_798:
+  name: 'Economic regeneration'
+  broader_term: forward_planning_797
+  notes: 'Information on activities to support economic regeneration in the local area.'
+
+heritage_listing_799:
+  name: 'Heritage listing'
+  broader_term: forward_planning_797
+  notes: 'The consolidated listing of heritage buildings and sites.'
+
+housing_development_800:
+  name: 'Housing development'
+  broader_term: forward_planning_797
+  notes: 'Documentation related to social housing development.'
+
+local_plan_801:
+  name: 'Local plan'
+  broader_term: forward_planning_797
+  notes: 'Local planning documentation.'
+
+national_planning_policy_802:
+  name: 'National planning policy'
+  broader_term: forward_planning_797
+  notes: 'National planning policy information.'
+
+natural_environment_803:
+  name: 'Natural environment'
+  broader_term: forward_planning_797
+  notes: null
+
+planning_policy_805:
+  name: 'Planning policy'
+  broader_term: forward_planning_797
+  notes: 'Planning policy documentation in relation to specific buildings.'
+
+planning_schemes_806:
+  name: 'Planning schemes'
+  broader_term: forward_planning_797
+  notes: null
+
+regional_plan_807:
+  name: 'Regional plan'
+  broader_term: forward_planning_797
+  notes: null
+
+sustainable_development_811:
+  name: 'Sustainable development'
+  broader_term: forward_planning_797
+  notes: 'Information on biodiversity, flooding and pollution.'
+
+urban_centre_planning_812:
+  name: 'Urban centre planning'
+  broader_term: forward_planning_797
+  notes: 'Town and city centre planning documentation.'
+
+procurement_813:
+  name: 'Procurement'
+  broader_term: null
+  notes: 'Management of processes involved in arranging, tendering, managing contracts and other purchasing of the organisation.'
+
+contracting_814:
+  name: 'Contracting'
+  broader_term: procurement_813
+  notes: 'Documentation relating to contracts.'
+
+contract_awards_815:
+  name: 'Contract awards'
+  broader_term: contracting_814
+  notes: null
+
+contract_management_820:
+  name: 'Contract management'
+  broader_term: contracting_814
+  notes: null
+
+requisition_821:
+  name: 'Requisition'
+  broader_term: contracting_814
+  notes: null
+
+market_information_822:
+  name: 'Market information'
+  broader_term: procurement_813
+  notes: 'General information on products that the authority might consider purchasing.'
+
+product_evaluation_823:
+  name: 'Product evaluation'
+  broader_term: market_information_822
+  notes: 'Information on any products evaluated.'
+
+product_information_824:
+  name: 'Product information'
+  broader_term: market_information_822
+  notes: 'Information held by the organisation on products with a view to purchase at a later stage (e.g. product literature).'
+
+tendering_825:
+  name: 'Tendering'
+  broader_term: procurement_813
+  notes: 'Inviting organisations to tender for contracts.'
+
+tenders_826:
+  name: 'Tenders'
+  broader_term: tendering_825
+  notes: null
+
+tendering_policies_831:
+  name: 'Tendering policies'
+  broader_term: tendering_825
+  notes: 'Documentation relating to tendering policies.'
+
+registration_and_coroners_832:
+  name: 'Registration and coroners'
+  broader_term: null
+  notes: 'The registration of births, deaths and marriages. This area also includes functions of the coroner.'
+
+inquiries_into_deaths_833:
+  name: 'Inquiries into deaths'
+  broader_term: registration_and_coroners_832
+  notes: 'The Coroner has a duty to investigate the circumstances of sudden, unnatural or uncertified deaths that are reported to him. '
+
+coroners_inquests_834:
+  name: 'Coroners inquests'
+  broader_term: inquiries_into_deaths_833
+  notes: null
+
+investigations_835:
+  name: 'Investigations'
+  broader_term: inquiries_into_deaths_833
+  notes: null
+
+registration_836:
+  name: 'Registration'
+  broader_term: inquiries_into_deaths_833
+  notes: null
+
+marriage_services_837:
+  name: 'Marriage services'
+  broader_term: registration_and_coroners_832
+  notes: 'Information relating to marriage services.'
+
+conducting_a_marriage_service_838:
+  name: 'Conducting a marriage service'
+  broader_term: marriage_services_837
+  notes: null
+
+registration__839:
+  name: 'Registration                           '
+  broader_term: marriage_services_837
+  notes: null
+
+registration_of_births_marriages_and_deaths_840:
+  name: 'Registration of births, marriages and deaths'
+  broader_term: registration_and_coroners_832
+  notes: 'Registration of significant life events.'
+
+certification_841:
+  name: 'Certification'
+  broader_term: registration_of_births_marriages_and_deaths_840
+  notes: null
+
+notification_843:
+  name: 'Notification'
+  broader_term: registration_of_births_marriages_and_deaths_840
+  notes: null
+
+registration_844:
+  name: 'Registration'
+  broader_term: registration_of_births_marriages_and_deaths_840
+  notes: null
+
+registration_847:
+  name: 'Registration'
+  broader_term: registration_of_births_marriages_and_deaths_840
+  notes: null
+
+treasure_trove_848:
+  name: 'Treasure trove'
+  broader_term: registration_and_coroners_832
+  notes: 'Information on treasure trove.'
+
+inquests_849:
+  name: 'Inquests'
+  broader_term: treasure_trove_848
+  notes: null
+
+risk_management_and_insurance_850:
+  name: 'Risk management and insurance'
+  broader_term: null
+  notes: 'Management of risk and insurance'
+
+claims_851:
+  name: 'Claims'
+  broader_term: risk_management_and_insurance_850
+  notes: 'Handling claims against the council.'
+
+claims_processing_852:
+  name: 'Claims processing'
+  broader_term: claims_851
+  notes: null
+
+insuring_against_loss_853:
+  name: 'Insuring against loss'
+  broader_term: risk_management_and_insurance_850
+  notes: 'Insuring against loss.'
+
+insurance_854:
+  name: 'Insurance'
+  broader_term: insuring_against_loss_853
+  notes: null
+
+risk_management_857:
+  name: 'Risk management'
+  broader_term: risk_management_and_insurance_850
+  notes: 'Management of risk.'
+
+business_continuity_planning_858:
+  name: 'Business continuity planning'
+  broader_term: risk_management_857
+  notes: 'Documentation relating to business continuity in the event of a disaster or unforeseen event.  Includes disaster recovery and business resilience plans.'
+
+education_859:
+  name: 'Education'
+  broader_term: risk_management_857
+  notes: null
+
+risk_assessment_860:
+  name: 'Risk assessment'
+  broader_term: risk_management_857
+  notes: null
+
+transport_and_infrastructure_862:
+  name: 'Transport and infrastructure'
+  broader_term: null
+  notes: 'All information relating to transport and the infrastructure to support it.'
+
+design_and_construction_863:
+  name: 'Design and construction'
+  broader_term: transport_and_infrastructure_862
+  notes: 'Design and construction of transport infrastructure.'
+
+roads_and_highways_864:
+  name: 'Roads and highways'
+  broader_term: design_and_construction_863
+  notes: null
+
+traffic_management_schemes_865:
+  name: 'Traffic management schemes'
+  broader_term: design_and_construction_863
+  notes: 'Design and construction of highways, traffic management schemes and road signs. Includes feasibility studies.'
+
+harbours_and_waterways_866:
+  name: 'Harbours and waterways'
+  broader_term: transport_and_infrastructure_862
+  notes: 'Information relating to harbours or inland waterways.'
+
+boat_moorings_867:
+  name: 'Boat moorings'
+  broader_term: harbours_and_waterways_866
+  notes: 'Information relating to boats and their moorings.'
+
+port_facilities_868:
+  name: 'Port facilities'
+  broader_term: harbours_and_waterways_866
+  notes: null
+
+registration_871:
+  name: 'Registration'
+  broader_term: harbours_and_waterways_866
+  notes: null
+
+highway_development_control_872:
+  name: 'Highway development control'
+  broader_term: transport_and_infrastructure_862
+  notes: 'Responsibility for highways.'
+
+highway_adoption_873:
+  name: 'Highway adoption'
+  broader_term: highway_development_control_872
+  notes: null
+
+highway_extent_queries_874:
+  name: 'Highway extent queries'
+  broader_term: highway_development_control_872
+  notes: null
+
+highway_extinguishment_875:
+  name: 'Highway extinguishment'
+  broader_term: highway_development_control_872
+  notes: null
+
+notification_876:
+  name: 'Notification'
+  broader_term: highway_development_control_872
+  notes: 'Documentation relating to notification to the public of maintenance, changes in status, and closures, etc.'
+
+planning_control_877:
+  name: 'Planning control'
+  broader_term: highway_development_control_872
+  notes: null
+
+road_classification_878:
+  name: 'Road classification'
+  broader_term: highway_development_control_872
+  notes: 'Gazetteer of highways types.'
+
+highway_enforcement_879:
+  name: 'Highway enforcement'
+  broader_term: transport_and_infrastructure_862
+  notes: 'Information to ensure highways are safe and free from obstruction.'
+
+advertising_hoarding_880:
+  name: 'Advertising hoarding'
+  broader_term: highway_enforcement_879
+  notes: 'Documentation related to the control of advertising hoarding.'
+
+highways_881:
+  name: 'Highways'
+  broader_term: highway_enforcement_879
+  notes: null
+
+parking_882:
+  name: 'Parking'
+  broader_term: highway_enforcement_879
+  notes: 'Enforcement of parking infringement includes both on-site and off-site.'
+
+parking_fines_883:
+  name: 'Parking fines'
+  broader_term: highway_enforcement_879
+  notes: 'Documentation related to parking fines.'
+
+road_reinstatement_884:
+  name: 'Road reinstatement'
+  broader_term: highway_enforcement_879
+  notes: 'Documentation related to the reinstatement of roadways.'
+
+scaffolding_885:
+  name: 'Scaffolding'
+  broader_term: highway_enforcement_879
+  notes: 'Documentation related to the regulation of scaffolding and the enforcement of rules and regulations associated with this.'
+
+speeding_fines_886:
+  name: 'Speeding fines'
+  broader_term: highway_enforcement_879
+  notes: 'Documentation related to speeding fines.'
+
+weight_limits_887:
+  name: 'Weight limits'
+  broader_term: highway_enforcement_879
+  notes: 'Documentation related to the enforcement of weight limits.'
+
+infrastructure_management_888:
+  name: 'Infrastructure management'
+  broader_term: transport_and_infrastructure_862
+  notes: 'Documentation on managing transport infrastructure.'
+
+maintenance_889:
+  name: 'Maintenance'
+  broader_term: infrastructure_management_888
+  notes: 'Documentation related to general maintenance of transportation systems.'
+
+service_providers_890:
+  name: 'Service providers'
+  broader_term: infrastructure_management_888
+  notes: 'Documentation relating to service providers.'
+
+street_furniture_891:
+  name: 'Street furniture'
+  broader_term: infrastructure_management_888
+  notes: null
+
+street_naming_and_numbering_892:
+  name: 'Street naming and numbering'
+  broader_term: infrastructure_management_888
+  notes: 'Documentation on the street naming development naming and property numbering/naming.'
+
+surveys_893:
+  name: 'Surveys'
+  broader_term: infrastructure_management_888
+  notes: 'Survey data relating to transport and infrastructure.'
+
+public_transport_894:
+  name: 'Public transport'
+  broader_term: transport_and_infrastructure_862
+  notes: 'Information on public transport.'
+
+concessions_895:
+  name: 'Concessions'
+  broader_term: public_transport_894
+  notes: 'Information regarding the transport concessions offered to the disabled.'
+
+public_transport_plan_896:
+  name: 'Public transport plan'
+  broader_term: public_transport_894
+  notes: null
+
+timetable_897:
+  name: 'Timetable'
+  broader_term: public_transport_894
+  notes: 'The timetabling of public transportation system.'
+
+rights_of_way_898:
+  name: 'Rights of way'
+  broader_term: transport_and_infrastructure_862
+  notes: 'Documentation relating to the process for creating and maintaining rights of way in the local area. Includes the Rights of Way Definitive Map. May include information relating to cycle routes.'
+
+enquiries_899:
+  name: 'Enquiries'
+  broader_term: rights_of_way_898
+  notes: 'Enquiries and correspondence from the public concerning rights of way.'
+
+locations_900:
+  name: 'Locations'
+  broader_term: rights_of_way_898
+  notes: null
+
+orders_901:
+  name: 'Orders'
+  broader_term: rights_of_way_898
+  notes: null
+
+planning_applications_902:
+  name: 'Planning applications'
+  broader_term: rights_of_way_898
+  notes: 'Management of the council''s responses from a rights of way management perspective to planning applications and proposals.'
+
+ploughing_and_cropping_903:
+  name: 'Ploughing and cropping'
+  broader_term: rights_of_way_898
+  notes: 'Regulation of ploughing and cropping on public rights of way.'
+
+searches_904:
+  name: 'Searches'
+  broader_term: rights_of_way_898
+  notes: 'Rights of way searches carried out by the council.'
+
+road_maintenance_905:
+  name: 'Road maintenance'
+  broader_term: transport_and_infrastructure_862
+  notes: 'Road maintenance.'
+
+emergency_maintenance_906:
+  name: 'Emergency maintenance'
+  broader_term: road_maintenance_905
+  notes: null
+
+hazard_removal_907:
+  name: 'Hazard removal'
+  broader_term: road_maintenance_905
+  notes: 'Removal of hazards on the road. Including removal of dead animals, oil spills etc.'
+
+inspections_908:
+  name: 'Inspections'
+  broader_term: road_maintenance_905
+  notes: 'Documentation relating to inspection of adopted highways.'
+
+planned_maintenance_909:
+  name: 'Planned maintenance'
+  broader_term: road_maintenance_905
+  notes: null
+
+scheduled_maintenance_910:
+  name: 'Scheduled maintenance'
+  broader_term: road_maintenance_905
+  notes: null
+
+verge_maintenance_911:
+  name: 'Verge maintenance'
+  broader_term: road_maintenance_905
+  notes: 'Documentation related to the maintenance of verges.'
+
+road_safety_912:
+  name: 'Road safety'
+  broader_term: transport_and_infrastructure_862
+  notes: 'Information on road safety.'
+
+accident_investigations_913:
+  name: 'Accident investigations'
+  broader_term: road_safety_912
+  notes: null
+
+road_safety_awareness_914:
+  name: 'Road safety awareness'
+  broader_term: road_safety_912
+  notes: 'Documentation relating to road safety awareness.'
+
+safety_audits_915:
+  name: 'Safety audits'
+  broader_term: road_safety_912
+  notes: null
+
+school_crossing_patrols_916:
+  name: 'School crossing patrols'
+  broader_term: road_safety_912
+  notes: 'Documentation relating to school crossing patrols.'
+
+speed_cameras_917:
+  name: 'Speed cameras'
+  broader_term: road_safety_912
+  notes: 'Includes information on the  reason for the siting of the camera, any settings etc.'
+
+school_transport_918:
+  name: 'School transport'
+  broader_term: transport_and_infrastructure_862
+  notes: 'Transport to and from school.'
+
+school_transport_services_919:
+  name: 'School transport services'
+  broader_term: school_transport_918
+  notes: 'Documentation relating to school transport services.'
+
+traffic_management_920:
+  name: 'Traffic management'
+  broader_term: transport_and_infrastructure_862
+  notes: 'Management of traffic.'
+
+monitoring_921:
+  name: 'Monitoring'
+  broader_term: traffic_management_920
+  notes: 'Includes the monitoring of highway, transport and traffic use.'
+
+parking__922:
+  name: 'Parking '
+  broader_term: traffic_management_920
+  notes: null
+
+parking_sites_923:
+  name: 'Parking sites'
+  broader_term: traffic_management_920
+  notes: 'Documentation relating to the specifics of parking sites.'
+
+school_routes_924:
+  name: 'School routes'
+  broader_term: traffic_management_920
+  notes: 'The activity of planning, and programming the continued safety of school routes.'
+
+street_lighting_925:
+  name: 'Street lighting'
+  broader_term: traffic_management_920
+  notes: 'The activity of planning and programming the continued effectiveness of street-based lighting.'
+
+traffic_calming_926:
+  name: 'Traffic calming'
+  broader_term: traffic_management_920
+  notes: 'The management and control of traffic calming measures.'
+
+traffic_reduction_927:
+  name: 'Traffic reduction'
+  broader_term: traffic_management_920
+  notes: 'The activity of planning, and programming the continued flow, diversion or reduction of traffic.'
+
+traffic_orders_928:
+  name: 'Traffic orders'
+  broader_term: traffic_management_920
+  notes: null
+
+weather_forecasting_931:
+  name: 'Weather forecasting'
+  broader_term: traffic_management_920
+  notes: null
+
+transport_planning_932:
+  name: 'Transport planning'
+  broader_term: transport_and_infrastructure_862
+  notes: 'Planning transport developments.'
+
+development_control_933:
+  name: 'Development control'
+  broader_term: transport_planning_932
+  notes: 'Documentation associated with the approval of planning applications which affect this section.'
+
+strategy_and_planning_934:
+  name: 'Strategy and planning'
+  broader_term: transport_planning_932
+  notes: null
+
+transport_modelling_936:
+  name: 'Transport modelling'
+  broader_term: transport_planning_932
+  notes: null
+
+travel_plans_938:
+  name: 'Travel plans'
+  broader_term: transport_planning_932
+  notes: null
+
+waste_management_940:
+  name: 'Waste management'
+  broader_term: null
+  notes: 'The management of waste in the local area. Includes collection, recycling and waste sites.'
+
+fly_tipping_941:
+  name: 'Fly tipping'
+  broader_term: waste_management_940
+  notes: 'Information related to fly tipping.'
+
+fly_tipping_942:
+  name: 'Fly tipping'
+  broader_term: fly_tipping_941
+  notes: 'Dumped rubbish which varies in size from a single bin bag to several truck loads of construction waste.'
+
+street_cleaning_943:
+  name: 'Street cleaning'
+  broader_term: waste_management_940
+  notes: 'Information on street cleaning.'
+
+pest_control_944:
+  name: 'Pest control'
+  broader_term: street_cleaning_943
+  notes: 'The management and control of pests.'
+
+road_cleansing_945:
+  name: 'Road cleansing'
+  broader_term: street_cleaning_943
+  notes: 'The cleaning of public roadways.'
+
+waste_collection_946:
+  name: 'Waste collection'
+  broader_term: waste_management_940
+  notes: null
+
+abandoned_vehicles_947:
+  name: 'Abandoned vehicles'
+  broader_term: waste_collection_946
+  notes: null
+
+bulk_948:
+  name: 'Bulk'
+  broader_term: waste_collection_946
+  notes: null
+
+controlled_949:
+  name: 'Controlled'
+  broader_term: waste_collection_946
+  notes: null
+
+domestic_950:
+  name: 'Domestic'
+  broader_term: waste_collection_946
+  notes: null
+
+trade_951:
+  name: 'Trade'
+  broader_term: waste_collection_946
+  notes: null
+
+waste_disposal_952:
+  name: 'Waste disposal'
+  broader_term: waste_management_940
+  notes: 'Information on the disposal of waste.'
+
+waste_sites_953:
+  name: 'Waste sites'
+  broader_term: waste_disposal_952
+  notes: null
+
+waste_sites_development_958:
+  name: 'Waste sites development'
+  broader_term: waste_disposal_952
+  notes: null
+
+waste_reduction_959:
+  name: 'Waste reduction'
+  broader_term: waste_management_940
+  notes: 'Information on reducing the amount of waste.'
+
+composting_960:
+  name: 'Composting'
+  broader_term: waste_reduction_959
+  notes: 'The treatment of biodegradable waste, either aerobically or anaerobically to produce a product that can be reused as either compost or a soil improver.'
+
+recycling_961:
+  name: 'Recycling'
+  broader_term: waste_reduction_959
+  notes: null
+
+asylum_seekers_962:
+  name: 'Asylum seekers'
+  broader_term: adult_care_services_1
+  notes: 'Services for asylum seekers.'
+
+advice_and_support_963:
+  name: 'Advice and support'
+  broader_term: asylum_seekers_962
+  notes: 'Information on temporary accommodation, meals and other advice and support for asylum seekers.'
+
+nationality_checking_964:
+  name: 'Nationality checking'
+  broader_term: asylum_seekers_962
+  notes: 'Checking applications for British citizenship to ensure all the paperwork is correct before the application is submitted to the Home Office.'
+
+community_support_965:
+  name: 'Community support'
+  broader_term: adult_care_services_1
+  notes: 'Support for those who may be in need of community care.'
+
+day_centres_966:
+  name: 'Day centres'
+  broader_term: community_support_965
+  notes: 'Provision of day centres.'
+
+groups_967:
+  name: 'Groups'
+  broader_term: community_support_965
+  notes: 'Information on recognised groups and organisations that provide advice and support for those who may be in need of community care.'
+
+criminal_justice_968:
+  name: 'Criminal justice'
+  broader_term: adult_care_services_1
+  notes: 'Services provided to individuals in the criminal justice system.'
+
+court_orders_969:
+  name: 'Court orders'
+  broader_term: criminal_justice_968
+  notes: 'Community reparation and community service orders.'
+
+people_on_bail_970:
+  name: 'People on bail'
+  broader_term: criminal_justice_968
+  notes: 'Support to the courts and to people on bail.'
+
+employment_971:
+  name: 'Employment'
+  broader_term: supporting_disabilities_33
+  notes: 'Advice and support on training and employment.'
+
+equipment_advice_972:
+  name: 'Equipment advice'
+  broader_term: supporting_disabilities_33
+  notes: 'Advice on purchase and/or loan of specialist equipment.'
+
+independence_at_home_973:
+  name: 'Independence at home'
+  broader_term: supporting_disabilities_33
+  notes: 'Rehabilitation, advice to regain independence in the home or the provision of aids.'
+
+personal_transport_974:
+  name: 'Personal transport'
+  broader_term: supporting_disabilities_33
+  notes: 'Information on the Motability scheme.'
+
+childminding_975:
+  name: 'Childminding'
+  broader_term: children_and_families_services_35
+  notes: 'Information related to child minding.'
+
+registration_976:
+  name: 'Registration'
+  broader_term: childminding_975
+  notes: 'Provision of a list of registered childminders.'
+
+support_for_childminders_977:
+  name: 'Support for childminders'
+  broader_term: childminding_975
+  notes: 'Information and support for those interested in becoming a registered childminder and those already registered.'
+
+home_security_978:
+  name: 'Home security'
+  broader_term: advice_114
+  notes: 'Specific, immediate, and practical security advice to householders.'
+
+community_wardens_979:
+  name: 'Community wardens'
+  broader_term: community_safety_117
+  notes: 'Information on actions of community wardens.  Including information shared with police and other agencies.'
+
+neighbourhood_watch_980:
+  name: 'Neighbourhood Watch'
+  broader_term: community_safety_117
+  notes: 'Council involvement in Neighbourhood Watch schemes.'
+
+measures_against_vandalism_981:
+  name: 'Measures against vandalism'
+  broader_term: community_safety_and_emergencies_113
+  notes: 'Reporting and measures against vandalism.'
+
+flyposting_982:
+  name: 'Flyposting'
+  broader_term: measures_against_vandalism_981
+  notes: 'Removal of illegally posted advertisements, leaflets and similar items.'
+
+removal_of_graffiti_983:
+  name: 'Removal of graffiti'
+  broader_term: measures_against_vandalism_981
+  notes: 'Information reporting on and the removal of graffiti.'
+
+environmental_health_984:
+  name: 'Environmental health'
+  broader_term: consumer_affairs_144
+  notes: 'Information related to the environmental health function.'
+
+animal_control_985:
+  name: 'Animal control'
+  broader_term: environmental_health_984
+  notes: 'Information on activities to reduce the risk to human health from domesticated animals and/or the premises where they are kept, to prevent nuisance from pet animals or from the keeping or boarding of pet animals and to reduce the risk to animal health arising from commercial keeping of pet or similar non-livestock animals.'
+
+repatriation_of_deceased_persons_986:
+  name: 'Repatriation of deceased persons'
+  broader_term: environmental_health_984
+  notes: 'Issuing of Cadaver Certificates.'
+
+common_land_988:
+  name: 'Common land'
+  broader_term: council_property_222
+  notes: 'Open land owned by the local authority.'
+
+grazing_989:
+  name: 'Grazing'
+  broader_term: common_land_988
+  notes: 'Information related to grazing on common land.'
+
+registration_990:
+  name: 'Registration'
+  broader_term: common_land_988
+  notes: 'The local authority is responsible for maintaining a register of common land and village greens within its boundaries.'
+
+advice_to_business_991:
+  name: 'Advice to business'
+  broader_term: promotion_327
+  notes: 'Information on providing advice to new or existing businesses.'
+
+list_of_properties_992:
+  name: 'List of properties'
+  broader_term: promotion_327
+  notes: 'A list of properties or land currently available to let within the area.'
+
+markets_993:
+  name: 'Markets'
+  broader_term: promotion_327
+  notes: 'Information about markets, including farmers markets.  Also renting market stalls from the Council.'
+
+health_and_nursing_994:
+  name: 'Health and nursing'
+  broader_term: management_of_schools_377
+  notes: 'School nursing and health promotion.'
+
+school_catering_995:
+  name: 'School catering'
+  broader_term: management_of_schools_377
+  notes: 'School meals and nutritional information.'
+
+mentoring_996:
+  name: 'Mentoring'
+  broader_term: teaching_387
+  notes: 'The provision of learning mentors.'
+
+archaeological_services_997:
+  name: 'Archaeological services'
+  broader_term: conservation_393
+  notes: 'Provision of archaeological services and consultancy to both commercial and public sector clients in the local area.'
+
+business_rates_998:
+  name: 'Business rates'
+  broader_term: local_taxation_439
+  notes: 'Business rates information (other than property valuation).'
+
+council_tax_999:
+  name: 'Council tax'
+  broader_term: local_taxation_439
+  notes: 'Council tax information.'
+
+advice_1000:
+  name: 'Advice'
+  broader_term: housing_470
+  notes: 'Provision of housing advice.'
+
+advice_to_homeowners_and_tenants_1001:
+  name: 'Advice to homeowners and tenants'
+  broader_term: advice_1000
+  notes: 'Help and advice to private tenants or landlords.'
+
+safety_inspections_1002:
+  name: 'Safety inspections'
+  broader_term: enforcement_471
+  notes: 'Safety inspections on homes in multiple occupation.'
+
+landlord_accreditation_1003:
+  name: 'Landlord accreditation'
+  broader_term: housing_provision_480
+  notes: 'Landlord accreditation schemes.'
+
+sheltered_housing_1004:
+  name: 'Sheltered housing'
+  broader_term: housing_provision_480
+  notes: 'Information on the provision of sheltered housing.'
+
+unauthorised_occupants_1005:
+  name: 'Unauthorised occupants'
+  broader_term: housing_stock_490
+  notes: 'Squatters and unauthorised occupants.'
+
+advice_1006:
+  name: 'Advice'
+  broader_term: managing_tenancies_501
+  notes: 'Advice given to council tenants.'
+
+approving_alterations_1007:
+  name: 'Approving alterations'
+  broader_term: managing_tenancies_501
+  notes: 'Permission requested by tenants to undertake alterations.'
+
+insurance_1008:
+  name: 'Insurance'
+  broader_term: managing_tenancies_501
+  notes: 'Contents insurance for council tenants.'
+
+temporary_accommodation_1009:
+  name: 'Temporary accommodation'
+  broader_term: managing_tenancies_501
+  notes: 'Provision of temporary accommodation.'
+
+advice_to_the_public_1010:
+  name: 'Advice to the public'
+  broader_term: advice_635
+  notes: 'Community legal services.'
+
+witness_support_1011:
+  name: 'Witness support'
+  broader_term: advice_635
+  notes: 'Witness support schemes.'
+
+community_facilities_1012:
+  name: 'Community facilities'
+  broader_term: leisure_and_culture_666
+  notes: 'Community centres and halls.'
+
+equipment_1013:
+  name: 'Equipment'
+  broader_term: community_facilities_1012
+  notes: 'Hire items of equipment for events.'
+
+grants_1014:
+  name: 'Grants'
+  broader_term: community_facilities_1012
+  notes: 'Provision of grants to village halls and other local facilities.'
+
+venues_1015:
+  name: 'Venues'
+  broader_term: community_facilities_1012
+  notes: 'Details on any venues the local authority may have available for private/business hire.'
+
+exhibitions_1016:
+  name: 'Exhibitions'
+  broader_term: leisure_promotion_679
+  notes: null
+
+inclusion_1017:
+  name: 'Inclusion'
+  broader_term: leisure_promotion_679
+  notes: 'Activities and events targeted at specific groups of people.'
+
+support_for_schools_1018:
+  name: 'Support for schools'
+  broader_term: libraries_683
+  notes: 'School library services.'
+
+parks_and_open_spaces_1019:
+  name: 'Parks and open spaces'
+  broader_term: leisure_and_culture_666
+  notes: 'Information about parks and open spaces owned by the local authority.'
+
+maintenance_1020:
+  name: 'Maintenance'
+  broader_term: parks_and_open_spaces_1019
+  notes: 'Maintenance of parks and open spaces.'
+
+playgrounds_1021:
+  name: 'Playgrounds'
+  broader_term: parks_and_open_spaces_1019
+  notes: 'Playgrounds and play areas.'
+
+equipment_hire_1022:
+  name: 'Equipment hire'
+  broader_term: sports_facilities_697
+  notes: 'Details of sports equipment that is available for hire.'
+
+customer_satisfaction_1023:
+  name: 'Customer satisfaction'
+  broader_term: enquiries_and_complaints_738
+  notes: null
+
+hedges_1024:
+  name: 'Hedges'
+  broader_term: development_control_786
+  notes: 'Actions to resolve disputes over evergreen hedges.'
+
+approved_suppliers_1025:
+  name: 'Approved suppliers'
+  broader_term: contracting_814
+  notes: 'Maintaining a list of approved suppliers to the local authority.'
+
+advice_and_support_1026:
+  name: 'Advice and support'
+  broader_term: registration_of_births_marriages_and_deaths_840
+  notes: 'Supplying advice and support on arrangements that need to be made.'
+
+cycle_routes_1027:
+  name: 'Cycle routes'
+  broader_term: infrastructure_management_888
+  notes: 'Provision for cycle routes.'
+
+geotechnical_services_1028:
+  name: 'Geotechnical services'
+  broader_term: infrastructure_management_888
+  notes: 'Feasibility studies, desk studies, geotechnical site investigations, site and laboratory testing and contaminated land studies provided by the local authority.'
+
+markings_and_signage_1029:
+  name: 'Markings and signage'
+  broader_term: infrastructure_management_888
+  notes: 'Installation of instruction and warning signs.'
+
+public_conveniences_1030:
+  name: 'Public conveniences'
+  broader_term: infrastructure_management_888
+  notes: 'Provision of public conveniences.  Toilets.  Maintenance and cleaning.'
+
+taxi_ranks_1031:
+  name: 'Taxi ranks'
+  broader_term: infrastructure_management_888
+  notes: 'Provision of designated taxi ranks.'
+
+community_transport_1032:
+  name: 'Community transport'
+  broader_term: public_transport_894
+  notes: 'Transport for members of the community. Includes schemes such as ''dial-a-ride'', shopmobility, community bus and car schemes.'
+
+bridge_inspections_1033:
+  name: 'Bridge inspections'
+  broader_term: road_maintenance_905
+  notes: 'Regular inspections of bridges on highways.'
+
+drains_and_gullies_1034:
+  name: 'Drains and gullies'
+  broader_term: road_maintenance_905
+  notes: 'Keeping drains and gullies clear and provision of advice on drainage.'
+
+kerbs_1035:
+  name: 'Kerbs'
+  broader_term: road_maintenance_905
+  notes: 'Vehicle crossovers.'
+
+mot_testing_1036:
+  name: 'MOT testing'
+  broader_term: road_safety_912
+  notes: 'MOT testing of vehicles by accredited council garages.'
+
+abnormal_loads_1037:
+  name: 'Abnormal loads'
+  broader_term: traffic_management_920
+  notes: null
+
+gritting_and_snow_clearance_1038:
+  name: 'Gritting and snow clearance'
+  broader_term: traffic_management_920
+  notes: 'Keeping roads and pavements clear when weather conditions may prove hazardous.'
+
