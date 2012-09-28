@@ -1,7 +1,5 @@
 # encoding: UTF-8
 
-require 'raw_template_handler'
-
 class ResponsesController < ApplicationController
   skip_before_filter :require_login, :only => [:index, :show, :letter]
 
