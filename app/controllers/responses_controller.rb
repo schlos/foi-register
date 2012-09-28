@@ -94,6 +94,9 @@ class ResponsesController < ApplicationController
   
   def letter
     @response = Response.find(params[:id])
+    @request = @response.request
+    @requestor = @request.requestor
+    
     respond_to do |format|
       format.pdf { @response }
     end

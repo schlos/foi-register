@@ -21,4 +21,5 @@
   </blockquote>
   
   <%= link_to "Edit", url_for(:action => :edit, :request_id => r.request.id, :id => r.id, :controller => :responses) %>
+  <%= link_to "Printable", url_for(:action => :letter, :request_id => r.request.id, :id => r.id, :controller => :responses, :format => "pdf") %>
 <% end %>
