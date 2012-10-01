@@ -1,7 +1,8 @@
 # FOI Register
 ## Installation
 
-    $ bundle exec install
+    $ bundle install
+    $ script/post-deploy
 
 Then arrange for the `delayed_job` daemon to start, e.g.:
 
