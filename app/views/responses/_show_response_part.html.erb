@@ -12,7 +12,7 @@
 
 
 
-<% if is_admin_view? %>
+<% if is_admin_view? && !r.private_part.nil? && !r.private_part.empty? %>
   <blockquote>
     <div class="alert alert-error private">
       <span class="label">Private part of response:</span><br>
