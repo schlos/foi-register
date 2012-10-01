@@ -166,22 +166,6 @@ class Request < ActiveRecord::Base
             raise "Unsupported database"
         end
     end
-    
-    def count_by_state(t=nil)
-      @counts = self.count(:group => "state") if @counts.nil?
-      case t
-      when nil
-        @counts
-      when :in_progress
-        @counts.fetch("new", 0) + @counts.fetch("assessing", 0)
-      when :disclosed
-        @counts.fetch("disclosed", 0) + @counts.fetch("partially_disclosed", 0)
-      when :not_disclosed
-        @counts.fetch("not_disclosed", 0)
-      else
-        raise "Unknown state type #{t}"
-      end
-    end
   end
   
   def requestor_name

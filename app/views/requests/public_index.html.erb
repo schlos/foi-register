@@ -14,9 +14,9 @@
         <% end %>
     </p>
     <p class="requests-breakdown">
-        <strong class="requests-inprogress"><%= Request.count_by_state(:in_progress) %></strong> are in progress<br>
-        <strong class="requests-successful"><%= Request.count_by_state(:disclosed) %></strong> were successful<br>
-        <strong class="requests-unsuccessful"><%= Request.count_by_state(:not_disclosed) %></strong> were unsuccessful
+        <strong class="requests-inprogress"><%= @count_by_state[:in_progress] %></strong> are in progress<br>
+        <strong class="requests-successful"><%= @count_by_state[:disclosed] %></strong> were successful<br>
+        <strong class="requests-unsuccessful"><%= @count_by_state[:not_disclosed] %></strong> were unsuccessful
     </p>
     <div class="category-chooser">
       <strong>Browse by category</strong>

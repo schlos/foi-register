@@ -16,14 +16,21 @@ class RequestsController < ApplicationController
       @requests = Request.paginate(:page => params[:page], :per_page => 100) \
         .order('coalesce(date_received, created_at) DESC')
       @total = Request.count
+      counts = Request.count(:group => "state")
     else
       @requests = Request.paginate(:page => params[:page], :per_page => 20) \
         .where(['is_published = ?', true]) \
         .order('coalesce(date_received, created_at) DESC')
       @total = Request.where(['is_published = ?', true]).count
+      counts = Request.where(['is_published = ?', true]).count(:group => "state")
     end
     @badge = "all"
     @category = nil
+    @count_by_state = {
+      :in_progress => counts.fetch("new", 0) + counts.fetch("assessing", 0),
+      :disclosed => counts.fetch("disclosed", 0) + counts.fetch("partially_disclosed", 0),
+      :not_disclosed => counts.fetch("not_disclosed", 0)
+    }
     
     respond_to do |format|
       format.html { render :action => self.is_admin_view? ? "admin_index" : "public_index" }
@@ -39,9 +46,15 @@ class RequestsController < ApplicationController
       .where(['top_level_lgcs_term_id = ?', params[:top_level_lgcs_term_id]]) \
       .where(['is_published = ?', true]) \
       .order('coalesce(date_received, created_at) DESC')
-    @total = Request.where(['top_level_lgcs_term_id = ?', params[:top_level_lgcs_term_id]]) \
-      .where(['is_published = ?', true]) \
-      .count
+    our_requests = Request.where(['top_level_lgcs_term_id = ?', params[:top_level_lgcs_term_id]]) \
+      .where(['is_published = ?', true])
+    @total = our_requests.count
+    counts = our_requests.count(:group => "state")
+    @count_by_state = {
+      :in_progress => counts.fetch("new", 0) + counts.fetch("assessing", 0),
+      :disclosed => counts.fetch("disclosed", 0) + counts.fetch("partially_disclosed", 0),
+      :not_disclosed => counts.fetch("not_disclosed", 0)
+    }
     
     respond_to do |format|
       format.html { render :action => "public_index" }
