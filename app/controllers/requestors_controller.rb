@@ -46,7 +46,7 @@ class RequestorsController < ApplicationController
 
     respond_to do |format|
       if @requestor.save
-        format.html { redirect_to @requestor, :notice => 'Requestor was successfully created.' }
+        format.html { redirect_to requestors_path(:is_admin => "admin"), :notice => 'Requestor was successfully created.' }
         format.json { render :json => @requestor, :status => :created, :location => @requestor }
       else
         format.html { render :action => "new" }
@@ -62,7 +62,9 @@ class RequestorsController < ApplicationController
 
     respond_to do |format|
       if @requestor.update_attributes(params[:requestor])
-        format.html { redirect_to @requestor, :notice => 'Requestor was successfully updated.' }
+        format.html {
+          redirect_to requestors_path(:is_admin => "admin"), :notice => "Requestor was successfully updated"
+        }
         format.json { head :no_content }
       else
         format.html { render :action => "edit" }
