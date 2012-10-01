@@ -4,7 +4,7 @@ require 'will_paginate/array' # Extend Array with the paginate method, used in "
 
 class RequestsController < ApplicationController
   skip_before_filter :require_login, :only => [
-    :index, :show, :new, :create, :search, :search_typeahead, :feed]
+    :index, :in_category, :show, :new, :create, :search, :search_typeahead, :feed]
   
   # /admin/requests/feed.atom has its own authentication
   skip_before_filter :require_login_based_on_url, :only => [:feed]
