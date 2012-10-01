@@ -90,7 +90,7 @@ class RequestsController < ApplicationController
   def stats
     @stats = {
         :by_month => Request.count_by_month,
-        :by_state => Request.count_by_state,
+        :by_state => Request.count(:group => "state"),
     }
     respond_to do |format|
       format.html { render }
