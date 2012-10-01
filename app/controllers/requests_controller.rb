@@ -196,11 +196,15 @@ class RequestsController < ApplicationController
     requestor = request.delete :requestor_attributes
     
     if !self.is_admin_view?
-        request[:state] = "new"
-        request[:medium] = "web"
-        request[:due_date] = Date.today + 28.days
-        request[:lgcs_term_id] = nil
-        request[:is_published] = true
+      request[:state] = "new"
+      request[:medium] = "web"
+      request[:due_date] = Date.today + 28.days
+      request[:lgcs_term_id] = nil
+      request[:is_published] = true
+    else
+      if request.has_key? :due_date
+        request[:due_date] = Date.strptime(request[:due_date], "%d/%m/%Y")
+      end
     end
     
     @request = Request.new(request)
@@ -270,7 +274,11 @@ class RequestsController < ApplicationController
     @request = Request.find_by_id(params[:id])
     is_published_remotely = !@request.remote_url.nil?
     reason_for_unpublishing = params.delete(:reason_for_unpublishing)
-
+    
+    if params[:request].has_key? :due_date
+      params[:request][:due_date] = Date.strptime(params[:request][:due_date], "%d/%m/%Y")
+    end
+    
     respond_to do |format|
       if @request.update_attributes(params[:request])
         if is_published_remotely && !@request.is_published
