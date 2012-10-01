@@ -1,6 +1,10 @@
 class PaginationListLinkRenderer < WillPaginate::ActionView::LinkRenderer
 
   protected
+  
+    def url(page)
+      super(page).sub(%r(^(?:https?://[^/]+)?/admin), MySociety::Config::get("ADMIN_PREFIX", "/admin"))
+    end
 
     def page_number(page)
       unless page == current_page
