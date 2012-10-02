@@ -29,7 +29,7 @@ class RequestsControllerTest < ActionController::TestCase
     assert_redirected_to requests_path
   end
 
-  test "should publish a request to Alaveteli endpoint" do
+  def with_alaveteli
     config = MySociety::Config.load_default()
     host = config['TEST_ALAVETELI_API_HOST']
     if host.nil?
@@ -39,22 +39,7 @@ class RequestsControllerTest < ActionController::TestCase
       config['ALAVETELI_API_ENDPOINT'] = endpoint
       config['ALAVETELI_API_KEY'] = '3'
       begin
-        request_attributes = @request_all_your_info.attributes
-        title = "request_#{Time.now.to_i}"
-        request_attributes["title"] = title
-        request_attributes[:requestor_attributes] = {:id => request_attributes.delete("requestor_id")}
-        assert_difference('Request.count') do
-          post :create, :request => request_attributes
-        end
-        begin
-          url = "#{host}/request/#{title}"
-          result = open(url).read
-        rescue OpenURI::HTTPError => e
-          flunk("Failed to fetch #{url}: #{e}")
-        end
-        assert result =~ /#{title}/, "#{result} did not contain #{title}"
-        assert result =~ /#{@request_all_your_info.body}/, "#{result} did not contain #{@request_all_your_info.body}"
-        assert_redirected_to requests_path
+        yield host
       rescue Errno::ECONNREFUSED => e
         raise "TEST_ALAVETELI_API_HOST set in test.yml but no Alaveteli server running"
       ensure
@@ -62,7 +47,70 @@ class RequestsControllerTest < ActionController::TestCase
       end
     end
   end
-
+  
+  test "should publish a request to Alaveteli endpoint" do
+    with_alaveteli do |host|
+      request_attributes = @request_all_your_info.attributes
+      title = "request_#{Time.now.to_i}"
+      request_attributes["title"] = title
+      request_attributes[:requestor_attributes] = {:id => request_attributes.delete("requestor_id")}
+      assert_difference('Request.count') do
+        post :create, :request => request_attributes
+      end
+      begin
+        url = "#{host}/request/#{title}"
+        result = open(url).read
+      rescue OpenURI::HTTPError => e
+        flunk("Failed to fetch #{url}: #{e}")
+      end
+      assert result =~ /#{title}/, "#{result} did not contain #{title}"
+      assert result =~ /#{@request_all_your_info.body}/, "#{result} did not contain #{@request_all_your_info.body}"
+      assert_redirected_to requests_path
+    end
+  end
+  
+  test "should publish requestor name to Alaveteli if visible" do
+    assert @request_all_your_info.is_requestor_name_visible?
+    
+    with_alaveteli do |host|
+      request_attributes = @request_all_your_info.attributes
+      title = "request_#{Time.now.to_i}_PIV"
+      request_attributes["title"] = title
+      request_attributes[:requestor_attributes] = {:id => request_attributes.delete("requestor_id")}
+      post :create, :request => request_attributes
+      begin
+        url = "#{host}/request/#{title.downcase}"
+        result = open(url).read
+      rescue OpenURI::HTTPError => e
+        flunk("Failed to fetch #{url}: #{e}")
+      end
+      
+      requestor_name = @request_all_your_info.requestor_name
+      assert result =~ /#{requestor_name}/, "#{result} did not contain #{requestor_name}"
+    end
+  end
+  
+  test "should not publish requestor name to Alaveteli if not visible" do
+    assert !requests(:badgers).is_requestor_name_visible?
+    
+    with_alaveteli do |host|
+      request_attributes = requests(:badgers).attributes
+      title = "request_#{Time.now.to_i}_NPINV"
+      request_attributes["title"] = title
+      request_attributes[:requestor_attributes] = {:id => request_attributes.delete("requestor_id")}
+      post :create, :request => request_attributes
+      begin
+        url = "#{host}/request/#{title.downcase}"
+        result = open(url).read
+      rescue OpenURI::HTTPError => e
+        flunk("Failed to fetch #{url}: #{e}")
+      end
+      
+      requestor_name = requests(:badgers).requestor_name
+      assert result !~ /#{requestor_name}/, "#{result} contained requestor name '#{requestor_name}'"
+    end
+  end
+  
   test "should send acknowledgement of request" do
     ActionMailer::Base.deliveries = []
     request_attributes = @request_all_your_info.attributes

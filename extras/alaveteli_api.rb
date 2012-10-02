@@ -13,14 +13,15 @@ class AlaveteliApi
         
         data = {:title => request.title,
             :body => request.body,
-            :external_user_name => request.requestor_name,
             :external_url => Rails.application.routes.url_helpers.request_url(nil, request, :host => MySociety::Config.get("DOMAIN", "localhost:3000"))
-        }.to_json
+        }
+        data[:external_user_name] = request.requestor_name if request.is_requestor_name_visible?
+                      
         key = MySociety::Config::get("ALAVETELI_API_KEY")
         url = URI.parse("#{api_endpoint}/request.json")
         req = Net::HTTP::Post::Multipart.new(url.path,
                                              :k => key,
-                                             :request_json => data)
+                                             :request_json => data.to_json)
 
         response = Net::HTTP.start(url.host, url.port) do |http|
             http.request(req)
