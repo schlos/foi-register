@@ -54,7 +54,10 @@
     
     .pagination {
       height: 36px;
-      margin: 18px 0;
+      width: 630px;
+      margin: 18px 0 50px -25px;
+      font-size: 13px;
+      padding: 0;
     }
     .pagination ul {
       display: inline-block;
@@ -107,6 +110,13 @@
       -webkit-border-radius: 0 3px 3px 0;
       -moz-border-radius: 0 3px 3px 0;
       border-radius: 0 3px 3px 0;
+    }
+    .pagination .gap {
+      display: inline-block;
+      float: left;
+      line-height: 34px;
+      padding: 0 14px;
+      border-right: 1px solid #ddd;
     }
     .pagination-centered {
       text-align: center;

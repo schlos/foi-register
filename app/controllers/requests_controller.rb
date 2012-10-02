@@ -4,7 +4,7 @@ require 'will_paginate/array' # Extend Array with the paginate method, used in "
 
 class RequestsController < ApplicationController
   skip_before_filter :require_login, :only => [
-    :index, :show, :new, :create, :search, :search_typeahead, :feed]
+    :index, :in_category, :show, :new, :create, :search, :search_typeahead, :feed]
   
   # /admin/requests/feed.atom has its own authentication
   skip_before_filter :require_login_based_on_url, :only => [:feed]
@@ -16,14 +16,21 @@ class RequestsController < ApplicationController
       @requests = Request.paginate(:page => params[:page], :per_page => 100) \
         .order('coalesce(date_received, created_at) DESC')
       @total = Request.count
+      counts = Request.count(:group => "state")
     else
       @requests = Request.paginate(:page => params[:page], :per_page => 20) \
         .where(['is_published = ?', true]) \
         .order('coalesce(date_received, created_at) DESC')
       @total = Request.where(['is_published = ?', true]).count
+      counts = Request.where(['is_published = ?', true]).count(:group => "state")
     end
     @badge = "all"
     @category = nil
+    @count_by_state = {
+      :in_progress => counts.fetch("new", 0) + counts.fetch("assessing", 0),
+      :disclosed => counts.fetch("disclosed", 0) + counts.fetch("partially_disclosed", 0),
+      :not_disclosed => counts.fetch("not_disclosed", 0)
+    }
     
     respond_to do |format|
       format.html { render :action => self.is_admin_view? ? "admin_index" : "public_index" }
@@ -39,9 +46,15 @@ class RequestsController < ApplicationController
       .where(['top_level_lgcs_term_id = ?', params[:top_level_lgcs_term_id]]) \
       .where(['is_published = ?', true]) \
       .order('coalesce(date_received, created_at) DESC')
-    @total = Request.where(['top_level_lgcs_term_id = ?', params[:top_level_lgcs_term_id]]) \
-      .where(['is_published = ?', true]) \
-      .count
+    our_requests = Request.where(['top_level_lgcs_term_id = ?', params[:top_level_lgcs_term_id]]) \
+      .where(['is_published = ?', true])
+    @total = our_requests.count
+    counts = our_requests.count(:group => "state")
+    @count_by_state = {
+      :in_progress => counts.fetch("new", 0) + counts.fetch("assessing", 0),
+      :disclosed => counts.fetch("disclosed", 0) + counts.fetch("partially_disclosed", 0),
+      :not_disclosed => counts.fetch("not_disclosed", 0)
+    }
     
     respond_to do |format|
       format.html { render :action => "public_index" }
@@ -77,7 +90,7 @@ class RequestsController < ApplicationController
   def stats
     @stats = {
         :by_month => Request.count_by_month,
-        :by_state => Request.count_by_state,
+        :by_state => Request.count(:group => "state"),
     }
     respond_to do |format|
       format.html { render }
@@ -183,11 +196,15 @@ class RequestsController < ApplicationController
     requestor = request.delete :requestor_attributes
     
     if !self.is_admin_view?
-        request[:state] = "new"
-        request[:medium] = "web"
-        request[:due_date] = Date.today + 28.days
-        request[:lgcs_term_id] = nil
-        request[:is_published] = true
+      request[:state] = "new"
+      request[:medium] = "web"
+      request[:due_date] = Date.today + 28.days
+      request[:lgcs_term_id] = nil
+      request[:is_published] = true
+    else
+      if request.has_key? :due_date
+        request[:due_date] = Date.strptime(request[:due_date], "%d/%m/%Y")
+      end
     end
     
     @request = Request.new(request)
@@ -257,7 +274,11 @@ class RequestsController < ApplicationController
     @request = Request.find_by_id(params[:id])
     is_published_remotely = !@request.remote_url.nil?
     reason_for_unpublishing = params.delete(:reason_for_unpublishing)
-
+    
+    if params[:request].has_key? :due_date
+      params[:request][:due_date] = Date.strptime(params[:request][:due_date], "%d/%m/%Y")
+    end
+    
     respond_to do |format|
       if @request.update_attributes(params[:request])
         if is_published_remotely && !@request.is_published

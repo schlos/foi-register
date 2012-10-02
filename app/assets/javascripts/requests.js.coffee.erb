@@ -108,7 +108,7 @@ $ ->
         $r_u_s.hide()
     
     $("form.edit_request").submit (e) ->
-      if !$r_u.val()
+      if !$r_i_p.is(":checked") && !$r_u.val()
         $r_u_s.css("background-color", "red").animate({"background-color": "#ccc"}, 500);
         $r_u.select()
         return false
