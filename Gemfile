@@ -22,12 +22,12 @@ end
 
 group :development do
   gem 'sqlite3'
-  gem 'spork-testunit'
+  gem 'mocha', :require => false
 end
 
 group :test do
   gem 'sqlite3'
-  gem 'spork-testunit'
+  gem 'mocha', :require => false
   
   gem 'debugger', :require => 'ruby-debug', :platforms => :mri_19, :git => "https://github.com/cldwalker/debugger"
   gem 'ruby-debug', :platforms => :mri_18
@@ -41,20 +41,6 @@ group :default do
   gem 'json'
 
   gem 'jquery-rails'
-
-  # To use ActiveModel has_secure_password
-  # gem 'bcrypt-ruby', '~> 3.0.0'
-
-  # To use Jbuilder templates for JSON
-  # gem 'jbuilder'
-
-  # Use unicorn as the web server
-  # gem 'unicorn'
-
-  # Deploy with Capistrano
-  # gem 'capistrano'
-
-  # To use debugger
 
   # For installing Bootstrap
   gem 'therubyracer'
