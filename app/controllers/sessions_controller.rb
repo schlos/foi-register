@@ -3,10 +3,10 @@
 class SessionsController < ApplicationController
   skip_before_filter :require_login
   skip_before_filter :require_login_based_on_url
-  
+
   def new
   end
-  
+
   def create
     staff_member = StaffMember.find_by_email(params[:email])
     if staff_member && staff_member.authenticate(params[:password])
@@ -17,9 +17,9 @@ class SessionsController < ApplicationController
       render "new"
     end
   end
-  
+
   def logout
     session[:staff_member_id] = nil
-    redirect_to requests_url, :notice => "Logged out"
+    redirect_to MySociety::Config::get("ADMIN_PREFIX", "/admin") + "/sessions/new", :notice => "Logged out"
   end
 end
