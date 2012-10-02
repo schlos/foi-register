@@ -103,7 +103,7 @@ class RequestsController < ApplicationController
     @query = params[:q]
     if @query =~ %r(^FOI:(\d+)(/\d+)?$)
       @request = Request.find($1.to_i)
-      redirect_to @request
+      redirect_to request_url(@request)
       return
     end
     
@@ -288,7 +288,7 @@ class RequestsController < ApplicationController
           RequestMailer.takedown_notification(@request, reason_for_unpublishing).deliver
         end
         
-        format.html { redirect_to @request, :notice => 'Request was successfully updated.' }
+        format.html { redirect_to request_url(@request), :notice => 'Request was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render :action => "edit" }
