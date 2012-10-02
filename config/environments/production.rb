@@ -32,7 +32,7 @@ FoiRegister::Application.configure do
       source, request = args
       
       if request.nil?
-        is_admin = (ENV["SCRIPT_URI"] =~ %r(/admin/))
+        is_admin = (ENV["SCRIPT_URI"] =~ %r(/admin/)) # XXXX is this ever true?
       else
         is_admin = !request.params[:is_admin].nil?
       end
