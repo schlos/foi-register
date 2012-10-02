@@ -34,6 +34,6 @@ class Response < ActiveRecord::Base
   end
   
   after_create :send_to_alaveteli
-  handle_asynchronously :send_to_alaveteli 
+  handle_asynchronously :send_to_alaveteli
 
 end

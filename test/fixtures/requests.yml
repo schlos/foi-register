@@ -29,7 +29,8 @@ all_your_info:
   title: All your information
   requestor: robin
   body: Please send me all your information
-  is_published: true
+  is_published: YES
+  is_requestor_name_visible: YES
 
 badgers:
   due_date: <%= (Time.now + 10.days).to_s(:db) %>
@@ -41,5 +42,6 @@ badgers:
     Yours truthfully,
     Seb
   is_published: YES
+  is_requestor_name_visible: NO
   remote_url: http://www.whatdotheyknow.com/request/badgers_xxx_not_really_xxx
   lgcs_term: animal_control_985
