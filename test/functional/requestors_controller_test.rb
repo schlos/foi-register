@@ -22,7 +22,7 @@ class RequestorsControllerTest < ActionController::TestCase
       post :create, :requestor => @requestor.attributes
     end
 
-    assert_redirected_to requestor_path(assigns(:requestor))
+    assert_redirected_to requestors_path(:is_admin => "admin")
   end
 
   test "should show requestor" do
@@ -37,7 +37,7 @@ class RequestorsControllerTest < ActionController::TestCase
 
   test "should update requestor" do
     put :update, :id => @requestor, :requestor => @requestor.attributes
-    assert_redirected_to requestor_path(assigns(:requestor))
+    assert_redirected_to requestors_path(:is_admin => "admin")
   end
 
   test "should destroy requestor" do
