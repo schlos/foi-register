@@ -45,7 +45,9 @@ class ResponsesController < ApplicationController
     
     respond_to do |format|
       if @response.save
+        @response.send_to_alaveteli
         @response.send_by_email
+        
         format.html { redirect_to request_response_path(request, @response, :is_admin => "admin"), :notice => 'Response was successfully created.' }
         format.json { render :json => @response, :status => :created, :location => @response }
       else

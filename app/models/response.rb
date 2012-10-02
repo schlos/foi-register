@@ -33,7 +33,6 @@ class Response < ActiveRecord::Base
     ResponseMailer.email_response(self).deliver if !request.email_for_response.nil?
   end
   
-  after_create :send_to_alaveteli
   handle_asynchronously :send_to_alaveteli
 
 end
