@@ -158,7 +158,10 @@ class RequestsControllerTest < ActionController::TestCase
   end
 
   test "should update request" do
-    put :update, :id => @request_all_your_info, :request => @request_all_your_info.attributes
+    params = @request_all_your_info.attributes
+    params["due_date"] = params["due_date"].strftime("%d/%m/%Y")
+    
+    put :update, :id => @request_all_your_info, :request => params
     assert_redirected_to request_path(assigns(:request))
   end
 
@@ -173,6 +176,7 @@ class RequestsControllerTest < ActionController::TestCase
   test "should require a reason when unpublishing" do
     params = requests(:badgers).attributes
     params["is_published"] = false
+    params["due_date"] = params["due_date"].strftime("%d/%m/%Y")
 
     assert_raise(RuntimeError, "No reason_for_unpublishing given") do
       put :update, :id => requests(:badgers), :request => params
@@ -182,6 +186,7 @@ class RequestsControllerTest < ActionController::TestCase
   test "should not require a reason when not unpublishing" do
     params = requests(:badgers).attributes
     params["is_published"] = true
+    params["due_date"] = params["due_date"].strftime("%d/%m/%Y")
 
     put :update, :id => requests(:badgers), :request => params
   end
@@ -189,6 +194,7 @@ class RequestsControllerTest < ActionController::TestCase
   test "should send a notification when unpublishing" do
     params = requests(:badgers).attributes
     params["is_published"] = false
+    params["due_date"] = params["due_date"].strftime("%d/%m/%Y")
 
     ActionMailer::Base.deliveries = []
     put :update, :id => requests(:badgers), :request => params, :reason_for_unpublishing => "Libellous"
