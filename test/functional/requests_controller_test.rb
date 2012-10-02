@@ -47,7 +47,7 @@ class RequestsControllerTest < ActionController::TestCase
       end
     end
   end
-  
+
   test "should publish a request to Alaveteli endpoint" do
     with_alaveteli do |host|
       request_attributes = @request_all_your_info.attributes
@@ -68,10 +68,10 @@ class RequestsControllerTest < ActionController::TestCase
       assert_redirected_to requests_path
     end
   end
-  
+
   test "should publish requestor name to Alaveteli if visible" do
     assert @request_all_your_info.is_requestor_name_visible?
-    
+
     with_alaveteli do |host|
       request_attributes = @request_all_your_info.attributes
       title = "request_#{Time.now.to_i}_PIV"
@@ -84,15 +84,15 @@ class RequestsControllerTest < ActionController::TestCase
       rescue OpenURI::HTTPError => e
         flunk("Failed to fetch #{url}: #{e}")
       end
-      
+
       requestor_name = @request_all_your_info.requestor_name
       assert result =~ /#{requestor_name}/, "#{result} did not contain #{requestor_name}"
     end
   end
-  
+
   test "should not publish requestor name to Alaveteli if not visible" do
     assert !requests(:badgers).is_requestor_name_visible?
-    
+
     with_alaveteli do |host|
       request_attributes = requests(:badgers).attributes
       title = "request_#{Time.now.to_i}_NPINV"
@@ -105,19 +105,19 @@ class RequestsControllerTest < ActionController::TestCase
       rescue OpenURI::HTTPError => e
         flunk("Failed to fetch #{url}: #{e}")
       end
-      
+
       requestor_name = requests(:badgers).requestor_name
       assert result !~ /#{requestor_name}/, "#{result} contained requestor name '#{requestor_name}'"
     end
   end
-  
+
   test "should send acknowledgement of request" do
     ActionMailer::Base.deliveries = []
     request_attributes = @request_all_your_info.attributes
     request_attributes[:requestor_attributes] = {:id => request_attributes.delete("requestor_id")}
     post :create, :request => request_attributes
     assert_redirected_to requests_path
-    
+
     found_ack = false
     ActionMailer::Base.deliveries.each do |delivery|
       if delivery.subject == "Your request for information has been received"
@@ -134,7 +134,7 @@ class RequestsControllerTest < ActionController::TestCase
     request_attributes[:requestor_attributes] = {:id => request_attributes.delete("requestor_id")}
     post :create, :request => request_attributes
     assert_redirected_to requests_path
-    
+
     found_notification = false
     expected_subject = MySociety::Config.get('NOTIFICATION_SUBJECT')
     expected_recipient = MySociety::Config.get('NOTIFICATIONS_TO')
@@ -160,7 +160,7 @@ class RequestsControllerTest < ActionController::TestCase
   test "should update request" do
     params = @request_all_your_info.attributes
     params["due_date"] = params["due_date"].strftime("%d/%m/%Y")
-    
+
     put :update, :id => @request_all_your_info, :request => params
     assert_redirected_to request_path(assigns(:request))
   end
@@ -172,7 +172,7 @@ class RequestsControllerTest < ActionController::TestCase
 
     assert_redirected_to requests_path(:is_admin => "admin")
   end
-  
+
   test "should require a reason when unpublishing" do
     params = requests(:badgers).attributes
     params["is_published"] = false
@@ -182,7 +182,7 @@ class RequestsControllerTest < ActionController::TestCase
       put :update, :id => requests(:badgers), :request => params
     end
   end
-  
+
   test "should not require a reason when not unpublishing" do
     params = requests(:badgers).attributes
     params["is_published"] = true
@@ -190,7 +190,7 @@ class RequestsControllerTest < ActionController::TestCase
 
     put :update, :id => requests(:badgers), :request => params
   end
-  
+
   test "should send a notification when unpublishing" do
     params = requests(:badgers).attributes
     params["is_published"] = false
@@ -198,7 +198,7 @@ class RequestsControllerTest < ActionController::TestCase
 
     ActionMailer::Base.deliveries = []
     put :update, :id => requests(:badgers), :request => params, :reason_for_unpublishing => "Libellous"
-    
+
     found_notification = false
     expected_subject = MySociety::Config.get("ALAVETELI_TAKEDOWN_SUBJECT")
     expected_recipient = MySociety::Config.get("ALAVETELI_ADMIN_EMAIL")
@@ -206,12 +206,12 @@ class RequestsControllerTest < ActionController::TestCase
       if delivery.subject == expected_subject
         found_notification = true
         assert_equal delivery.to, [expected_recipient]
-        assert_match delivery.body, /Libellous/
+        assert_match(/Libellous/, delivery.body)
       end
     end
     assert found_notification
   end
-  
+
   test "should have an Atom feed of all requests" do
     get :feed, :is_admin => "admin", :format => "atom", :k => MySociety::Config.get("FEED_AUTH_TOKEN")
     assert_response :success
