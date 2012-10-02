@@ -30,7 +30,7 @@ FoiRegister::Application.configure do
       # so we decode the args ourselves.
       raise ArgumentError if args.empty? || args.size > 2
       source, request = args
-      
+
       if request.nil?
         is_admin = (ENV["SCRIPT_URI"] =~ %r(/admin/)) # XXXX is this ever true?
       else
@@ -86,4 +86,10 @@ FoiRegister::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  config.middleware.use ExceptionNotifier,
+    :email_prefix => "[ERROR] ",
+    :sender_address => %{"FOI register errors" <#{MySociety::Config.get("EXCEPTION_NOTIFICATIONS_FROM")}>},
+    :exception_recipients => MySociety::Config.get("EXCEPTION_NOTIFICATIONS_TO")
+
 end

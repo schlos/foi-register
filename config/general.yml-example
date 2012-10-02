@@ -36,3 +36,8 @@ ALAVETELI_TAKEDOWN_SUBJECT: 'Brighton & Hove City Council have hidden a request'
 #  >>> import base64, os
 #  >>> base64.urlsafe_b64encode(os.urandom(36))
 FEED_AUTH_TOKEN: 'Cruf0XD8ynn42YDmZ0_vzAWR5bhbuGlCcBUS7yJsMCMC1Auf'
+
+# Exception notifications
+EXCEPTION_NOTIFICATIONS_FROM: do-not-reply-to-this-address@example.com
+EXCEPTION_NOTIFICATIONS_TO: developer@example.com
+

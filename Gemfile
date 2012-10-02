@@ -28,13 +28,17 @@ end
 group :test do
   gem 'sqlite3'
   gem 'spork-testunit'
-  
+
   gem 'debugger', :require => 'ruby-debug', :platforms => :mri_19, :git => "https://github.com/cldwalker/debugger"
   gem 'ruby-debug', :platforms => :mri_18
 end
 
 group :production do
   gem 'pg'
+
+  # Report on exceptions
+  gem 'exception_notification'
+
 end
 
 group :default do
@@ -86,7 +90,8 @@ group :default do
   # For calling Alaveteli API
   gem 'multipart-post'
   gem 'daemons'
-  
+
   # For generating PDF letters
   gem 'prawn'
+
 end
