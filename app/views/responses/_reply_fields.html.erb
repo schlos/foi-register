@@ -44,6 +44,13 @@
         [name, tag, {:title => description}]
       end) %>
     </div>
+    <div class="field" id="nondisclosure_reason-field">
+      <%= s.label :nondisclosure_reason %>
+      <%= s.select(:nondisclosure_reason, Request::NONDISCLOSURE_REASONS.collect do |tag, (name, description)|
+          [name, tag, {:title => description}]
+        end, {:prompt => "Please select…"}) %>
+      <div id="nondisclosure_reason-description"><%= @request.nondisclosure_reason_description %></div>
+    </div>
    <% end %>
   </div>
  </div>

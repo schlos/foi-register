@@ -34,10 +34,10 @@ $ ->
   .bind "blur", (event) ->
     lgcs_term.val("") if !lgcs_term_id.val()
   
-  state_select = $ '#request_state'
+  state_select = $ '#request_state, #response_request_attributes_state'
   state_description = $ '#state-description'
   nondisclosure_reason = $ '#nondisclosure_reason-field'
-  nondisclosure_reason_select = $ '#request_nondisclosure_reason'
+  nondisclosure_reason_select = $ '#request_nondisclosure_reason, #response_request_attributes_nondisclosure_reason'
   nondisclosure_reason_description = $ '#nondisclosure_reason-description'
   state_select.bind "change", (ev) ->
     new_state = state_select.val()

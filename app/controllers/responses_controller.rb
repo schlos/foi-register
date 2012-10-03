@@ -41,6 +41,9 @@ class ResponsesController < ApplicationController
     @response.request = request
     
     request.state = request_attributes[:state]
+    if request_attributes.has_key? :nondisclosure_reason
+      request.nondisclosure_reason = request_attributes[:nondisclosure_reason]
+    end
     request.save
     
     respond_to do |format|
