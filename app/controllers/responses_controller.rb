@@ -3,28 +3,6 @@
 class ResponsesController < ApplicationController
   skip_before_filter :require_login, :only => [:index, :show, :letter]
 
-  # GET /responses
-  # GET /responses.json
-  def index
-    @request = Request.find(params[:request_id])
-    @responses = @request.responses
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @responses }
-    end
-  end
-
-  # GET /responses/1
-  # GET /responses/1.json
-  def show
-    @response = Response.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @response }
-    end
-  end
 
   # GET /responses/1/edit
   def edit
