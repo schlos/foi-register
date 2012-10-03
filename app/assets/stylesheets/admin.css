@@ -12,7 +12,7 @@ body { width: 950px; margin: auto; }
 
 .navbar-search .search-query { height: 25px; }
 
-.request-view { font-size: 18px; }
+.request-view, .response-view { font-size: 18px; }
 
 #requestor_notes { width: 640px; }
 

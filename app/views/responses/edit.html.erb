@@ -1,6 +1,9 @@
-<h1>Editing response</h1>
+<p id="notice"><%= notice %></p>
+<div class="page-header"><h1>Editing response</h1></div>
 
-<%= render :partial => 'form' %>
+<div class="response-view response" role="main">
+  <%= render :partial => 'form' %>
 
-<%= link_to 'Show', [@response.request, @response] %> |
-<%= link_to 'Back', request_responses_path(@response.request) %>
+  <%= link_to 'Show', [@response.request, @response] %> |
+  <%= link_to 'Back', request_responses_path(@response.request) %>
+</div>

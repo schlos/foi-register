@@ -15,6 +15,7 @@ class Response < ActiveRecord::Base
   has_many :attachments
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :request
+  validates_presence_of :public_part
 
   acts_as_xapian({
     :texts => [ :private_part, :public_part ],

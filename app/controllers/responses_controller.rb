@@ -6,32 +6,35 @@ class ResponsesController < ApplicationController
   # GET /request/:request_id/responses/:id/edit
   def edit
     @response = Response.find(params[:id])
+    @request = @response.request
   end
 
   # POST /request/:request_id/responses
   # POST /request/:request_id/responses.json
   def create
-    request = Request.find(params[:request_id])
+    @request = Request.find(params[:request_id])
     response = params[:response]
     request_attributes = response.delete(:request_attributes)
     @response = Response.new(response)
-    @response.request = request
+    @response.request = @request
     
-    request.state = request_attributes[:state]
+    @request.state = request_attributes[:state]
     if request_attributes.has_key? :nondisclosure_reason
-      request.nondisclosure_reason = request_attributes[:nondisclosure_reason]
+      @request.nondisclosure_reason = request_attributes[:nondisclosure_reason]
     end
-    request.save
+    @request.save!
     
     respond_to do |format|
       if @response.save
         @response.send_to_alaveteli
         @response.send_by_email
         
-        format.html { redirect_to request_url(request, :is_admin => "admin"), :notice => 'Response was successfully created.' }
+        format.html { redirect_to request_url(@request, :is_admin => "admin"), :notice => 'Response was successfully created.' }
         format.json { render :json => @response, :status => :created, :location => @response }
       else
-        format.html { render :action => "new" }
+        format.html {
+          render "edit"
+        }
         format.json { render :json => @response.errors, :status => :unprocessable_entity }
       end
     end
@@ -41,6 +44,8 @@ class ResponsesController < ApplicationController
   # PUT /request/:request_id/responses/:id.json
   def update
     @response = Response.find(params[:id])
+    @request = @response.request
+    
     attachments_attributes = params[:response][:attachments_attributes]
     if !attachments_attributes.nil?
       attachments_attributes.each do |k,v|
