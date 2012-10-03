@@ -12,14 +12,16 @@
 
 
 
-<% if is_admin_view? && !r.private_part.nil? && !r.private_part.empty? %>
-  <blockquote>
-    <div class="alert alert-error private">
-      <span class="label">Private part of response:</span><br>
-      <em><%= simple_format r.private_part %></em>
-    </div>
-  </blockquote>
-  
+<% if is_admin_view? %>
+  <% if !r.private_part.nil? && !r.private_part.empty? %>
+    <blockquote>
+      <div class="alert alert-error private">
+        <span class="label">Private part of response:</span><br>
+        <em><%= simple_format r.private_part %></em>
+      </div>
+    </blockquote>
+  <% end %>
+
   <%= link_to "Edit", url_for(:action => :edit, :request_id => r.request.id, :id => r.id, :controller => :responses) %>
   <%= link_to "Printable", url_for(:action => :letter, :request_id => r.request.id, :id => r.id, :controller => :responses, :format => "pdf") %>
 <% end %>
