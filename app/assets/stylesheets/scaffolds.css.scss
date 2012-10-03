@@ -4,10 +4,12 @@
 .field_with_errors {
   padding: 2px;
   background-color: red;
+  color: white;
   clear: left;
   display: table; }
 
 #error_explanation {
+  clear: both;
   width: 450px;
   border: 2px solid red;
   padding: 7px;
