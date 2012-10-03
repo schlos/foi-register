@@ -40,8 +40,6 @@ class Request < ActiveRecord::Base
     
       # The request is complete, and the requestor has been told:
       "not_held" => ["Not held", "The information is not held"],
-      "supplied_all" => ["All information supplied", "All the requested information has been supplied"],
-      "supplied_some" => ["Some information supplied", "Some of the requested information has been supplied"],
     
       # Exemptions guidance is at http://www.justice.gov.uk/information-access-rights/foi-guidance-for-practitioners/exemptions-guidance
       "exempt_s21" => ["Exempt §21 (other means)", "Exempt: Information Accessible By Other Means"],
