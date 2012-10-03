@@ -95,7 +95,7 @@ class ResponsesControllerTest < ActionController::TestCase
         yield
       ensure
         Delayed::Worker.delay_jobs = prev_delay_jobs
-        Delayed::PerformableMethod.unstub(:reschedule_at)
+        Delayed::PerformableMethod.any_instance.unstub(:reschedule_at)
       end
   end
   
