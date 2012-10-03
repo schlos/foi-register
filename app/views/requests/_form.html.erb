@@ -43,11 +43,7 @@
     <div id="state-description"><%= @request.state_description %></div>
   </div>
 
-  <div class="field" id="nondisclosure_reason-field"
-    <% if @request.state != "not_disclosed" %>
-      style="display: none;"
-    <% end %>
-    >
+  <div class="field" id="nondisclosure_reason-field">
     <%= f.label :nondisclosure_reason %>
     <%= f.select(:nondisclosure_reason, Request::NONDISCLOSURE_REASONS.collect do |tag, (name, description)|
         [name, tag, {:title => description}]

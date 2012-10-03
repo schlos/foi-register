@@ -46,6 +46,8 @@ $ ->
       nondisclosure_reason.show()
     else
       nondisclosure_reason.hide()
+  if state_select.val() != "not_disclosed"
+    nondisclosure_reason.hide()
   nondisclosure_reason_select.bind "change", (ev) ->
     nondisclosure_reason_description.text(
       nondisclosure_reason_select.find(
@@ -99,6 +101,7 @@ $ ->
   $r_u_s = $('#reason_for_unpublishing_section')
   $r_u = $('#reason_for_unpublishing')
   $r_i_p = $('#request_is_published')
+  $r_u_s.hide()
   if $r_u_s.length > 0
     $r_i_p.change () ->
       if !$r_i_p.is(":checked")
