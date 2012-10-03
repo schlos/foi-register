@@ -3,14 +3,13 @@
 class ResponsesController < ApplicationController
   skip_before_filter :require_login, :only => [:index, :show, :letter]
 
-
-  # GET /responses/1/edit
+  # GET /request/:request_id/responses/:id/edit
   def edit
     @response = Response.find(params[:id])
   end
 
-  # POST /responses
-  # POST /responses.json
+  # POST /request/:request_id/responses
+  # POST /request/:request_id/responses.json
   def create
     request = Request.find(params[:request_id])
     response = params[:response]
@@ -38,8 +37,8 @@ class ResponsesController < ApplicationController
     end
   end
 
-  # PUT /responses/1
-  # PUT /responses/1.json
+  # PUT /request/:request_id/responses/:id
+  # PUT /request/:request_id/responses/:id.json
   def update
     @response = Response.find(params[:id])
     attachments_attributes = params[:response][:attachments_attributes]
@@ -63,18 +62,19 @@ class ResponsesController < ApplicationController
     end
   end
 
-  # DELETE /responses/1
-  # DELETE /responses/1.json
+  # DELETE /request/:request_id/responses/:id
+  # DELETE /request/:request_id/responses/:id.json
   def destroy
     @response = Response.find(params[:id])
     @response.destroy
 
     respond_to do |format|
-      format.html { redirect_to request_responses_url(@response.request) }
+      format.html { redirect_to request_url(@response.request) }
       format.json { head :no_content }
     end
   end
   
+  # GET /request/:request_id/responses/:id/letter.pdf
   def letter
     @response = Response.find(params[:id])
     @request = @response.request
