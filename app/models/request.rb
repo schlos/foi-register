@@ -77,6 +77,8 @@ class Request < ActiveRecord::Base
   accepts_nested_attributes_for :requestor
   accepts_nested_attributes_for :responses
   
+  validates :nondisclosure_reason, :presence => true, :if => "state == 'not_disclosed'"
+  
   validates :medium, :presence => true, :inclusion => {
     :in => [ "web", "email", "phone", "fax", "post", "alaveteli", "other" ]
   }
