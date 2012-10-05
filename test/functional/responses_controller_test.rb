@@ -8,12 +8,6 @@ class ResponsesControllerTest < ActionController::TestCase
     session[:staff_member_id] = staff_members(:phil).id
   end
 
-  test "should get index" do
-    get :index, :request_id => requests(:all_your_info).id
-    assert_response :success
-    assert_not_nil assigns(:responses)
-  end
-
   test "should create response" do
     response_attributes = @response_1.attributes
     response_attributes[:request_attributes] = {:state => "disclosed"}
@@ -21,7 +15,7 @@ class ResponsesControllerTest < ActionController::TestCase
       post :create, :response => response_attributes, :request_id => @response_1.request_id
     end
 
-    assert_redirected_to request_response_path(@response_1.request, assigns(:response), :is_admin => "admin")
+    assert_redirected_to request_path(@response_1.request, :is_admin => "admin")
   end
   
   test "should set the request state when creating a response" do
@@ -33,7 +27,7 @@ class ResponsesControllerTest < ActionController::TestCase
     
     req = Request.find(requests(:all_your_info).id)
     assert_equal(req.state, "disclosed")
-    assert_redirected_to request_response_path(@response_1.request, assigns(:response), :is_admin => "admin")
+    assert_redirected_to request_path(@response_1.request, :is_admin => "admin")
   end
 
   # Wrapper for tests that need an Alaveteli connection
@@ -77,7 +71,7 @@ class ResponsesControllerTest < ActionController::TestCase
       # code that would otherwise need refactoring
       assert result =~ /attachment%201.txt/
       assert result =~ /attachment%202.pdf/
-      assert_redirected_to request_response_path(@response_1.request, assigns(:response), :is_admin => "admin")
+      assert_redirected_to request_path(@response_1.request, :is_admin => "admin")
     end
   end
   
@@ -145,11 +139,6 @@ class ResponsesControllerTest < ActionController::TestCase
     assert found_response
   end
 
-  test "should show response" do
-    get :show, :request_id => @response_1.request.id, :id => @response_1
-    assert_response :success
-  end
-
   test "should get edit" do
     get :edit, :request_id => @response_1.request.id, :id => @response_1
     assert_response :success
@@ -165,6 +154,6 @@ class ResponsesControllerTest < ActionController::TestCase
       delete :destroy, :request_id => @response_1.request.id, :id => @response_1
     end
 
-    assert_redirected_to request_responses_path(@response_1.request)
+    assert_redirected_to request_path(@response_1.request)
   end
 end
