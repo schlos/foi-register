@@ -2,3 +2,5 @@ bundler
 libsqlite3-dev
 rubygems
 libapache2-mod-passenger
+libpq-dev
+uuid-dev
