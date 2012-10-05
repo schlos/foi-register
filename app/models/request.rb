@@ -154,14 +154,22 @@ class Request < ActiveRecord::Base
       self.where("due_date <= date('now')").order("due_date ASC")
     end
     
-    def count_by_month
-        if ActiveRecord::Base.connection.adapter_name == "PostgreSQL"
-            Request.count(:group => "to_char(coalesce(date_received, created_at), 'YYYY-MM')")
-        elsif ActiveRecord::Base.connection.adapter_name == "SQLite"
-            Request.count(:group => "strftime('%Y-%m', coalesce(date_received, created_at))")
-        else
-            raise "Unsupported database"
-        end
+    def count_by_month(months_limit=nil)
+      if months_limit.nil?
+        q = Request
+      else
+        q = Request.where(["coalesce(date_received, created_at) > ?", Date.today - months_limit.months])
+      end
+      
+      q = yield(q) if block_given?
+      
+      if ActiveRecord::Base.connection.adapter_name == "PostgreSQL"
+        q.count(:group => "to_char(coalesce(date_received, created_at), 'YYYY-MM')")
+      elsif ActiveRecord::Base.connection.adapter_name == "SQLite"
+        q.count(:group => "strftime('%Y-%m', coalesce(date_received, created_at))")
+      else
+        raise "Unsupported database"
+      end
     end
   end
   

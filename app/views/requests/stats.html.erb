@@ -5,7 +5,7 @@
       google.setOnLoadCallback(drawCharts);
       function drawCharts() {
           // By month
-          new google.visualization.BarChart(document.getElementById('chart_by_month'))
+          new google.visualization.LineChart(document.getElementById('chart_by_month'))
               .draw(google.visualization.arrayToDataTable([
                   ['Month', 'Requests'],
                   <%= @stats[:by_month].map do |month, count|
@@ -13,7 +13,8 @@
                   end.join(", ") %>
           ]), {
               title: 'Requests over time',
-              legend: {position: "none"}
+              legend: {position: "none"},
+              fontSize: 12
           });
           
           // By state
@@ -26,6 +27,22 @@
           ]), {
               title: 'Request states'
           });
+          
+          // By month and state
+          new google.visualization.AreaChart(document.getElementById('chart_by_month_and_state'))
+              .draw(google.visualization.arrayToDataTable([
+                  ['Month', <%= Request::STATES.values.map{|e| "'#{e[0]}'"}.join(", ") %>],
+                  <% Date.today.month.upto(12) do |m| month = "%04d-%02d" % [Date.today.year - 1, m] %>
+                    ['<%= month %>', <%= Request::STATES.keys.map{|s| @stats[:by_month_and_state][[s, month]] || 0}.join(", ") %>],
+                  <% end %>
+                  <% 1.upto(Date.today.month - 1) do |m| month = "%04d-%02d" % [Date.today.year, m] %>
+                    ['<%= month %>', <%= Request::STATES.keys.map{|s| @stats[:by_month_and_state][[s, month]] || 0}.join(", ") %>],
+                  <% end %>
+          ]), {
+              title: 'Request states over time',
+              isStacked: true,
+              height: 350
+          });
       }
     </script>
 <% end %>
@@ -33,5 +50,6 @@
 <h1>FOI Statistics</h1>
 <div id="charts">
   <div id="chart_by_month"></div>
+  <div id="chart_by_month_and_state"><%= @stats[:by_month_and_state][["new", "2012-06"]].inspect %></div>
   <div id="chart_by_state"></div>
 </div>
