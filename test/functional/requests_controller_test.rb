@@ -222,4 +222,30 @@ class RequestsControllerTest < ActionController::TestCase
     get :feed, :is_admin => "admin", :format => "atom", :k => "this_is_not_the_correct_key"
     assert_response :forbidden
   end
+
+  test 'should limit the items to those created in the last 30 days by default' do
+    get :feed, :is_admin => "admin", :format => "atom", :k => MySociety::Config.get("FEED_AUTH_TOKEN")
+    assert response.body =~ /All your information/
+    assert response.body =~ /Badgers/
+    assert response.body !~ /In Olden Days/
+  end
+
+  test 'should accept a parameter for the number of days past to show' do
+    get :feed, :is_admin => "admin",
+               :format => "atom",
+               :k => MySociety::Config.get("FEED_AUTH_TOKEN"),
+               :days => 60
+    assert response.body =~ /All your information/
+    assert response.body =~ /Badgers/
+    assert response.body =~ /In Olden Days/
+  end
+
+  test 'should return an empty feed if there are no requests in the given period' do
+    get :feed, :is_admin => "admin",
+               :format => "atom",
+               :k => MySociety::Config.get("FEED_AUTH_TOKEN"),
+               :days => 1
+    assert_response :success
+  end
+
 end

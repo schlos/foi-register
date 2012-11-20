@@ -1,6 +1,6 @@
 atom_feed do |feed|
     feed.title("New FOI requests to " + MySociety::Config.get("ORG_NAME"))
-    feed.updated(@requests.first.created_at)
+    feed.updated(@updated)
 
     for request in @requests
         feed.entry(request) do |entry|

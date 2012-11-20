@@ -5,7 +5,7 @@ require 'will_paginate/array' # Extend Array with the paginate method, used in "
 class RequestsController < ApplicationController
   skip_before_filter :require_login, :only => [
     :index, :in_category, :show, :new, :create, :search, :search_typeahead, :feed]
-  
+
   # /admin/requests/feed.atom has its own authentication
   skip_before_filter :require_login_based_on_url, :only => [:feed]
 
@@ -31,17 +31,17 @@ class RequestsController < ApplicationController
       :disclosed => counts.fetch("disclosed", 0) + counts.fetch("partially_disclosed", 0),
       :not_disclosed => counts.fetch("not_disclosed", 0)
     }
-    
+
     respond_to do |format|
       format.html { render :action => self.is_admin_view? ? "admin_index" : "public_index" }
       format.json { render :json => @requests }
     end
   end
-  
+
   # GET /requests/category/:top_level_lgcs_term_id
   def in_category
     @category = LgcsTerm.find(params[:top_level_lgcs_term_id])
-    
+
     @requests = Request.paginate(:page => params[:page], :per_page => 20) \
       .where(['top_level_lgcs_term_id = ?', params[:top_level_lgcs_term_id]]) \
       .where(['is_published = ?', true]) \
@@ -55,7 +55,7 @@ class RequestsController < ApplicationController
       :disclosed => counts.fetch("disclosed", 0) + counts.fetch("partially_disclosed", 0),
       :not_disclosed => counts.fetch("not_disclosed", 0)
     }
-    
+
     respond_to do |format|
       format.html { render :action => "public_index" }
       format.json { render :json => @requests }
@@ -68,24 +68,24 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     raise ActiveRecord::RecordNotFound if !is_admin_view? && !@request.is_published
     @title = @request.title + MySociety::Config.get("PAGE_TITLE_SUFFIX")
-    
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @request }
     end
   end
-  
+
   # GET /requests/overdue
   def overdue
     @requests = Request.paginate(:page => params[:page], :per_page => 100).overdue
     @badge = "overdue"
-    
+
     respond_to do |format|
       format.html { render :action => "admin_index" }
       format.json { render :json => @requests }
     end
   end
-  
+
   # GET /requests/stats
   def stats
     @stats = {
@@ -98,7 +98,7 @@ class RequestsController < ApplicationController
       format.json { render :json => @stats }
     end
   end
-  
+
   # GET /requests/search
   def search
     @query = params[:q]
@@ -107,23 +107,23 @@ class RequestsController < ApplicationController
       redirect_to request_url(@request)
       return
     end
-    
+
     options = {}
     options[:offset] = params[:offset].to_i if params.has_key?(:offset)
     options[:limit] = params[:limit].to_i if params.has_key?(:limit)
     options[:sort_by_prefix] = params[:sort_by_prefix].to_i if params.has_key?(:sort_by_prefix)
-    
+
     s = ActsAsXapian::Search.new([
       Request, Response # Attachment?
     ], @query, options)
-    
+
     @requests = s.results.map do |r|
       m = r[:model]
       m.instance_of?(Response) ? m.request : m
     end.uniq
-    
+
     @requests = @requests.select(&:is_published) if !self.is_admin_view?
-    
+
     respond_to do |format|
       format.html do
         @requests = @requests.paginate
@@ -132,7 +132,7 @@ class RequestsController < ApplicationController
       format.json { render :json => @requests }
     end
   end
-  
+
   def search_typeahead
     query_words = params[:q].split(/ +(?![-+]+)/)
     if query_words.last.nil? || query_words.last.strip.length < 3
@@ -148,17 +148,17 @@ class RequestsController < ApplicationController
           :default_op => Xapian::Query::OP_OR,
         })
       logger.info "Parsed typeahead query: " + query.description
-      
+
       @requests = query.results.map do |r|
           m = r[:model]
           m.instance_of?(Response) ? m.request : m
         end.uniq
       @requests = @requests.select(&:is_published) if !self.is_admin_view?
     end
-    
+
     render :json => @requests
   end
-  
+
   # GET /requests/new
   # GET /requests/new.json
   def new
@@ -169,7 +169,7 @@ class RequestsController < ApplicationController
       format.json { render :json => @request }
     end
   end
-  
+
   # GET /requests/feed
   # GET /requests/feed.atom
   def feed
@@ -177,8 +177,16 @@ class RequestsController < ApplicationController
       head :forbidden
       return
     end
-    
-    @requests = Request.all(:order => "created_at DESC")
+    days_to_show = params[:days] ? params[:days].to_i : 30
+    @requests = Request.where(["created_at >= ?", Date.today - days_to_show.days]).order("created_at DESC")
+    if !@requests.empty?
+      @updated = @requests.first.created_at
+    else
+      most_recent = Request.order('created_at DESC').limit(1)
+      if !most_recent.empty?
+        @updated = most_recent.first.created_at
+      end
+    end
     respond_to do |format|
       format.atom { render :layout => false } # feed.atom.builder
     end
@@ -195,7 +203,7 @@ class RequestsController < ApplicationController
   def create
     request = params[:request]
     requestor = request.delete :requestor_attributes
-    
+
     if !self.is_admin_view?
       request[:state] = "new"
       request[:medium] = "web"
@@ -207,9 +215,9 @@ class RequestsController < ApplicationController
         request[:due_date] = Date.strptime(request[:due_date], "%d/%m/%Y")
       end
     end
-    
+
     @request = Request.new(request)
-    
+
     if requestor[:id].nil? || requestor[:id].empty?
       @request.requestor = Requestor.new(requestor)
       requestor_is_new = true
@@ -227,11 +235,11 @@ class RequestsController < ApplicationController
         saved_ok = false
       end
     end
-    
+
     @request.send_to_alaveteli if saved_ok
     @request.send_acknowledgement
     @request.send_notification if !self.is_admin_view?
-    
+
     respond_to do |format|
       if saved_ok
         format.html do
@@ -248,13 +256,13 @@ class RequestsController < ApplicationController
       end
     end
   end
-  
+
   # POST /admin/requests/1/update_state.json
   def update_state
     request = Request.find(params[:id])
     state_tag = params[:state]
     state = Request::STATES[state_tag]
-    
+
     request.state = state_tag
     if request.save!
       render :json => {
@@ -275,11 +283,11 @@ class RequestsController < ApplicationController
     @request = Request.find_by_id(params[:id])
     is_published_remotely = !@request.remote_url.nil?
     reason_for_unpublishing = params.delete(:reason_for_unpublishing)
-    
+
     if params[:request].has_key? :due_date
       params[:request][:due_date] = Date.strptime(params[:request][:due_date], "%d/%m/%Y")
     end
-    
+
     respond_to do |format|
       if @request.update_attributes(params[:request])
         if is_published_remotely && !@request.is_published
@@ -288,7 +296,7 @@ class RequestsController < ApplicationController
           end
           RequestMailer.takedown_notification(@request, reason_for_unpublishing).deliver
         end
-        
+
         format.html { redirect_to request_url(@request), :notice => 'Request was successfully updated.' }
         format.json { head :no_content }
       else
@@ -315,7 +323,7 @@ class RequestsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   # GET /requests/1/new_response
   def new_response
     @request = Request.find(params[:id])
