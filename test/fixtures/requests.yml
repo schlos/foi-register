@@ -31,6 +31,7 @@ all_your_info:
   body: Please send me all your information
   is_published: YES
   is_requestor_name_visible: YES
+  created_at: <%= (Time.now - 20.days).to_s(:db) %>
 
 badgers:
   due_date: <%= (Time.now + 10.days).to_s(:db) %>
@@ -45,3 +46,14 @@ badgers:
   is_requestor_name_visible: NO
   remote_url: http://www.whatdotheyknow.com/request/badgers_xxx_not_really_xxx
   lgcs_term: animal_control_985
+  created_at: <%= (Time.now - 15.days).to_s(:db) %>
+
+older_request:
+  due_date: <%= (Time.now - 20.days).to_s(:db) %>
+  title: In Olden Days
+  requestor: seb
+  body: |
+    Prithee send some information.
+  is_published: YES
+  is_requestor_name_visible: YES
+  created_at: <%= (Time.now - 40.days).to_s(:db) %>
