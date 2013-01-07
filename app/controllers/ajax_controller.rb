@@ -3,7 +3,7 @@
 class AjaxController < ApplicationController
   def requestors
     if params[:term]
-      requestors = Requestor.where("name like '%'||?||'%'", params[:term])
+      requestors = Requestor.where("name ilike '%'||?||'%'", params[:term])
     else
       requestors = Requestor.all
     end
@@ -20,7 +20,7 @@ class AjaxController < ApplicationController
 
   def lgcs_terms
     if params[:term]
-      lgcs_terms = LgcsTerm.where("name like '%'||?||'%'", params[:term])
+      lgcs_terms = LgcsTerm.where("name ilike '%'||?||'%'", params[:term])
     else
       lgcs_terms = LgcsTerm.all
     end
