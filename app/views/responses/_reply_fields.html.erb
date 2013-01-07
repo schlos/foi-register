@@ -8,7 +8,7 @@
     <% if !@response.nil? %>
      <% @response.attachments.each_with_index do |attachment, i| %>
       <%= response.fields_for(:attachments, attachment) do |s| %>
-      <%= s.object.file.url %>
+      <%= "http://" + MySociety::Config.get("DOMAIN", "localhost:3000") + s.object.file.url %>
        <div class="field">
          <%= s.label "Change attachment %d:" % [i+1] %>
          <%= s.file_field :file %>

@@ -6,7 +6,7 @@
 <%= simple_format r.public_part %><br>
 <% for attachment in r.attachments %>
   <% if attachment.file? %>
-    <%= link_to ('<i class="icon-download"></i> ' + attachment.filename).html_safe, attachment.file.url %> (<%= number_to_human_size(attachment.size, :precision => 2) %>)<br>
+    <%= link_to ('<i class="icon-download"></i> ' + attachment.filename).html_safe, "http://" + MySociety::Config.get("DOMAIN", "localhost:3000") + attachment.file.url %> (<%= number_to_human_size(attachment.size, :precision => 2) %>)<br>
   <% end %>
 <% end %>
 
@@ -22,6 +22,6 @@
     </blockquote>
   <% end %>
 
-  <%= link_to "Edit", url_for(:action => :edit, :request_id => r.request.id, :id => r.id, :controller => :responses) %>
-  <%= link_to "Printable", url_for(:action => :letter, :request_id => r.request.id, :id => r.id, :controller => :responses, :format => "pdf") %>
+  <%= link_to "Edit", url_for(:action => :edit, :request_id => r.request.id, :id => r.id, :controller => :responses, :is_admin => 'admin', :only_path => true) %>
+  <%= link_to "Printable", url_for(:action => :letter, :request_id => r.request.id, :id => r.id, :controller => :responses, :format => "pdf", :is_admin => '') %>
 <% end %>
