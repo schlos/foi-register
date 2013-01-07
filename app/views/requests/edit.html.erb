@@ -4,5 +4,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @request %> |
+<%= link_to 'Show', request_path(@request, :is_admin => 'admin') %> |
 <%= link_to 'Back', requests_path %>
