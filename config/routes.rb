@@ -1,6 +1,4 @@
 FoiRegister::Application.routes.draw do
-  
-  resources :attachments
 
   root :to => 'redirection#front'
   scope "(:is_admin)", :constraints => {:is_admin => /(admin)?/, :id => /\d+/} do
@@ -23,7 +21,7 @@ FoiRegister::Application.routes.draw do
     end
     resources :requestors
   end
-  
+
   get "/admin" => 'redirection#admin'
 
   # Useful in development.
@@ -35,7 +33,7 @@ FoiRegister::Application.routes.draw do
   scope "(:is_admin)", :constraints => {:is_admin => /(admin)/} do
     get "ajax/requestors"
     get "ajax/lgcs_terms"
-    
+
     resources :requests do
       member do
         post "update_state", :constraints => {:format => "json"}
@@ -44,7 +42,7 @@ FoiRegister::Application.routes.draw do
         get 'feed', :constraints => {:format => "atom"}
       end
     end
-    
+
     resources :staff_members
     resources :sessions do
       collection do
@@ -52,7 +50,7 @@ FoiRegister::Application.routes.draw do
       end
     end
   end
-  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
