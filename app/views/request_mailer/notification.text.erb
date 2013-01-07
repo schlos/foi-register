@@ -1,4 +1,4 @@
-Reply to this request at <%= MySociety::Config.get("ADMIN_HOST_AND_PORT", "http://localhost:3000") + request_path(@request, :is_admin => "admin") %>
+Reply to this request at <%= request_path(@request, :is_admin => "admin") %>
 
 <%= @request.title %>
 

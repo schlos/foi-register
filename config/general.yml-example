@@ -10,7 +10,6 @@ NOTIFICATION_SUBJECT: 'An FOI request has been made through the website'
 
 ADMIN_PREFIX: '/admin'
 ADMIN_PASSWORD: 'xxxxxxxx'
-ADMIN_HOST_AND_PORT: 'http://admin.example.com'
 ASSET_HOST: null
 
 # Alaveteli integration
