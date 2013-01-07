@@ -2,7 +2,7 @@ require 'test_helper'
 require 'uri'
 
 class ResponsesControllerTest < ActionController::TestCase
-  
+
   setup do
     @response_1 = responses(:response_1)
     session[:staff_member_id] = staff_members(:phil).id
@@ -17,14 +17,14 @@ class ResponsesControllerTest < ActionController::TestCase
 
     assert_redirected_to request_path(@response_1.request, :is_admin => "admin")
   end
-  
+
   test "should set the request state when creating a response" do
     response_attributes = @response_1.attributes
     response_attributes[:request_attributes] = {:state => "disclosed"}
     assert_difference('Response.count') do
       post :create, :response => response_attributes, :request_id => @response_1.request_id
     end
-    
+
     req = Request.find(requests(:all_your_info).id)
     assert_equal(req.state, "disclosed")
     assert_redirected_to request_path(@response_1.request, :is_admin => "admin")
@@ -40,7 +40,7 @@ class ResponsesControllerTest < ActionController::TestCase
       endpoint = "#{host}/api/v2"
       config['ALAVETELI_API_ENDPOINT'] = endpoint
       config['ALAVETELI_API_KEY'] = '3'
-  
+
       begin
         yield host
       rescue Errno::ECONNREFUSED => e
@@ -50,16 +50,16 @@ class ResponsesControllerTest < ActionController::TestCase
       end
     end
   end
-  
+
   test "should publish a response to Alaveteli endpoint" do
     with_alaveteli do |host|
       # first we need to create a new request, so we have a remote_id to respond to...
       @response_1.request.send_to_alaveteli
-      
+
       response_attributes = @response_1.attributes
       response_attributes['attachments_attributes'] = {}
       response_attributes[:request_attributes] = {:state => "disclosed"}
-      
+
       @response_1.attachments.each_with_index do |attachment, n|
         response_attributes['attachments_attributes'][n] = {'file' => fixture_file_upload("files/#{attachment['file']}", attachment['content_type'])}
       end
@@ -74,7 +74,7 @@ class ResponsesControllerTest < ActionController::TestCase
       assert_redirected_to request_path(@response_1.request, :is_admin => "admin")
     end
   end
-  
+
   def with_delayed_jobs
       prev_delay_jobs = Delayed::Worker.delay_jobs
       Delayed::Worker.delay_jobs = true
@@ -92,28 +92,28 @@ class ResponsesControllerTest < ActionController::TestCase
         Delayed::PerformableMethod.any_instance.unstub(:reschedule_at)
       end
   end
-  
+
   test "should retry later if Alaveteli is down" do
     with_alaveteli do |host|
       with_delayed_jobs do
         # Make sure the queue is clear to start with
         assert_equal 0, Delayed::Job.count
-        
+
         # Pretend Alaveteli is down
         AlaveteliApi.stubs(:send_request).raises(AlaveteliApi::AlaveteliApiError)
-        
+
         # Try to send a request there
         @response_1.request.send_to_alaveteli
-        
+
         # Run the job queue, and check it fails
         assert_equal 1, Delayed::Job.count
         Delayed::Worker::new.work_off 1 # expect this job to fail
         assert_equal 1, Delayed::Job.count
-        
+
         # Now bring Alaveteli back up, and try again
         AlaveteliApi.unstub(:send_request)
         Delayed::Worker::new.work_off 1
-        
+
         # Check that worked
         assert_equal 0, Delayed::Job.count
       end
@@ -125,7 +125,7 @@ class ResponsesControllerTest < ActionController::TestCase
     response_attributes = @response_1.attributes
     response_attributes[:request_attributes] = {:state => "disclosed"}
     post :create, :response => response_attributes, :request_id => @response_1.request_id
-    
+
     found_response = false
     request = @response_1.request
     expected_recipient = request.requestor.email
@@ -146,7 +146,7 @@ class ResponsesControllerTest < ActionController::TestCase
 
   test "should update response" do
     put :update, :request_id => @response_1.request.id, :id => @response_1, :response => @response_1.attributes
-    assert_redirected_to request_path(assigns(:response).request)
+    assert_redirected_to request_path(assigns(:response).request, :is_admin => 'admin')
   end
 
   test "should destroy response" do

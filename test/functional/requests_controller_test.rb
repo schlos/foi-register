@@ -162,7 +162,7 @@ class RequestsControllerTest < ActionController::TestCase
     params["due_date"] = params["due_date"].strftime("%d/%m/%Y")
 
     put :update, :id => @request_all_your_info, :request => params
-    assert_redirected_to request_path(assigns(:request))
+    assert_redirected_to request_path(assigns(:request), :is_admin => 'admin')
   end
 
   test "should destroy request" do
