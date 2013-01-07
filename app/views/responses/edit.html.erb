@@ -4,6 +4,6 @@
 <div class="response-view response" role="main">
   <%= render :partial => 'form' %>
 
-  <%= link_to 'Show', [@response.request, @response] %> |
+  <%= link_to 'Show', request_response_path([@response.request, @response]) %> |
   <%= link_to 'Back', request_responses_path(@response.request) %>
 </div>
