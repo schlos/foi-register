@@ -12,26 +12,32 @@ namespace :foi do
             puts "Not pulling from Alaveteli, because PULL_FROM_ALAVETELI is false"
             next
         end
-        
+
         feed_url = MySociety::Config.get("ALAVETELI_FEED_URL")
         feed_key = MySociety::Config.get("ALAVETELI_API_KEY")
-        
+
         url = feed_url + "?k=" + CGI::escape(feed_key)
-        
+
         ActiveRecord::Base.transaction do
             last_event_id = AlaveteliFeed.last_event_id
             if !last_event_id.nil?
                 url += '&since_event_id=' + last_event_id.to_s
             end
-            
+
             response = Net::HTTP.get_response( URI.parse(url) )
             events = ActiveSupport::JSON.decode(response.body)
-            
+
             events.reverse_each do |event|
                 event_type = event["event_type"]
                 if event_type == "sent"
+
+                    # Check to see if this is one of our own requests
+                    remote_id = event['request_id']
+                    existing_request = Request.find(:first, :conditions => ['remote_id = ?', remote_id])
+                    next if existing_request
+
                     # Process the event
-                    
+
                     # Get existing user, or make a new one.
                     user_url = event["user_url"]
                     requestor = Requestor.find_by_external_url(user_url)
@@ -42,7 +48,7 @@ namespace :foi do
                         )
                         requestor.save!
                     end
-                    
+
                     # Create a request
                     date_received = Time.iso8601(event["created_at"])
                     request = Request.new(
