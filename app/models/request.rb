@@ -29,16 +29,16 @@ class Request < ActiveRecord::Base
   STATES["new"] = ["New", "A new request that has not even been acknowledged"]
   # STATES["acknowledged"] = ["Acknowledged", "A new request that has been acknowledged, but not had a substantive response or rejection"]
   STATES["assessing"] = ["Assessing", "The request has been sent through to the relevant service area"]
-  STATES["disclosed"] = ["Disclosed", "The request has been sent through to the relevant service area"]
+  STATES["disclosed"] = ["Disclosed", "All of the requested information has been disclosed"]
   STATES["partially_disclosed"] = ["Partially Disclosed", "Some of the requested information has been disclosed"]
-  STATES["not_disclosed"] = ["Not Disclosed", "All the requested information has been disclosed"]
+  STATES["not_disclosed"] = ["Not Disclosed", "None of the requested information has been disclosed"]
 
   NONDISCLOSURE_REASONS = ActiveSupport::OrderedHash.new
   NONDISCLOSURE_REASONS["not_held"] = ["Not held", "The information is not held"]
-    
+
   NONDISCLOSURE_REASONS["rejected_vexatious"] = ["Rejected as vexatious", "The request has been rejected as vexatious. In this case there is no legal obligation to respond to the requestor at all."]
   NONDISCLOSURE_REASONS["rejected_time_limit"] = ["Rejected (more than 2.5 days)", "It would take more than 2.5 days to collect this information"]
-    
+
   # Exemptions guidance is at http://www.justice.gov.uk/information-access-rights/foi-guidance-for-practitioners/exemptions-guidance
   NONDISCLOSURE_REASONS["exempt_s21"] = ["Exempt §21 (other means)", "Exempt: Information Accessible By Other Means"]
   NONDISCLOSURE_REASONS["exempt_s22"] = ["Exempt §22 (future publication)", "Exempt: Information Intended For Future Publication"]
@@ -63,7 +63,7 @@ class Request < ActiveRecord::Base
   NONDISCLOSURE_REASONS["exempt_s42"] = ["Exempt §42 (legal privilege)", "Exempt: Legal Professional Privilege"]
   NONDISCLOSURE_REASONS["exempt_s43"] = ["Exempt §43 (commercial interests)", "Exempt: Commercial Interests"]
   NONDISCLOSURE_REASONS["exempt_s44"] = ["Exempt §44 (prohibitions)", "Exempt: Prohibitions On Disclosure"]
-  
+
   belongs_to :requestor
   belongs_to :lgcs_term
   belongs_to :top_level_lgcs_term, :class_name => "LgcsTerm"
@@ -73,14 +73,14 @@ class Request < ActiveRecord::Base
   has_many :responses, :order => 'created_at'
   accepts_nested_attributes_for :requestor
   accepts_nested_attributes_for :responses
-  
+
   validates :nondisclosure_reason, :presence => true, :if => "state == 'not_disclosed'"
-  
+
   validates :medium, :presence => true, :inclusion => {
     :in => [ "web", "email", "phone", "fax", "post", "alaveteli", "other" ]
   }
   validates :state, :inclusion => { :in => STATES.keys }
-  
+
   acts_as_xapian({
     :texts => [ :title, :body, :requestor_name, :requestor_email ],
     :values => [
@@ -90,22 +90,22 @@ class Request < ActiveRecord::Base
         [ :medium, 'B', "medium" ], # 'M' is reserved for use as the model
         [ :lgcs_term_name, 'T', "lgcs_term" ]
     ]})
- 
+
   def state_title
     STATES[state][0]
   end
-  
+
   def state_description
     STATES[state][1]
   end
-  
+
   def state=(value)
     write_attribute(:state, value)
     if state != 'not_disclosed'
       nondisclosure_reason = nil
     end
   end
-  
+
   def nondisclosure_reason=(value)
     if NONDISCLOSURE_REASONS.has_key? value
       write_attribute(:nondisclosure_reason, value)
@@ -117,25 +117,25 @@ class Request < ActiveRecord::Base
   def nondisclosure_reason_title
     nondisclosure_reason.nil? ? nil : NONDISCLOSURE_REASONS[nondisclosure_reason][0]
   end
-  
+
   def nondisclosure_reason_description
     nondisclosure_reason.nil? ? nil : NONDISCLOSURE_REASONS[nondisclosure_reason][1]
   end
-  
+
   def administrative_id
     "FOI:#{self.id}/#{self.date_received_or_created.year}"
   end
-  
+
   def days_until_due
     if !self.due_date.nil?
       (self.due_date - Date.today).to_i
     end
   end
-  
+
   def date_received_or_created
     date_received || created_at.to_date
   end
-  
+
   def date_responded
     if responses.empty?
       nil
@@ -143,26 +143,26 @@ class Request < ActiveRecord::Base
       responses[-1].created_at.to_date
     end
   end
-  
+
   def lgcs_term_name
     lgcs_term.nil? ? nil : lgcs_term.name
   end
-  
+
   class << self
     # Get overdue requests, the most overdue first
     def overdue
       self.where("due_date <= date('now')").order("due_date ASC")
     end
-    
+
     def count_by_month(months_limit=nil)
       if months_limit.nil?
         q = Request
       else
         q = Request.where(["coalesce(date_received, created_at) > ?", Date.today - months_limit.months])
       end
-      
+
       q = yield(q) if block_given?
-      
+
       if ActiveRecord::Base.connection.adapter_name == "PostgreSQL"
         q.count(:group => "to_char(coalesce(date_received, created_at), 'YYYY-MM')")
       elsif ActiveRecord::Base.connection.adapter_name == "SQLite"
@@ -172,7 +172,7 @@ class Request < ActiveRecord::Base
       end
     end
   end
-  
+
   def requestor_name
     requestor.name
   end
@@ -180,7 +180,7 @@ class Request < ActiveRecord::Base
   def requestor_email
     requestor.email
   end
-  
+
   def email_for_response
     if remote_email.nil?
       requestor_email
@@ -188,7 +188,7 @@ class Request < ActiveRecord::Base
       remote_email
     end
   end
-  
+
   def send_acknowledgement
     RequestMailer.acknowledgement(self).deliver if !self.email_for_response.nil?
   end
@@ -196,7 +196,7 @@ class Request < ActiveRecord::Base
   def send_notification
     RequestMailer.notification(self).deliver
   end
-  
+
   def send_to_alaveteli
       if MySociety::Config.get("PUSH_TO_ALAVETELI") && medium != "alaveteli"
           self.remote_id, self.remote_url = AlaveteliApi.send_request(self)
@@ -204,7 +204,7 @@ class Request < ActiveRecord::Base
       end
   end
   handle_asynchronously :send_to_alaveteli
-  
+
   def set_top_level_lgcs_term
     if lgcs_term_id.nil?
       self.top_level_lgcs_term_id = nil
@@ -215,5 +215,5 @@ class Request < ActiveRecord::Base
     end
   end
   before_save :set_top_level_lgcs_term
-  
+
 end
