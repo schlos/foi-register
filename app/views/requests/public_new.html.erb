@@ -1,6 +1,6 @@
 <div class="request-new request" role="main">
     <h3><strong>Make a new request:</strong></h3>
-    
+
     <nav class="tips">
         <h4>Tips:</h4>
         <ul>
@@ -9,8 +9,8 @@
             <li>Ask for specific documents or information</li>
         </ul>
     </nav>
-    
-    
+
+
     <%= form_for(@request, :class => "well") do |f| %>
         <% if @request.errors.any? %>
           <div id="error_explanation">
@@ -30,7 +30,7 @@
              allow the requestor details to be filled in. When the form is
              submitted, the POSTed data will contain precisely one of
              requestor_id and requestor_name %>
-        
+
         <fieldset>
           <%= f.fields_for(:requestor) do |s| %>
             <p>
@@ -41,6 +41,7 @@
               <%= f.label :is_requestor_name_visible, :class => "checkbox" do
                 f.check_box(:is_requestor_name_visible) + "Publish my name"
               end %>
+              <span class="form-help">If you choose to publish your name, it will appear online in association with this request and may show up in search engine results.</span>
             </p>
             <p>
               <%= s.label :email, "Your email address" %>
@@ -48,24 +49,24 @@
             </p>
           <% end %>
         </fieldset>
-        
+
         <p>
           <%= f.label :title, "Summary" %>
           <%= f.text_field :title, :size => 120 %>
           <span class="form-help">a one line summary of the information you are requesting</span>
           <div id="typeahead_response"></div>
         </p>
-        
+
         <%# The body of the request %>
         <p>
           <%= f.label :body, "Your request" %>
           <%= f.text_area :body, :cols => 80 %>
         </p>
-        
+
         <p>
             <input class="btn" type="submit" value="Send request">
         </p>
-        
+
     <% end %>
-    
+
 </div>
