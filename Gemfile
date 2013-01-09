@@ -1,10 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.1'
+gem 'rails', '3.2.11'
 
-# Point to Rack master to avoid the bug in
-#   http://stackoverflow.com/questions/9054604/rails-3-2-1-cannot-parse-cookie-header-undefined-method-size-for-nilnilcla
-gem 'rack', :git => 'git://github.com/rack/rack.git'
+gem 'rack', '~> 1.4'
 #
 # This should be removed when the bug is fixed.
 
@@ -28,7 +26,7 @@ end
 group :test do
   gem 'sqlite3'
   gem 'mocha', :require => false
-  
+
   gem 'debugger', :require => 'ruby-debug', :platforms => :mri_19, :git => "https://github.com/cldwalker/debugger"
   gem 'ruby-debug', :platforms => :mri_18
 end
