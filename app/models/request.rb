@@ -82,7 +82,7 @@ class Request < ActiveRecord::Base
   validates :state, :inclusion => { :in => STATES.keys }
 
   acts_as_xapian({
-    :texts => [ :title, :body, :requestor_name, :requestor_email ],
+    :texts => [ :title, :body, :requestor_name, :requestor_email, :public_requestor_name ],
     :values => [
         [ :created_at, 0, "created_at", :date ]
     ],
@@ -171,6 +171,10 @@ class Request < ActiveRecord::Base
         raise "Unsupported database"
       end
     end
+  end
+
+  def public_requestor_name
+    is_requestor_name_visible? ? requestor_name : nil
   end
 
   def requestor_name
