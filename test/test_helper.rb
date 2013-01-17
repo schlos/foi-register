@@ -12,5 +12,12 @@ class ActiveSupport::TestCase
   # -- they do not yet inherit this setting
   fixtures :all
 
-  # Add more helper methods to be used by all tests here...
+  # Build the xapian index if not already built
+  def build_xapian_index()
+    models = [Request, Response]
+    if ! $existing_db
+      ActsAsXapian::WriteableIndex.rebuild_index(models, verbose=false)
+      $existing_db = true
+    end
+  end
 end

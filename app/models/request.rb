@@ -82,11 +82,13 @@ class Request < ActiveRecord::Base
   validates :state, :inclusion => { :in => STATES.keys }
 
   acts_as_xapian({
-    :texts => [ :title, :body, :requestor_name, :requestor_email ],
+    :texts => [ :title, :body, :public_requestor_name ],
     :values => [
         [ :created_at, 0, "created_at", :date ]
     ],
     :terms => [
+        [ :requestor_name, 'N', 'requestor_name'],
+        [ :requestor_email, 'E', 'requestor_email'],
         [ :medium, 'B', "medium" ], # 'M' is reserved for use as the model
         [ :lgcs_term_name, 'T', "lgcs_term" ]
     ]})
@@ -171,6 +173,10 @@ class Request < ActiveRecord::Base
         raise "Unsupported database"
       end
     end
+  end
+
+  def public_requestor_name
+    is_requestor_name_visible? ? requestor_name : nil
   end
 
   def requestor_name

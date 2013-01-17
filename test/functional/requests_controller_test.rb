@@ -248,4 +248,56 @@ class RequestsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test 'should not find requests by email when searching from the front end interface' do
+    build_xapian_index
+    get :search, :q => 'seb@mysociety.org'
+    assert response.body !~ /Badgers/
+  end
+
+  test 'should find requests by email when searching from the admin interface' do
+    build_xapian_index
+    get :search, :q => 'seb@mysociety.org',
+                 :is_admin => 'admin'
+    assert response.body =~ /Badgers/
+  end
+
+  test 'should find requests by public requestor name when searching from the front end interface' do
+    build_xapian_index
+    get :search, :q => 'houston'
+    assert response.body =~ /All your information/
+  end
+
+  test 'should not find requests by non-public requestor name when searching from the front end interface' do
+    build_xapian_index
+    get :search, :q => 'bacon'
+    assert response.body !~ /Badgers/
+  end
+
+  test 'should find requests by public requestor name when searching from the admin interface' do
+    build_xapian_index
+    get :search, :q => 'houston',
+                 :is_admin => 'admin'
+    assert response.body =~ /All your information/
+  end
+
+  test 'should find requests by non-public requestor name when searching from the admin interface' do
+    build_xapian_index
+    get :search, :q => 'bacon',
+                 :is_admin => 'admin'
+    assert response.body =~ /Badgers/
+  end
+
+  test 'should not find requests by private response text when searching from the front end interface' do
+    build_xapian_index
+    get :search, :q => 'private part of response'
+    assert response.body !~ /All your information/
+  end
+
+  test 'should find requests by private response text when searching from the admin interface' do
+    build_xapian_index
+    get :search, :q => 'private part of response',
+                 :is_admin => 'admin'
+    assert response.body =~ /All your information/
+  end
+
 end

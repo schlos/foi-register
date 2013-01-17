@@ -117,9 +117,20 @@ class RequestsController < ApplicationController
     options[:limit] = params[:limit].to_i if params.has_key?(:limit)
     options[:sort_by_prefix] = params[:sort_by_prefix].to_i if params.has_key?(:sort_by_prefix)
 
+    # If we're in the admin interface, include the requestor name (whether publicly visible or not),
+    # the requestor email, and the private response fields in the search
+    if self.is_admin_view?
+      clauses = [@query,
+                 "requestor_name:(#{@query})",
+                 "requestor_email:(#{@query})",
+                 "private_part:(#{@query})"]
+      xapian_query = clauses.join(" OR ")
+    else
+      xapian_query = @query
+    end
     s = ActsAsXapian::Search.new([
       Request, Response # Attachment?
-    ], @query, options)
+    ], xapian_query, options)
 
     @requests = s.results.map do |r|
       m = r[:model]
