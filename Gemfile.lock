@@ -13,10 +13,10 @@ GIT
     yaml_db (0.2.2)
 
 GIT
-  remote: git://github.com/robinhouston/acts_as_xapian_gem.git
-  revision: 57f92557c448d5378f75b694d251344a322cd19a
+  remote: git://github.com/mysociety/acts_as_xapian_gem.git
+  revision: 5caafe9c9b1879cfb896c1f58f59ea247182bf27
   specs:
-    acts_as_xapian (0.2.5)
+    acts_as_xapian (0.2.6)
 
 GIT
   remote: git://github.com/sebbacon/single_test.git
@@ -216,7 +216,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts_as_xapian (~> 0.2.5)!
+  acts_as_xapian (~> 0.2.6)!
   annotate (~> 2.5.0)
   bcrypt-ruby
   carrierwave!

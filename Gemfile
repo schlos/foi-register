@@ -67,7 +67,7 @@ group :default do
 
   # Full-text search
   gem 'xapian-full-alaveteli', '~> 1.2.9.4'
-  gem 'acts_as_xapian', '~> 0.2.5', :git => 'git://github.com/robinhouston/acts_as_xapian_gem.git'
+  gem 'acts_as_xapian', '~> 0.2.6', :git => 'git://github.com/mysociety/acts_as_xapian_gem.git'
 
   # Queue for updating Alaveteli
   gem 'delayed_job_active_record'
