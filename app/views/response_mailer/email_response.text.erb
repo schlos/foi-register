@@ -2,9 +2,9 @@ Regarding your request for information  under the Freedom of Information Act 200
 
 Please find set out below the information in response to the above request:
 
-<%= @response.private_part %>
+<%= raw @response.private_part %>
 
-<%= @response.public_part %>
+<%= raw @response.public_part %>
 
 This response can be viewed online at: <%= Rails.application.routes.url_helpers.request_url(nil, @request, :host => MySociety::Config.get("DOMAIN", "localhost:3000")) %>
 
