@@ -13,8 +13,9 @@ FoiRegister::Application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  # Send mail to mailcatcher in development http://mailcatcher.me/
+  config.action_mailer.delivery_method = :smtp # so is queued, rather than giving immediate errors
+  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -34,7 +35,7 @@ FoiRegister::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
-  
+
   # Take admin assets from the admin host
   admin_prefix = MySociety::Config::get("ADMIN_PREFIX", "/admin")
   if admin_prefix =~ %r(^https?://)
@@ -45,7 +46,7 @@ FoiRegister::Application.configure do
       # so we decode the args ourselves.
       raise ArgumentError if args.empty? || args.size > 2
       source, request = args
-      
+
       if request.nil?
         is_admin = (ENV["SCRIPT_URI"] =~ %r(/admin/))
       else
@@ -56,5 +57,5 @@ FoiRegister::Application.configure do
 
     end
   end
-  
+
 end

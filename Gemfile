@@ -20,6 +20,7 @@ end
 
 group :development do
   gem 'sqlite3'
+  gem 'mailcatcher'
   gem 'mocha', :require => false
 end
 
