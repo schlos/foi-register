@@ -248,4 +248,16 @@ class RequestsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test 'should not find requests by email when searching from the front end interface' do
+    build_xapian_index
+    get :search, :q => 'seb@mysociety.org'
+    assert response.body !~ /Badgers/
+  end
+
+  test 'should find requests by email when searching from the admin interface' do
+    build_xapian_index
+    get :search, :q => 'seb@mysociety.org'
+    assert response.body =~ /Badgers/
+  end
+
 end
