@@ -1,12 +1,12 @@
 .request-new, .admin-page .new_request, .edit_request{
-    
+
     @extend .grid-8-of-12;
     padding: 0;
-    
+
     &.request{
         margin-top: 0;
     }
-    
+
     p{
         @extend .grid-6-of-12;
         @extend .cf;
@@ -20,33 +20,35 @@
         margin: 0;
         padding: 0;
     }
-    
+
     label{
         display: block;
         margin-top: 8px;
     }
-    
+
     input, textarea{
         width:100%;
         padding: $gutter/2;
         border: 1px solid #bababa;
         clear: left;
     }
-    
+
     input[type="checkbox"]{
         width: 24px;
+        padding: 0;
+        border: 0;
     }
-    
+
     textarea{
         min-height: 20em;
     }
-    
+
     .form-help{
         display: block;
         color: #808080;
         clear: left;
     }
-    
+
     .btn{
         @extend .grid-4-of-12;
         padding: $gutter;
@@ -58,19 +60,19 @@
         background-position: right bottom;
         background-repeat: no-repeat;
         @include background-image-at2x("nav-blue-slim.png", "nav-blue-slim@2x.png", 100%, auto);
-        
+
         &:hover{
             background-color: darken($color-blue, 10%);
             background-position: right bottom;
             color: #fff;
         }
     }
-    
+
     .tips{
         @extend .grid-2-of-12;
         float: right;
         color: #808080;
-        
+
         ul{
             @extend .reset-list;
             font-size: 0.75em;
@@ -80,7 +82,7 @@
             }
         }
     }
-    
+
     #typeahead_response {
         clear: both;
         line-height: 24px;
