@@ -5,7 +5,7 @@
 $ ->
   requestor_id = $ '#request_requestor_attributes_id'
   requestor_email = $ '#request_requestor_attributes_email'
-  
+
   $('#request_requestor_attributes_name').autocomplete({
     source: "/ajax/requestors"
   }).bind("autocompletefocus", (event, ui) ->
@@ -18,10 +18,10 @@ $ ->
       requestor_id.val("")
       requestor_email.removeAttr("disabled").val("")
   )
-  
+
   lgcs_term_id = $ '#request_lgcs_term_id'
   lgcs_term = $ '#request_lgcs_term'
-  
+
   lgcs_term.autocomplete({
     source: "<%= MySociety::Config::get("ADMIN_PREFIX", "/admin") %>/ajax/lgcs_terms"
   })
@@ -31,9 +31,10 @@ $ ->
   .bind "focus", (event) ->
     lgcs_term.val ""
     lgcs_term_id.val ""
+    return false
   .bind "blur", (event) ->
     lgcs_term.val("") if !lgcs_term_id.val()
-  
+
   state_select = $ '#request_state, #response_request_attributes_state'
   state_description = $ '#state-description'
   nondisclosure_reason = $ '#nondisclosure_reason-field'
@@ -70,7 +71,7 @@ $ ->
           tar.hide()
       )
     ))
-  
+
   # Datepicker for request due date
   $('#request_due_date').datepicker({"dateFormat": "dd/mm/yy"})
 
@@ -96,7 +97,7 @@ $ ->
           $td.find(".label").show()
           $td.find(".state-editor").hide()
     )
-  
+
   # Request is published
   $r_u_s = $('#reason_for_unpublishing_section')
   $r_u = $('#reason_for_unpublishing')
@@ -109,7 +110,7 @@ $ ->
         $r_u.select()
       else
         $r_u_s.hide()
-    
+
     $("form.edit_request").submit (e) ->
       if !$r_i_p.is(":checked") && !$r_u.val()
         $r_u_s.css("background-color", "red").animate({"background-color": "#ccc"}, 500);
@@ -123,4 +124,3 @@ $ ->
   $("#form-category-chooser-category").change (e) ->
     category_id = $("#form-category-chooser-category").val()
     document.location.href = "/requests/category/" + category_id
-  
