@@ -128,7 +128,7 @@ GEM
       thin (~> 1.5.0)
     metaclass (0.0.1)
     mime-types (1.21)
-    mocha (0.12.6)
+    mocha (0.13.3)
       metaclass (~> 0.0.1)
     multi_json (1.7.0)
     multipart-post (1.1.4)
