@@ -1,8 +1,9 @@
 # encoding: UTF-8
 
 require "cgi"
+require "open-uri"
+require "net/https"
 require "uri"
-require "net/http"
 require "time"
 
 namespace :foi do
@@ -24,10 +25,17 @@ namespace :foi do
                 url += '&since_event_id=' + last_event_id.to_s
             end
 
-            response = Net::HTTP.get_response( URI.parse(url) )
-            events = ActiveSupport::JSON.decode(response.body)
+            uri = URI.parse(url)
+            http = Net::HTTP.new(uri.host, uri.port)
+            http.use_ssl = true
 
+            http.ca_path = MySociety::Config.get("SSL_CA_PATH", "/etc/ssl/certs/")
+            http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+            request = Net::HTTP::Get.new(uri.request_uri)
+            response = http.request(request)
+            events = ActiveSupport::JSON.decode(response.body)
             events.reverse_each do |event|
+
                 event_type = event["event_type"]
                 if event_type == "sent"
 
