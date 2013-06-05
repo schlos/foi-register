@@ -8,6 +8,20 @@ class AlaveteliApi
     class AlaveteliApiError < StandardError
     end
 
+    def self.prepare_connection(url)
+      http = Net::HTTP.new(url.host, url.port)
+      if self.alaveteli_secure?
+        http.use_ssl = true
+        http.ca_path = MySociety::Config.get("SSL_CA_PATH", "/etc/ssl/certs/")
+        http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+      end
+      http
+    end
+
+    def self.alaveteli_secure?()
+      MySociety::Config::get("ALAVETELI_SECURE")
+    end
+
     def self.send_request(request)
         api_endpoint = MySociety::Config::get("ALAVETELI_API_ENDPOINT")
         return nil, nil if api_endpoint.nil?
@@ -21,14 +35,10 @@ class AlaveteliApi
         key = MySociety::Config::get("ALAVETELI_API_KEY")
         url = URI.parse("#{api_endpoint}/request.json")
 
-        http = Net::HTTP.new(url.host, url.port)
-        http.use_ssl = true
-        http.ca_path = MySociety::Config.get("SSL_CA_PATH", "/etc/ssl/certs/")
-        http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+        http = self.prepare_connection(url)
         req = Net::HTTP::Post::Multipart.new(url.path,
                                              :k => key,
                                              :request_json => data.to_json)
-
         response = http.request(req)
         case response
         when Net::HTTPSuccess
@@ -66,10 +76,9 @@ class AlaveteliApi
                     attachment.filename
                 )])
             end
+            http = self.prepare_connection(url)
             req = Net::HTTP::Post::Multipart.new(url.path, post_data)
-            response = Net::HTTP.start(url.host, url.port) do |http|
-                http.request(req)
-            end
+            response = http.request(req)
             json = ActiveSupport::JSON.decode(response.body)
             if json['errors'].nil?
                 Rails.logger.info("Created new response id #{response.object_id}")
