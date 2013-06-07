@@ -16,7 +16,7 @@ ASSET_HOST: null
 
 # Used for both push and pull
 ALAVETELI_API_KEY: 'xxxx'
-
+ALAVETELI_SECURE: true
 # Pull
 PULL_FROM_ALAVETELI: false
 ALAVETELI_FEED_URL: 'http://www.whatdotheyknow.com/api/v2/body/nn/request_events.json'
