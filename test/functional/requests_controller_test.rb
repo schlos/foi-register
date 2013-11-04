@@ -29,6 +29,12 @@ class RequestsControllerTest < ActionController::TestCase
     assert_redirected_to requests_path
   end
 
+  test "doesn't send email when request isn't created" do
+    assert_difference 'ActionMailer::Base.deliveries.size', 0 do
+      post :create, :request => {:requestor_attributes => {}}
+    end
+  end
+
   def with_alaveteli
     config = MySociety::Config.load_default()
     host = config['TEST_ALAVETELI_API_HOST']
