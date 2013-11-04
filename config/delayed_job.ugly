@@ -15,9 +15,12 @@
 NAME=!!(*= $daemon_name *)!!
 SCRIPT=!!(*= $vhost_dir *)!!/foi-register/script/delayed_job
 PIDDIR=!!(*= $vhost_dir *)!!
+BUNDLE_GEMFILE=!!(*= $vhost_dir *)!!/foi-register/Gemfile
 !!(* if ($staging) { *)!!RAILS_ENV=development
 !!(* } else { *)!!RAILS_ENV=production
 !!(* } *)!!
+
+export BUNDLE_GEMFILE
 export RAILS_ENV
 
 trap "" 1
