@@ -1,13 +1,13 @@
 #!/bin/bash
 #
 ### BEGIN INIT INFO
-# Provides: delayed_job
+# Provides: !!(*= $daemon_name *)!!
 # Required-Start: $local_fs $syslog
 # Required-Stop: $local_fs $syslog
 # Default-Start: 2 3 4 5
 # Default-Stop: 0 1 6
-# Short-Description: delayed_job is a daemon processing the queue of delayed jobs
-# Description: delayed_job process delayed jobs (for foi-register)
+# Short-Description: !!(*= $daemon_name *)!! is a daemon processing the queue of delayed jobs
+# Description: !!(*= $daemon_name *)!! process delayed jobs (for foi-register)
 ### END INIT INFO
 #
 # !!(*= $daemon_name *)!! Start the delayed_job daemon
