@@ -67,7 +67,6 @@ class RequestsController < ApplicationController
   def show
     @request = Request.find(params[:id])
     raise ActiveRecord::RecordNotFound if !is_admin_view? && !@request.is_published
-    @title = @request.title + MySociety::Config.get("PAGE_TITLE_SUFFIX")
 
     respond_to do |format|
       format.html # show.html.erb
