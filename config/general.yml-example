@@ -1,5 +1,5 @@
 DOMAIN: 'localhost:3000'
-PAGE_TITLE_SUFFIX: ' – Brighton & Hove City Council'
+PAGE_TITLE_SUFFIX: 'Brighton & Hove City Council'
 
 ORG_NAME: 'Brighton & Hove'
 ORG_EMAIL: 'foi@example.org'

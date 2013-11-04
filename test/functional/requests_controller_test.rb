@@ -12,6 +12,7 @@ class RequestsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:requests)
+    assert_match CGI::escapeHTML(MySociety::Config.get("PAGE_TITLE_SUFFIX")), response.body.to_s
   end
 
   test "should get new" do
