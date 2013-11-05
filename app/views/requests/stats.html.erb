@@ -10,33 +10,33 @@
                   ['Month', 'Requests'],
                   <%= @stats[:by_month].map do |month, count|
                       "['#{month}', #{count}]"
-                  end.join(", ") %>
+                  end.join(", ").html_safe %>
           ]), {
               title: 'Requests over time',
               legend: {position: "none"},
               fontSize: 12
           });
-          
+
           // By state
           new google.visualization.PieChart(document.getElementById('chart_by_state'))
               .draw(google.visualization.arrayToDataTable([
                   ['State', 'Requests'],
                   <%= @stats[:by_state].map do |state, count|
                       "['#{state}', #{count}]"
-                  end.join(", ") %>
+                  end.join(", ").html_safe %>
           ]), {
               title: 'Request states'
           });
-          
+
           // By month and state
           new google.visualization.AreaChart(document.getElementById('chart_by_month_and_state'))
               .draw(google.visualization.arrayToDataTable([
-                  ['Month', <%= Request::STATES.values.map{|e| "'#{e[0]}'"}.join(", ") %>],
+                  ['Month', <%= Request::STATES.values.map{|e| "'#{e[0]}'"}.join(", ").html_safe %>],
                   <% Date.today.month.upto(12) do |m| month = "%04d-%02d" % [Date.today.year - 1, m] %>
-                    ['<%= month %>', <%= Request::STATES.keys.map{|s| @stats[:by_month_and_state][[s, month]] || 0}.join(", ") %>],
+                    ['<%= month %>', <%= Request::STATES.keys.map{|s| @stats[:by_month_and_state][[s, month]] || 0}.join(", ").html_safe %>],
                   <% end %>
                   <% 1.upto(Date.today.month - 1) do |m| month = "%04d-%02d" % [Date.today.year, m] %>
-                    ['<%= month %>', <%= Request::STATES.keys.map{|s| @stats[:by_month_and_state][[s, month]] || 0}.join(", ") %>],
+                    ['<%= month %>', <%= Request::STATES.keys.map{|s| @stats[:by_month_and_state][[s, month]] || 0}.join(", ").html_safe %>],
                   <% end %>
           ]), {
               title: 'Request states over time',
