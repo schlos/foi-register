@@ -1,4 +1,4 @@
-Reply to this request at <%= request_url(@request, :is_admin => "admin", :host => MySociety::Config.get("DOMAIN", "localhost:3000")) %>
+Reply to this request at <%= request_url(@request, :is_admin => "admin", :host => MySociety::Config.get("DOMAIN", "localhost:3000"), :protocol => (MySociety::Config.get("FOI_REG_SECURE", false) ? 'https' : 'http')) %>
 
 <%= @request.title %>
 
