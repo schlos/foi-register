@@ -1,4 +1,4 @@
-Reply to this request at <%= request_path(@request, :is_admin => "admin") %>
+Reply to this request at <%= request_url(@request, :is_admin => "admin", :host => MySociety::Config.get("DOMAIN", "localhost:3000")) %>
 
 <%= @request.title %>
 
