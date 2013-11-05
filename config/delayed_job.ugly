@@ -14,7 +14,8 @@
 
 NAME=!!(*= $daemon_name *)!!
 SCRIPT=!!(*= $vhost_dir *)!!/foi-register/script/delayed_job
-PIDDIR=!!(*= $vhost_dir *)!!
+PIDFILE=!!(*= $vhost_dir *)!!/foi-register/tmp/pids/delayed_job.pid
+DUSER=!!(*= $user *)!!
 BUNDLE_GEMFILE=!!(*= $vhost_dir *)!!/foi-register/Gemfile
 !!(* if ($staging) { *)!!RAILS_ENV=development
 !!(* } else { *)!!RAILS_ENV=production
@@ -27,7 +28,7 @@ trap "" 1
 
 case "$1" in
   check)
-      /usr/bin/bundle exec "$SCRIPT" start >/dev/null 2>&1
+      /sbin/start-stop-daemon --start --pidfile "$PIDFILE" --chuid "$DUSER" --startas /usr/bin/bundle -- exec "$SCRIPT" start >/dev/null 2>&1
       if [ $? -ne 1 ]
       then
           echo "FOI register delayed_job daemon was not running; now restarted"
@@ -39,17 +40,18 @@ case "$1" in
 
   start)
       echo -n "Starting delayed_job daemon: $NAME"
-      /usr/bin/bundle exec "$SCRIPT" start
+      /sbin/start-stop-daemon --start --pidfile "$PIDFILE" --chuid "$DUSER" --startas /usr/bin/bundle -- exec "$SCRIPT" start
       ;;
 
   stop)
         echo -n "Stopping delayed_job daemon: $NAME"
-        /usr/bin/bundle exec "$SCRIPT" stop
+        /sbin/start-stop-daemon start-stop-daemon --stop --oknodo --pidfile "$PIDFILE"
         ;;
 
   restart)
       echo -n "Restarting delayed_job daemon: $NAME"
-      /usr/bin/bundle exec "$SCRIPT" restart
+      start-stop-daemon --stop --pidfile $PIDFILE --oknodo
+      /sbin/start-stop-daemon --start --pidfile "$PIDFILE" --chuid "$DUSER" --startas /usr/bin/bundle -- exec "$SCRIPT" start
       ;;
 
   *)
