@@ -57,7 +57,7 @@ group :default do
   gem 'single_test', :git => 'git://github.com/sebbacon/single_test.git'
 
   # For pagination
-  gem 'will_paginate', '~> 3.0'
+  gem 'will_paginate', '~> 3.0.5'
 
   # So we can dump and load plenty of sample data
   gem 'yaml_db', :git => 'git://github.com/lostapathy/yaml_db.git'
