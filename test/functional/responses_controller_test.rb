@@ -150,29 +150,31 @@ class ResponsesControllerTest < ActionController::TestCase
   end
 
   test "should destroy attachment" do
-    # Upload the attachments in our fixture, so that they go somewhere
+    # Upload the attachments in our fixture, so that the files really exist
     response_attributes = @response_1.attributes
     response_attributes['attachments_attributes'] = {}
-    files = {}
     @response_1.attachments.each_with_index do |attachment, n|
-      attachment.destroy
-      files[n] = fixture_file_upload("files/#{attachment['file']}", attachment['content_type'])
-      response_attributes['attachments_attributes'][n] = {'file' => files[n]}
+      response_attributes['attachments_attributes'][n] = {'file' => fixture_file_upload("files/#{attachment['file']}", attachment['content_type'])}
     end
     put :update, :request_id => @response_1.request.id, :id => @response_1, :response => response_attributes
 
+    # Reload the response and check the file has been uploaded
     @response_1 = Response.find(@response_1.id)
-    puts @response_1.attachments
-    attachment = @response_1.attachments[0]
-    assert_equal true, File.exists?(files[0])
+    filename = @response_1.attachments[2].file.file.file.to_s
+    assert File.exists?(filename)
 
-    # Signal that we want to delete an attachment
-    response_attributes['attachments_attributes'] = {0 => {:id => attachment.id, :remove_file => '1' }}
+    # Request to delete the file
+    response_attributes = @response_1.attributes
+    response_attributes['attachments_attributes'] = {0 => {:id => @response_1.attachments[2].id, :remove_file => '1' }}
 
+    # Check the model was deleted
     assert_difference('Attachment.count', -1) do
       put :update, :request_id => @response_1.request.id, :id => @response_1, :response => response_attributes
     end
-    assert_equal false, File.exists?(files[0])
+
+    # Check the file was deleted
+    assert !File.exists?(filename)
+
     assert_redirected_to request_path(assigns(:response).request, :is_admin => 'admin')
   end
 

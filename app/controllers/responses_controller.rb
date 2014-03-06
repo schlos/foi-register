@@ -51,7 +51,9 @@ class ResponsesController < ApplicationController
     if !attachments_attributes.nil?
       attachments_attributes.each do |k,v|
         if v["remove_file"] == "1"
-          Attachment.delete(v["id"])
+          attachment = Attachment.find(v["id"])
+          attachment.file.remove!
+          attachment.destroy
           attachments_attributes.delete(k)
         end
       end
