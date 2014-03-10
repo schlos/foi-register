@@ -159,7 +159,7 @@ class ResponsesControllerTest < ActionController::TestCase
     put :update, :request_id => @response_1.request.id, :id => @response_1, :response => response_attributes
 
     # Reload the response and check the file has been uploaded
-    @response_1 = Response.find(@response_1.id)
+    @response_1.reload
     filename = @response_1.attachments[2].file.file.file.to_s
     assert File.exists?(filename)
 
