@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.16'
+gem 'rails', '3.2.17'
 
 gem 'rack', '~> 1.4'
 #
@@ -9,7 +9,7 @@ gem 'rack', '~> 1.4'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+  gem 'sass-rails',   '3.2.5'
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -36,8 +36,7 @@ group :production do
   gem 'pg'
 
   # Report on exceptions
-  gem 'exception_notification'
-
+  gem 'exception_notification', '~> 2.6.1'
 end
 
 group :default do
@@ -52,7 +51,7 @@ group :default do
 
   # For annotating models
   gem "annotate", "~> 2.5.0"
-  gem 'bcrypt-ruby'
+  gem 'bcrypt-ruby', "~> 3.0.1"
 
   gem 'single_test', :git => 'git://github.com/sebbacon/single_test.git'
 
@@ -70,6 +69,7 @@ group :default do
   gem 'acts_as_xapian', '~> 0.2.6', :git => 'git://github.com/mysociety/acts_as_xapian_gem.git'
 
   # Queue for updating Alaveteli
+  gem 'delayed_job', '~> 3.0.3'
   gem 'delayed_job_active_record'
 
   # For calling Alaveteli API
@@ -77,6 +77,7 @@ group :default do
   gem 'daemons'
 
   # For generating PDF letters
-  gem 'prawn'
+  gem 'pdf-reader', '~> 1.2.0'
+  gem 'prawn', '~> 0.12.0'
 
 end
