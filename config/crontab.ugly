@@ -1,5 +1,10 @@
 PATH=/usr/local/bin:/usr/bin:/bin
+
+!!(* if ($vhost eq 'liz.foi-register.dev.mysociety.org') { *)!!
+MAILTO=liz@mysociety.org
+!!(* } else { *)!!
 MAILTO=cron-!!(*= $site *)!!@mysociety.org
+!!(* } *)!!
 !!(* if ($staging) { *)!!RAILS_ENV=development
 !!(* } else { *)!!RAILS_ENV=production
 !!(* } *)!!
