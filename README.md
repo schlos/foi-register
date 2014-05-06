@@ -14,24 +14,19 @@
     ```
 3. Install the required packages in `config/packages` using your package manager
 
-4. Make sure you have the required version of Ruby from `.rvmrc` with:
-
-    ```
-    $ rvm install ruby-1.8.7-p302
-    ```
-5. Copy the settings in `config/database.yml-example` to `config/database.yml`
+4. Copy the settings in `config/database.yml-example` to `config/database.yml`
 and adjust as appropriate.
 
-6. Copy the settings in `config/general.yml-example` to `config/general.yml`
+5. Copy the settings in `config/general.yml-example` to `config/general.yml`
 and adjust as appropriate.
 
-7. Run the following:
+6. Run the following:
 
     ```
     $ bundle install
     $ script/post-deploy
     ```
-8. Then arrange for the `delayed_job` daemon to start, e.g.:
+7. Then arrange for the `delayed_job` daemon to start, e.g.:
 
     ```
     $ RAILS_ENV=production script/delayed_job start
