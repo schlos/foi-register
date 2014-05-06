@@ -307,4 +307,24 @@ class RequestsControllerTest < ActionController::TestCase
     assert response.body =~ /All your information/
   end
 
+  test "should not show days overdue for disclosed requests" do
+    build_xapian_index
+    get :search, :q => "QuestionAnswered",
+                 :is_admin => 'admin'
+    assert response.body =~ /<span class='badge '> n\/a<\/span>/
+  end
+
+  test "should not show days overdue for non_disclosed requests" do
+    build_xapian_index
+    get :search, :q => "Unanswerable",
+                 :is_admin => 'admin'
+    assert response.body =~ /<span class='badge '> n\/a<\/span>/
+  end
+
+  test "should show days overdue for new requests" do
+    build_xapian_index
+    get :search, :q => "Overdue",
+                 :is_admin => 'admin'
+    assert response.body =~ /<span class='badge badge-warning'> -10<\/span>/
+  end
 end
