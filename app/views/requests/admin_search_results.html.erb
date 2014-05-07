@@ -21,7 +21,6 @@
           <th></th>
           <th></th>
           <th></th>
-          <th></th>
         </tr>
 
       <% @requests.each do |request| %>
@@ -36,7 +35,6 @@
 
           <td><%= link_to 'Respond', new_response_request_path(request) %></td>
           <td><%= link_to '<i class="icon-pencil"></i>'.html_safe, edit_request_path(request) %></td>
-          <td><%= link_to '<i class="icon-trash"></i>'.html_safe, request, :confirm => 'Are you sure?', :method => :delete %></td>
         </tr>
       <% end %>
       </table>
