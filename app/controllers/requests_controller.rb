@@ -339,11 +339,4 @@ class RequestsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  # GET /requests/1/new_response
-  def new_response
-    @request = Request.find(params[:id])
-    @response = Response.new
-    @response.request = @request
-  end
 end

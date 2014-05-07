@@ -15,9 +15,6 @@ FoiRegister::Application.routes.draw do
         get 'search_typeahead'
         get 'category/:top_level_lgcs_term_id', :action => "in_category", :constraints => { :is_admin => "" }
       end
-      member do
-        get 'new_response'
-      end
     end
     resources :requestors
   end
