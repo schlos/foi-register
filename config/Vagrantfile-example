@@ -29,4 +29,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
   end
 
+  #provisioning
+  config.vm.provision "shell", path: "foi-register/script/provision.sh"
 end

@@ -53,11 +53,11 @@ instance to test against, which you'll have to set up. If you want to skip
 these tests, blank the setting `TEST_ALAVETELI_API_HOST` in `config/test.yml`
 
 ## Developing with Vagrant
-An example vagrant file can be found in `config/Vagrantfile-example` - this
-doesn't do any provisioning, but has the neccessary settings to let you run
-this code in a virtual machine. To use it, it's probably easiest to copy it
-out to the parent directory, so that it sits alongside the foi-register folder
-you cloned from git:
+An example vagrant file can be found in `config/Vagrantfile.example` - the
+provisioning script sets up the basics for you, and has the neccessary settings
+to let you run this code in a virtual machine. To use it, it's probably easiest
+to copy it out to the parent directory, so that it sits alongside the
+foi-register folder you cloned from git:
 
 ```
 $ cp foi-register/config/Vagrantfile-example Vagrantfile
