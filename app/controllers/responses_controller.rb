@@ -21,6 +21,11 @@ class ResponsesController < ApplicationController
     @request.state = request_attributes[:state]
     if request_attributes.has_key? :nondisclosure_reason
       @request.nondisclosure_reason = request_attributes[:nondisclosure_reason]
+      if @request.nondisclosure_reason == "rejected_vexatious"
+        if @response.public_part.nil? or @response.public_part.empty?
+          @response.public_part = "Rejected as vexatious"
+        end
+      end
     end
     @request.save!
 

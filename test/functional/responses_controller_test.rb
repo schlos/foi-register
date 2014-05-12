@@ -139,6 +139,21 @@ class ResponsesControllerTest < ActionController::TestCase
     assert found_response
   end
 
+  test "should add the text 'Rejected as vexatious' if vexatious request submitted without response" do
+    fake_response = Response.new
+    vexatious_response = responses(:response_3)
+    vexatious_response.public_part = nil
+    response_attributes = vexatious_response.attributes
+    response_attributes[:request_attributes] = {:state => "not_disclosed", :nondisclosure_reason => "rejected_vexatious"}
+
+    Response.expects(:new).returns(fake_response)
+    fake_response.stubs(:save).returns(true)
+    fake_response.stubs(:send_to_alaveteli)
+    fake_response.expects(:public_part=).with("Rejected as vexatious")
+
+    post :create, :response => response_attributes, :request_id => vexatious_response.request_id
+  end
+
   test "should get edit" do
     get :edit, :request_id => @response_1.request.id, :id => @response_1
     assert_response :success
