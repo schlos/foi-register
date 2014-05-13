@@ -18,6 +18,16 @@ class ResponsesControllerTest < ActionController::TestCase
     assert_redirected_to request_path(@response_1.request, :is_admin => "admin")
   end
 
+  test "should not create a response when the request state is new" do
+    response_attributes = @response_1.attributes
+    response_attributes[:request_attributes] = {:state => "new"}
+    assert_no_difference('Response.count') do
+      post :create, :response => response_attributes, :request_id => @response_1.request_id
+    end
+
+    assert response.body =~ /State can&#x27;t be New/
+  end
+
   test "should set the request state when creating a response" do
     response_attributes = @response_1.attributes
     response_attributes[:request_attributes] = {:state => "disclosed"}
