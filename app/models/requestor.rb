@@ -16,11 +16,11 @@ class Requestor < ActiveRecord::Base
   validates_presence_of :name
   validate :email_address_format
   default_scope :order => 'created_at DESC'
-  
+
   def email_address_format
-    errors.add(:email, "is invalid") if !email.nil? && !email.empty? && email !~ /\A\S+@\S+\Z/
+    errors.add(:email, "is invalid") if email.nil? || email.empty? || email !~ /\A\S+@\S+\Z/
   end
-  
+
   def to_s
     if !external_url.nil?
       %(<a href="#{external_url}">).html_safe + name + "</a>".html_safe
