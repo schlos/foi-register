@@ -218,8 +218,8 @@ class RequestsController < ApplicationController
     request = params[:request]
     requestor = request.delete :requestor_attributes
 
+    request[:state] = "new"
     if !self.is_admin_view?
-      request[:state] = "new"
       request[:medium] = "web"
       request[:due_date] = Date.today + 28.days
       request[:lgcs_term_id] = nil

@@ -35,14 +35,6 @@
     <% end %>
   </fieldset>
 
-  <div class="field">
-    <%= f.label :state %>
-    <%= f.select(:state, Request::STATES.collect do |tag, (name, description)|
-        [name, tag, {:title => description}]
-      end) %>
-    <div id="state-description"><%= @request.state_description %></div>
-  </div>
-
   <div class="field" id="nondisclosure_reason-field">
     <%= f.label :nondisclosure_reason %>
     <%= f.select(:nondisclosure_reason, Request::NONDISCLOSURE_REASONS.collect do |tag, (name, description)|
