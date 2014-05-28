@@ -75,6 +75,7 @@ group :default do
   # For calling Alaveteli API
   gem 'multipart-post'
   gem 'daemons'
+  gem 'htmlentities'
 
   # For generating PDF letters
   gem 'pdf-reader', '~> 1.2.0'

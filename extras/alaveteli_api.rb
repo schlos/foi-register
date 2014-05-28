@@ -2,6 +2,7 @@ require 'open-uri'
 require 'base64'
 require 'net/https'
 require 'net/http/post/multipart'
+require 'htmlentities'
 
 class AlaveteliApi
 
@@ -27,7 +28,7 @@ class AlaveteliApi
         return nil, nil if api_endpoint.nil?
 
         data = {:title => request.title,
-            :body => request.body,
+            :body => HTMLEntities.new.decode(request.body),
             :external_url => Rails.application.routes.url_helpers.request_url(nil, request, :host => MySociety::Config.get("DOMAIN", "localhost:3000"))
         }
         data[:external_user_name] = request.requestor_name if request.is_requestor_name_visible?
@@ -62,7 +63,7 @@ class AlaveteliApi
         if !api_endpoint.nil?
             correspondence_data = {
                 :direction => 'response', # or request
-                :body => response.public_part,
+                :body => HTMLEntities.new.decode(response.public_part),
                 :sent_at => response.created_at,
             }
             key = MySociety::Config::get("ALAVETELI_API_KEY")
