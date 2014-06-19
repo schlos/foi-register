@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120928155531) do
+ActiveRecord::Schema.define(:version => 20140618163542) do
 
   create_table "acts_as_xapian_jobs", :force => true do |t|
     t.string  "model",    :null => false
@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(:version => 20120928155531) do
     t.integer  "size",         :null => false
     t.string   "filename"
     t.integer  "response_id",  :null => false
+  end
+
+  create_table "confirmation_links", :force => true do |t|
+    t.string   "token",                         :null => false
+    t.integer  "request_id",                    :null => false
+    t.boolean  "expired",    :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "delayed_jobs", :force => true do |t|
