@@ -1,0 +1,19 @@
+<p>
+  The request to <b><%=@request.title%></b> you created on <%=@request.created_at%> has been marked as <b><%=Request::STATES[@request.state][0]%></b> by the FOI officer.
+</p>
+
+<p>
+  Please record your assessment of the status of your FOI request using the dropdown below.
+</p>
+
+<%= form_tag %>
+  <div class="field">
+    <%= label_tag :state, "State" %>
+    <%= select_tag(:state,
+      options_for_select(@states.map do |tag, (name, description)|
+        [name, tag, {:title => description}]
+       end, @request.state)) %>
+  </div>
+  <div class="actions">
+    <%= submit_tag %>
+  </div>

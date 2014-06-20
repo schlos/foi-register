@@ -21,6 +21,7 @@
 #  nondisclosure_reason      :string(255)
 #  remote_email              :string(255)
 #  top_level_lgcs_term_id    :integer
+#  requestor_state           :string(255)
 #
 
 class Request < ActiveRecord::Base

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140618163542) do
+ActiveRecord::Schema.define(:version => 20140619175229) do
 
   create_table "acts_as_xapian_jobs", :force => true do |t|
     t.string  "model",    :null => false
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20140618163542) do
     t.string   "nondisclosure_reason"
     t.string   "remote_email"
     t.integer  "top_level_lgcs_term_id"
+    t.string   "requestor_state"
   end
 
   add_index "requests", ["due_date"], :name => "index_requests_on_due_date"

@@ -19,6 +19,11 @@ FoiRegister::Application.routes.draw do
     resources :requestors
   end
 
+  # One-time only links for requestors to register
+  # their response to the outcome of their request
+  get "/c/:token" => 'requestor_confirmation#show'
+  post "/c/:token" => 'requestor_confirmation#set_response'
+
   get "/admin" => 'redirection#admin'
 
   # Useful in development.

@@ -20,6 +20,7 @@
 #  nondisclosure_reason      :string(255)
 #  remote_email              :string(255)
 #  top_level_lgcs_term_id    :integer
+#  requestor_state           :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
@@ -30,6 +31,7 @@ all_your_info:
   requestor: robin
   body: Please send me all your information
   is_published: YES
+  state: assessing
   is_requestor_name_visible: YES
   created_at: <%= (Time.now - 20.days).to_s(:db) %>
 
@@ -45,6 +47,7 @@ badgers:
   is_published: YES
   is_requestor_name_visible: NO
   remote_url: http://www.whatdotheyknow.com/request/badgers_xxx_not_really_xxx
+  state: assessing
   lgcs_term: animal_control_985
   created_at: <%= (Time.now - 15.days).to_s(:db) %>
 
@@ -78,10 +81,22 @@ overdue:
   created_at: <%= (Time.now - 20.days).to_s(:db) %>
   state: new
 
+settled:
+  due_date: <%= (Time.now + 10.days).to_s(:db) %>
+  title: All your success are belong to us
+  requestor: seb
+  body: Something sensible is supposed to go here
+  state: disclosed
+  is_published: YES
+  is_requestor_name_visible: NO
+  remote_url: http://www.whatdotheyknow.com/request/fake_success
+  created_at: <%= (Time.now - 15.days).to_s(:db) %>
+
 older_request:
   due_date: <%= (Time.now - 20.days).to_s(:db) %>
   title: In Olden Days
   requestor: seb
+  state: assessing
   body: |
     Prithee send some information.
   is_published: YES
