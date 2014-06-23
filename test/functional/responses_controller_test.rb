@@ -40,27 +40,6 @@ class ResponsesControllerTest < ActionController::TestCase
     assert_redirected_to request_path(@response_1.request, :is_admin => "admin")
   end
 
-  # Wrapper for tests that need an Alaveteli connection
-  def with_alaveteli
-    config = MySociety::Config.load_default()
-    host = config['TEST_ALAVETELI_API_HOST']
-    if host.nil?
-      $stderr.puts "WARNING: skipping Alaveteli integration test.  Set `TEST_ALAVETELI_API_HOST` to run"
-    else
-      endpoint = "#{host}/api/v2"
-      config['ALAVETELI_API_ENDPOINT'] = endpoint
-      config['ALAVETELI_API_KEY'] = '3'
-
-      begin
-        yield host
-      rescue Errno::ECONNREFUSED => e
-        raise "TEST_ALAVETELI_API_HOST set in test.yml but no Alaveteli server running"
-      ensure
-        config['ALAVETELI_API_ENDPOINT'] = nil
-      end
-    end
-  end
-
   test "should publish a response to Alaveteli endpoint" do
     with_alaveteli do |host|
       # first we need to create a new request, so we have a remote_id to respond to...

@@ -36,25 +36,6 @@ class RequestsControllerTest < ActionController::TestCase
     end
   end
 
-  def with_alaveteli
-    config = MySociety::Config.load_default()
-    host = config['TEST_ALAVETELI_API_HOST']
-    if host.nil?
-      $stderr.puts "WARNING: skipping Alaveteli integration test.  Set `TEST_ALAVETELI_API_HOST` in config/test.yml to run this test."
-    else
-      endpoint = "#{host}/api/v2"
-      config['ALAVETELI_API_ENDPOINT'] = endpoint
-      config['ALAVETELI_API_KEY'] = '3'
-      begin
-        yield host
-      rescue Errno::ECONNREFUSED => e
-        raise "TEST_ALAVETELI_API_HOST set in test.yml but no Alaveteli server running"
-      ensure
-        config['ALAVETELI_API_ENDPOINT'] = nil
-      end
-    end
-  end
-
   test "should publish a request to Alaveteli endpoint" do
     with_alaveteli do |host|
       request_attributes = @request_all_your_info.attributes
