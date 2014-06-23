@@ -13,9 +13,9 @@ class RequestorConfirmationController < ApplicationController
   def set_response
     @request.requestor_state = params[:state]
     @request.save
+    AlaveteliApi.status_update(@request)
     @conf.expired = true
     @conf.save
-    # TODO call the status API
   end
 
   protected

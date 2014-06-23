@@ -13,17 +13,29 @@ class RequestorConfirmationControllerTest < ActionController::TestCase
   end
 
   test "should update the response" do
-    token = "QSKmM5lqaXyoZsLdQ2zyKQ=="
-    conf = confirmation_links(:valid)
-    request = requests(:settled)
-    conf.stubs(:request).returns(request)
-    ConfirmationLink.expects(:find_by_token).with(token).returns(conf)
+    with_alaveteli do |host|
+      token = "QSKmM5lqaXyoZsLdQ2zyKQ=="
+      conf = confirmation_links(:valid)
+      request = requests(:settled)
+      conf.stubs(:request).returns(request)
+      ConfirmationLink.expects(:find_by_token).with(token).returns(conf)
 
-    post :set_response, :token => token, :state => "not disclosed"
-    assert_response :success
+      # first we need to create a new request, so we have a remote_id to respond to...
+      request.send_to_alaveteli
 
-    assert conf.expired
-    assert_equal "not disclosed", request.requestor_state
+      # trigger the API call
+      post :set_response, :token => token, :state => "not_disclosed"
+      assert_response :success
+
+      # check that it worked locally
+      assert conf.expired
+      assert_equal "not_disclosed", request.requestor_state
+
+      # and for alaveteli
+      result = JSON.parse(open("#{host}/request/#{request.remote_id}.json").read)
+      assert_equal "rejected", result["described_state"]
+      assert_equal "Refused.", result["display_status"]
+    end
   end
 
   test "should redirect to index if the request is not found" do

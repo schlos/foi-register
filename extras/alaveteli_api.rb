@@ -88,4 +88,55 @@ class AlaveteliApi
         end
     end
 
+    def self.status_update(request)
+        api_endpoint = MySociety::Config::get("ALAVETELI_API_ENDPOINT")
+
+        if !api_endpoint.nil?
+            key = MySociety::Config::get("ALAVETELI_API_KEY")
+            url = URI.parse("#{api_endpoint}/request/#{request.remote_id}/update.json")
+            post_data = [[:k, key],
+                         [:state, requestor_state_to_alaveteli(request)]]
+        end
+        http = self.prepare_connection(url)
+        req = Net::HTTP::Post::Multipart.new(url.path, post_data)
+        response = http.request(req)
+        json = ActiveSupport::JSON.decode(response.body)
+        if json['errors'].nil?
+            Rails.logger.info("Updated status of reqeust id #{request.object_id}")
+        else
+            raise AlaveteliApiError, json['errors']
+        end
+    end
+
+    def self.requestor_state_to_alaveteli(request)
+        case request.requestor_state
+        when "disclosed"
+            "successful"
+        when "partially_disclosed"
+            "partially_successful"
+        when "not_disclosed"
+            "rejected"
+        else "error"
+        end
+    end
+
+    def self.state_to_alaveteli(request)
+        case request.state
+        when "disclosed"
+            "successful"
+        when "partially_disclosed"
+            "partially_successful"
+        when "not_disclosed"
+            case request.nondisclosure_reason
+            when "not_held"
+                "not_held"
+            when "rejected_vexatious"
+                "vexatious"
+            else
+                "rejected"
+            end
+        else
+            "error"
+        end
+    end
 end
