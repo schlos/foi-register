@@ -21,7 +21,7 @@ FoiRegister::Application.routes.draw do
 
   # One-time only links for requestors to register
   # their response to the outcome of their request
-  get "/c/:token" => 'requestor_confirmation#show'
+  get "/c/:token" => 'requestor_confirmation#show', :as => :requestor_confirmation
   post "/c/:token" => 'requestor_confirmation#set_response'
 
   get "/admin" => 'redirection#admin'

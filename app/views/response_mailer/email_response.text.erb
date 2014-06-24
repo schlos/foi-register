@@ -8,6 +8,8 @@ Please find set out below the information in response to the above request:
 
 This response can be viewed online at: <%= Rails.application.routes.url_helpers.request_url(nil, @request, :host => MySociety::Config.get("DOMAIN", "localhost:3000"), :protocol => (MySociety::Config.get("FOI_REG_SECURE", false) ? 'https' : 'http')) %>
 
+You can provide valuable feedback using this link to record whether you think this request has been handled satisfactorily: <%= Rails.application.routes.url_helpers.requestor_confirmation_url(@link_token, nil, :host => MySociety::Config.get("DOMAIN", "localhost:3000"), :protocol => (MySociety::Config.get("FOI_REG_SECURE", false) ? 'https' : 'http')) %>
+
 Should you have any queries concerning this request please contact me, remembering to quote the reference number shown above.
 
 If you are not satisfied how your request has been handled, you can appeal. Please write to:
