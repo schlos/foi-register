@@ -22,7 +22,7 @@ class ConfirmationLink < ActiveRecord::Base
 
     def generate_token
       self.token = loop do
-        random_token = SecureRandom.base64.tr("+/", "-_")
+        random_token = SecureRandom.base64.tr("+/.,?", rand(9).to_s)[0..-3]
         break random_token unless ConfirmationLink.exists?(:token => random_token)
       end
     end
