@@ -63,7 +63,8 @@ class AlaveteliApi
             correspondence_data = {
                 :direction => 'response', # or request
                 :body => response.public_part,
-                :sent_at => response.created_at,
+                :state => translate_request_for_alaveteli(response.request.state),
+                :sent_at => response.created_at
             }
             key = MySociety::Config::get("ALAVETELI_API_KEY")
             url = URI.parse("#{api_endpoint}/request/#{response.request.remote_id}.json")
@@ -95,7 +96,7 @@ class AlaveteliApi
             key = MySociety::Config::get("ALAVETELI_API_KEY")
             url = URI.parse("#{api_endpoint}/request/#{request.remote_id}/update.json")
             post_data = [[:k, key],
-                         [:state, requestor_state_to_alaveteli(request)]]
+                         [:state, translate_request_for_alaveteli(request.requestor_state)]]
         end
         http = self.prepare_connection(url)
         req = Net::HTTP::Post::Multipart.new(url.path, post_data)
@@ -108,8 +109,8 @@ class AlaveteliApi
         end
     end
 
-    def self.requestor_state_to_alaveteli(request)
-        case request.requestor_state
+    def self.translate_request_for_alaveteli(state)
+        case state
         when "disclosed"
             "successful"
         when "partially_disclosed"
@@ -117,26 +118,6 @@ class AlaveteliApi
         when "not_disclosed"
             "rejected"
         else "error"
-        end
-    end
-
-    def self.state_to_alaveteli(request)
-        case request.state
-        when "disclosed"
-            "successful"
-        when "partially_disclosed"
-            "partially_successful"
-        when "not_disclosed"
-            case request.nondisclosure_reason
-            when "not_held"
-                "not_held"
-            when "rejected_vexatious"
-                "vexatious"
-            else
-                "rejected"
-            end
-        else
-            "error"
         end
     end
 end
