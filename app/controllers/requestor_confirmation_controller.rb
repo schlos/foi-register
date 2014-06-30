@@ -6,7 +6,9 @@ class RequestorConfirmationController < ApplicationController
 
   # GET /c/:token
   def show
-    @states = Request::STATES.delete_if{|state, _| state[0] == "new"}
+    @states = Request::STATES.clone.delete_if do |state, _|
+      !Request::CLOSED_STATES.include?(state)
+    end
   end
 
   # POST /c/:token

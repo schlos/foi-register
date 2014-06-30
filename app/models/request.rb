@@ -34,6 +34,8 @@ class Request < ActiveRecord::Base
   STATES["partially_disclosed"] = ["Partially Disclosed", "Some of the requested information has been disclosed"]
   STATES["not_disclosed"] = ["Not Disclosed", "None of the requested information has been disclosed"]
 
+  CLOSED_STATES = ["disclosed", "partially_disclosed", "not_disclosed"]
+
   NONDISCLOSURE_REASONS = ActiveSupport::OrderedHash.new
   NONDISCLOSURE_REASONS["not_held"] = ["Not held", "The information is not held"]
 
@@ -123,6 +125,10 @@ class Request < ActiveRecord::Base
 
   def nondisclosure_reason_description
     nondisclosure_reason.nil? ? nil : NONDISCLOSURE_REASONS[nondisclosure_reason][1]
+  end
+
+  def is_closed?
+    CLOSED_STATES.include?(state)
   end
 
   def administrative_id

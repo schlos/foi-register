@@ -86,4 +86,25 @@ class RequestTest < ActiveSupport::TestCase
     RequestMailer.expects(:acknowledgement).times(0)
     request.send_acknowledgement
   end
+
+  test 'should return true when asked for is_closed? when holding a closed state' do
+    request = Request.new
+    request.state = 'disclosed'
+    assert request.is_closed?
+
+    request.state = 'partially_disclosed'
+    assert request.is_closed?
+
+    request.state = 'not_disclosed'
+    assert request.is_closed?
+  end
+
+  test 'should return false when asked for is_closed? when holding a non-closed state' do
+    request = Request.new
+    request.state = 'new'
+    assert_equal false, request.is_closed?
+
+    request.state = 'assessing'
+    assert_equal false, request.is_closed?
+  end
 end
