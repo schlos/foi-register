@@ -3,8 +3,8 @@
 require 'carrierwave/processing/mime_types'
 
 class AttachmentUploader < CarrierWave::Uploader::Base
-  include CarrierWave::MimeTypes
-  process :set_content_type
+  # include CarrierWave::MimeTypes
+  # process :set_content_type
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
