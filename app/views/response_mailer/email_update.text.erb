@@ -1,10 +1,8 @@
-This email is in response to your request for information under the Freedom of Information Act 2000, ref: <%= @request.administrative_id %>
-
-Our response is as follows:
+This is an update regarding your request for information under the Freedom of Information Act 2000, ref: <%= @request.administrative_id %>
 
 <%= raw @response.public_part %>
 
-This response can also be viewed online at: <%= Rails.application.routes.url_helpers.request_url(nil, @request, :host => MySociety::Config.get("DOMAIN", "localhost:3000"), :protocol => (MySociety::Config.get("FOI_REG_SECURE", false) ? 'https' : 'http')) %>
+This update can also be viewed online at: <%= Rails.application.routes.url_helpers.request_url(nil, @request, :host => MySociety::Config.get("DOMAIN", "localhost:3000"), :protocol => (MySociety::Config.get("FOI_REG_SECURE", false) ? 'https' : 'http')) %>
 
 <% unless @response.private_part.nil? or @response.private_part.strip.empty? %>
   Additionally, please see the information below, which is not suitable for publication online:
@@ -12,34 +10,11 @@ This response can also be viewed online at: <%= Rails.application.routes.url_hel
   <%= raw @response.private_part %>
 <% end %>
 
-Has this request has been handled satisfactorily? Please click on this link to provide feedback <%= Rails.application.routes.url_helpers.requestor_confirmation_url(@link_token, nil, :host => MySociety::Config.get("DOMAIN", "localhost:3000"), :protocol => (MySociety::Config.get("FOI_REG_SECURE", false) ? 'https' : 'http')) %>
+If you have any queries regarding this process, please contact, quoting the reference number given above.
 
-Should you have any further queries about this request, please contact me via the details at the foot of this email, quoting the reference number given above.
+You may also have questions about the Freedom of Information process at Brighton & Hove City Council.
 
-If you are not satisfied with the handling of your request, you can appeal. Write to:
-
-Freedom of Information Appeals
-Brighton & Hove City Council
-ICT Room lst Floor
-Hove Town Hall
-Norton Road
-Hove BN3 4AH
-jan.mccartney@brighton-hove.gcsx.gov.uk
-
-
-If you are still not satisfied after your complaint has been investigated, you can escalate your complaint to the Information Commissioners Office. The contact details are:
-
-The Information Commissioners Office
-Wycliffe House
-Water Lane
-Wilmslow
-Cheshire SK9 5AF
-Telephone number: 01625 545745
-e-mail: data@dataprotection.gov.uk
-Website: www.dataprotection.gov.uk
-
-
-We can also answer queries regarding this process: please contact me via the contact details below.
+In both cases, write to:
 
 Wendy Kassamani
 Information Compliance Officer
