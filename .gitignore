@@ -18,12 +18,16 @@
 /config/httpd.conf.deployed
 /config/general.yml
 /config/general.yml.deployed
+/config/Vagrantfile*
+
 
 # Ignore Mac Finder metadata
 .DS_Store
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
+/log/*
+/log
+
 /tmp
 *~
 /public/assets
