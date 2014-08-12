@@ -136,6 +136,10 @@ class RequestsController < ApplicationController
       m.instance_of?(Response) ? m.request : m
     end.uniq
 
+    @requests.delete_if do |r|
+        r.nil?
+    end
+
     @requests = @requests.select(&:is_published) if !self.is_admin_view?
 
     respond_to do |format|
