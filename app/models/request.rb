@@ -166,9 +166,15 @@ class Request < ActiveRecord::Base
       q = yield(q) if block_given?
 
       if ActiveRecord::Base.connection.adapter_name == "PostgreSQL"
-        q.count(:group => "to_char(coalesce(date_received, created_at), 'YYYY-MM')")
+        q.count(
+          :group => "to_char(coalesce(date_received, created_at), 'YYYY-MM')",
+          :order => 'to_char_coalesce_date_received_created_at_yyyy_mm'
+        )
       elsif ActiveRecord::Base.connection.adapter_name == "SQLite"
-        q.count(:group => "strftime('%Y-%m', coalesce(date_received, created_at))")
+        q.count(
+          :group => "strftime('%Y-%m', coalesce(date_received, created_at))",
+          :order => 'to_char_coalesce_date_received_created_at_yyyy_mm'
+        )
       else
         raise "Unsupported database"
       end
