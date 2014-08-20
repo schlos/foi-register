@@ -48,6 +48,36 @@ badgers:
   lgcs_term: animal_control_985
   created_at: <%= (Time.now - 15.days).to_s(:db) %>
 
+disclosed:
+  due_date: <%= (Time.now - 2.days).to_s(:db) %>
+  title: QuestionAnswered
+  requestor: seb
+  body: Can you answer my question?
+  is_published: YES
+  is_requestor_name_visible: YES
+  created_at: <%= (Time.now - 15.days).to_s(:db) %>
+  state: disclosed
+
+undisclosed:
+  due_date: <%= (Time.now - 2.days).to_s(:db) %>
+  title: Unanswerable
+  requestor: seb
+  body: Can you tell me the next batch of serial numbers of 11 pound notes?
+  is_published: YES
+  is_requestor_name_visible: YES
+  created_at: <%= (Time.now - 15.days).to_s(:db) %>
+  state: not_disclosed
+
+overdue:
+  due_date: <%= (Time.now - 10.days).to_s(:db) %>
+  title: Overdue
+  requestor: seb
+  body: Perfectly reasonable request
+  is_published: YES
+  is_requestor_name_visible: YES
+  created_at: <%= (Time.now - 20.days).to_s(:db) %>
+  state: new
+
 older_request:
   due_date: <%= (Time.now - 20.days).to_s(:db) %>
   title: In Olden Days
@@ -57,3 +87,12 @@ older_request:
   is_published: YES
   is_requestor_name_visible: YES
   created_at: <%= (Time.now - 40.days).to_s(:db) %>
+
+vexatious:
+  due_date: <%= (Time.now + 2.days).to_s(:db) %>
+  title: Vexatious
+  requestor: seb
+  body: Deliberately silly request
+  is_published: YES
+  is_requestor_name_visible: YES
+  created_at: <%= (Time.now - 2.days).to_s(:db) %>

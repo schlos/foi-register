@@ -21,7 +21,6 @@
           <th></th>
           <th></th>
           <th></th>
-          <th></th>
         </tr>
 
       <% @requests.each do |request| %>
@@ -34,9 +33,8 @@
             <span class='badge <% if !request.days_until_due.nil? %><% if request.days_until_due < 5 %>badge-warning<% elsif request.days_until_due < 2 %>badge-important<% else %>badge-info<% end %><% end %>'> <% if !request.days_until_due.nil? %><%= request.days_until_due %><% else %>n/a<% end %></span>
           </td>
 
-          <td><%= link_to 'Respond', new_response_request_path(request) %></td>
+          <td><%= link_to 'Respond', request_path(request) %></td>
           <td><%= link_to '<i class="icon-pencil"></i>'.html_safe, edit_request_path(request) %></td>
-          <td><%= link_to '<i class="icon-trash"></i>'.html_safe, request, :confirm => 'Are you sure?', :method => :delete %></td>
         </tr>
       <% end %>
       </table>

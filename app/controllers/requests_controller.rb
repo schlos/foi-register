@@ -222,8 +222,8 @@ class RequestsController < ApplicationController
     request = params[:request]
     requestor = request.delete :requestor_attributes
 
+    request[:state] = "new"
     if !self.is_admin_view?
-      request[:state] = "new"
       request[:medium] = "web"
       request[:due_date] = Date.today + 28.days
       request[:lgcs_term_id] = nil
@@ -342,12 +342,5 @@ class RequestsController < ApplicationController
       }
       format.json { head :no_content }
     end
-  end
-
-  # GET /requests/1/new_response
-  def new_response
-    @request = Request.find(params[:id])
-    @response = Response.new
-    @response.request = @request
   end
 end

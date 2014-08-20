@@ -18,6 +18,16 @@ class ResponsesControllerTest < ActionController::TestCase
     assert_redirected_to request_path(@response_1.request, :is_admin => "admin")
   end
 
+  test "should not create a response when the request state is new" do
+    response_attributes = @response_1.attributes
+    response_attributes[:request_attributes] = {:state => "new"}
+    assert_no_difference('Response.count') do
+      post :create, :response => response_attributes, :request_id => @response_1.request_id
+    end
+
+    assert response.body =~ /State can&#x27;t be New/
+  end
+
   test "should set the request state when creating a response" do
     response_attributes = @response_1.attributes
     response_attributes[:request_attributes] = {:state => "disclosed"}
@@ -137,6 +147,21 @@ class ResponsesControllerTest < ActionController::TestCase
       end
     end
     assert found_response
+  end
+
+  test "should add the text 'Rejected as vexatious' if vexatious request submitted without response" do
+    fake_response = Response.new
+    vexatious_response = responses(:response_3)
+    vexatious_response.public_part = nil
+    response_attributes = vexatious_response.attributes
+    response_attributes[:request_attributes] = {:state => "not_disclosed", :nondisclosure_reason => "rejected_vexatious"}
+
+    Response.expects(:new).returns(fake_response)
+    fake_response.stubs(:save).returns(true)
+    fake_response.stubs(:send_to_alaveteli)
+    fake_response.expects(:public_part=).with("Rejected as vexatious")
+
+    post :create, :response => response_attributes, :request_id => vexatious_response.request_id
   end
 
   test "should get edit" do

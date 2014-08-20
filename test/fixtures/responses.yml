@@ -19,3 +19,8 @@ response_2:
   request: badgers
   private_part: private part of badgers response
   public_part: public part of badgers response
+
+response_3:
+  request: vexatious
+  private_part: private part of vexatious response
+  public_part: --

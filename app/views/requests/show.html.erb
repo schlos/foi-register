@@ -19,7 +19,7 @@
       <% when "not_disclosed" %>
         <p class="status unsuccessful">Not successful</p>
     <% end %>
-    
+
     <% if @request.lgcs_term %>
       <div id="lgcs_term">
         <span><%= @request.lgcs_term %></span>
@@ -34,7 +34,7 @@
         <li class="original-request">
           <%= render :partial => "requests/show_request_part", :locals => {:r => @request} %>
         </li>
-        
+
         <% for response in @request.responses %>
           <li class="council-response">
             <%= render :partial => "responses/show_response_part", :locals => {:r => response} %>
@@ -48,7 +48,7 @@
       <%= form_for([@request, Response.new]) do |f| %>
         <%= render :partial => "responses/reply_fields", :locals => {:response => f} %>
         <div class="actions">
-          <%= f.submit %>
+          <%= f.submit "Submit Response" %>
         </div>
       <% end %>
     <% end %>

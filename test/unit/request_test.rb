@@ -56,4 +56,16 @@ class RequestTest < ActiveSupport::TestCase
     assert_nil request.public_requestor_name
   end
 
+  test 'should return nil when asked for days_until_due of a disclosed request' do
+    r = requests(:disclosed)
+    assert_equal r.state, "disclosed"
+    assert_nil r.days_until_due
+  end
+
+  test 'should return nil when asked for days_until_due of an undisclosed request' do
+    r = requests(:undisclosed)
+    assert_equal r.state, "not_disclosed"
+    assert_nil r.days_until_due
+  end
+
 end

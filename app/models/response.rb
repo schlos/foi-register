@@ -16,6 +16,7 @@ class Response < ActiveRecord::Base
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :request
   validates_presence_of :public_part
+  validate :request_state_not_new, :on => :create
 
   acts_as_xapian({
     :texts => [ :public_part ],
@@ -35,6 +36,11 @@ class Response < ActiveRecord::Base
     ResponseMailer.email_response(self).deliver if !request.email_for_response.nil?
   end
 
-  handle_asynchronously :send_to_alaveteli
+  def request_state_not_new
+    if request.state == "new"
+      errors.add(:state, "can't be New")
+    end
+  end
 
+  handle_asynchronously :send_to_alaveteli
 end

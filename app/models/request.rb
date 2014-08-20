@@ -129,8 +129,13 @@ class Request < ActiveRecord::Base
   end
 
   def days_until_due
-    if !self.due_date.nil?
-      (self.due_date - Date.today).to_i
+    case self.state
+    when "new", "assessing"
+      if !self.due_date.nil?
+        (self.due_date - Date.today).to_i
+      end
+    else
+      nil
     end
   end
 
@@ -153,7 +158,7 @@ class Request < ActiveRecord::Base
   class << self
     # Get overdue requests, the most overdue first
     def overdue
-      self.where("due_date <= date('now')").order("due_date ASC")
+      self.where("due_date <= date('now') and (state = 'new' or state ='assessing')").order("due_date ASC")
     end
 
     def count_by_month(months_limit=nil)
