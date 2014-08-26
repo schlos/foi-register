@@ -14,16 +14,6 @@
 require 'test_helper'
 
 class RequestorTest < ActiveSupport::TestCase
-  test "should have a validation error if email is left blank" do
-    requestor = Requestor.new(:name => "Dave")
-    assert_equal(false, requestor.save)
-    assert_equal(1, requestor.errors.count)
-
-    requestor.email = ""
-    assert_equal(false, requestor.save)
-    assert_equal(1, requestor.errors.count)
-  end
-
   test "should have a validation error if email is in the wrong format" do
     requestor = Requestor.new(:name => "Dave", :email => "invalid")
     assert_equal(false, requestor.save)

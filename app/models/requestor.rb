@@ -18,7 +18,7 @@ class Requestor < ActiveRecord::Base
   default_scope :order => 'created_at DESC'
 
   def email_address_format
-    errors.add(:email, "is invalid") if email.nil? || email.empty? || email !~ /\A\S+@\S+\Z/
+    errors.add(:email, "is invalid") if !email.nil? && !email.empty? && email !~ /\A\S+@\S+\Z/
   end
 
   def to_s
