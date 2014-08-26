@@ -68,4 +68,21 @@ class RequestTest < ActiveSupport::TestCase
     assert_nil r.days_until_due
   end
 
+  test 'should not attempt to send email to requestor with a nil email address' do
+    requestor = Requestor.new(:name => 'A test name', :email => nil)
+    request = Request.new(:remote_email => nil,
+                          :requestor => requestor)
+
+    RequestMailer.expects(:acknowledgement).times(0)
+    request.send_acknowledgement
+  end
+
+  test 'should not attempt to send email to requestor with a blank email address' do
+    requestor = Requestor.new(:name => 'A test name', :email => "")
+    request = Request.new(:remote_email => nil,
+                          :requestor => requestor)
+
+    RequestMailer.expects(:acknowledgement).times(0)
+    request.send_acknowledgement
+  end
 end
