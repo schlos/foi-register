@@ -207,7 +207,7 @@ class Request < ActiveRecord::Base
   end
 
   def send_acknowledgement
-    RequestMailer.acknowledgement(self).deliver if !self.email_for_response.nil?
+    RequestMailer.acknowledgement(self).deliver if !self.email_for_response.blank?
   end
 
   def send_notification
