@@ -49,6 +49,19 @@ namespace :foi do
                     # Get existing user, or make a new one.
                     user_url = event["user_url"]
                     requestor = Requestor.find_by_external_url(user_url)
+
+                    # check to see if there's an http or https equivalent
+                    # of the user_url before creating a new requestor
+                    if requestor.nil?
+                      case user_url[0..4]
+                      when "http:"
+                        requestor = Requestor.find_by_external_url("https://#{user_url[7..-1]}")
+                      when "https"
+                        requestor = Requestor.find_by_external_url("http://#{user_url[8..-1]}")
+                      end
+                    end
+
+                    # oh, it really is new - better make a new requestor then
                     if requestor.nil?
                         requestor = Requestor.new(
                             :name => event["user_name"],
