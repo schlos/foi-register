@@ -19,4 +19,10 @@ class RequestorTest < ActiveSupport::TestCase
     assert_equal(false, requestor.save)
     assert_equal(1, requestor.errors.count)
   end
+
+  test 'should strip a blank email address to nil' do
+    requestor = Requestor.new(:name => "Dave", :email => "")
+    requestor.save
+    assert_equal(nil, requestor.email)
+  end
 end

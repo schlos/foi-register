@@ -17,8 +17,12 @@ class Requestor < ActiveRecord::Base
   validate :email_address_format
   default_scope :order => 'created_at DESC'
 
+  strip_attributes
+
   def email_address_format
-    errors.add(:email, "is invalid") if !email.nil? && !email.empty? && email !~ /\A\S+@\S+\Z/
+    # may be null if requestorcreated manually by admin or
+    # the external_url is populated
+    errors.add(:email, "is invalid") if !email.blank? && email !~ /\A\S+@\S+\Z/
   end
 
   def to_s
