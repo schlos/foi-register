@@ -85,4 +85,11 @@ class RequestTest < ActiveSupport::TestCase
     RequestMailer.expects(:acknowledgement).times(0)
     request.send_acknowledgement
   end
+
+  test 'should create a new DeletedRequest on destroy' do
+    request = requests(:deleteme)
+    assert_difference('DeletedRequest.count', +1) do
+      request.destroy
+    end
+  end
 end

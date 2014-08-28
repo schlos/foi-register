@@ -177,6 +177,9 @@ class RequestsControllerTest < ActionController::TestCase
       delete :destroy, :id => @request_all_your_info
     end
 
+    deleted_record = DeletedRequest.find_by_request_id(@request_all_your_info.id)
+    assert_equal("phil@local.gov.uk", deleted_record.deleted_by)
+
     assert_redirected_to requests_path(:is_admin => "admin")
   end
 

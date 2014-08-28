@@ -331,6 +331,9 @@ class RequestsController < ApplicationController
   def destroy
     @request = Request.find(params[:id])
     @request.destroy
+    deleted = DeletedRequest.find(params[:id])
+    deleted.deleted_by = StaffMember.find(session[:staff_member_id]).email
+    deleted.save
 
     respond_to do |format|
       format.html {

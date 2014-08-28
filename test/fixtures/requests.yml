@@ -96,3 +96,12 @@ vexatious:
   is_published: YES
   is_requestor_name_visible: YES
   created_at: <%= (Time.now - 2.days).to_s(:db) %>
+
+deleteme:
+  due_date: <%= (Time.now).to_s(:db) %>
+  title: Delete Me
+  requestor: robin
+  body: Duplicate request info
+  is_published: YES
+  is_requestor_name_visible: YES
+  created_at: <%= (Time.now - 2.days).to_s(:db) %>

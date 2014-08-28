@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120928155531) do
+ActiveRecord::Schema.define(:version => 20140828094509) do
 
   create_table "acts_as_xapian_jobs", :force => true do |t|
     t.string  "model",    :null => false
@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(:version => 20120928155531) do
     t.integer  "response_id",  :null => false
   end
 
+  create_table "confirmation_links", :force => true do |t|
+    t.string   "token",                         :null => false
+    t.integer  "request_id",                    :null => false
+    t.boolean  "expired",    :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
     t.integer  "attempts",   :default => 0
@@ -51,6 +59,29 @@ ActiveRecord::Schema.define(:version => 20120928155531) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
+  create_table "deleted_requests", :force => true do |t|
+    t.string   "title",                                        :null => false
+    t.integer  "requestor_id",                                 :null => false
+    t.text     "body",                                         :null => false
+    t.date     "date_received"
+    t.date     "due_date",                                     :null => false
+    t.integer  "lgcs_term_id"
+    t.boolean  "is_published",              :default => true,  :null => false
+    t.boolean  "is_requestor_name_visible", :default => true,  :null => false
+    t.string   "medium",                    :default => "web", :null => false
+    t.integer  "remote_id"
+    t.string   "remote_url"
+    t.string   "state",                     :default => "new", :null => false
+    t.string   "nondisclosure_reason"
+    t.string   "remote_email"
+    t.integer  "top_level_lgcs_term_id"
+    t.integer  "request_id",                                   :null => false
+    t.string   "deleted_by"
+    t.date     "deleted_date",                                 :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
+  end
 
   create_table "lgcs_terms", :force => true do |t|
     t.string  "name",            :null => false
@@ -85,6 +116,7 @@ ActiveRecord::Schema.define(:version => 20120928155531) do
     t.string   "nondisclosure_reason"
     t.string   "remote_email"
     t.integer  "top_level_lgcs_term_id"
+    t.string   "requestor_state"
   end
 
   add_index "requests", ["due_date"], :name => "index_requests_on_due_date"

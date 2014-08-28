@@ -233,4 +233,14 @@ class Request < ActiveRecord::Base
   end
   before_save :set_top_level_lgcs_term
 
+  def log_as_deleted
+    current_values = self.attributes
+    current_values.delete("requestor_state")
+    deleted = DeletedRequest.new()
+    deleted.assign_attributes(current_values, :without_protection => true)
+    deleted.request_id = self.id
+    deleted.deleted_date = Time.now
+    deleted.save!
+  end
+  before_destroy :log_as_deleted
 end
