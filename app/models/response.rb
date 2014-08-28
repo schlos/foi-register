@@ -33,7 +33,7 @@ class Response < ActiveRecord::Base
   end
 
   def send_by_email
-    ResponseMailer.email_response(self).deliver if !request.email_for_response.nil?
+    ResponseMailer.email_response(self).deliver if !request.email_for_response.blank?
   end
 
   def request_state_not_new
