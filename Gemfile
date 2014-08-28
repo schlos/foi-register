@@ -44,6 +44,8 @@ group :default do
 
   gem 'jquery-rails'
 
+  gem 'strip_attributes'
+
   # For installing Bootstrap
   gem 'therubyracer'
   gem 'less-rails'
