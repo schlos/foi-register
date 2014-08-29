@@ -12,7 +12,10 @@
 require 'test_helper'
 
 class StaffMemberTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "password must be at least 8 characters" do
+    user = StaffMember.new(:email => "me@here.com", :password => "3", :password_confirmation => "3")
+    assert_equal false, user.valid?
+    assert_equal 1, user.errors.messages.count
+    assert_equal ["is too short (minimum is 8 characters)"], user.errors.messages[:password]
+  end
 end

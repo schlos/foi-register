@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 class SessionsController < ApplicationController
-  skip_before_filter :require_login
+  skip_before_filter :require_login, :except => [:change_password, :update_password]
   skip_before_filter :require_login_based_on_url
 
   def new
@@ -15,6 +15,23 @@ class SessionsController < ApplicationController
     else
       flash[:notice] = "Invalid email or password"
       render "new"
+    end
+  end
+
+  def change_password
+    @staff_member = current_staff_member
+  end
+
+  def update_password
+    @staff_member = current_staff_member
+
+    @staff_member.password = params[:password]
+    @staff_member.password_confirmation = params[:password_confirmation]
+
+    if @staff_member.save
+      redirect_to MySociety::Config::get("ADMIN_PREFIX", "/admin") + "/requests", :notice => "Password updated"
+    else
+      render "change_password"
     end
   end
 

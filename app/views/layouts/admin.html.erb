@@ -1,5 +1,5 @@
 <%# To include this as an iframe, do something like
-<iframe src="http://foi.app.domain/requests" width="650" height="100%" style="border: 0px solid #fff"></iframe> 
+<iframe src="http://foi.app.domain/requests" width="650" height="100%" style="border: 0px solid #fff"></iframe>
 %><!DOCTYPE html>
 <html>
 <head>
@@ -22,15 +22,16 @@
             <li><%= link_to "Manage users", MySociety::Config::get("ADMIN_PREFIX", "/admin") + "/requestors/" %></li>
             <li><%= link_to "Statistics", MySociety::Config::get("ADMIN_PREFIX", "/admin") + "/requests/stats" %></li>
           </ul>
-        
+
           <form class="navbar-search pull-left" method="get" action="<%= MySociety::Config::get("ADMIN_PREFIX", "/admin") %>/requests/search">
             <input type="text" class="search-query span2" placeholder="Search" name="q">
           </form>
-        
+
           <ul class="nav pull-right">
             <% if controller.current_staff_member.nil? %>
               <li><%= link_to "Log in", MySociety::Config::get("ADMIN_PREFIX", "/admin") + "/sessions/new" %></li>
             <% else %>
+              <li><%= link_to "Change password", MySociety::Config::get("ADMIN_PREFIX", "/admin") + "/sessions/change_password" %></li>
               <li><%= link_to "Log out", MySociety::Config::get("ADMIN_PREFIX", "/admin") + "/sessions/logout" %></li>
             <% end %>
           </ul>

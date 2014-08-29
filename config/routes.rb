@@ -43,6 +43,8 @@ FoiRegister::Application.routes.draw do
     resources :staff_members
     resources :sessions do
       collection do
+        get "change_password"
+        post "update_password"
         get "logout"
       end
     end

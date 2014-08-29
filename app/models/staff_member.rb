@@ -14,12 +14,13 @@
 
 class StaffMember < ActiveRecord::Base
   has_secure_password
-  
+
   attr_accessible :email, :password, :password_confirmation
-  
+
   validates_presence_of :email
   validates_uniqueness_of :email
-  
+  validates :password, :length => { :minimum => 8 }
+
   def to_s
     email
   end
