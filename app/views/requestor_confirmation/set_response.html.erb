@@ -1,1 +1,5 @@
-<p>Thanks / confirmation message goes here</p>
+<p>Thank you for updating the status of your request.</p>
+
+<% if @request.remote_url %>
+  <p><%= link_to("See request on WhatDoTheyKnow.com", @request.remote_url) %></p>
+<% end %>
