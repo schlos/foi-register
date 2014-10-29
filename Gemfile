@@ -1,10 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.19'
-
 gem 'rack', '~> 1.4'
-#
-# This should be removed when the bug is fixed.
 
 # Gems used only for assets and not required
 # in production environments by default.
