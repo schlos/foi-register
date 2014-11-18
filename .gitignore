@@ -18,6 +18,8 @@
 /config/httpd.conf.deployed
 /config/general.yml
 /config/general.yml.deployed
+/config/logrotate
+/config/logrotate.deployed
 /config/Vagrantfile*
 
 
