@@ -128,6 +128,54 @@ class ResponsesControllerTest < ActionController::TestCase
     assert found_response
   end
 
+  test "should include private detail if the response is sent to a requestor" do
+    ActionMailer::Base.deliveries = []
+    response_attributes = @response_1.attributes
+    response_attributes[:request_attributes] = {:state => "disclosed"}
+    post :create, :response => response_attributes, :request_id => @response_1.request_id
+
+    found_response = false
+    request = @response_1.request
+    expected_recipient = request.requestor.email
+    expected_subject = "Re: " + request.title
+    ActionMailer::Base.deliveries.each do |delivery|
+      if delivery.subject == expected_subject
+        found_response = true
+        assert_equal delivery.to, [expected_recipient]
+        assert_match /Please click on this link to provide feedback/, delivery.html_part.body.to_s
+        assert_match /Please click on this link to provide feedback/, delivery.text_part.body.to_s
+        assert_match /private part of response/, delivery.html_part.body.to_s
+        assert_match /private part of response/, delivery.text_part.body.to_s
+      end
+    end
+    assert found_response
+  end
+
+  test "should not include private detail if the response is sent to a remote email" do
+    ActionMailer::Base.deliveries = []
+    response_4 = responses(:response_4)
+    response_attributes = response_4.attributes
+    response_attributes[:request_attributes] = {:state => "disclosed"}
+    post :create, :response => response_attributes, :request_id => response_4.request_id
+
+    found_response = false
+
+    request = response_4.request
+    expected_recipient = 'me@here.com'
+    expected_subject = "Re: " + request.title
+    ActionMailer::Base.deliveries.each do |delivery|
+      if delivery.subject == expected_subject
+        found_response = true
+        assert_equal [expected_recipient], delivery.to
+        assert_no_match /private part of response/, delivery.html_part.body.to_s
+        assert_no_match /private part of response/, delivery.text_part.body.to_s
+        assert_no_match /Please click on this link to provide feedback/, delivery.html_part.body.to_s
+        assert_no_match /Please click on this link to provide feedback/, delivery.text_part.body.to_s
+      end
+    end
+    assert found_response
+  end
+
   test "should add the text 'Rejected as vexatious' if vexatious request submitted without response" do
     fake_response = Response.new
     vexatious_response = responses(:response_3)

@@ -4,7 +4,7 @@ This is an update regarding your request for information under the Freedom of In
 
 This update can also be viewed online at: <%= Rails.application.routes.url_helpers.request_url(nil, @request, :host => MySociety::Config.get("DOMAIN", "localhost:3000"), :protocol => (MySociety::Config.get("FOI_REG_SECURE", false) ? 'https' : 'http')) %>
 
-<% unless @response.private_part.nil? or @response.private_part.strip.empty? %>
+<% unless @response.private_part.blank? or @response.request.requestor.email.blank? %>
   Additionally, please see the information below, which is not suitable for publication online:
 
   <%= raw @response.private_part %>

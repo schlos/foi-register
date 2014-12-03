@@ -26,3 +26,7 @@ seb:
   notes: |
     phone: 01243 465 798
     address: The Old Mill, Little Spacklington, Truckinghamshire WX8 9PQ
+
+no_email:
+  name: Test User
+  email:

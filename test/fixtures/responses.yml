@@ -24,3 +24,8 @@ response_3:
   request: vexatious
   private_part: private part of vexatious response
   public_part: --
+
+response_4:
+  request: remote_email
+  private_part: private part of response
+  public_part: public part of response
