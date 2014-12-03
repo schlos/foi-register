@@ -34,7 +34,11 @@
  <div class="span6">
   <div class="field alert alert-error private-response">
     <%= response.label :private_part %>
-    <%= response.text_area :private_part  %>
+    <% if @request.has_private_email? %>
+        <%= response.text_area :private_part  %>
+    <% else %>
+        <p>Sorry, the requestor has not supplied a direct email address so private infomation cannot be sent</p>
+    <% end %>
   </div>
   <div>
   <%= response.fields_for(:request, @request) do |s| %>

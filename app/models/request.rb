@@ -205,6 +205,10 @@ class Request < ActiveRecord::Base
     requestor.email
   end
 
+  def has_private_email?
+    !requestor_email.blank?
+  end
+
   def email_for_response
     # this assumes that the requestor has supplied a
     # genuine email address

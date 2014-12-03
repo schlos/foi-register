@@ -107,4 +107,14 @@ class RequestTest < ActiveSupport::TestCase
     request.state = 'assessing'
     assert_equal false, request.is_closed?
   end
+
+  test 'should return true when asked for has_private_email? if the requestor email is set' do
+    request = Request.new(:requestor => requestors(:seb))
+    assert_equal true, request.has_private_email?
+  end
+
+  test 'should return false when asked for has_private_email? if the requestor email is not set' do
+    request = Request.new(:requestor => requestors(:no_email))
+    assert_equal false, request.has_private_email?
+  end
 end

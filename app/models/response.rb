@@ -42,5 +42,13 @@ class Response < ActiveRecord::Base
     end
   end
 
+  def can_ask_for_feedback?
+    request.has_private_email?
+  end
+
+  def can_show_private_part?
+    !private_part.blank? and request.has_private_email?
+  end
+
   handle_asynchronously :send_to_alaveteli
 end

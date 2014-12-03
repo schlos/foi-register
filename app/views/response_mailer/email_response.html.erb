@@ -6,13 +6,13 @@
 
 <p>This response can also be viewed online at: <%= Rails.application.routes.url_helpers.request_url(nil, @request, :host => MySociety::Config.get("DOMAIN", "localhost:3000"), :protocol => (MySociety::Config.get("FOI_REG_SECURE", false) ? 'https' : 'http')) %></p>
 
-<% unless @response.private_part.blank? or @response.request.requestor.email.blank? %>
+<% if @response.can_show_private_part? %>
   <p>Additionally, please see the information below, which is not suitable for publication online:</p>
 
   <p><%= raw @response.private_part %></p>
 <% end %>
 
-<% unless @response.request.requestor.email.blank? %>
+<% if @response.can_ask_for_feedback? %>
     <p>Has this request has been handled satisfactorily? Please click on this link to provide feedback <%= Rails.application.routes.url_helpers.requestor_confirmation_url(@link_token, nil, :host => MySociety::Config.get("DOMAIN", "localhost:3000"), :protocol => (MySociety::Config.get("FOI_REG_SECURE", false) ? 'https' : 'http')) %></p>
 <% end %>
 
