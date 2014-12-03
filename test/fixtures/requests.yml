@@ -111,3 +111,14 @@ vexatious:
   is_published: YES
   is_requestor_name_visible: YES
   created_at: <%= (Time.now - 2.days).to_s(:db) %>
+
+remote_email:
+  due_date: <%= (Time.now + 5.days).to_s(:db) %>
+  title: All your informations
+  requestor: no_email
+  remote_email: me@here.com
+  body: Please send me all your informations
+  is_published: YES
+  state: assessing
+  is_requestor_name_visible: YES
+  created_at: <%= (Time.now - 20.days).to_s(:db) %>

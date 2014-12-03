@@ -205,8 +205,14 @@ class Request < ActiveRecord::Base
     requestor.email
   end
 
+  def has_private_email?
+    !requestor_email.blank?
+  end
+
   def email_for_response
-    if remote_email.nil?
+    # this assumes that the requestor has supplied a
+    # genuine email address
+    unless requestor_email.blank?
       requestor_email
     else
       remote_email

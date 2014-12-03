@@ -35,4 +35,44 @@ class ResponseTest < ActiveSupport::TestCase
     ResponseMailer.expects(:email_response).times(0)
     response.send_by_email
   end
+
+  test 'should return false when calling can_show_private_part? if the private_part is blank' do
+    requestor = Requestor.new(:name => 'A test name', :email => "me@here.com")
+    request = Request.new(:remote_email => nil,
+                          :requestor => requestor)
+    response = Response.new(:request => request)
+    assert_equal false, response.can_show_private_part?
+  end
+
+  test 'should return false when calling can_show_private_part? if the requestor email is blank' do
+    requestor = Requestor.new(:name => 'A test name', :email => "")
+    request = Request.new(:remote_email => "me@here.com",
+                          :requestor => requestor)
+    response = Response.new(:request => request, :private_part => "hi")
+    assert_equal false, response.can_show_private_part?
+  end
+
+  test 'should return true when calling can_show_private_part? if the requestor email and private part are set' do
+    requestor = Requestor.new(:name => 'A test name', :email => "me@here.com")
+    request = Request.new(:remote_email => "",
+                          :requestor => requestor)
+    response = Response.new(:request => request, :private_part => "hi")
+    assert_equal true, response.can_show_private_part?
+  end
+
+  test 'should return true when calling can_ask_for_feedback? if the requestor email is not blank' do
+    requestor = Requestor.new(:name => 'A test name', :email => "me@here.com")
+    request = Request.new(:remote_email => "",
+                          :requestor => requestor)
+    response = Response.new(:request => request)
+    assert_equal true, response.can_ask_for_feedback?
+  end
+
+  test 'should return false when calling can_ask_for_feedback? if the requestor email is blank' do
+    requestor = Requestor.new(:name => 'A test name', :email => "")
+    request = Request.new(:remote_email => "",
+                          :requestor => requestor)
+    response = Response.new(:request => request)
+    assert_equal false, response.can_ask_for_feedback?
+  end
 end

@@ -4,7 +4,7 @@
 
 <p>This update can also be viewed online at: <%= Rails.application.routes.url_helpers.request_url(nil, @request, :host => MySociety::Config.get("DOMAIN", "localhost:3000"), :protocol => (MySociety::Config.get("FOI_REG_SECURE", false) ? 'https' : 'http')) %></p>
 
-<% unless @response.private_part.nil? or @response.private_part.strip.empty? %>
+<% if @response.can_show_private_part? %>
   <p>Additionally, please see the information below, which is not suitable for publication online:</p>
 
   <p><%= raw @response.private_part %></p>
