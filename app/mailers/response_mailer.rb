@@ -7,7 +7,7 @@ class ResponseMailer < ActionMailer::Base
 
     # send a notification that the request has been closed by the council
     # if a closing response has been sent, otherwise send a status update
-    if @request.is_closed?
+    if @request.is_closed? and @response.can_ask_for_feedback?
       confirmation_link = ConfirmationLink.create(:request_id => @request.id)
       @link_token = confirmation_link.token
       template_name = :email_response

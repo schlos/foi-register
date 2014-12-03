@@ -128,14 +128,16 @@ class ResponsesControllerTest < ActionController::TestCase
     assert found_response
   end
 
-  test "should include private detail if the response is sent to a requestor" do
+  test "should include private detail if the request was created by the app" do
+    # this will have a stored remote_id
     ActionMailer::Base.deliveries = []
-    response_attributes = @response_1.attributes
+    response_4 = responses(:response_4)
+    response_attributes = response_4.attributes
     response_attributes[:request_attributes] = {:state => "disclosed"}
-    post :create, :response => response_attributes, :request_id => @response_1.request_id
+    post :create, :response => response_attributes, :request_id => response_4.request_id
 
     found_response = false
-    request = @response_1.request
+    request = response_4.request
     expected_recipient = request.requestor.email
     expected_subject = "Re: " + request.title
     ActionMailer::Base.deliveries.each do |delivery|
@@ -151,17 +153,16 @@ class ResponsesControllerTest < ActionController::TestCase
     assert found_response
   end
 
-  test "should not include private detail if the response is sent to a remote email" do
+  test "should not include private detail if the request was imported from alaveteli" do
     ActionMailer::Base.deliveries = []
-    response_4 = responses(:response_4)
-    response_attributes = response_4.attributes
+    response_attributes = @response_1.attributes
     response_attributes[:request_attributes] = {:state => "disclosed"}
-    post :create, :response => response_attributes, :request_id => response_4.request_id
+    post :create, :response => response_attributes, :request_id => @response_1.request_id
 
     found_response = false
 
-    request = response_4.request
-    expected_recipient = 'me@here.com'
+    request = @response_1.request
+    expected_recipient = request.requestor.email
     expected_subject = "Re: " + request.title
     ActionMailer::Base.deliveries.each do |delivery|
       if delivery.subject == expected_subject

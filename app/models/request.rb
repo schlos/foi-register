@@ -131,6 +131,12 @@ class Request < ActiveRecord::Base
     CLOSED_STATES.include?(state)
   end
 
+  # indicates whether the request was imported from an alaveteli instance
+  # (as opposed to being created via the admin screen)
+  def is_imported?
+    remote_id.blank?
+  end
+
   def administrative_id
     "FOI:#{self.id}/#{self.date_received_or_created.year}"
   end
@@ -210,12 +216,16 @@ class Request < ActiveRecord::Base
   end
 
   def email_for_response
-    # this assumes that the requestor has supplied a
-    # genuine email address
-    unless requestor_email.blank?
-      requestor_email
+    if is_imported?
+      if remote_email.blank?
+        requestor_email
+      else
+        remote_email
+      end
     else
-      remote_email
+      # assumes that the requestor has supplied a
+      # genuine email address
+      requestor_email
     end
   end
 

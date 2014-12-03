@@ -9,8 +9,8 @@ class ResponseMailerTest < ActionMailer::TestCase
     response.request.state = 'disclosed'
     email = ResponseMailer.email_response(response).deliver
     assert !ActionMailer::Base.deliveries.empty?
-    assert_match 'Has this request has been handled satisfactorily?', email.html_part.body.to_s
-    assert_match 'Has this request has been handled satisfactorily?', email.text_part.body.to_s
+    assert_match 'Our response is as follows:', email.html_part.body.to_s
+    assert_match 'Our response is as follows:', email.text_part.body.to_s
   end
 
   test "notification for open request" do
@@ -18,8 +18,8 @@ class ResponseMailerTest < ActionMailer::TestCase
     response.request.state = 'assessing'
     email = ResponseMailer.email_response(response).deliver
     assert !ActionMailer::Base.deliveries.empty?
-    assert_no_match /Has this request has been handled satisfactorily\?/, email.html_part.body.to_s
-    assert_no_match /Has this request has been handled satisfactorily\?/, email.text_part.body.to_s
+    assert_no_match /Our response is as follows:\?/, email.html_part.body.to_s
+    assert_no_match /Our response is as follows:\?/, email.text_part.body.to_s
   end
 
 end

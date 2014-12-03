@@ -26,6 +26,6 @@ response_3:
   public_part: --
 
 response_4:
-  request: remote_email
+  request: created_in_app
   private_part: private part of response
   public_part: public part of response

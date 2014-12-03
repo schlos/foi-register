@@ -43,10 +43,12 @@ class Response < ActiveRecord::Base
   end
 
   def can_ask_for_feedback?
+    return false if request.is_imported?
     request.has_private_email?
   end
 
   def can_show_private_part?
+    return false if request.is_imported?
     !private_part.blank? and request.has_private_email?
   end
 

@@ -112,13 +112,13 @@ vexatious:
   is_requestor_name_visible: YES
   created_at: <%= (Time.now - 2.days).to_s(:db) %>
 
-remote_email:
+created_in_app:
   due_date: <%= (Time.now + 5.days).to_s(:db) %>
   title: All your informations
-  requestor: no_email
-  remote_email: me@here.com
+  requestor: seb
   body: Please send me all your informations
   is_published: YES
   state: assessing
+  remote_id: 42
   is_requestor_name_visible: YES
   created_at: <%= (Time.now - 20.days).to_s(:db) %>
