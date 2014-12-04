@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(:version => 20141204111736) do
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
     t.text     "private_part", :default => "", :null => false
+    t.string   "private_part", :default => "", :null => false
     t.text     "public_part",                  :null => false
     t.integer  "request_id",                   :null => false
   end
