@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140619175229) do
+ActiveRecord::Schema.define(:version => 20141204111736) do
 
   create_table "acts_as_xapian_jobs", :force => true do |t|
     t.string  "model",    :null => false
@@ -60,6 +60,39 @@ ActiveRecord::Schema.define(:version => 20140619175229) do
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
+  create_table "deleted_requests", :force => true do |t|
+    t.string   "title",                                        :null => false
+    t.integer  "requestor_id",                                 :null => false
+    t.text     "body",                                         :null => false
+    t.date     "date_received"
+    t.date     "due_date",                                     :null => false
+    t.integer  "lgcs_term_id"
+    t.boolean  "is_published",              :default => true,  :null => false
+    t.boolean  "is_requestor_name_visible", :default => true,  :null => false
+    t.string   "medium",                    :default => "web", :null => false
+    t.integer  "remote_id"
+    t.string   "remote_url"
+    t.string   "state",                     :default => "new", :null => false
+    t.string   "nondisclosure_reason"
+    t.string   "remote_email"
+    t.integer  "top_level_lgcs_term_id"
+    t.integer  "request_id",                                   :null => false
+    t.string   "deleted_by"
+    t.date     "deleted_date",                                 :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
+  end
+
+  create_table "email_tokens", :force => true do |t|
+    t.string   "token",                              :null => false
+    t.boolean  "expired",         :default => false, :null => false
+    t.integer  "staff_member_id",                    :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+  end
+
+  add_index "email_tokens", ["token"], :name => "index_email_tokens_on_token", :unique => true
+
   create_table "lgcs_terms", :force => true do |t|
     t.string  "name",            :null => false
     t.integer "broader_term_id"
@@ -101,11 +134,11 @@ ActiveRecord::Schema.define(:version => 20140619175229) do
   add_index "requests", ["requestor_id"], :name => "index_requests_on_requestor_id"
 
   create_table "responses", :force => true do |t|
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.text     "private_part", :null => false
-    t.text     "public_part",  :null => false
-    t.integer  "request_id",   :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.text     "private_part", :default => "", :null => false
+    t.text     "public_part",                  :null => false
+    t.integer  "request_id",                   :null => false
   end
 
   create_table "staff_members", :force => true do |t|
