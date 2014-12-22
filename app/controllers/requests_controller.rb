@@ -100,7 +100,7 @@ class RequestsController < ApplicationController
 
   # GET /requests/search
   def search
-    @query = params[:q]
+    @query = params[:q] || ""
     if @query =~ %r(^FOI:(\d+)(/\d+)?$)
       @request = Request.find($1.to_i)
       if self.is_admin_view?
@@ -137,7 +137,7 @@ class RequestsController < ApplicationController
     end.uniq
 
     @requests.delete_if do |r|
-        r.nil?
+      r.nil?
     end
 
     @requests = @requests.select(&:is_published) if !self.is_admin_view?
