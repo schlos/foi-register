@@ -30,7 +30,7 @@ namespace :foi do
             http.use_ssl = true
 
             http.ca_path = MySociety::Config.get("SSL_CA_PATH", "/etc/ssl/certs/")
-            http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+            http.verify_mode = OpenSSL::SSL::VERIFY_NONE
             request = Net::HTTP::Get.new(uri.request_uri)
             response = http.request(request)
             events = ActiveSupport::JSON.decode(response.body)
