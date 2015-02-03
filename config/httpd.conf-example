@@ -1,2 +1,1 @@
-# I’m not sure we need any special Apache configuration for now
-
+PassengerRuby /usr/bin/ruby1.9.1
