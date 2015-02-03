@@ -10,7 +10,7 @@ MAILTO=cron-!!(*= $site *)!!@mysociety.org
 !!(* } *)!!
 
 # Every 5 minutes
-*/5 * * * * !!(*= $user *)!! cd /data/vhost/!!(*= $vhost *)!!/foi-register && run-with-lockfile -n /data/vhost/!!(*= $vhost *)!!/change-xapian-database.lock "/usr/bin/bundle exec rake xapian:update_index" >> /data/vhost/!!(*= $vhost *)!!/foi-register/log/update-xapian-index.log || echo "stalled?"
+*/5 * * * * !!(*= $user *)!! cd /data/vhost/!!(*= $vhost *)!!/foi-register && run-with-lockfile -n /data/vhost/!!(*= $vhost *)!!/change-xapian-database.lock "ruby1.9.1 /usr/bin/bundle exec rake xapian:update_index" >> /data/vhost/!!(*= $vhost *)!!/foi-register/log/update-xapian-index.log || echo "stalled?"
 
 # Every hour
-00 * * * * !!(*= $user *)!! cd /data/vhost/!!(*= $vhost *)!!/foi-register && run-with-lockfile -n /data/vhost/!!(*= $vhost *)!!/fetch-alaveteli-feed.lock "/usr/bin/bundle exec rake foi:fetch" >> /data/vhost/!!(*= $vhost *)!!/foi-register/log/fetch-feed.log || echo "stalled?"
+00 * * * * !!(*= $user *)!! cd /data/vhost/!!(*= $vhost *)!!/foi-register && run-with-lockfile -n /data/vhost/!!(*= $vhost *)!!/fetch-alaveteli-feed.lock "ruby1.9.1 /usr/bin/bundle exec rake foi:fetch" >> /data/vhost/!!(*= $vhost *)!!/foi-register/log/fetch-feed.log || echo "stalled?"
