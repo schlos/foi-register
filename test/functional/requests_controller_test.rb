@@ -194,7 +194,7 @@ class RequestsControllerTest < ActionController::TestCase
       if delivery.subject == expected_subject
         found_notification = true
         assert_equal delivery.to, [expected_recipient]
-        assert_match(/Libellous/, delivery.body)
+        assert_match(/Libellous/, delivery.body.to_s)
       end
     end
     assert found_notification
