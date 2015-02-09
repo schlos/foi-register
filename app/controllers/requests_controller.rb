@@ -264,7 +264,7 @@ class RequestsController < ApplicationController
       if saved_ok
         format.html do
             if self.is_admin_view?
-                redirect_to requests_path(:is_admin=>"admin"), :notice => 'Request was successfully created.'
+                redirect_to request_path(@request), :notice => 'Request was successfully created.'
             else
                 redirect_to requests_path, :notice => "Your request has been received. A response will be sent to <#{@request.requestor.email}>."
             end
