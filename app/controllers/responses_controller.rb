@@ -27,7 +27,6 @@ class ResponsesController < ApplicationController
         end
       end
     end
-    @request.save!
 
     respond_to do |format|
       if @response.save
