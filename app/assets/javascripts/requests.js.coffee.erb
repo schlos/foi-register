@@ -76,13 +76,13 @@ $ ->
   $('#request_due_date').datepicker({"dateFormat": "dd/mm/yy"})
 
   # In-place state editing for request state
-  $('#admin-request-list .admin-request-state').dblclick () ->
+  $('#admin-request-list .admin-request-state-editable').dblclick () ->
     $this = $ this
     $this.find(".label").hide()
     $this.find(".state-editor").show()
   .mouseup () ->
     return false
-  $('#admin-request-list .admin-request-state .state-editor select').change () ->
+  $('#admin-request-list .admin-request-state-editable .state-editor select').change () ->
     $this = $ this
     $td = $this.closest "td"
     request_id = $this.closest("tr").attr("id").substring("request-".length)
