@@ -66,6 +66,12 @@ class RequestsController < ApplicationController
   # GET /requests/1.json
   def show
     @request = Request.find(params[:id])
+
+    @request_states = Request::STATES
+    unless @request.state == "new"
+      @request_states.delete_if { |state| state == "new"}
+    end
+
     raise ActiveRecord::RecordNotFound if !is_admin_view? && !@request.is_published
 
     respond_to do |format|
@@ -282,6 +288,14 @@ class RequestsController < ApplicationController
     request = Request.find(params[:id])
     state_tag = params[:state]
     state = Request::STATES[state_tag]
+
+    # quit early if the state's invalid
+    unless state
+      render :json => {
+        "ok" => false
+      }
+      return
+    end
 
     request.state = state_tag
     if request.save!

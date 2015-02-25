@@ -28,6 +28,35 @@ class ResponsesControllerTest < ActionController::TestCase
     assert response.body =~ /State can&#x27;t be New/
   end
 
+  test "should not create a response when the request state is changed " \
+       "to assessing and the public_part is empty" do
+    request = Request.find(requests(:overdue).id)
+    response_attributes = @response_1.attributes
+    response_attributes[:request_attributes] = {:state => "assessing"}
+    response_attributes[:public_part] = ""
+
+    assert_no_difference('Response.count') do
+      post :create, :response => response_attributes, :request_id => request.id
+    end
+
+    request = Request.find(requests(:overdue).id)
+    assert_equal(request.state, "assessing")
+  end
+
+  test "should create a response when the request state is changed " \
+       "to assessing and the public_part is NOT empty" do
+    request = Request.find(requests(:overdue).id)
+    response_attributes = {:request_attributes => {:state => "assessing"}}
+
+    assert_no_difference('Response.count') do
+      post :create, :response => response_attributes, :request_id => request.id
+    end
+
+    request = Request.find(requests(:overdue).id)
+    assert_equal(request.state, "assessing")
+    assert_redirected_to root_path
+  end
+
   test "should set the request state when creating a response" do
     response_attributes = @response_1.attributes
     response_attributes[:request_attributes] = {:state => "disclosed"}

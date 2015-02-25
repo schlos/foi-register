@@ -43,14 +43,16 @@
         <td><%= request.date_received_or_created.to_s(:short) %></td>
         <td><%= request.requestor %></td>
         <td><%= link_to request.title, request_path(request) %></td>
-        <td class="admin-request-state">
+        <td class="admin-request-state<%= ['new', 'assessing'].include?(request.state) ? "-editable": nil%>">
           <span rel="tooltip" title="<%= request.state_description %>" class="state label"><%= request.state_title %></span>
-          <span class="state-editor" style="display:none">
-            <%= form_for(request) do |f|
-              f.select(:state, Request::STATES.collect do |tag, (name, description)|
-                [name, tag, {:title => description}]
-              end)
-            end %>
+          <% if ['new', 'assessing'].include?(request.state) %>
+              <span class="state-editor" style="display:none">
+                <%= form_for(request) do |f|
+                  f.select(:state, Request::STATES.select {|state| ["new", "assessing"].include?(state) }.collect do |tag, (name, description)|
+                    [name, tag, {:title => description}]
+                  end)
+                end %>
+            <% end %>
           </span>
         </td>
         <td>
