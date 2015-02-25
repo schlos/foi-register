@@ -97,11 +97,11 @@ class Request < ActiveRecord::Base
     ]})
 
   def state_title
-    STATES[state][0]
+    STATES[state][0] if STATES[state]
   end
 
   def state_description
-    STATES[state][1]
+    STATES[state][1] if STATES[state]
   end
 
   def state=(value)
