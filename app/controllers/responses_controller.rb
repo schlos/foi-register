@@ -13,12 +13,22 @@ class ResponsesController < ApplicationController
   # POST /request/:request_id/responses.json
   def create
     @request = Request.find(params[:request_id])
+
     response = params[:response]
     request_attributes = response.delete(:request_attributes)
+
+    # if the state is being changed to "assessing" and response sending is not expected
+    if @request.state != "assessing" and request_attributes[:state] == "assessing" and response[:public_part].blank?
+      @request.state = "assessing"
+      @request.save
+      redirect_to :root
+      return
+    end
+
+    @request.state = request_attributes[:state]
     @response = Response.new(response)
     @response.request = @request
 
-    @request.state = request_attributes[:state]
     if request_attributes.has_key? :nondisclosure_reason
       @request.nondisclosure_reason = request_attributes[:nondisclosure_reason]
       if @request.nondisclosure_reason == "rejected_vexatious"
