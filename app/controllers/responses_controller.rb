@@ -7,12 +7,14 @@ class ResponsesController < ApplicationController
   def edit
     @response = Response.find(params[:id])
     @request = @response.request
+    @request_states = Request::STATES
   end
 
   # POST /request/:request_id/responses
   # POST /request/:request_id/responses.json
   def create
     @request = Request.find(params[:request_id])
+    @request_states = Request::STATES
 
     response = params[:response]
     request_attributes = response.delete(:request_attributes)

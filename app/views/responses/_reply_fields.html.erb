@@ -44,7 +44,7 @@
   <%= response.fields_for(:request, @request) do |s| %>
     <div class="field">
       <%= s.label :state %>
-      <%= s.select(:state, Request::STATES.collect do |tag, (name, description)|
+      <%= s.select(:state, @request_states.collect do |tag, (name, description)|
         [name, tag, {:title => description}]
       end) %>
     </div>
