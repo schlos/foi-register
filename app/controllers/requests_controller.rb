@@ -289,6 +289,14 @@ class RequestsController < ApplicationController
     state_tag = params[:state]
     state = Request::STATES[state_tag]
 
+    # quit early if the state's invalid
+    unless state
+      render :json => {
+        "ok" => false
+      }
+      return
+    end
+
     request.state = state_tag
     if request.save!
       render :json => {
