@@ -23,7 +23,10 @@ class ResponsesController < ApplicationController
     if @request.state != "assessing" and request_attributes[:state] == "assessing" and response[:public_part].blank?
       @request.state = "assessing"
       @request.save
-      redirect_to :root
+      respond_to do |format|
+        format.html { redirect_to requests_path(:is_admin => "admin"),
+                                  :notice => "Request #{@request.administrative_id} flagged as Assessing (no response sent)" }
+      end
       return
     end
 
