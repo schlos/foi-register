@@ -67,10 +67,10 @@ class RequestsController < ApplicationController
   def show
     @request = Request.find(params[:id])
 
-    @request_states = Request::STATES
-    unless @request.state == "new"
-      @request_states.delete_if { |state| state == "new"}
-    end
+    @request_states = Request::STATES.dup
+    # unless @request.state == "new"
+    #   @request_states.delete_if { |state| state == "new"}
+    # end
 
     raise ActiveRecord::RecordNotFound if !is_admin_view? && !@request.is_published
 
