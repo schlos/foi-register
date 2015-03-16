@@ -67,6 +67,7 @@ GEM
     activesupport (3.2.21)
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
+    addressable (2.3.7)
     annotate (2.5.0)
       rake
     arel (3.0.3)
@@ -81,6 +82,8 @@ GEM
     coffee-script-source (1.3.3)
     columnize (0.3.6)
     commonjs (0.2.6)
+    crack (0.4.2)
+      safe_yaml (~> 1.0.0)
     daemons (1.0.10)
     debugger-linecache (1.1.2)
       debugger-ruby_core_source (>= 1.1.1)
@@ -176,6 +179,7 @@ GEM
     ruby-debug-base (0.10.4)
       linecache (>= 0.3)
     ruby-rc4 (0.1.5)
+    safe_yaml (1.0.4)
     sass (3.1.20)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -212,6 +216,9 @@ GEM
     uglifier (1.2.6)
       execjs (>= 0.3.0)
       multi_json (~> 1.3)
+    webmock (1.20.4)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
     will_paginate (3.0.5)
     xapian-full-alaveteli (1.2.9.5)
 
@@ -248,6 +255,7 @@ DEPENDENCIES
   strip_attributes
   therubyracer
   uglifier (>= 1.0.3)
+  webmock
   will_paginate (~> 3.0.5)
   xapian-full-alaveteli (~> 1.2.9.4)
   yaml_db!

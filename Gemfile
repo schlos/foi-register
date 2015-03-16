@@ -27,6 +27,7 @@ group :test do
 
   gem 'debugger', :require => 'ruby-debug', :platforms => :mri_19, :git => "https://github.com/cldwalker/debugger"
   gem 'ruby-debug', :platforms => :mri_18
+  gem 'webmock'
 end
 
 group :production do

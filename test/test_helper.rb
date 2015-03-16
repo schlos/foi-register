@@ -4,6 +4,7 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'action_view/base'
 require 'mocha/setup'
+require 'webmock/test_unit'
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
