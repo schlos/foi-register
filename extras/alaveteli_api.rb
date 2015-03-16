@@ -160,6 +160,19 @@ class AlaveteliApi
 
                     # Get existing user, or make a new one.
                     user_url = event["user_url"]
+
+                    # If the user_url is nil, it means that there's no user
+                    # logged in Alaveteli, which in all likelihood means that
+                    # this is actually a request that *we* sent to alaveteli
+                    # but that somehow doesn't have a remote_id yet (maybe
+                    # something bombed out whilst sending it to Alaveteli, and
+                    # Alaveteli got it but we didn't get their response). This
+                    # is a bad situation to be in, and needs investigating by
+                    # someone immediately, hence raising an error.
+                    if user_url.nil?
+                        raise AlaveteliApiError, "Received request from alaveteli feed with no user_url that doesn't match any existing remote_id: #{remote_id}"
+                    end
+
                     requestor = Requestor.find_by_external_url_scheme_insensitive(user_url)
 
                     # oh, it really is new - better make a new requestor then
