@@ -24,6 +24,10 @@ class AlaveteliApi
       MySociety::Config::get("ALAVETELI_SECURE")
     end
 
+    def self.pull_from_alaveteli?()
+        MySociety::Config.get("PULL_FROM_ALAVETELI")
+    end
+
     def self.send_request(request)
         api_endpoint = MySociety::Config::get("ALAVETELI_API_ENDPOINT")
         return nil, nil if api_endpoint.nil?
@@ -121,5 +125,70 @@ class AlaveteliApi
             "rejected"
         else "error"
         end
+    end
+
+    def self.fetch_feed
+        # Fetch new requests from the alaveteli events feed
+        feed_url = MySociety::Config.get("ALAVETELI_FEED_URL")
+        feed_key = MySociety::Config.get("ALAVETELI_API_KEY")
+
+        url = feed_url + "?k=" + CGI::escape(feed_key)
+
+        ActiveRecord::Base.transaction do
+            last_event_id = AlaveteliFeed.last_event_id
+            if !last_event_id.nil?
+                url += '&since_event_id=' + last_event_id.to_s
+            end
+
+            uri = URI.parse(url)
+            http = self.prepare_connection(uri)
+
+            request = Net::HTTP::Get.new(uri.request_uri)
+            response = http.request(request)
+            events = ActiveSupport::JSON.decode(response.body)
+            events.reverse_each do |event|
+
+                event_type = event["event_type"]
+                if event_type == "sent"
+
+                    # Check to see if this is one of our own requests
+                    remote_id = event['request_id']
+                    existing_request = Request.find(:first, :conditions => ['remote_id = ?', remote_id])
+                    next if existing_request
+
+                    # Process the event
+
+                    # Get existing user, or make a new one.
+                    user_url = event["user_url"]
+                    requestor = Requestor.find_by_external_url_scheme_insensitive(user_url)
+
+                    # oh, it really is new - better make a new requestor then
+                    if requestor.nil?
+                        requestor = Requestor.new(
+                            :name => event["user_name"],
+                            :external_url => user_url
+                        )
+                    end
+                    requestor.save!
+
+                    # Create a request
+                    date_received = Time.iso8601(event["created_at"])
+                    request = Request.new(
+                        :medium => "alaveteli",
+                        :state => "new",
+                        :remote_url => event["request_url"],
+                        :remote_email => event["request_email"],
+                        :requestor => requestor,
+                        :title => event["title"],
+                        :body => event["body"],
+                        :date_received => date_received,
+                        :due_date => date_received + 28.days
+                    )
+                    request.save!
+                end
+            end
+            AlaveteliFeed.last_event_id = events[0]["event_id"] if !events.empty?
+        end
+
     end
 end
