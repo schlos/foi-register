@@ -25,4 +25,12 @@ class RequestorTest < ActiveSupport::TestCase
     requestor.save
     assert_equal(nil, requestor.email)
   end
+
+  test 'find_by_external_url_scheme_insensitive should find with http or https url' do
+    external_user = requestors(:external_user)
+    external_url_http = "http://www.whatdotheyknow.com/users/test"
+    external_url_https = "https://www.whatdotheyknow.com/users/test"
+    assert_equal(Requestor.find_by_external_url_scheme_insensitive(external_url_http), external_user)
+    assert_equal(Requestor.find_by_external_url_scheme_insensitive(external_url_https), external_user)
+  end
 end

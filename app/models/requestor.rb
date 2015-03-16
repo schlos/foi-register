@@ -34,4 +34,23 @@ class Requestor < ActiveRecord::Base
       name
     end
   end
+
+  class << self
+    def find_by_external_url_scheme_insensitive(url)
+      # Find a Requestor by their url, but in a URL scheme-insensitive way.
+      instance = self.find_by_external_url(url)
+      # check to see if there's an http or https equivalent
+      # of the url before creating a new requestor
+      if instance.nil?
+        case url[0..4]
+        when "http:"
+          instance = self.find_by_external_url("https://#{url[7..-1]}")
+        when "https"
+          instance = self.find_by_external_url("http://#{url[8..-1]}")
+        end
+      end
+      instance
+    end
+  end
+
 end

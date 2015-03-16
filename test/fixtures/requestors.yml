@@ -30,3 +30,11 @@ seb:
 no_email:
   name: Test User
   email:
+
+external_user:
+  name: External User
+  email: external@mysociety.org
+  external_url: https://www.whatdotheyknow.com/users/test
+  notes: |
+    phone: 01243 465 798
+    address: The other place, externalsville, EX1 3RN
