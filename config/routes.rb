@@ -17,6 +17,9 @@ FoiRegister::Application.routes.draw do
       end
     end
     resources :requestors
+
+    # Health check page
+    get "/health" => "health_checks#index"
   end
 
   # One-time only links for requestors to register
