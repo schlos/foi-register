@@ -113,7 +113,7 @@ class ResponsesControllerTest < ActionController::TestCase
       end
   end
 
-  test "should retry later if Alaveteli is down" do
+  test "doesn't retry failed jobs" do
     with_alaveteli do |host|
       with_delayed_jobs do
         # Make sure the queue is clear to start with
@@ -134,8 +134,8 @@ class ResponsesControllerTest < ActionController::TestCase
         AlaveteliApi.unstub(:send_request)
         Delayed::Worker::new.work_off 1
 
-        # Check that worked
-        assert_equal 0, Delayed::Job.count
+        # Check that it's not sent
+        assert_equal 1, Delayed::Job.count
       end
     end
   end

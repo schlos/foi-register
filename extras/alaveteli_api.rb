@@ -10,6 +10,8 @@ class AlaveteliApi
 
     def self.prepare_connection(url)
       http = Net::HTTP.new(url.host, url.port)
+      # Increase the timeout because alaveteli is slow sometimes
+      http.read_timeout = 300
       if self.alaveteli_secure?
         http.use_ssl = true
         http.ca_path = MySociety::Config.get("SSL_CA_PATH", "/etc/ssl/certs/")
