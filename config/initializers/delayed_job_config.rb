@@ -18,7 +18,7 @@ Delayed::Worker.class_eval do
   def handle_failed_job_with_notification(job, error)
     handle_failed_job_without_notification(job, error)
     # only actually send mail in production
-    if Rails.Delayedenv.production?
+    if Rails.env.production?
       # rescue if ExceptionNotifier fails for some reason
       begin
         ExceptionNotifier::Notifier.background_exception_notification(error, :data => {:job => job})
