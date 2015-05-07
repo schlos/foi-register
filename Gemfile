@@ -32,9 +32,6 @@ end
 
 group :production do
   gem 'pg'
-
-  # Report on exceptions
-  gem 'exception_notification', '~> 2.6.1'
 end
 
 group :default do
@@ -79,5 +76,8 @@ group :default do
   # For generating PDF letters
   gem 'pdf-reader', '~> 1.2.0'
   gem 'prawn', '~> 0.12.0'
+
+  # Report on exceptions
+  gem 'exception_notification', '~> 2.6.1'
 
 end
