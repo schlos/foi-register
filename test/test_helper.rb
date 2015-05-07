@@ -24,6 +24,9 @@ class ActiveSupport::TestCase
 
   # Wrapper for tests that need an Alaveteli connection
   def with_alaveteli
+    # Allow real network requests for these, until we have the time to mock
+    # out all of the calls to Alaveteli
+    WebMock.allow_net_connect!
     config = MySociety::Config.load_default()
     host = config['TEST_ALAVETELI_API_HOST']
     if host.nil?
