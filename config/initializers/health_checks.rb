@@ -7,9 +7,9 @@ Rails.application.config.after_initialize do
                          end
 
     request_last_created_from_alaveteli = HealthChecks::Checks::DaysAgoCheck.new(
-                                        :failure_message => 'The last request from alaveteli was created over 3 days ago',
-                                        :success_message => 'The last request from alaveteli was created in the last 3 days',
-                                        :days => 3) do
+                                        :failure_message => 'The last request from alaveteli was created over 14 days ago',
+                                        :success_message => 'The last request from alaveteli was created in the last 14 days',
+                                        :days => 14) do
                                             if Request.where("medium = 'alaveteli'").empty?
                                               Time.new(1970,1,1,0,0,0)
                                             else
