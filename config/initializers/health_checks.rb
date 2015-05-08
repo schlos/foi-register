@@ -28,7 +28,7 @@ Rails.application.config.after_initialize do
                               :failure_message => "There are requests which haven't been sent to Alaveteli in over an hour",
                               :success_message => 'All requests older than an hour have been sent to Alaveteli',
                               :should_exist => false) do
-                                  Request.where("created_at < ? AND medium != 'alaveteli' AND remote_id IS NULL", Time.now - 1.hours).first
+                                  Request.where("created_at > ? AND created_at < ? AND medium != 'alaveteli' AND remote_id IS NULL", Time.new(2015,5,8,0,0,0), Time.now - 1.hours).first
                               end
 
 

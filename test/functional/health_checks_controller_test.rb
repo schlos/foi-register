@@ -110,4 +110,31 @@ class HealthChecksControllerTest < ActionController::TestCase
     assert_response :error
     assert response.body.include? "There are requests which haven&#x27;t been sent to Alaveteli in over an hour"
   end
+
+  test "should be ok when there are old invalid requests that haven't been sent" do
+    # Create a request to pass the creation test
+    Request.create(
+      :due_date => Time.now + 5.days,
+      :title => 'Created today, from alaveteli',
+      :requestor => requestors(:seb),
+      :body => 'Created today, from alaveteli',
+      :remote_id => 42,
+      :created_at => Time.now,
+      :medium => 'alaveteli'
+    )
+
+    # Create a request from before 08/05/2015 that hasn't been sent
+    Request.create(
+      :due_date => Time.now,
+      :title => 'Created today, from alaveteli',
+      :requestor => requestors(:seb),
+      :body => 'Created today, from alaveteli',
+      :is_published => true,
+      :remote_id => nil,
+      :created_at => Time.new(2015,5,7,0,0,0)
+    )
+
+    get :index
+    assert_response :success
+  end
 end
