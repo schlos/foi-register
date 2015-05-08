@@ -57,7 +57,7 @@ class HealthChecksControllerTest < ActionController::TestCase
 
     get :index
     assert_response :error
-    assert response.body.include? "The last request from alaveteli was created over 3 days ago"
+    assert response.body.include? "The last request from alaveteli was created over 14 days ago"
   end
 
   test "should not be ok when there are failed jobs" do
