@@ -117,4 +117,62 @@ class RequestTest < ActiveSupport::TestCase
     request = Request.new(:requestor => requestors(:no_email))
     assert_equal false, request.has_private_email?
   end
+
+  test 'should allow a normal valid request' do
+    request = Request.new(
+      :requestor => requestors(:robin),
+      :title => 'A fairly reasonable title',
+      :body => 'A test request with some content and stuff')
+    assert_equal true, request.valid?
+  end
+
+  test 'should validate that the title is not empty' do
+    request = Request.new(
+      :requestor => requestors(:robin),
+      :title => '',
+      :body => 'A test request with some content and stuff')
+    assert_equal false, request.valid?
+    assert_equal "can't be blank", request.errors[:title][0]
+    assert_equal 1, request.errors.count
+  end
+
+  test 'should validate that the title has mixed case' do
+    request = Request.new(
+      :requestor => requestors(:robin),
+      :title => 'ALL UPPER CASE',
+      :body => 'A test request with some content and stuff')
+    assert_equal false, request.valid?
+    assert_equal 'Please write the summary using a mixture of capital and lower case letters. This makes it easier for others to read.', request.errors[:title][0]
+    assert_equal 1, request.errors.count
+  end
+
+  test 'should validate that the titles say more than FOI Request' do
+    request = Request.new(
+      :requestor => requestors(:robin),
+      :title => 'FOI Request',
+      :body => 'A test request with some content and stuff')
+    assert_equal false, request.valid?
+    assert_equal 'Please describe more what the request is about in the subject. There is no need to say it is an FOI request, we add that on anyway.', request.errors[:title][0]
+    assert_equal 1, request.errors.count
+  end
+
+  test 'should validate that the titles are shorter than 200 chars' do
+    request = Request.new(
+      :requestor => requestors(:robin),
+      :title => 'Test Request' * 20,
+      :body => 'A test request with some content and stuff')
+    assert_equal false, request.valid?
+    assert_equal 'Please keep the summary short, like in the subject of an email. You can use a phrase, rather than a full sentence.', request.errors[:title][0]
+    assert_equal 1, request.errors.count
+  end
+
+  test 'should validate that the body has mixed case' do
+    request = Request.new(
+      :requestor => requestors(:robin),
+      :title => 'A fairly reasonable title',
+      :body => 'A MESSAGE WRITTEN ALL IN UPPER CASE!')
+    assert_equal false, request.valid?
+    assert_equal 'Please write your message using a mixture of capital and lower case letters. This makes it easier for others to read.', request.errors[:body][0]
+    assert_equal 1, request.errors.count
+  end
 end

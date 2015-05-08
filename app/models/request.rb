@@ -84,6 +84,13 @@ class Request < ActiveRecord::Base
   }
   validates :state, :inclusion => { :in => STATES.keys }
 
+  # Only check on create, so that existing models are still valid.
+  # These replicate the validation on whatdotheyknow, because we're subject to
+  # that when we sync our requests to them, and they'll be refused if they
+  # don't comply.
+  validate :title_formatting, :on => :create
+  validate :body_formatting, :on => :create
+
   acts_as_xapian({
     :texts => [ :title, :body, :public_requestor_name ],
     :values => [
@@ -95,6 +102,28 @@ class Request < ActiveRecord::Base
         [ :medium, 'B', "medium" ], # 'M' is reserved for use as the model
         [ :lgcs_term_name, 'T', "lgcs_term" ]
     ]})
+
+  # Cribbed directly from app/models/info_request.rb in alaveteli
+  def title_formatting
+    if !self.title.nil? && !MySociety::Validate.uses_mixed_capitals(self.title, 10)
+      errors.add(:title, 'Please write the summary using a mixture of capital and lower case letters. This makes it easier for others to read.')
+    end
+    if !self.title.nil? && title.size > 200
+      errors.add(:title, 'Please keep the summary short, like in the subject of an email. You can use a phrase, rather than a full sentence.')
+    end
+    if !self.title.nil? && self.title =~ /^(FOI|Freedom of Information)\s*requests?$/i
+      errors.add(:title, 'Please describe more what the request is about in the subject. There is no need to say it is an FOI request, we add that on anyway.')
+    end
+  end
+
+  # Needed because the body of a request is copied into an outgoing message
+  # when we synchronise it with whatdotheyknow and then validated there, where
+  # we won't be able to act on any problems.
+  def body_formatting
+    if !self.body.nil? && !MySociety::Validate.uses_mixed_capitals(self.body)
+      errors.add(:body, 'Please write your message using a mixture of capital and lower case letters. This makes it easier for others to read.')
+    end
+  end
 
   def state_title
     STATES[state][0] if STATES[state]
