@@ -4,8 +4,8 @@ require 'test_helper'
 
 class AlaveteliAPITestCase < ActiveSupport::TestCase
 
-  test "pull_from_alaveteli? should return false" do
-    assert_equal AlaveteliApi.pull_from_alaveteli?, false
+  test "pull_from_alaveteli? should return true" do
+    assert_equal AlaveteliApi.pull_from_alaveteli?, true
   end
 
   test "test_alaveteli_secure should return false" do
